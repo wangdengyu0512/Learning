@@ -1,0 +1,64 @@
+<svg aria-label="消息系统选型决策树：从可重放高吞吐、逐条路由优先级DLQ、独立ack分支到 Kafka consumer group、share group、RabbitMQ" role="img" viewbox="0 0 720 540" width="100%" xmlns="http://www.w3.org/2000/svg"><style>:root { color-scheme: light; }
+svg { background: #fffdf8; }
+.diagram-ink { stroke: #0A0A0A; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: #B73B2F; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: #A7A19A; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: #fffdf8; }
+.node-fill-accent { fill: #F7E6E2; }
+.node-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 500; fill: #0A0A0A; }
+.node-label-accent { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 700; fill: #B73B2F; }
+.edge-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; fill: #514C47; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; font-weight: 700; fill: #B73B2F; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="dt" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+</defs>
+<!-- Start -->
+<ellipse class="diagram-ink node-fill" cx="360" cy="34" rx="92" ry="22"></ellipse>
+<text class="node-label" text-anchor="middle" x="360" y="40">选消息系统</text>
+<!-- Q1 -->
+<polygon class="diagram-ink node-fill" points="360,72 510,140 360,208 210,140"></polygon>
+<text class="node-label" text-anchor="middle" x="360" y="132">需要可重放</text>
+<text class="node-label" text-anchor="middle" x="360" y="152">+ 高吞吐？</text>
+<line class="diagram-ink" marker-end="url(#dt)" x1="360" x2="360" y1="56" y2="72"></line>
+<!-- Q1 No -> RabbitMQ (terminal, right) -->
+<line class="diagram-ink" marker-end="url(#dt)" x1="510" x2="588" y1="140" y2="140"></line>
+<text class="branch-label" text-anchor="middle" x="548" y="131">否</text>
+<rect class="diagram-ink node-fill" height="56" rx="6" width="124" x="588" y="112"></rect>
+<text class="node-label" text-anchor="middle" x="650" y="136">RabbitMQ</text>
+<text class="edge-label" text-anchor="middle" x="650" y="155">低量 / 路由</text>
+<!-- Q1 Yes -> Q2 -->
+<line class="diagram-ink" marker-end="url(#dt)" x1="360" x2="360" y1="208" y2="240"></line>
+<text class="branch-label" text-anchor="middle" x="375" y="228">是</text>
+<!-- Q2 -->
+<polygon class="diagram-ink node-fill" points="360,240 520,312 360,384 200,312"></polygon>
+<text class="node-label" text-anchor="middle" x="360" y="300">需要逐条路由 /</text>
+<text class="node-label" text-anchor="middle" x="360" y="320">优先级 / 原生 DLQ？</text>
+<!-- Q2 Yes -> RabbitMQ (this downstream) -->
+<line class="diagram-ink" marker-end="url(#dt)" x1="200" x2="120" y1="312" y2="312"></line>
+<text class="branch-label" text-anchor="middle" x="160" y="303">是</text>
+<rect class="diagram-ink node-fill" height="56" rx="6" width="112" x="8" y="284"></rect>
+<text class="node-label" text-anchor="middle" x="64" y="308">RabbitMQ</text>
+<text class="edge-label" text-anchor="middle" x="64" y="327">该下游单拆</text>
+<!-- Q2 No -> Q3 -->
+<line class="diagram-ink" marker-end="url(#dt)" x1="360" x2="360" y1="384" y2="416"></line>
+<text class="branch-label" text-anchor="middle" x="375" y="404">否</text>
+<!-- Q3 -->
+<polygon class="diagram-ink node-fill" points="360,416 520,484 360,552 200,484"></polygon>
+<text class="node-label" text-anchor="middle" x="360" y="472">每条独立 ack /</text>
+<text class="node-label" text-anchor="middle" x="360" y="492">消费者数 &gt; 分区数？</text>
+<!-- Q3 Yes -> share group (left) -->
+<line class="diagram-ink" marker-end="url(#dt)" x1="200" x2="120" y1="484" y2="484"></line>
+<text class="branch-label" text-anchor="middle" x="160" y="475">是</text>
+<rect class="diagram-accent node-fill-accent" height="58" rx="6" width="120" x="0" y="456"></rect>
+<text class="node-label-accent" text-anchor="middle" x="60" y="480">share group</text>
+<text class="edge-label" text-anchor="middle" x="60" y="499">KIP-932 · 4.2</text>
+<!-- Q3 No -> consumer group (right, accent — the order system's main choice) -->
+<line class="diagram-ink" marker-end="url(#dt)" x1="520" x2="598" y1="484" y2="484"></line>
+<text class="branch-label" text-anchor="middle" x="558" y="475">否</text>
+<rect class="diagram-accent node-fill-accent" height="64" rx="6" width="120" x="598" y="452"></rect>
+<text class="node-label-accent" text-anchor="middle" x="658" y="478">consumer</text>
+<text class="node-label-accent" text-anchor="middle" x="658" y="496">group</text>
+<text class="edge-label" text-anchor="middle" x="658" y="510">本系统主干</text>
+</svg>

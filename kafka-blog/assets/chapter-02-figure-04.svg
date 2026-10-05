@@ -1,0 +1,48 @@
+<svg aria-label="一条记录从 producer 写入到 consumer 可见的五步时序，每步标注涉及的机制" role="img" viewbox="0 0 840 300" width="100%" xmlns="http://www.w3.org/2000/svg"><style>:root { color-scheme: light; }
+svg { background: #fffdf8; }
+.diagram-ink { stroke: #0A0A0A; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: #B73B2F; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: #A7A19A; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: #fffdf8; }
+.node-fill-accent { fill: #F7E6E2; }
+.node-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 500; fill: #0A0A0A; }
+.node-label-accent { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 700; fill: #B73B2F; }
+.edge-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; fill: #514C47; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; font-weight: 700; fill: #B73B2F; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="e2e-ink" markerheight="8" markerwidth="8" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="e2e-verm" markerheight="8" markerwidth="8" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- 5 step boxes in a row -->
+<rect class="diagram-ink node-fill" height="64" rx="6" width="150" x="20" y="70"></rect>
+<text class="node-label" text-anchor="middle" x="95" y="96">① producer 写</text>
+<text class="edge-label" text-anchor="middle" x="95" y="114">key→分区 · acks=all</text>
+<text class="edge-label" text-anchor="middle" x="95" y="156">§2.2 §2.5</text>
+<rect class="diagram-accent node-fill-accent" height="64" rx="6" width="150" x="195" y="70"></rect>
+<text class="node-label-accent" text-anchor="middle" x="270" y="96">② leader 追加</text>
+<text class="edge-label" text-anchor="middle" x="270" y="114">append-only segment</text>
+<text class="edge-label" text-anchor="middle" x="270" y="156">§2.1</text>
+<rect class="diagram-ink node-fill" height="64" rx="6" width="150" x="370" y="70"></rect>
+<text class="node-label" text-anchor="middle" x="445" y="96">③ follower fetch</text>
+<text class="edge-label" text-anchor="middle" x="445" y="114">ISR 复制 · 更新 LEO</text>
+<text class="edge-label" text-anchor="middle" x="445" y="156">§2.3</text>
+<rect class="diagram-ink node-fill" height="64" rx="6" width="150" x="545" y="70"></rect>
+<text class="node-label" text-anchor="middle" x="620" y="96">④ HW 推进</text>
+<text class="edge-label" text-anchor="middle" x="620" y="114">达 min.insync 才 ack</text>
+<text class="edge-label" text-anchor="middle" x="620" y="156">§2.3</text>
+<rect class="diagram-ink node-fill" height="64" rx="6" width="150" x="690" y="180"></rect>
+<text class="node-label" text-anchor="middle" x="765" y="206">⑤ consumer 读</text>
+<text class="edge-label" text-anchor="middle" x="765" y="224">读 ≤ HW · 提交 offset</text>
+<text class="edge-label" text-anchor="middle" x="765" y="266">§2.4</text>
+<!-- arrows between 1..4 -->
+<line class="diagram-accent" marker-end="url(#e2e-verm)" x1="170" x2="195" y1="102" y2="102"></line>
+<line class="diagram-ink" marker-end="url(#e2e-ink)" x1="345" x2="370" y1="102" y2="102"></line>
+<line class="diagram-ink" marker-end="url(#e2e-ink)" x1="520" x2="545" y1="102" y2="102"></line>
+<!-- 4 -> 5 (down-right) -->
+<line class="diagram-ink" marker-end="url(#e2e-ink)" x1="695" x2="740" y1="134" y2="180"></line>
+<text class="edge-label" x="745" y="158">仅 HW 之内</text>
+</svg>

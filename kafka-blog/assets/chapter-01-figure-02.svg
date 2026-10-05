@@ -1,0 +1,46 @@
+<svg aria-label="一个 topic 含 3 个 partition，consumer group 含 3 个 consumer，每个分区只连一个消费者" role="img" viewbox="0 0 700 340" width="100%" xmlns="http://www.w3.org/2000/svg"><style>:root { color-scheme: light; }
+svg { background: #fffdf8; }
+.diagram-ink { stroke: #0A0A0A; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: #B73B2F; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: #A7A19A; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: #fffdf8; }
+.node-fill-accent { fill: #F7E6E2; }
+.node-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 500; fill: #0A0A0A; }
+.node-label-accent { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 700; fill: #B73B2F; }
+.edge-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; fill: #514C47; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; font-weight: 700; fill: #B73B2F; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="map-ink" markerheight="8" markerwidth="8" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+</defs>
+<!-- topic group box (left) -->
+<rect class="diagram-soft" height="268" rx="8" width="250" x="30" y="36"></rect>
+<text class="edge-label" font-weight="700" x="48" y="60">TOPIC orders</text>
+<!-- 3 partitions -->
+<rect class="diagram-ink node-fill" height="56" rx="6" width="200" x="56" y="80"></rect>
+<text class="node-label" text-anchor="middle" x="156" y="104">partition 0</text>
+<text class="edge-label" text-anchor="middle" x="156" y="123">日志 · offset 0,1,2…</text>
+<rect class="diagram-ink node-fill" height="56" rx="6" width="200" x="56" y="156"></rect>
+<text class="node-label" text-anchor="middle" x="156" y="180">partition 1</text>
+<text class="edge-label" text-anchor="middle" x="156" y="199">日志 · offset 0,1,2…</text>
+<rect class="diagram-ink node-fill" height="56" rx="6" width="200" x="56" y="232"></rect>
+<text class="node-label" text-anchor="middle" x="156" y="256">partition 2</text>
+<text class="edge-label" text-anchor="middle" x="156" y="275">日志 · offset 0,1,2…</text>
+<!-- consumer group box (right) -->
+<rect class="diagram-soft" height="268" rx="8" width="240" x="430" y="36"></rect>
+<text class="edge-label" fill="#B73B2F" font-weight="700" x="448" y="60">GROUP 风控</text>
+<!-- 3 consumers -->
+<rect class="diagram-accent node-fill-accent" height="44" rx="6" width="160" x="470" y="84"></rect>
+<text class="node-label-accent" text-anchor="middle" x="550" y="111">consumer C1</text>
+<rect class="diagram-accent node-fill-accent" height="44" rx="6" width="160" x="470" y="162"></rect>
+<text class="node-label-accent" text-anchor="middle" x="550" y="189">consumer C2</text>
+<rect class="diagram-accent node-fill-accent" height="44" rx="6" width="160" x="470" y="240"></rect>
+<text class="node-label-accent" text-anchor="middle" x="550" y="267">consumer C3</text>
+<!-- one-to-one mapping arrows: each partition right edge -> consumer left edge -->
+<line class="diagram-ink" marker-end="url(#map-ink)" x1="256" x2="470" y1="108" y2="106"></line>
+<line class="diagram-ink" marker-end="url(#map-ink)" x1="256" x2="470" y1="184" y2="184"></line>
+<line class="diagram-ink" marker-end="url(#map-ink)" x1="256" x2="470" y1="260" y2="262"></line>
+<text class="edge-label" text-anchor="middle" x="363" y="98">分给</text>
+<text class="edge-label" text-anchor="middle" x="363" y="300">3 分区 → 3 消费者，1:1 占满</text>
+</svg>

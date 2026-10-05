@@ -1,0 +1,40 @@
+<svg aria-label="三阶脚手架递减：worked 全给、partial 留决策点、open 自己写，作者承担递减、读者承担递增" role="img" viewbox="0 0 820 280" width="100%" xmlns="http://www.w3.org/2000/svg"><style>:root { color-scheme: light; }
+svg { background: #fffdf8; }
+.diagram-ink { stroke: #0A0A0A; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: #B73B2F; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: #A7A19A; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: #fffdf8; }
+.node-fill-accent { fill: #F7E6E2; }
+.node-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 500; fill: #0A0A0A; }
+.node-label-accent { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 700; fill: #B73B2F; }
+.edge-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; fill: #514C47; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; font-weight: 700; fill: #B73B2F; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="s-flow" markerheight="8" markerwidth="8" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+</defs>
+<!-- stage 1: worked (tall solid = much given) -->
+<rect class="diagram-ink node-fill" height="150" rx="6" width="170" x="70" y="70"></rect>
+<text class="node-label" text-anchor="middle" x="155" y="112">示例 1 · worked</text>
+<text class="edge-label" text-anchor="middle" x="155" y="134">完整代码全给</text>
+<text class="edge-label" text-anchor="middle" x="155" y="154">逐行解读</text>
+<line class="diagram-ink" marker-end="url(#s-flow)" x1="240" x2="300" y1="145" y2="145"></line>
+<!-- stage 2: partial (medium) -->
+<rect class="diagram-ink node-fill" height="114" rx="6" width="170" x="300" y="106"></rect>
+<text class="node-label" text-anchor="middle" x="385" y="142">示例 2 · partial</text>
+<text class="edge-label" text-anchor="middle" x="385" y="164">框架给，留决策点</text>
+<text class="edge-label" text-anchor="middle" x="385" y="184">3 个 TODO</text>
+<line class="diagram-ink" marker-end="url(#s-flow)" x1="470" x2="530" y1="163" y2="163"></line>
+<!-- stage 3: open (short accent = mostly you) -->
+<rect class="diagram-accent node-fill-accent" height="70" rx="6" width="170" x="530" y="150"></rect>
+<text class="node-label-accent" text-anchor="middle" x="615" y="180">示例 3 · open</text>
+<text class="edge-label" text-anchor="middle" x="615" y="200">自己写，参考实现折叠</text>
+<!-- axis labels: who carries what -->
+<text class="edge-label" text-anchor="middle" x="155" y="246">作者承担：多</text>
+<text class="edge-label" text-anchor="middle" x="385" y="246">作者承担：中</text>
+<text class="branch-label" text-anchor="middle" x="615" y="246">读者承担：多</text>
+<!-- baseline arrow showing decreasing scaffold -->
+<text class="edge-label" font-weight="700" text-anchor="middle" x="395" y="44">脚手架（作者给的代码量）递减 →</text>
+<line class="diagram-soft" marker-end="url(#s-flow)" x1="70" x2="700" y1="56" y2="56"></line>
+</svg>

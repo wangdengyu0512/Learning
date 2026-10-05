@@ -1,0 +1,73 @@
+<svg aria-label="HW 与 LEO：一条分区日志上 leader LEO 在前、两个 follower LEO 落后、HW 是 ISR 最小 LEO、消费者只能读到 HW" role="img" viewbox="-40 0 870 360" width="100%" xmlns="http://www.w3.org/2000/svg"><style>:root { color-scheme: light; }
+svg { background: #fffdf8; }
+.diagram-ink { stroke: #0A0A0A; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: #B73B2F; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: #A7A19A; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: #fffdf8; }
+.node-fill-accent { fill: #F7E6E2; }
+.node-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 500; fill: #0A0A0A; }
+.node-label-accent { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 700; fill: #B73B2F; }
+.edge-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; fill: #514C47; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; font-weight: 700; fill: #B73B2F; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="r-ink" markerheight="8" markerwidth="8" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+</defs>
+<!-- offset ruler note -->
+<text class="edge-label" font-weight="700" x="40" y="36">offset →</text>
+<!-- helper: each cell 44px wide, start x=70, 11 cells (0..10) -->
+<!-- LEADER row -->
+<text class="node-label" text-anchor="end" x="40" y="86">leader</text>
+<g>
+<rect class="diagram-ink node-fill" height="40" width="44" x="70" y="64"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="114" y="64"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="158" y="64"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="202" y="64"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="246" y="64"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="290" y="64"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="334" y="64"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="378" y="64"></rect>
+<!-- uncommitted region (above HW): faint fill -->
+<rect class="diagram-ink node-fill-accent" height="40" width="44" x="422" y="64"></rect>
+<rect class="diagram-ink node-fill-accent" height="40" width="44" x="466" y="64"></rect>
+</g>
+<text class="edge-label" x="532" y="88">LEO=10</text>
+<!-- FOLLOWER 1 row (LEO=9) -->
+<text class="node-label" text-anchor="end" x="40" y="156">follower 1</text>
+<g>
+<rect class="diagram-ink node-fill" height="40" width="44" x="70" y="134"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="114" y="134"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="158" y="134"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="202" y="134"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="246" y="134"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="290" y="134"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="334" y="134"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="378" y="134"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="422" y="134"></rect>
+</g>
+<text class="edge-label" x="510" y="158">LEO=9</text>
+<!-- FOLLOWER 2 row (LEO=8) — sets HW -->
+<text class="node-label" text-anchor="end" x="40" y="226">follower 2</text>
+<g>
+<rect class="diagram-ink node-fill" height="40" width="44" x="70" y="204"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="114" y="204"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="158" y="204"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="202" y="204"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="246" y="204"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="290" y="204"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="334" y="204"></rect>
+<rect class="diagram-ink node-fill" height="40" width="44" x="378" y="204"></rect>
+</g>
+<text class="edge-label" x="466" y="228">LEO=8（最小）</text>
+<!-- HW vertical line at x=422 (offset 8 boundary) -->
+<line class="diagram-accent" x1="422" x2="422" y1="50" y2="290"></line>
+<text class="branch-label" text-anchor="middle" x="422" y="312">HW = 8</text>
+<text class="edge-label" text-anchor="middle" x="422" y="328">= ISR 最小 LEO</text>
+<!-- consumer can read up to HW -->
+<line class="diagram-ink" marker-end="url(#r-ink)" x1="120" x2="120" y1="290" y2="266"></line>
+<text class="node-label" text-anchor="middle" x="245" y="284">consumer 可读区间：offset 0 .. 7（&lt; HW）</text>
+<!-- label uncommitted -->
+<text class="edge-label" fill="#B73B2F" x="600" y="88">↑ 已写未提交</text>
+<text class="edge-label" fill="#B73B2F" x="600" y="104">  对消费者不可见</text>
+</svg>

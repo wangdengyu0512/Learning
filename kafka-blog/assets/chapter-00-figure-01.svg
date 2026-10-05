@@ -1,0 +1,70 @@
+<svg aria-label="Kafka 概念地图：以分区提交日志为中心，producer 写入、consumer 读取、broker 持有副本、topic 切分、replica 同步、cluster 包含 broker 环绕四周" role="img" viewbox="0 0 860 520" width="100%" xmlns="http://www.w3.org/2000/svg"><style>:root { color-scheme: light; }
+svg { background: #fffdf8; }
+.diagram-ink { stroke: #0A0A0A; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: #B73B2F; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: #A7A19A; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: #fffdf8; }
+.node-fill-accent { fill: #F7E6E2; }
+.node-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 500; fill: #0A0A0A; }
+.node-label-accent { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 700; fill: #B73B2F; }
+.edge-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; fill: #514C47; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; font-weight: 700; fill: #B73B2F; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="arrow-ink" markerheight="8" markerwidth="8" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="arrow-vermilion" markerheight="8" markerwidth="8" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- ===== Central node: Partition = commit log ===== -->
+<rect class="diagram-accent node-fill-accent" height="76" rx="8" stroke-width="2" width="220" x="320" y="222"></rect>
+<text class="node-label-accent" font-size="15" text-anchor="middle" x="430" y="252">Partition = 提交日志</text>
+<text class="edge-label" text-anchor="middle" x="430" y="272">append-only · 按 Offset 有序</text>
+<text class="edge-label" text-anchor="middle" x="430" y="289">消费不删数据 = 可重放</text>
+<!-- ===== Top-left: Topic ===== -->
+<rect class="diagram-ink node-fill" height="60" rx="6" width="190" x="60" y="40"></rect>
+<text class="node-label" text-anchor="middle" x="155" y="66">Topic / 主题</text>
+<text class="edge-label" text-anchor="middle" x="155" y="84">逻辑分类</text>
+<!-- edge Topic -> center (to top-left corner of center) -->
+<line class="diagram-ink" marker-end="url(#arrow-ink)" x1="250" x2="322" y1="92" y2="224"></line>
+<text class="edge-label" text-anchor="middle" x="262" y="150">切分为</text>
+<!-- ===== Top-center: Producer ===== -->
+<rect class="diagram-ink node-fill" height="60" rx="6" width="190" x="335" y="44"></rect>
+<text class="node-label" text-anchor="middle" x="430" y="70">Producer</text>
+<text class="edge-label" text-anchor="middle" x="430" y="88">按 key 哈希写入</text>
+<!-- edge Producer -> center top edge -->
+<line class="diagram-accent" marker-end="url(#arrow-vermilion)" x1="430" x2="430" y1="104" y2="220"></line>
+<text class="branch-label" text-anchor="middle" x="430" y="166">写</text>
+<!-- ===== Top-right: Cluster ===== -->
+<rect class="diagram-ink node-fill" height="74" rx="6" width="200" x="610" y="40"></rect>
+<text class="node-label" text-anchor="middle" x="710" y="64">Cluster</text>
+<text class="edge-label" text-anchor="middle" x="710" y="82">KRaft controller quorum</text>
+<text class="edge-label" text-anchor="middle" x="710" y="99">元数据本身也是一条日志</text>
+<!-- ===== Right: Broker (cluster 包含 broker; broker 持有 partition) ===== -->
+<rect class="diagram-ink node-fill" height="60" rx="6" width="180" x="640" y="234"></rect>
+<text class="node-label" text-anchor="middle" x="730" y="260">Broker</text>
+<text class="edge-label" text-anchor="middle" x="730" y="278">持有 leader/follower</text>
+<!-- edge Cluster -> Broker (vertical) -->
+<line class="diagram-ink" marker-end="url(#arrow-ink)" x1="710" x2="710" y1="114" y2="232"></line>
+<text class="edge-label" text-anchor="middle" x="710" y="178">包含</text>
+<!-- edge Broker -> center right edge -->
+<line class="diagram-ink" marker-end="url(#arrow-ink)" x1="640" x2="542" y1="264" y2="260"></line>
+<text class="edge-label" text-anchor="middle" x="592" y="252">持有</text>
+<!-- ===== Bottom-left: Consumer Group ===== -->
+<rect class="diagram-ink node-fill" height="74" rx="6" width="220" x="60" y="420"></rect>
+<text class="node-label" text-anchor="middle" x="170" y="446">Consumer Group</text>
+<text class="edge-label" text-anchor="middle" x="170" y="464">读取，各自维护 offset</text>
+<text class="edge-label" text-anchor="middle" x="170" y="481">offset 在消费者这侧</text>
+<!-- edge Consumer -> center (bottom-left corner) -->
+<line class="diagram-accent" marker-end="url(#arrow-vermilion)" x1="280" x2="322" y1="436" y2="296"></line>
+<text class="branch-label" text-anchor="middle" x="318" y="372">读</text>
+<!-- ===== Bottom-right: Replica / ISR ===== -->
+<rect class="diagram-ink node-fill" height="74" rx="6" width="220" x="600" y="420"></rect>
+<text class="node-label" text-anchor="middle" x="710" y="446">Replica / ISR</text>
+<text class="edge-label" text-anchor="middle" x="710" y="464">同步副本集</text>
+<text class="edge-label" text-anchor="middle" x="710" y="481">由 HW 控制可见性</text>
+<!-- edge Replica -> center (bottom-right corner) -->
+<line class="diagram-ink" marker-end="url(#arrow-ink)" x1="600" x2="538" y1="436" y2="296"></line>
+<text class="edge-label" text-anchor="middle" x="600" y="372">同步</text>
+</svg>

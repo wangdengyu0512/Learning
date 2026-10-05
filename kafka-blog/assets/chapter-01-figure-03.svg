@@ -1,0 +1,50 @@
+<svg aria-label="三条带 key 的记录经 murmur2 哈希路由到分区，相同 key 落同一分区" role="img" viewbox="0 0 720 308" width="100%" xmlns="http://www.w3.org/2000/svg"><style>:root { color-scheme: light; }
+svg { background: #fffdf8; }
+.diagram-ink { stroke: #0A0A0A; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: #B73B2F; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: #A7A19A; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: #fffdf8; }
+.node-fill-accent { fill: #F7E6E2; }
+.node-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 500; fill: #0A0A0A; }
+.node-label-accent { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 700; fill: #B73B2F; }
+.edge-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; fill: #514C47; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; font-weight: 700; fill: #B73B2F; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="route-ink" markerheight="8" markerwidth="8" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="route-verm" markerheight="8" markerwidth="8" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- column labels -->
+<text class="edge-label" font-weight="700" text-anchor="middle" x="78" y="28">记录(key)</text>
+<text class="edge-label" font-weight="700" text-anchor="middle" x="360" y="28">分区器</text>
+<text class="edge-label" font-weight="700" text-anchor="middle" x="628" y="28">PARTITION</text>
+<!-- 3 incoming records (left) -->
+<rect class="diagram-accent node-fill-accent" height="40" rx="6" width="170" x="20" y="58"></rect>
+<text class="node-label-accent" text-anchor="middle" x="105" y="83">key = order-42</text>
+<rect class="diagram-ink node-fill" height="40" rx="6" width="170" x="20" y="138"></rect>
+<text class="node-label" text-anchor="middle" x="105" y="163">key = order-99</text>
+<rect class="diagram-accent node-fill-accent" height="40" rx="6" width="170" x="20" y="218"></rect>
+<text class="node-label-accent" text-anchor="middle" x="105" y="243">key = order-42</text>
+<!-- hash box (center) -->
+<rect class="diagram-ink node-fill" height="72" rx="6" width="144" x="288" y="120"></rect>
+<text class="node-label" text-anchor="middle" x="360" y="150">murmur2(key)</text>
+<text class="edge-label" text-anchor="middle" x="360" y="172">% 分区数</text>
+<!-- 3 partitions (right) -->
+<rect class="diagram-ink node-fill" height="44" rx="6" width="176" x="540" y="58"></rect>
+<text class="node-label" text-anchor="middle" x="628" y="85">partition 0</text>
+<rect class="diagram-accent node-fill-accent" height="44" rx="6" width="176" x="540" y="142"></rect>
+<text class="node-label-accent" text-anchor="middle" x="628" y="169">partition 1</text>
+<rect class="diagram-ink node-fill" height="44" rx="6" width="176" x="540" y="226"></rect>
+<text class="node-label" text-anchor="middle" x="628" y="253">partition 2</text>
+<!-- records -> hash (right edge of record to left edge of hash) -->
+<line class="diagram-accent" marker-end="url(#route-verm)" x1="190" x2="288" y1="78" y2="138"></line>
+<line class="diagram-ink" marker-end="url(#route-ink)" x1="190" x2="288" y1="158" y2="156"></line>
+<line class="diagram-accent" marker-end="url(#route-verm)" x1="190" x2="288" y1="238" y2="174"></line>
+<!-- hash -> partitions: both order-42 to partition 1; order-99 to partition 0 -->
+<line class="diagram-accent" marker-end="url(#route-verm)" x1="432" x2="540" y1="150" y2="164"></line>
+<line class="diagram-ink" marker-end="url(#route-ink)" x1="432" x2="540" y1="138" y2="80"></line>
+<text class="branch-label" text-anchor="middle" x="486" y="118">同 key 同分区</text>
+</svg>
