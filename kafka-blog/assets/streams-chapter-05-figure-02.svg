@@ -1,0 +1,63 @@
+<svg aria-label="选型决策树：从是否需要状态窗口join，到是否需要Kafka内exactly-once，到是否以非Kafka源汇为主或需复杂CEP，分别落到裸consumer、Flink、Kafka Streams" role="img" viewBox="0 0 720 600" width="100%" xmlns="http://www.w3.org/2000/svg"><style>:root { color-scheme: light; }
+svg { background: #fffdf8; }
+.diagram-ink { stroke: #0A0A0A; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: #B73B2F; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: #A7A19A; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: #fffdf8; }
+.node-fill-accent { fill: #F7E6E2; }
+.node-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 500; fill: #0A0A0A; }
+.node-label-accent { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 700; fill: #B73B2F; }
+.edge-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; fill: #514C47; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; font-weight: 700; fill: #B73B2F; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="dt-ink" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+</defs>
+<!-- start -->
+<ellipse class="diagram-ink node-fill" cx="300" cy="36" rx="92" ry="22"></ellipse>
+<text class="node-label" text-anchor="middle" x="300" y="41">选流处理方案</text>
+<!-- Q1 diamond -->
+<polygon class="diagram-ink node-fill" points="300,76 432,150 300,224 168,150"></polygon>
+<text class="node-label" text-anchor="middle" x="300" y="142">要状态/窗口</text>
+<text class="node-label" text-anchor="middle" x="300" y="161">/join？</text>
+<line class="diagram-ink" marker-end="url(#dt-ink)" x1="300" x2="300" y1="58" y2="76"></line>
+<!-- Q1 No -> 裸 consumer (left) -->
+<line class="diagram-ink" marker-end="url(#dt-ink)" x1="168" x2="120" y1="150" y2="150"></line>
+<text class="branch-label" text-anchor="middle" x="146" y="142">否</text>
+<rect class="diagram-ink node-fill" height="52" rx="6" width="112" x="8" y="124"></rect>
+<text class="node-label" text-anchor="middle" x="64" y="147">裸 consumer</text>
+<text class="edge-label" text-anchor="middle" x="64" y="165">简单消费即可</text>
+<!-- Q1 Yes -> Q2 (down) -->
+<line class="diagram-ink" marker-end="url(#dt-ink)" x1="300" x2="300" y1="224" y2="256"></line>
+<text class="branch-label" text-anchor="middle" x="316" y="246">是</text>
+<!-- Q2 diamond -->
+<polygon class="diagram-ink node-fill" points="300,256 432,330 300,404 168,330"></polygon>
+<text class="node-label" text-anchor="middle" x="300" y="322">要 Kafka 内</text>
+<text class="node-label" text-anchor="middle" x="300" y="341">exactly-once？</text>
+<!-- Q2 No -> 仍可 Streams or Flink, but here route to Q3 anyway via right; show note: 仍倾向 Streams -->
+<line class="diagram-ink" marker-end="url(#dt-ink)" x1="432" x2="568" y1="330" y2="330"></line>
+<text class="branch-label" text-anchor="middle" x="500" y="322">否</text>
+<rect class="diagram-soft node-fill" height="52" rx="6" width="144" x="568" y="304"></rect>
+<text class="node-label" text-anchor="middle" x="640" y="327">仍多半 Streams</text>
+<text class="edge-label" text-anchor="middle" x="640" y="345">无 EOS 也够轻</text>
+<!-- Q2 Yes -> Q3 (down) -->
+<line class="diagram-ink" marker-end="url(#dt-ink)" x1="300" x2="300" y1="404" y2="436"></line>
+<text class="branch-label" text-anchor="middle" x="316" y="426">是</text>
+<!-- Q3 diamond -->
+<polygon class="diagram-ink node-fill" points="300,436 446,510 300,584 154,510"></polygon>
+<text class="node-label" text-anchor="middle" x="300" y="502">非 Kafka 源汇为主</text>
+<text class="node-label" text-anchor="middle" x="300" y="521">/复杂 CEP？</text>
+<!-- Q3 Yes -> Flink (left) -->
+<line class="diagram-ink" marker-end="url(#dt-ink)" x1="154" x2="116" y1="510" y2="510"></line>
+<text class="branch-label" text-anchor="middle" x="140" y="502">是</text>
+<rect class="diagram-ink node-fill" height="52" rx="6" width="112" x="4" y="484"></rect>
+<text class="node-label" text-anchor="middle" x="60" y="507">Flink</text>
+<text class="edge-label" text-anchor="middle" x="60" y="525">集群+checkpoint</text>
+<!-- Q3 No -> Kafka Streams (right, accent — this chapter's answer) -->
+<line class="diagram-accent" marker-end="url(#dt-ink)" x1="446" x2="568" y1="510" y2="510"></line>
+<text class="branch-label" text-anchor="middle" x="500" y="502">否</text>
+<rect class="diagram-accent node-fill-accent" height="56" rx="6" stroke-width="1.8" width="148" x="568" y="482"></rect>
+<text class="node-label-accent" text-anchor="middle" x="642" y="505">Kafka Streams</text>
+<text class="edge-label" text-anchor="middle" x="642" y="524">本场景落点</text>
+</svg>

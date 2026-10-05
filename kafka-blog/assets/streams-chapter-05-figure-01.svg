@@ -1,0 +1,86 @@
+<svg aria-label="实时订单分析的拓扑架构图：orders topic 和用户维表 topic 两个 source，经 selectKey 重分区、窗口聚合、KStream-KTable join、EOS 事务后写入分析 topic，并标出 state store、changelog 和 repartition topic 的位置" role="img" viewBox="0 0 800 470" width="100%" xmlns="http://www.w3.org/2000/svg"><style>:root { color-scheme: light; }
+svg { background: #fffdf8; }
+.diagram-ink { stroke: #0A0A0A; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: #B73B2F; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: #A7A19A; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: #fffdf8; }
+.node-fill-accent { fill: #F7E6E2; }
+.node-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 500; fill: #0A0A0A; }
+.node-label-accent { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 700; fill: #B73B2F; }
+.edge-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; fill: #514C47; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; font-weight: 700; fill: #B73B2F; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="ar-ink" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="ar-verm" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- lane labels (left gutter) -->
+<text class="edge-label" font-weight="700" x="16" y="74">SOURCE</text>
+<text class="edge-label" font-weight="700" x="16" y="250">PROCESS</text>
+<text class="edge-label" font-weight="700" x="16" y="430">SINK / 状态</text>
+<!-- ===== SOURCE row ===== -->
+<!-- orders topic -->
+<rect class="diagram-ink node-fill" height="52" rx="6" width="150" x="92" y="48"></rect>
+<text class="node-label" text-anchor="middle" x="167" y="71">orders topic</text>
+<text class="edge-label" text-anchor="middle" x="167" y="89">key=订单id</text>
+<!-- 用户维表 topic -->
+<rect class="diagram-ink node-fill" height="52" rx="6" width="170" x="558" y="48"></rect>
+<text class="node-label" text-anchor="middle" x="643" y="71">用户维表 topic</text>
+<text class="edge-label" text-anchor="middle" x="643" y="89">compacted</text>
+<!-- ===== PROCESS row ===== -->
+<!-- selectKey -->
+<rect class="diagram-ink node-fill" height="58" rx="6" width="150" x="92" y="158"></rect>
+<text class="node-label" text-anchor="middle" x="167" y="181">selectKey(userId)</text>
+<text class="edge-label" text-anchor="middle" x="167" y="199">改 key→需重分区</text>
+<!-- repartition topic (accent — the cost) -->
+<rect class="diagram-accent node-fill-accent" height="56" rx="6" stroke-width="1.8" width="150" x="92" y="262"></rect>
+<text class="node-label-accent" text-anchor="middle" x="167" y="285">repartition topic</text>
+<text class="edge-label" text-anchor="middle" x="167" y="303">自动建·内部</text>
+<!-- windowed aggregate -->
+<rect class="diagram-ink node-fill" height="56" rx="6" width="164" x="318" y="262"></rect>
+<text class="node-label" text-anchor="middle" x="400" y="285">窗口聚合 sum</text>
+<text class="edge-label" text-anchor="middle" x="400" y="303">1min 滚动+grace</text>
+<!-- 用户表 KTable -->
+<rect class="diagram-ink node-fill" height="58" rx="6" width="170" x="558" y="158"></rect>
+<text class="node-label" text-anchor="middle" x="643" y="181">用户表 KTable</text>
+<text class="edge-label" text-anchor="middle" x="643" y="199">查表·不重触发</text>
+<!-- KStream-KTable join -->
+<rect class="diagram-ink node-fill" height="56" rx="6" width="170" x="558" y="262"></rect>
+<text class="node-label" text-anchor="middle" x="643" y="285">join 用户等级</text>
+<text class="edge-label" text-anchor="middle" x="643" y="303">KStream-KTable</text>
+<!-- ===== SINK row ===== -->
+<!-- EOS -->
+<rect class="diagram-accent node-fill-accent" height="56" rx="6" stroke-width="1.8" width="164" x="318" y="378"></rect>
+<text class="node-label-accent" text-anchor="middle" x="400" y="401">EOS 事务提交</text>
+<text class="edge-label" text-anchor="middle" x="400" y="419">offset+changelog+out</text>
+<!-- 分析 topic -->
+<rect class="diagram-ink node-fill" height="56" rx="6" width="170" x="558" y="378"></rect>
+<text class="node-label" text-anchor="middle" x="643" y="401">order-analytics</text>
+<text class="edge-label" text-anchor="middle" x="643" y="419">下游 read_committed</text>
+<!-- ===== state-store / changelog marker ===== -->
+<rect class="diagram-soft node-fill" height="58" rx="6" width="164" x="318" y="158"></rect>
+<text class="node-label" text-anchor="middle" x="400" y="181">state store + changelog</text>
+<text class="edge-label" text-anchor="middle" x="400" y="199">RocksDB·真相源在日志</text>
+<!-- ===== arrows ===== -->
+<!-- orders -> selectKey -->
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="167" x2="167" y1="100" y2="158"></line>
+<!-- selectKey -> repartition (accent) -->
+<line class="diagram-accent" marker-end="url(#ar-verm)" x1="167" x2="167" y1="216" y2="262"></line>
+<!-- repartition -> windowed aggregate -->
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="242" x2="318" y1="290" y2="290"></line>
+<!-- windowed aggregate <-> state store (dashed, up) -->
+<line class="diagram-soft" marker-end="url(#ar-ink)" x1="400" x2="400" y1="262" y2="216"></line>
+<!-- windowed aggregate -> join (to join's left edge) -->
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="482" x2="558" y1="290" y2="290"></line>
+<!-- 用户维表 topic -> 用户表 KTable -->
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="643" x2="643" y1="100" y2="158"></line>
+<!-- 用户表 KTable -> join (down) -->
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="643" x2="643" y1="216" y2="262"></line>
+<!-- join -> EOS (route down then left along y=350) -->
+<polyline class="diagram-ink" fill="none" marker-end="url(#ar-ink)" points="643,318 643,350 400,350 400,378"></polyline>
+<!-- EOS -> 分析 topic -->
+<line class="diagram-accent" marker-end="url(#ar-verm)" x1="482" x2="558" y1="406" y2="406"></line>
+</svg>

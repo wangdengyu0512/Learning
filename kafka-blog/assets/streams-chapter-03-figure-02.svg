@@ -1,0 +1,32 @@
+<svg aria-label="脚手架递减进度：worked 全给、partial 留决策点、open 自己写，读者承担逐阶递增" role="img" viewBox="0 0 720 230" width="100%" xmlns="http://www.w3.org/2000/svg"><style>:root { color-scheme: light; }
+svg { background: #fffdf8; }
+.diagram-ink { stroke: #0A0A0A; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: #B73B2F; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: #A7A19A; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: #fffdf8; }
+.node-fill-accent { fill: #F7E6E2; }
+.node-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 500; fill: #0A0A0A; }
+.node-label-accent { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 700; fill: #B73B2F; }
+.edge-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; fill: #514C47; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; font-weight: 700; fill: #B73B2F; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="prog03" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+</defs>
+<!-- Stage boxes -->
+<rect class="diagram-ink node-fill" height="64" rx="6" width="180" x="40" y="48"></rect>
+<text class="node-label" text-anchor="middle" x="130" y="76">§3.2 worked</text>
+<text class="edge-label" text-anchor="middle" x="130" y="96">代码全给</text>
+<rect class="diagram-ink node-fill" height="64" rx="6" width="180" x="270" y="48"></rect>
+<text class="node-label" text-anchor="middle" x="360" y="76">§3.3 partial</text>
+<text class="edge-label" text-anchor="middle" x="360" y="96">留 3 个决策点</text>
+<rect class="diagram-accent node-fill-accent" height="64" rx="6" stroke-width="2" width="180" x="500" y="48"></rect>
+<text class="node-label-accent" text-anchor="middle" x="590" y="76">§3.4 open</text>
+<text class="edge-label" text-anchor="middle" x="590" y="96">框架自己搭</text>
+<line class="diagram-ink" marker-end="url(#prog03)" x1="220" x2="262" y1="80" y2="80"></line>
+<line class="diagram-ink" marker-end="url(#prog03)" x1="450" x2="492" y1="80" y2="80"></line>
+<!-- Two opposing trend labels -->
+<text class="edge-label" text-anchor="middle" x="360" y="160">脚手架（教程给的）：多 ───────→ 少</text>
+<text class="branch-label" text-anchor="middle" x="360" y="190">你承担的：少 ───────→ 多</text>
+</svg>

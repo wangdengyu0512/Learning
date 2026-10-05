@@ -1,0 +1,52 @@
+<svg aria-label="事件流、stream-time 推进与窗口 grace 内外的迟到事件" role="img" viewBox="0 0 720 280" width="100%" xmlns="http://www.w3.org/2000/svg"><style>:root { color-scheme: light; }
+svg { background: #fffdf8; }
+.diagram-ink { stroke: #0A0A0A; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: #B73B2F; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: #A7A19A; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: #fffdf8; }
+.node-fill-accent { fill: #F7E6E2; }
+.node-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 500; fill: #0A0A0A; }
+.node-label-accent { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 700; fill: #B73B2F; }
+.edge-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; fill: #514C47; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; font-weight: 700; fill: #B73B2F; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="ar-tl" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+</defs>
+<!-- 时间轴 -->
+<line class="diagram-ink" marker-end="url(#ar-tl)" x1="50" x2="690" y1="150" y2="150"></line>
+<text class="edge-label" text-anchor="end" x="690" y="172">event-time →</text>
+<!-- 窗口 [t0,t1) 区间底纹 -->
+<rect class="diagram-ink node-fill" height="58" rx="4" width="240" x="150" y="92"></rect>
+<text class="node-label" text-anchor="middle" x="270" y="116">窗口 [t0, t1)</text>
+<text class="edge-label" text-anchor="middle" x="270" y="134">聚合桶</text>
+<!-- grace 区间（窗口右侧，虚线框） -->
+<rect class="diagram-soft node-fill" height="58" rx="4" width="110" x="390" y="92"></rect>
+<text class="edge-label" text-anchor="middle" x="445" y="120">grace</text>
+<text class="edge-label" text-anchor="middle" x="445" y="137">宽限期</text>
+<!-- 时间刻度 -->
+<line class="diagram-ink" x1="150" x2="150" y1="145" y2="155"></line>
+<text class="edge-label" text-anchor="middle" x="150" y="186">t0</text>
+<line class="diagram-ink" x1="390" x2="390" y1="145" y2="155"></line>
+<text class="edge-label" text-anchor="middle" x="390" y="186">t1（windowEnd）</text>
+<line class="diagram-accent" x1="500" x2="500" y1="145" y2="155"></line>
+<text class="branch-label" text-anchor="middle" x="500" y="186">t1+grace</text>
+<!-- 事件点（在窗口内，纳入） -->
+<circle cx="210" cy="150" fill="#0A0A0A" r="5"></circle>
+<text class="edge-label" text-anchor="middle" x="210" y="74">e1 纳入</text>
+<line class="diagram-soft" x1="210" x2="210" y1="92" y2="142"></line>
+<!-- 迟到事件在 grace 内（纳入） -->
+<circle cx="450" cy="150" fill="#0A0A0A" r="5"></circle>
+<text class="edge-label" text-anchor="middle" x="450" y="74">迟到·grace 内</text>
+<text class="branch-label" text-anchor="middle" x="450" y="58">纳入</text>
+<line class="diagram-soft" x1="450" x2="450" y1="92" y2="142"></line>
+<!-- 迟到事件在 grace 外（静默丢弃） -->
+<circle cx="600" cy="150" fill="#B73B2F" r="5"></circle>
+<text class="edge-label" text-anchor="middle" x="600" y="74">迟到·grace 外</text>
+<text class="branch-label" text-anchor="middle" x="600" y="58">静默丢弃</text>
+<line class="diagram-accent" x1="600" x2="600" y1="118" y2="142"></line>
+<!-- stream-time 标注 -->
+<text class="edge-label" text-anchor="middle" x="270" y="232">stream-time = 见过的最大时间戳，只随记录到达前进</text>
+<text class="edge-label" text-anchor="middle" x="270" y="250">无新数据 → stream-time 冻结 → 窗口不关</text>
+</svg>

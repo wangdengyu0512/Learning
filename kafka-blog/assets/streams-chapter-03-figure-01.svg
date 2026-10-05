@@ -1,0 +1,45 @@
+<svg aria-label="DSL 数据类型从 KStream 经 groupByKey 到 KGroupedStream 再经 windowedBy 与聚合变成窗口化 KTable 最后 toStream 写出 sink 的横向流" role="img" viewBox="0 0 940 200" width="100%" xmlns="http://www.w3.org/2000/svg"><style>:root { color-scheme: light; }
+svg { background: #fffdf8; }
+.diagram-ink { stroke: #0A0A0A; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: #B73B2F; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: #A7A19A; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: #fffdf8; }
+.node-fill-accent { fill: #F7E6E2; }
+.node-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 500; fill: #0A0A0A; }
+.node-label-accent { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 700; fill: #B73B2F; }
+.edge-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; fill: #514C47; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; font-weight: 700; fill: #B73B2F; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="flow03" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+</defs>
+<text class="edge-label" font-weight="700" x="14" y="58">类型</text>
+<text class="edge-label" font-weight="700" x="14" y="150">算子</text>
+<!-- Stage 1: KStream -->
+<rect class="diagram-ink node-fill" height="48" rx="6" width="150" x="60" y="36"></rect>
+<text class="node-label" text-anchor="middle" x="135" y="58">KStream</text>
+<text class="edge-label" text-anchor="middle" x="135" y="75">&lt;String,Order&gt;</text>
+<text class="edge-label" text-anchor="middle" x="135" y="150">stream()</text>
+<line class="diagram-ink" marker-end="url(#flow03)" x1="210" x2="252" y1="60" y2="60"></line>
+<!-- Stage 2: KGroupedStream -->
+<rect class="diagram-ink node-fill" height="48" rx="6" width="170" x="252" y="36"></rect>
+<text class="node-label" text-anchor="middle" x="337" y="58">KGroupedStream</text>
+<text class="edge-label" text-anchor="middle" x="337" y="75">&lt;String,Order&gt;</text>
+<text class="edge-label" text-anchor="middle" x="337" y="150">groupByKey()</text>
+<line class="diagram-ink" marker-end="url(#flow03)" x1="422" x2="464" y1="60" y2="60"></line>
+<!-- Stage 3: TimeWindowedKStream -->
+<rect class="diagram-ink node-fill" height="48" rx="6" width="190" x="464" y="36"></rect>
+<text class="node-label" text-anchor="middle" x="559" y="58">TimeWindowed</text>
+<text class="edge-label" text-anchor="middle" x="559" y="75">KStream</text>
+<text class="edge-label" text-anchor="middle" x="559" y="150">windowedBy()</text>
+<line class="diagram-ink" marker-end="url(#flow03)" x1="654" x2="696" y1="60" y2="60"></line>
+<!-- Stage 4: windowed KTable -->
+<rect class="diagram-accent node-fill-accent" height="48" rx="6" stroke-width="2" width="180" x="696" y="36"></rect>
+<text class="node-label-accent" text-anchor="middle" x="786" y="58">KTable</text>
+<text class="edge-label" text-anchor="middle" x="786" y="75">&lt;Windowed,Long&gt;</text>
+<text class="edge-label" text-anchor="middle" x="786" y="150">count()/aggregate()</text>
+<!-- toStream + sink, on second flow line down to a sink box -->
+<line class="diagram-ink" marker-end="url(#flow03)" x1="786" x2="786" y1="84" y2="118"></line>
+<text class="edge-label" text-anchor="middle" x="786" y="178">toStream() → to(sink)</text>
+</svg>

@@ -1,0 +1,48 @@
+<svg aria-label="改 key 触发 repartition topic 的额外往返" role="img" viewBox="0 0 720 250" width="100%" xmlns="http://www.w3.org/2000/svg"><style>:root { color-scheme: light; }
+svg { background: #fffdf8; }
+.diagram-ink { stroke: #0A0A0A; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: #B73B2F; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: #A7A19A; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: #fffdf8; }
+.node-fill-accent { fill: #F7E6E2; }
+.node-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 500; fill: #0A0A0A; }
+.node-label-accent { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 700; fill: #B73B2F; }
+.edge-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; fill: #514C47; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; font-weight: 700; fill: #B73B2F; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="ar-flow" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="ar-flow-v" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<text class="edge-label" font-weight="700" x="14" y="70">上游</text>
+<text class="edge-label" font-weight="700" x="14" y="186">下游</text>
+<!-- source -->
+<rect class="diagram-ink node-fill" height="50" rx="6" width="120" x="60" y="44"></rect>
+<text class="node-label" text-anchor="middle" x="120" y="68">source 流</text>
+<text class="edge-label" text-anchor="middle" x="120" y="86">key=A</text>
+<!-- selectKey -->
+<line class="diagram-ink" marker-end="url(#ar-flow)" x1="180" x2="222" y1="69" y2="69"></line>
+<rect class="diagram-ink node-fill" height="50" rx="6" width="130" x="222" y="44"></rect>
+<text class="node-label" text-anchor="middle" x="287" y="68">selectKey</text>
+<text class="edge-label" text-anchor="middle" x="287" y="86">改 key→B（lazy）</text>
+<!-- selectKey -> repartition topic (produce, 朱红下行) -->
+<line class="diagram-accent" marker-end="url(#ar-flow-v)" x1="287" x2="287" y1="94" y2="148"></line>
+<text class="edge-label" text-anchor="middle" x="333" y="124">produce</text>
+<!-- repartition topic（朱红强调，额外往返） -->
+<rect class="diagram-accent node-fill-accent" height="58" rx="6" stroke-width="2" width="174" x="200" y="148"></rect>
+<text class="node-label-accent" text-anchor="middle" x="287" y="172">repartition topic</text>
+<text class="edge-label" text-anchor="middle" x="287" y="190">按新 key 分区</text>
+<!-- repartition -> aggregate (re-consume, 朱红上行右移；加宽间隙避免标签被框裁切) -->
+<line class="diagram-accent" marker-end="url(#ar-flow-v)" x1="374" x2="456" y1="177" y2="177"></line>
+<text class="edge-label" text-anchor="middle" x="415" y="166">re-consume</text>
+<!-- aggregate -->
+<rect class="diagram-ink node-fill" height="58" rx="6" width="150" x="456" y="148"></rect>
+<text class="node-label" text-anchor="middle" x="531" y="172">aggregate</text>
+<text class="edge-label" text-anchor="middle" x="531" y="190">同 key 已同分区</text>
+<!-- 往返标注 -->
+<text class="branch-label" text-anchor="middle" x="531" y="68">produce→re-consume</text>
+<text class="edge-label" text-anchor="middle" x="531" y="86">一次额外往返</text>
+</svg>

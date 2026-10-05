@@ -1,0 +1,65 @@
+<svg aria-label="八个失败模式按类别和严重度二维分布，并标出改 key 到隐藏 repartition topic 的因果链" role="img" viewBox="0 0 760 430" width="100%" xmlns="http://www.w3.org/2000/svg"><style>:root { color-scheme: light; }
+svg { background: #fffdf8; }
+.diagram-ink { stroke: #0A0A0A; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: #B73B2F; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: #A7A19A; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: #fffdf8; }
+.node-fill-accent { fill: #F7E6E2; }
+.node-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 500; fill: #0A0A0A; }
+.node-label-accent { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 700; fill: #B73B2F; }
+.edge-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; fill: #514C47; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; font-weight: 700; fill: #B73B2F; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="arrow-ink" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="arrow-verm" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- Axes -->
+<line class="diagram-ink" marker-start="url(#arrow-ink)" x1="150" x2="150" y1="40" y2="350"></line>
+<line class="diagram-ink" marker-end="url(#arrow-ink)" x1="150" x2="730" y1="350" y2="350"></line>
+<text class="edge-label" font-weight="700" x="60" y="44">严重度 ↑</text>
+<text class="edge-label" font-weight="700" x="690" y="344">类别 →</text>
+<!-- Column band labels -->
+<text class="edge-label" text-anchor="middle" x="242" y="372">恢复/再平衡</text>
+<text class="edge-label" text-anchor="middle" x="432" y="372">正确性</text>
+<text class="edge-label" text-anchor="middle" x="630" y="372">资源/语义</text>
+<!-- Severity tier guides (dashed) -->
+<line class="diagram-soft" x1="150" x2="730" y1="120" y2="120"></line>
+<line class="diagram-soft" x1="150" x2="730" y1="230" y2="230"></line>
+<text class="edge-label" x="156" y="92">高 · 拖垮可用性</text>
+<text class="edge-label" x="156" y="202">中 · 结果错或变慢</text>
+<text class="edge-label" x="156" y="312">低 · 配置/边界</text>
+<!-- Column 1: restore — node ① high, ⑦ low -->
+<rect class="diagram-ink node-fill" height="46" rx="6" width="124" x="180" y="60"></rect>
+<text class="node-label" text-anchor="middle" x="242" y="80">① 恢复卡顿</text>
+<text class="edge-label" text-anchor="middle" x="242" y="97">回放 changelog</text>
+<rect class="diagram-ink node-fill" height="46" rx="6" width="124" x="180" y="270"></rect>
+<text class="node-label" text-anchor="middle" x="242" y="290">⑦ 扩不动</text>
+<text class="edge-label" text-anchor="middle" x="242" y="307">上限=分区数</text>
+<!-- Column 2: correctness — ④ join + ⑤ serde high-ish, ③ repartition mid -->
+<rect class="diagram-ink node-fill" height="46" rx="6" width="124" x="370" y="60"></rect>
+<text class="node-label" text-anchor="middle" x="432" y="80">④ join 无输出</text>
+<text class="edge-label" text-anchor="middle" x="432" y="97">未共分区</text>
+<rect class="diagram-ink node-fill" height="46" rx="6" width="124" x="370" y="160"></rect>
+<text class="node-label" text-anchor="middle" x="432" y="180">⑤ serde 崩溃</text>
+<text class="edge-label" text-anchor="middle" x="432" y="197">默认 serde</text>
+<rect class="diagram-ink node-fill" height="46" rx="6" width="124" x="370" y="270"></rect>
+<text class="node-label" text-anchor="middle" x="432" y="290">③ 隐藏重分区</text>
+<text class="edge-label" text-anchor="middle" x="432" y="307">改 key</text>
+<!-- Column 3: resource — ⑥ OOMKill accent high, ⑧ EOS mid -->
+<rect class="diagram-accent node-fill-accent" height="46" rx="6" stroke-width="2" width="124" x="568" y="60"></rect>
+<text class="node-label-accent" text-anchor="middle" x="630" y="80">⑥ OOMKilled</text>
+<text class="edge-label" text-anchor="middle" x="630" y="97">堆外 RocksDB</text>
+<rect class="diagram-ink node-fill" height="46" rx="6" width="124" x="568" y="160"></rect>
+<text class="node-label" text-anchor="middle" x="630" y="180">⑧ EOS 慢/重复</text>
+<text class="edge-label" text-anchor="middle" x="630" y="197">100ms+外部</text>
+<rect class="diagram-ink node-fill" height="46" rx="6" width="124" x="568" y="270"></rect>
+<text class="node-label" text-anchor="middle" x="630" y="290">⑥' 迟到丢失</text>
+<text class="edge-label" text-anchor="middle" x="630" y="307">过 grace</text>
+<!-- Causal-chain accent annotation: ③ repartition is the seed of latency+storage -->
+<path class="diagram-accent" d="M 432 270 C 432 245, 530 240, 560 200" fill="none" marker-end="url(#arrow-verm)"></path>
+<text class="branch-label" x="455" y="244">改 key→延迟+存储</text>
+</svg>

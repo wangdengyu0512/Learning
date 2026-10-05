@@ -1,0 +1,55 @@
+<svg aria-label="状态存储、changelog topic 与 standby 副本的关系" role="img" viewBox="0 0 720 380" width="100%" xmlns="http://www.w3.org/2000/svg"><style>:root { color-scheme: light; }
+svg { background: #fffdf8; }
+.diagram-ink { stroke: #0A0A0A; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: #B73B2F; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: #A7A19A; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: #fffdf8; }
+.node-fill-accent { fill: #F7E6E2; }
+.node-label { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 500; fill: #0A0A0A; }
+.node-label-accent { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif; font-size: 13px; font-weight: 700; fill: #B73B2F; }
+.edge-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; fill: #514C47; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: Consolas, "SFMono-Regular", monospace; font-size: 11px; font-weight: 700; fill: #B73B2F; paint-order: stroke; stroke: #fffdf8; stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="ar-ink" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="ar-verm" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- 左列标签 -->
+<text class="edge-label" font-weight="700" text-anchor="middle" x="118" y="34">实例 A（owner）</text>
+<text class="edge-label" font-weight="700" text-anchor="middle" x="600" y="34">实例 B（standby）</text>
+<!-- 实例 A: StreamThread -->
+<rect class="diagram-ink node-fill" height="50" rx="6" width="156" x="40" y="52"></rect>
+<text class="node-label" text-anchor="middle" x="118" y="73">StreamThread</text>
+<text class="edge-label" text-anchor="middle" x="118" y="91">处理记录</text>
+<!-- 实例 A: 本地 RocksDB -->
+<rect class="diagram-ink node-fill" height="58" rx="6" width="156" x="40" y="158"></rect>
+<text class="node-label" text-anchor="middle" x="118" y="182">本地 RocksDB</text>
+<text class="edge-label" text-anchor="middle" x="118" y="200">读缓存 / 落盘</text>
+<!-- StreamThread -> RocksDB (put) -->
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="118" x2="118" y1="102" y2="158"></line>
+<text class="edge-label" text-anchor="middle" x="118" y="134">put</text>
+<!-- 中央 changelog topic（真相源，朱红） -->
+<rect class="diagram-accent node-fill-accent" height="74" rx="6" stroke-width="2" width="164" x="278" y="150"></rect>
+<text class="node-label-accent" text-anchor="middle" x="360" y="178">changelog topic</text>
+<text class="edge-label" text-anchor="middle" x="360" y="198">compacted</text>
+<text class="branch-label" text-anchor="middle" x="360" y="214">真相源</text>
+<!-- RocksDB -> changelog（每 put 写，朱红） -->
+<line class="diagram-accent" marker-end="url(#ar-verm)" x1="196" x2="278" y1="187" y2="187"></line>
+<text class="edge-label" text-anchor="middle" x="237" y="178">每 put 写</text>
+<!-- changelog -> 实例 B standby（尾随） -->
+<line class="diagram-soft" marker-end="url(#ar-ink)" x1="442" x2="524" y1="187" y2="187"></line>
+<text class="edge-label" text-anchor="middle" x="483" y="178">尾随</text>
+<!-- 实例 B: standby RocksDB -->
+<rect class="diagram-ink node-fill" height="58" rx="6" width="156" x="524" y="158"></rect>
+<text class="node-label" text-anchor="middle" x="602" y="182">standby 副本</text>
+<text class="edge-label" text-anchor="middle" x="602" y="200">保温的 RocksDB</text>
+<!-- 故障转移：changelog -> 重建（虚线下行回放） -->
+<rect class="diagram-ink node-fill" height="50" rx="6" width="164" x="278" y="296"></rect>
+<text class="node-label" text-anchor="middle" x="360" y="320">新 owner 重建</text>
+<text class="edge-label" text-anchor="middle" x="360" y="338">回放 changelog</text>
+<line class="diagram-accent" marker-end="url(#ar-verm)" x1="360" x2="360" y1="224" y2="296"></line>
+<text class="branch-label" text-anchor="middle" x="360" y="263">故障转移</text>
+</svg>
