@@ -1,0 +1,54 @@
+<svg aria-label="短期记忆与长期记忆对比图" role="img" viewbox="0 0 760 300"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<!-- title row -->
+<text class="node-label" font-weight="700" text-anchor="middle" x="195" y="28">短期记忆 · trajectory</text>
+<text class="edge-label" text-anchor="middle" x="195" y="46">trial 内存在,跨 trial 重置</text>
+<text class="node-label-accent" text-anchor="middle" x="575" y="28">长期记忆 · reflections</text>
+<text class="branch-label" text-anchor="middle" x="575" y="46">跨 trial 保留,Ω 滑动窗</text>
+<!-- divider -->
+<line class="diagram-soft" x1="380" x2="380" y1="60" y2="285"/>
+<!-- LEFT: short-term — two boxes, each a trial, reset between -->
+<!-- trial 0 -->
+<rect class="diagram-ink node-fill" height="64" rx="4" width="140" x="40" y="78"/>
+<text class="edge-label" text-anchor="middle" x="110" y="100">trial 0</text>
+<text class="node-label" font-size="11" text-anchor="middle" x="110" y="120">τ₀:代码+报错</text>
+<text class="edge-label" fill="#A3A3A3" text-anchor="middle" x="110" y="135">用完即弃</text>
+<!-- reset arrow (dashed, with X-like break marker via label) -->
+<line class="diagram-soft" x1="180" x2="218" y1="110" y2="110"/>
+<text class="edge-label" fill="#A3A3A3" text-anchor="middle" x="199" y="103">重置</text>
+<!-- trial 1 -->
+<rect class="diagram-ink node-fill" height="64" rx="4" width="140" x="218" y="78"/>
+<text class="edge-label" text-anchor="middle" x="288" y="100">trial 1</text>
+<text class="node-label" font-size="11" text-anchor="middle" x="288" y="120">τ₁:新代码</text>
+<text class="edge-label" fill="#A3A3A3" text-anchor="middle" x="288" y="135">从空轨迹起</text>
+<text class="edge-label" text-anchor="middle" x="199" y="178">每回合的 τ 不继承上一回合</text>
+<!-- RIGHT: long-term — a buffer that accumulates, window Ω -->
+<!-- buffer frame -->
+<rect class="diagram-accent node-fill-accent" height="150" rx="4" width="290" x="430" y="78"/>
+<text class="edge-label" text-anchor="middle" x="575" y="98">episodic memory(列表 · 只追加反思)</text>
+<!-- reflection items -->
+<rect class="diagram-ink node-fill" height="26" rx="3" width="254" x="448" y="112"/>
+<text class="node-label" font-size="11" x="458" y="129">sr₀「我没处理偶数长度…」</text>
+<rect class="diagram-ink node-fill" height="26" rx="3" width="254" x="448" y="146"/>
+<text class="node-label" font-size="11" x="458" y="163">sr₁「边界 index 又差一位…」</text>
+<rect class="diagram-ink node-fill" height="26" rx="3" width="254" x="448" y="180"/>
+<text class="node-label" font-size="11" x="458" y="197">sr₂「这次该判 n 是否为偶…」</text>
+<!-- window bracket Ω=3 -->
+<path class="diagram-accent" d="M712 112 L718 112 L718 206 L712 206"/>
+<text class="branch-label" text-anchor="middle" transform="rotate(90 734 162)" x="734" y="162">Ω=3 窗口</text>
+<!-- arrow into next prompt -->
+<line class="diagram-accent" x1="575" x2="575" y1="228" y2="262"/>
+<polygon fill="#B73B2F" points="575,268 571,260 579,260"/>
+<text class="edge-label" text-anchor="middle" x="575" y="284">整段拼进下一轮 Actor 的 prompt</text>
+</svg>

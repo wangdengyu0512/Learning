@@ -1,0 +1,59 @@
+<svg aria-label="Reflexion 三组件循环图" role="img" viewbox="0 0 780 330"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<!-- frozen-weights frame -->
+<rect class="diagram-soft" height="248" rx="6" width="740" x="20" y="20"/>
+<text class="edge-label" fill="#A3A3A3" x="34" y="40">LLM 权重全程冻结 · 唯一变化的是 memory 里的文本</text>
+<!-- Actor node -->
+<rect class="diagram-accent node-fill-accent" height="68" rx="5" width="150" x="60" y="120"/>
+<text class="node-label-accent" text-anchor="middle" x="135" y="150">Actor (Mₐ)</text>
+<text class="edge-label" text-anchor="middle" x="135" y="170">CoT / ReAct · 生成</text>
+<!-- Evaluator node -->
+<rect class="diagram-ink node-fill" height="68" rx="5" width="150" x="320" y="120"/>
+<text class="node-label" text-anchor="middle" x="395" y="150">Evaluator (Mₑ)</text>
+<text class="edge-label" text-anchor="middle" x="395" y="170">打分 · reward</text>
+<!-- Self-Reflection node -->
+<rect class="diagram-ink node-fill" height="68" rx="5" width="150" x="580" y="120"/>
+<text class="node-label" text-anchor="middle" x="655" y="148">Self-Reflection</text>
+<text class="edge-label" text-anchor="middle" x="655" y="166">(M_sr) 诊断</text>
+<!-- Actor -> Evaluator : trajectory -->
+<line class="diagram-ink" x1="210" x2="314" y1="154" y2="154"/>
+<polygon fill="#0A0A0A" points="320,154 312,150 312,158"/>
+<text class="edge-label" text-anchor="middle" x="262" y="146">trajectory τ</text>
+<text class="edge-label" fill="#A3A3A3" text-anchor="middle" x="262" y="172">短期记忆</text>
+<!-- Evaluator -> Self-Reflection : reward -->
+<line class="diagram-ink" x1="470" x2="574" y1="154" y2="154"/>
+<polygon fill="#0A0A0A" points="580,154 572,150 572,158"/>
+<text class="edge-label" text-anchor="middle" x="522" y="146">reward(标量)</text>
+<text class="edge-label" fill="#A3A3A3" text-anchor="middle" x="522" y="172">信息量低</text>
+<!-- Self-Reflection -> memory (down) -->
+<line class="diagram-ink" x1="655" x2="655" y1="188" y2="222"/>
+<polygon fill="#0A0A0A" points="655,228 651,220 659,220"/>
+<!-- memory node -->
+<rect class="diagram-accent node-fill-accent" height="34" rx="4" width="350" x="305" y="228"/>
+<text class="node-label" font-size="12" text-anchor="middle" x="480" y="249">episodic memory · 反思 buffer(Ω 滑动窗)= 长期记忆</text>
+<text class="branch-label" text-anchor="middle" x="600" y="214">append 反思文本</text>
+<!-- Self-Reflection to memory horizontal segment -->
+<line class="diagram-ink" x1="655" x2="655" y1="228" y2="245"/>
+<line class="diagram-ink" x1="655" x2="657" y1="245" y2="245"/>
+<!-- memory -> Actor (reads), left side feedback loop -->
+<path class="diagram-accent" d="M305 245 L135 245 L135 188"/>
+<polygon fill="#B73B2F" points="135,182 131,190 139,190"/>
+<text class="branch-label" text-anchor="middle" x="210" y="262">下一 trial:Actor 读回反思</text>
+<!-- pass exit -->
+<line class="diagram-ink" x1="395" x2="395" y1="120" y2="86"/>
+<polygon fill="#0A0A0A" points="395,80 391,88 399,88"/>
+<text class="edge-label" text-anchor="middle" x="395" y="72">通过 / 达到 max_trials → 停</text>
+<!-- caption-internal note bottom -->
+<text class="edge-label" text-anchor="middle" x="390" y="300">信息量在 Self-Reflection 这一步从"标量"被翻成"带定位的语言教训"</text>
+</svg>

@@ -1,0 +1,61 @@
+<svg aria-labelledby="fig21-title" role="img" viewbox="0 0 880 400"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<title id="fig21-title">标量 reward 与语言反思的 credit assignment 对比</title>
+<!-- shared trajectory at top -->
+<text class="node-label" font-weight="700" x="40" y="30">同一条失败 trajectory</text>
+<g>
+<rect class="diagram-ink node-fill" height="34" rx="3" width="86" x="40" y="44"/>
+<text class="node-label" text-anchor="middle" x="83" y="65">a₁ sort</text>
+<rect class="diagram-accent node-fill-accent" height="34" rx="3" width="86" x="146" y="44"/>
+<text class="node-label-accent" text-anchor="middle" x="189" y="65">a₂ 取中间</text>
+<rect class="diagram-ink node-fill" height="34" rx="3" width="86" x="252" y="44"/>
+<text class="node-label" text-anchor="middle" x="295" y="65">a₃ return</text>
+<line class="diagram-ink" x1="126" x2="146" y1="61" y2="61"/>
+<polygon fill="#0A0A0A" points="146,61 138,57 138,65"/>
+<line class="diagram-ink" x1="232" x2="252" y1="61" y2="61"/>
+<polygon fill="#0A0A0A" points="252,61 244,57 244,65"/>
+<rect class="diagram-ink node-fill" height="34" rx="3" width="120" x="358" y="44"/>
+<text class="node-label" text-anchor="middle" x="418" y="65">Evaluator: fail</text>
+<line class="diagram-ink" x1="338" x2="358" y1="61" y2="61"/>
+<polygon fill="#0A0A0A" points="358,61 350,57 350,65"/>
+</g>
+<!-- divider -->
+<line class="diagram-soft" x1="440" x2="440" y1="100" y2="384"/>
+<!-- LEFT: scalar reward -->
+<text class="node-label" font-weight="700" x="40" y="118">标量 reward</text>
+<rect class="diagram-ink node-fill" height="60" rx="3" width="360" x="40" y="132"/>
+<text class="node-label" font-size="15" text-anchor="middle" x="220" y="158">r = 0</text>
+<text class="edge-label" text-anchor="middle" x="220" y="178">「失败了」— 一个比特,无定位</text>
+<text class="edge-label" fill="#525252" x="40" y="226">Actor 收到 r=0 后只能问:</text>
+<rect class="diagram-soft node-fill" height="120" rx="3" width="360" x="40" y="240"/>
+<text class="edge-label" fill="#525252" x="60" y="268">是 a₁ 排序错了?</text>
+<text class="edge-label" fill="#525252" x="60" y="294">还是 a₂ 取错了元素?</text>
+<text class="edge-label" fill="#525252" x="60" y="320">还是 a₃ 返回类型不对?</text>
+<text class="branch-label" x="60" y="346">无从定位 → 只能盲猜</text>
+<!-- RIGHT: verbal reflection -->
+<text class="node-label-accent" x="468" y="118">语言反思</text>
+<rect class="diagram-accent node-fill-accent" height="60" rx="3" width="372" x="468" y="132"/>
+<text class="node-label" font-size="12" text-anchor="middle" x="654" y="156">「a₂ 只取了中间单个元素,</text>
+<text class="node-label" font-size="12" text-anchor="middle" x="654" y="178">偶数长度应取两数平均」</text>
+<!-- arrow pointing back to a2 -->
+<path class="diagram-accent" d="M 540 132 C 480 110, 320 96, 200 80"/>
+<polygon fill="#B73B2F" points="200,80 209,82 206,90"/>
+<text class="branch-label" text-anchor="middle" x="360" y="108">定位到 a₂</text>
+<text class="edge-label" fill="#525252" x="468" y="226">下一个 trial,Actor 据此改写:</text>
+<rect class="diagram-ink node-fill" height="120" rx="3" width="372" x="468" y="240"/>
+<text class="edge-label" x="488" y="268">定位(哪一步): a₂</text>
+<text class="edge-label" x="488" y="294">归因(为什么): 漏判偶数长度</text>
+<text class="edge-label" x="488" y="320">处方(改成什么): a'₂ = 取两数平均</text>
+<text class="branch-label" x="488" y="346">in-context conditioning,非 backprop</text>
+</svg>

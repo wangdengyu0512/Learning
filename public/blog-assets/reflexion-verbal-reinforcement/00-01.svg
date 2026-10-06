@@ -1,0 +1,73 @@
+<svg aria-labelledby="map-title" role="img" viewbox="0 0 760 520"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<title id="map-title">Reflexion 概念地图：中心辐射式</title>
+<!-- ── 外圈：权重冻结边界（虚线大圆 + 标注）── -->
+<ellipse class="diagram-soft" cx="380" cy="262" rx="352" ry="232"/>
+<rect class="node-fill" height="22" rx="11" width="160" x="300" y="14"/>
+<text class="edge-label" text-anchor="middle" x="380" y="29">LLM 权重全程冻结</text>
+<!-- ── 中心节点：Reflexion ── -->
+<circle class="node-fill-accent diagram-accent" cx="380" cy="262" r="62"/>
+<text class="node-label-accent" text-anchor="middle" x="380" y="256">Reflexion</text>
+<text class="edge-label" text-anchor="middle" x="380" y="275">verbal</text>
+<text class="edge-label" text-anchor="middle" x="380" y="289">reinforcement</text>
+<!-- ════════ 辐射节点（5 个，绕中心分布）════════ -->
+<!-- Actor（左上） -->
+<rect class="node-fill diagram-ink" height="50" rx="6" width="150" x="86" y="92"/>
+<text class="node-label" text-anchor="middle" x="161" y="113">Actor</text>
+<text class="edge-label" text-anchor="middle" x="161" y="130">CoT / ReAct 策略</text>
+<!-- trajectory · 短期记忆（右上） -->
+<rect class="node-fill diagram-ink" height="50" rx="6" width="150" x="524" y="92"/>
+<text class="node-label" text-anchor="middle" x="599" y="113">trajectory</text>
+<text class="edge-label" text-anchor="middle" x="599" y="130">短期记忆</text>
+<!-- Evaluator（右） -->
+<rect class="node-fill diagram-ink" height="50" rx="6" width="150" x="600" y="296"/>
+<text class="node-label" text-anchor="middle" x="675" y="317">Evaluator</text>
+<text class="edge-label" text-anchor="middle" x="675" y="334">打分 → reward</text>
+<!-- Self-Reflection（下） -->
+<rect class="node-fill diagram-ink" height="50" rx="6" width="150" x="305" y="430"/>
+<text class="node-label" text-anchor="middle" x="380" y="451">Self-Reflection</text>
+<text class="edge-label" text-anchor="middle" x="380" y="468">失败 → 语言教训</text>
+<!-- episodic memory · 长期记忆（左） -->
+<rect class="node-fill diagram-ink" height="50" rx="6" width="156" x="10" y="296"/>
+<text class="node-label" text-anchor="middle" x="88" y="317">episodic memory</text>
+<text class="edge-label" text-anchor="middle" x="88" y="334">长期记忆 · Ω 窗口</text>
+<!-- ════════ 连线（中心 ↔ 辐射节点，箭头落在框边缘）════════ -->
+<!-- 中心 → Actor : reads（中心向左上） -->
+<line class="diagram-ink" marker-end="url(#ah)" x1="333" x2="205" y1="222" y2="142"/>
+<text class="edge-label" text-anchor="middle" x="246" y="176">reads</text>
+<!-- Actor → trajectory : produces（左上向右上，横跨顶部） -->
+<line class="diagram-ink" marker-end="url(#ah)" x1="236" x2="524" y1="111" y2="111"/>
+<text class="edge-label" text-anchor="middle" x="380" y="104">produces</text>
+<!-- trajectory → Evaluator : scores（右上向右下） -->
+<line class="diagram-ink" marker-end="url(#ah)" x1="615" x2="660" y1="142" y2="296"/>
+<text class="edge-label" text-anchor="middle" x="662" y="222">scores</text>
+<!-- Evaluator → Self-Reflection : reward（右下向下） -->
+<line class="diagram-ink" marker-end="url(#ah)" x1="600" x2="455" y1="332" y2="448"/>
+<text class="edge-label" text-anchor="middle" x="546" y="402">reward</text>
+<!-- Self-Reflection → episodic memory : appends（下向左下） -->
+<line class="diagram-ink" marker-end="url(#ah)" x1="305" x2="150" y1="448" y2="346"/>
+<text class="edge-label" text-anchor="middle" x="214" y="410">appends</text>
+<!-- episodic memory → Actor : reflects（左下向左上） -->
+<line class="diagram-accent" marker-end="url(#ah-a)" x1="88" x2="135" y1="296" y2="142"/>
+<text class="branch-label" text-anchor="middle" x="76" y="222">reflects</text>
+<!-- arrowhead defs -->
+<defs>
+<marker id="ah" markerheight="9" markerwidth="9" orient="auto" refx="7.5" refy="3.2">
+<path class="diagram-ink" d="M0,0 L7.5,3.2 L0,6.4" fill="none"/>
+</marker>
+<marker id="ah-a" markerheight="9" markerwidth="9" orient="auto" refx="7.5" refy="3.2">
+<path class="diagram-accent" d="M0,0 L7.5,3.2 L0,6.4" fill="none"/>
+</marker>
+</defs>
+</svg>

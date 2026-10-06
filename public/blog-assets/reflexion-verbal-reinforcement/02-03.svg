@@ -1,0 +1,61 @@
+<svg aria-labelledby="fig23-title" role="img" viewbox="0 0 880 360"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<title id="fig23-title">反思注入下一轮 context 的流程</title>
+<!-- trial t -->
+<text class="node-label" font-weight="700" x="40" y="30">trial t(失败)</text>
+<rect class="diagram-ink node-fill" height="40" rx="3" width="150" x="40" y="44"/>
+<text class="node-label" text-anchor="middle" x="115" y="68">trajectory τₜ</text>
+<rect class="diagram-ink node-fill" height="40" rx="3" width="150" x="40" y="100"/>
+<text class="node-label" text-anchor="middle" x="115" y="124">Evaluator: fail</text>
+<path class="diagram-ink" d="M 115 84 L 115 100"/>
+<polygon fill="#0A0A0A" points="115,100 111,91 119,91"/>
+<!-- self-reflection -->
+<rect class="diagram-accent node-fill-accent" height="40" rx="3" width="150" x="40" y="156"/>
+<text class="node-label-accent" text-anchor="middle" x="115" y="180">Self-Reflection</text>
+<path class="diagram-ink" d="M 115 140 L 115 156"/>
+<polygon fill="#0A0A0A" points="115,156 111,147 119,147"/>
+<text class="edge-label" text-anchor="middle" x="115" y="216">产出 srₜ</text>
+<!-- episodic memory (sliding window) -->
+<text class="node-label" font-weight="700" x="340" y="30">episodic memory · Ω 滑动窗(保留最近 Ω 条)</text>
+<rect class="diagram-soft node-fill" height="40" rx="3" width="60" x="340" y="150"/>
+<text class="edge-label" text-anchor="middle" x="370" y="174">sr₀</text>
+<rect class="diagram-ink node-fill" height="40" rx="3" width="60" x="404" y="150"/>
+<text class="edge-label" text-anchor="middle" x="434" y="174">sr₁</text>
+<rect class="diagram-accent node-fill-accent" height="40" rx="3" width="60" x="468" y="150"/>
+<text class="branch-label" text-anchor="middle" x="498" y="174">srₜ</text>
+<text class="edge-label" fill="#A3A3A3" text-anchor="middle" x="370" y="210">↑ 超窗丢弃</text>
+<!-- append arrow from sr to memory -->
+<path class="diagram-accent" d="M 190 176 L 250 176 L 250 170 L 338 170"/>
+<polygon fill="#B73B2F" points="338,170 329,166 329,174"/>
+<text class="branch-label" text-anchor="middle" x="262" y="160">append</text>
+<!-- next prompt -->
+<text class="node-label" font-weight="700" x="600" y="30">trial t+1 的 prompt</text>
+<rect class="diagram-ink node-fill" height="180" rx="3" width="250" x="600" y="80"/>
+<text class="edge-label" x="620" y="108">任务描述 task.spec</text>
+<line class="diagram-soft" x1="600" x2="850" y1="120" y2="120"/>
+<text class="branch-label" x="620" y="142">过去尝试的教训:</text>
+<text class="edge-label" x="620" y="164">- sr₁</text>
+<text class="edge-label" x="620" y="184">- srₜ(最近 Ω 条)</text>
+<line class="diagram-soft" x1="600" x2="850" y1="200" y2="200"/>
+<text class="edge-label" x="620" y="226">「只输出函数定义代码」</text>
+<text class="edge-label" fill="#A3A3A3" x="620" y="248">注:拼的是反思,非完整 τ</text>
+<!-- arrow memory -> prompt -->
+<path class="diagram-ink" d="M 528 170 L 564 170 L 564 130 L 598 130"/>
+<polygon fill="#0A0A0A" points="598,130 589,126 589,134"/>
+<text class="edge-label" text-anchor="middle" x="556" y="118">read</text>
+<!-- loop back arrow prompt -> next actor (down and around) -->
+<path class="diagram-soft" d="M 725 260 L 725 320 L 115 320 L 115 200"/>
+<polygon fill="#A3A3A3" points="115,200 111,209 119,209"/>
+<text class="edge-label" fill="#A3A3A3" text-anchor="middle" x="420" y="338">Actor 据新 prompt 生成 τₜ₊₁ → 回到 trial 顶部</text>
+</svg>

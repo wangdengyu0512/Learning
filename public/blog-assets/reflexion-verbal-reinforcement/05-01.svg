@@ -1,0 +1,66 @@
+<svg aria-label="自我改进模式选型决策树：从能否改权重、有无可靠验证信号、能否多次尝试三道判定，走到 RLHF、纯ReAct、Reflexion、Self-Refine 四个终点" role="img" viewbox="0 0 820 600" xmlns="http://www.w3.org/2000/svg"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<defs>
+<marker id="dt" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"/>
+</marker>
+</defs>
+<!-- center axis x=370; diamonds half-width 160 (left tip 210, right tip 530) -->
+<!-- Start -->
+<ellipse class="diagram-ink node-fill" cx="370" cy="32" rx="118" ry="22"/>
+<text class="node-label" text-anchor="middle" x="370" y="38">要让 agent 自我改进</text>
+<!-- Q1 -->
+<polygon class="diagram-ink node-fill" points="370,70 530,140 370,210 210,140"/>
+<text class="node-label" text-anchor="middle" x="370" y="132">能改权重 +</text>
+<text class="node-label" text-anchor="middle" x="370" y="152">有训练数据/算力？</text>
+<line class="diagram-ink" marker-end="url(#dt)" x1="370" x2="370" y1="54" y2="70"/>
+<!-- Q1 Yes -> RLHF / 微调 (terminal, right) -->
+<line class="diagram-ink" marker-end="url(#dt)" x1="530" x2="612" y1="140" y2="140"/>
+<text class="branch-label" text-anchor="middle" x="571" y="131">是</text>
+<rect class="diagram-ink node-fill" height="60" rx="6" width="146" x="614" y="110"/>
+<text class="node-label" text-anchor="middle" x="687" y="135">RLHF / 微调</text>
+<text class="edge-label" text-anchor="middle" x="687" y="155">改权重 · 全局持久</text>
+<!-- Q1 No -> Q2 -->
+<line class="diagram-ink" marker-end="url(#dt)" x1="370" x2="370" y1="210" y2="242"/>
+<text class="branch-label" text-anchor="middle" x="385" y="230">否</text>
+<!-- Q2 -->
+<polygon class="diagram-ink node-fill" points="370,242 530,314 370,386 210,314"/>
+<text class="node-label" text-anchor="middle" x="370" y="306">有可靠验证信号？</text>
+<text class="node-label" text-anchor="middle" x="370" y="326">(测试 / 环境 / oracle)</text>
+<!-- Q2 No -> 纯 ReAct (terminal, left) -->
+<line class="diagram-ink" marker-end="url(#dt)" x1="210" x2="132" y1="314" y2="314"/>
+<text class="branch-label" text-anchor="middle" x="171" y="305">否</text>
+<rect class="diagram-ink node-fill" height="60" rx="6" width="126" x="6" y="284"/>
+<text class="node-label" text-anchor="middle" x="69" y="309">纯 ReAct</text>
+<text class="edge-label" text-anchor="middle" x="69" y="329">无 grounding 别自评</text>
+<!-- Q2 Yes -> Q3 -->
+<line class="diagram-ink" marker-end="url(#dt)" x1="370" x2="370" y1="386" y2="418"/>
+<text class="branch-label" text-anchor="middle" x="385" y="406">是</text>
+<!-- Q3 -->
+<polygon class="diagram-ink node-fill" points="370,418 530,490 370,562 210,490"/>
+<text class="node-label" text-anchor="middle" x="370" y="482">要跨多次尝试</text>
+<text class="node-label" text-anchor="middle" x="370" y="502">累积教训？</text>
+<!-- Q3 No -> Self-Refine (terminal, right) -->
+<line class="diagram-ink" marker-end="url(#dt)" x1="530" x2="612" y1="490" y2="490"/>
+<text class="branch-label" text-anchor="middle" x="571" y="481">否</text>
+<rect class="diagram-ink node-fill" height="60" rx="6" width="146" x="614" y="460"/>
+<text class="node-label" text-anchor="middle" x="687" y="485">Self-Refine</text>
+<text class="edge-label" text-anchor="middle" x="687" y="505">同 session 改一版</text>
+<!-- Q3 Yes -> Reflexion (terminal, left, accent — this project's choice) -->
+<line class="diagram-ink" marker-end="url(#dt)" x1="210" x2="132" y1="490" y2="490"/>
+<text class="branch-label" text-anchor="middle" x="171" y="481">是</text>
+<rect class="diagram-accent node-fill-accent" height="64" rx="6" width="126" x="6" y="458"/>
+<text class="node-label-accent" text-anchor="middle" x="69" y="484">Reflexion</text>
+<text class="edge-label" text-anchor="middle" x="69" y="503">本项目主线</text>
+</svg>

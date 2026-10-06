@@ -1,0 +1,60 @@
+<svg aria-labelledby="fig1-title" role="img" viewbox="0 0 760 440"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<title id="fig1-title">Reflexion 失败模式 2D 分类图</title>
+<!-- Axes -->
+<line class="diagram-ink" x1="120" x2="120" y1="60" y2="380"/>
+<line class="diagram-ink" x1="120" x2="720" y1="380" y2="380"/>
+<!-- Y axis arrow -->
+<path class="diagram-ink" d="M120 60 l-5 9 M120 60 l5 9"/>
+<!-- X axis arrow -->
+<path class="diagram-ink" d="M720 380 l-9 -5 M720 380 l-9 5"/>
+<!-- Y axis label -->
+<text class="node-label" text-anchor="end" x="108" y="50">严重度</text>
+<text class="edge-label" x="76" y="100">致命</text>
+<text class="edge-label" x="76" y="230">中等</text>
+<text class="edge-label" x="76" y="350">较轻</text>
+<!-- X axis label & column ticks -->
+<text class="node-label" text-anchor="end" x="720" y="404">受损组件</text>
+<text class="edge-label" text-anchor="middle" x="225" y="400">Evaluator</text>
+<text class="edge-label" text-anchor="middle" x="420" y="400">Actor</text>
+<text class="edge-label" text-anchor="middle" x="600" y="400">Memory / 经济性</text>
+<!-- faint column separators -->
+<line class="diagram-soft" x1="320" x2="320" y1="60" y2="380"/>
+<line class="diagram-soft" x1="510" x2="510" y1="60" y2="380"/>
+<!-- ── Nodes ── -->
+<!-- evaluator-dependency: Evaluator, 致命 -->
+<rect class="diagram-accent node-fill-accent" height="40" rx="4" width="176" x="136" y="84"/>
+<text class="node-label-accent" text-anchor="middle" x="224" y="100">无 oracle 崩溃</text>
+<text class="edge-label" text-anchor="middle" x="224" y="116">§5.1 evaluator-dependency</text>
+<!-- reflection-hallucination: Actor, 致命 -->
+<rect class="diagram-accent node-fill-accent" height="40" rx="4" width="148" x="346" y="84"/>
+<text class="node-label-accent" text-anchor="middle" x="420" y="100">反思幻觉翻转</text>
+<text class="edge-label" text-anchor="middle" x="420" y="116">§5.2 hallucination</text>
+<!-- task-fit: Evaluator/任务, 中等偏致命 -->
+<rect class="diagram-ink node-fill" height="40" rx="4" width="176" x="136" y="178"/>
+<text class="node-label" text-anchor="middle" x="224" y="194">高置信反改错</text>
+<text class="edge-label" text-anchor="middle" x="224" y="210">§5.6 task-fit</text>
+<!-- convergence: Actor, 中等 -->
+<rect class="diagram-ink node-fill" height="40" rx="4" width="148" x="346" y="218"/>
+<text class="node-label" text-anchor="middle" x="420" y="234">平台期 / 弱模型</text>
+<text class="edge-label" text-anchor="middle" x="420" y="250">§5.5 convergence</text>
+<!-- cost: 经济性, 中等偏轻 -->
+<rect class="diagram-ink node-fill" height="40" rx="4" width="150" x="538" y="246"/>
+<text class="node-label" text-anchor="middle" x="613" y="262">成本≈采样</text>
+<text class="edge-label" text-anchor="middle" x="613" y="278">§5.4 cost</text>
+<!-- memory-bloat: Memory, 较轻 -->
+<rect class="diagram-ink node-fill" height="40" rx="4" width="150" x="538" y="316"/>
+<text class="node-label" text-anchor="middle" x="613" y="332">上下文膨胀</text>
+<text class="edge-label" text-anchor="middle" x="613" y="348">§5.3 memory-bloat</text>
+</svg>

@@ -1,0 +1,48 @@
+<svg aria-labelledby="fig1-title" role="img" viewbox="0 0 760 420"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<title id="fig1-title">难度梯度金字塔：三层题目与教程章节的映射</title>
+<!-- ===== Pyramid: three stacked trapezoid bands ===== -->
+<!-- Bottom band: recall / concept -->
+<path class="diagram-ink node-fill" d="M 150 360 L 610 360 L 540 268 L 220 268 Z"/>
+<!-- Middle band: understand / principle -->
+<path class="diagram-ink node-fill" d="M 220 262 L 540 262 L 470 170 L 290 170 Z"/>
+<!-- Top band: discriminate / application — accent fill -->
+<path class="diagram-accent node-fill-accent" d="M 290 164 L 470 164 L 380 72 L 380 72 Z"/>
+<!-- Band labels (left side, inside trapezoids) -->
+<text class="node-label" text-anchor="middle" x="380" y="322">概念层 · 回忆 recall</text>
+<text class="edge-label" text-anchor="middle" x="380" y="342">「这个词是什么」</text>
+<text class="node-label" text-anchor="middle" x="380" y="222">原理层 · 理解 understand</text>
+<text class="edge-label" text-anchor="middle" x="380" y="242">「机制为什么成立」</text>
+<text class="node-label-accent" text-anchor="middle" x="380" y="120">判别层</text>
+<text class="branch-label" text-anchor="middle" x="380" y="140">discriminate</text>
+<!-- Upward arrow on the left spine showing rising difficulty -->
+<line class="diagram-soft" x1="92" x2="92" y1="360" y2="86"/>
+<path d="M 92 80 L 88 92 L 96 92 Z" fill="var(--ink-faint)"/>
+<text class="edge-label" text-anchor="middle" transform="rotate(-90 78 230)" x="78" y="230">难度递增</text>
+<!-- ===== Right-side chapter mapping (no crossing lines) ===== -->
+<!-- Bottom -> 01 -->
+<line class="diagram-ink" x1="612" x2="668" y1="328" y2="328"/>
+<path d="M 674 328 L 662 324 L 662 332 Z" fill="var(--ink)"/>
+<text class="node-label" x="680" y="332">01 概念</text>
+<!-- Middle -> 02 -->
+<line class="diagram-ink" x1="540" x2="668" y1="218" y2="218"/>
+<path d="M 674 218 L 662 214 L 662 222 Z" fill="var(--ink)"/>
+<text class="node-label" x="680" y="222">02 原理</text>
+<!-- Top -> 03 + 04 + 05 -->
+<line class="diagram-accent" x1="472" x2="668" y1="118" y2="118"/>
+<path d="M 674 118 L 662 114 L 662 122 Z" fill="var(--vermilion)"/>
+<text class="node-label-accent" x="680" y="122">03·04·05</text>
+<!-- footnote inside chart -->
+<text class="edge-label" text-anchor="middle" x="380" y="398">越往上：题目给的不再是术语，而是要你做决策的场景</text>
+</svg>

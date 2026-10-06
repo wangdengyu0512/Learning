@@ -1,0 +1,56 @@
+<svg aria-labelledby="fig1-title" role="img" viewbox="0 0 860 250"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<title id="fig1-title">一轮 trial 中数据类型的流动</title>
+<defs>
+<marker id="arrow1" markerheight="7" markerwidth="7" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10">
+<path class="diagram-ink" d="M 0 1 L 9 5 L 0 9" fill="none"/>
+</marker>
+<marker id="arrow1a" markerheight="7" markerwidth="7" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10">
+<path class="diagram-accent" d="M 0 1 L 9 5 L 0 9" fill="none"/>
+</marker>
+</defs>
+<!-- Task -->
+<rect class="diagram-ink node-fill" height="46" rx="4" width="92" x="10" y="92"/>
+<text class="node-label" text-anchor="middle" x="56" y="111">Task</text>
+<text class="edge-label" text-anchor="middle" x="56" y="127">spec+tests</text>
+<!-- Actor -> code -->
+<rect class="diagram-ink node-fill" height="46" rx="4" width="104" x="150" y="92"/>
+<text class="node-label" text-anchor="middle" x="202" y="111">Actor.act</text>
+<text class="edge-label" text-anchor="middle" x="202" y="127">→ code:str</text>
+<!-- Evaluator -->
+<rect class="diagram-ink node-fill" height="46" rx="4" width="118" x="302" y="92"/>
+<text class="node-label" text-anchor="middle" x="361" y="111">Evaluator</text>
+<text class="edge-label" text-anchor="middle" x="361" y="127">→ (passed,err)</text>
+<!-- Self-Reflection -->
+<rect class="diagram-ink node-fill" height="46" rx="4" width="132" x="468" y="92"/>
+<text class="node-label" text-anchor="middle" x="534" y="111">Self-Reflection</text>
+<text class="edge-label" text-anchor="middle" x="534" y="127">→ reflection:str</text>
+<!-- Memory -->
+<rect class="diagram-accent node-fill-accent" height="46" rx="4" width="116" x="648" y="92"/>
+<text class="node-label-accent" text-anchor="middle" x="706" y="111">EpisodicMemory</text>
+<text class="edge-label" text-anchor="middle" x="706" y="127">Ω 滑动窗</text>
+<!-- forward arrows -->
+<line class="diagram-ink" marker-end="url(#arrow1)" x1="102" x2="148" y1="115" y2="115"/>
+<line class="diagram-ink" marker-end="url(#arrow1)" x1="254" x2="300" y1="115" y2="115"/>
+<line class="diagram-ink" marker-end="url(#arrow1)" x1="420" x2="466" y1="115" y2="115"/>
+<text class="edge-label" text-anchor="middle" x="443" y="86">失败时</text>
+<line class="diagram-ink" marker-end="url(#arrow1)" x1="600" x2="646" y1="115" y2="115"/>
+<!-- passed -> stop -->
+<line class="diagram-ink" marker-end="url(#arrow1)" x1="361" x2="361" y1="138" y2="196"/>
+<rect class="diagram-ink node-fill" height="34" rx="4" width="110" x="306" y="196"/>
+<text class="node-label" text-anchor="middle" x="361" y="217">passed → 停止</text>
+<!-- memory feeds back into Actor prompt (accent loop) -->
+<path class="diagram-accent" d="M 706 138 L 706 172 L 202 172 L 202 140" fill="none" marker-end="url(#arrow1a)"/>
+<text class="branch-label" text-anchor="middle" x="454" y="166">注入下一轮 prompt(reflections）</text>
+</svg>

@@ -1,0 +1,43 @@
+<svg aria-labelledby="fig22-title" role="img" viewbox="0 0 880 340"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<title id="fig22-title">reward 来源按任务分三类</title>
+<!-- center: trajectory -->
+<rect class="diagram-ink node-fill" height="44" rx="3" width="160" x="360" y="150"/>
+<text class="node-label" text-anchor="middle" x="440" y="170">trajectory τ</text>
+<text class="edge-label" text-anchor="middle" x="440" y="186">(待评估)</text>
+<!-- track 1: reasoning (top) -->
+<rect class="diagram-ink node-fill" height="44" rx="3" width="280" x="300" y="36"/>
+<text class="node-label" text-anchor="middle" x="440" y="56">exact-match 对 ground-truth</text>
+<text class="edge-label" text-anchor="middle" x="440" y="72">推理 · HotPotQA · 几乎不会错</text>
+<path class="diagram-ink" d="M 440 150 L 440 80"/>
+<polygon fill="#0A0A0A" points="440,80 436,89 444,89"/>
+<!-- track 2: decision (left) -->
+<rect class="diagram-ink node-fill" height="44" rx="3" width="280" x="30" y="150"/>
+<text class="node-label" text-anchor="middle" x="170" y="170">手写启发式 / LLM 二分类</text>
+<text class="edge-label" text-anchor="middle" x="170" y="186">决策 · AlfWorld · 规则明确</text>
+<path class="diagram-ink" d="M 360 172 L 310 172"/>
+<polygon fill="#0A0A0A" points="310,172 319,168 319,176"/>
+<!-- track 3: programming (bottom) — accent because it is the risky one -->
+<rect class="diagram-accent node-fill-accent" height="44" rx="3" width="280" x="300" y="264"/>
+<text class="node-label-accent" text-anchor="middle" x="440" y="284">自生成单元测试 (AST 过滤)</text>
+<text class="edge-label" text-anchor="middle" x="440" y="300">编程 · HumanEval · 判据也由 LLM 生成</text>
+<path class="diagram-accent" d="M 440 194 L 440 264"/>
+<polygon fill="#B73B2F" points="440,264 436,255 444,255"/>
+<!-- right: output reward -->
+<rect class="diagram-ink node-fill" height="44" rx="3" width="250" x="600" y="150"/>
+<text class="node-label" text-anchor="middle" x="725" y="170">reward: pass / fail</text>
+<text class="edge-label" text-anchor="middle" x="725" y="186">可信度随任务递减 ↓</text>
+<path class="diagram-ink" d="M 520 172 L 600 172"/>
+<polygon fill="#0A0A0A" points="600,172 591,168 591,176"/>
+</svg>
