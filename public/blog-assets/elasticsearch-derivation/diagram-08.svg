@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="文档按 hash(_id) 取模 N 路由到固定的三个主分片之一" role="img" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<defs>
+<marker id="rt-ink" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#525252"/>
+</marker>
+</defs>
+<!-- left: document -->
+<rect class="diagram-ink node-fill" height="60" rx="6" width="150" x="20" y="118"/>
+<text class="node-label" text-anchor="middle" x="95" y="143">document</text>
+<text class="edge-label" text-anchor="middle" x="95" y="162">_id = "u-42"</text>
+<!-- middle: hash box -->
+<rect class="diagram-accent node-fill-accent" height="60" rx="6" stroke-width="2" width="204" x="248" y="118"/>
+<text class="node-label-accent" text-anchor="middle" x="350" y="143">hash(_id) % N</text>
+<text class="edge-label" text-anchor="middle" x="350" y="162">N = 3（创建即固定）</text>
+<!-- doc -> hash -->
+<line class="diagram-ink" marker-end="url(#rt-ink)" x1="170" x2="248" y1="148" y2="148"/>
+<!-- right: three shards -->
+<rect class="diagram-ink node-fill" height="50" rx="6" width="128" x="552" y="28"/>
+<text class="node-label" text-anchor="middle" x="616" y="58">shard 0</text>
+<rect class="diagram-ink node-fill" height="50" rx="6" width="128" x="552" y="123"/>
+<text class="node-label" text-anchor="middle" x="616" y="153">shard 1</text>
+<rect class="diagram-ink node-fill" height="50" rx="6" width="128" x="552" y="218"/>
+<text class="node-label" text-anchor="middle" x="616" y="248">shard 2</text>
+<!-- hash -> shards (fan) -->
+<line class="diagram-soft" marker-end="url(#rt-ink)" x1="452" x2="552" y1="138" y2="63"/>
+<line class="diagram-accent" marker-end="url(#rt-ink)" x1="452" x2="552" y1="148" y2="148"/>
+<line class="diagram-soft" marker-end="url(#rt-ink)" x1="452" x2="552" y1="158" y2="233"/>
+<text class="edge-label" text-anchor="middle" x="500" y="200">余数 = 1</text>
+</svg>

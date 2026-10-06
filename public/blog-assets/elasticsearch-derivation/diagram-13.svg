@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="选型决策流：按主导负载依次排除，最终落到 Elasticsearch 或 PostgreSQL" role="img" viewBox="0 0 680 430" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<defs>
+<marker id="sel-ink" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#525252"/>
+</marker>
+</defs>
+<!-- step 1 -->
+<rect class="diagram-ink node-fill" height="52" rx="6" width="320" x="50" y="28"/>
+<text class="node-label" text-anchor="middle" x="210" y="58">① 主导负载＝海量日志/指标聚合？</text>
+<line class="diagram-ink" marker-end="url(#sel-ink)" x1="370" x2="448" y1="54" y2="54"/>
+<text class="branch-label" text-anchor="middle" x="409" y="46">是</text>
+<rect class="diagram-ink node-fill" height="52" rx="6" width="180" x="450" y="28"/>
+<text class="node-label" text-anchor="middle" x="540" y="58">ClickHouse</text>
+<!-- step 2 -->
+<line class="diagram-ink" marker-end="url(#sel-ink)" x1="210" x2="210" y1="80" y2="128"/>
+<text class="branch-label" text-anchor="middle" x="222" y="108">否</text>
+<rect class="diagram-ink node-fill" height="52" rx="6" width="320" x="50" y="130"/>
+<text class="node-label" text-anchor="middle" x="210" y="160">② 主导负载＝纯向量 ANN 检索？</text>
+<line class="diagram-ink" marker-end="url(#sel-ink)" x1="370" x2="448" y1="156" y2="156"/>
+<text class="branch-label" text-anchor="middle" x="409" y="148">是</text>
+<rect class="diagram-ink node-fill" height="56" rx="6" width="200" x="450" y="128"/>
+<text class="node-label" text-anchor="middle" x="550" y="152">专用向量库</text>
+<text class="edge-label" text-anchor="middle" x="550" y="171">Milvus / Qdrant</text>
+<!-- step 3 -->
+<line class="diagram-ink" marker-end="url(#sel-ink)" x1="210" x2="210" y1="182" y2="230"/>
+<text class="branch-label" text-anchor="middle" x="222" y="210">否</text>
+<rect class="diagram-ink node-fill" height="52" rx="6" width="320" x="50" y="232"/>
+<text class="node-label" text-anchor="middle" x="210" y="262">③ 要相关性/混合检索且规模大？</text>
+<line class="diagram-ink" marker-end="url(#sel-ink)" x1="370" x2="448" y1="258" y2="258"/>
+<text class="branch-label" text-anchor="middle" x="409" y="250">是</text>
+<rect class="diagram-accent node-fill-accent" height="52" rx="6" stroke-width="2" width="200" x="450" y="232"/>
+<text class="node-label-accent" text-anchor="middle" x="550" y="262">Elasticsearch</text>
+<!-- step 4 terminal -->
+<line class="diagram-ink" marker-end="url(#sel-ink)" x1="210" x2="210" y1="284" y2="332"/>
+<text class="branch-label" text-anchor="middle" x="222" y="312">否</text>
+<rect class="diagram-ink node-fill" height="64" rx="6" width="380" x="50" y="334"/>
+<text class="node-label" text-anchor="middle" x="240" y="360">④ 否则 → PostgreSQL FTS / pgvector</text>
+<text class="edge-label" text-anchor="middle" x="240" y="380">中小规模优先，复用现有库少维护一个系统</text>
+</svg>

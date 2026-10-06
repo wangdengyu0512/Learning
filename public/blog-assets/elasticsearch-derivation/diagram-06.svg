@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="写入路径的两条正交轴：可见性轴 buffer 到 refresh 到新 segment，持久化轴每个操作到 translog 到 flush" role="img" viewBox="0 0 720 412" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<defs>
+<marker id="wp-ink" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"/>
+</marker>
+<marker id="wp-acc" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"/>
+</marker>
+</defs>
+<!-- incoming doc -->
+<rect class="diagram-ink node-fill" height="44" rx="6" width="144" x="288" y="20"/>
+<text class="node-label" text-anchor="middle" x="360" y="47">写入一条文档</text>
+<!-- split to two axes -->
+<line class="diagram-accent" marker-end="url(#wp-acc)" x1="320" x2="180" y1="64" y2="104"/>
+<line class="diagram-ink" marker-end="url(#wp-ink)" x1="400" x2="540" y1="64" y2="104"/>
+<!-- ============ left: visibility axis ============ -->
+<text class="branch-label" x="64" y="98">可见性轴</text>
+<rect class="diagram-soft" height="262" rx="8" width="280" x="40" y="104"/>
+<rect class="diagram-ink node-fill" height="48" rx="6" width="200" x="80" y="120"/>
+<text class="node-label" text-anchor="middle" x="180" y="142">in-memory buffer</text>
+<text class="edge-label" text-anchor="middle" x="180" y="159">搜不到</text>
+<line class="diagram-accent" marker-end="url(#wp-acc)" x1="180" x2="180" y1="168" y2="204"/>
+<text class="branch-label" text-anchor="middle" x="180" y="190">refresh ~1s</text>
+<rect class="diagram-accent node-fill-accent" height="48" rx="6" width="200" x="80" y="204"/>
+<text class="node-label-accent" text-anchor="middle" x="180" y="226">新 segment</text>
+<text class="edge-label" text-anchor="middle" x="180" y="243">打开新 reader</text>
+<line class="diagram-ink" marker-end="url(#wp-ink)" x1="180" x2="180" y1="252" y2="288"/>
+<rect class="diagram-ink node-fill" height="48" rx="6" width="200" x="80" y="288"/>
+<text class="node-label" text-anchor="middle" x="180" y="310">可被搜索</text>
+<text class="edge-label" text-anchor="middle" x="180" y="327">near-real-time</text>
+<!-- ============ right: durability axis ============ -->
+<text class="branch-label" x="560" y="98">持久化轴</text>
+<rect class="diagram-soft" height="262" rx="8" width="280" x="400" y="104"/>
+<rect class="diagram-ink node-fill" height="48" rx="6" width="200" x="440" y="120"/>
+<text class="node-label" text-anchor="middle" x="540" y="142">追加 translog</text>
+<text class="edge-label" text-anchor="middle" x="540" y="159">每个 op 都写</text>
+<line class="diagram-ink" marker-end="url(#wp-ink)" x1="540" x2="540" y1="168" y2="204"/>
+<text class="edge-label" text-anchor="middle" x="540" y="190">崩溃可重放</text>
+<rect class="diagram-ink node-fill" height="48" rx="6" width="200" x="440" y="204"/>
+<text class="node-label" text-anchor="middle" x="540" y="226">flush (fsync)</text>
+<text class="edge-label" text-anchor="middle" x="540" y="243">默认周期 / translog 满</text>
+<line class="diagram-ink" marker-end="url(#wp-ink)" x1="540" x2="540" y1="252" y2="288"/>
+<rect class="diagram-ink node-fill" height="48" rx="6" width="200" x="440" y="288"/>
+<text class="node-label" text-anchor="middle" x="540" y="310">落盘并清空 translog</text>
+<!-- divider note -->
+<text class="edge-label" text-anchor="middle" x="360" y="392">两条轴各管各的：refresh 管"可见"，flush 管"落盘"</text>
+</svg>

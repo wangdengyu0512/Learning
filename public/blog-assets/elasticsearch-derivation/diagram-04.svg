@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="同一个字段值 Quick Fox 向下分两条路：text 经 analyzer 切成 quick fox 进倒排，keyword 整串一个 term 进 doc_values" role="img" viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<defs>
+<marker id="k-ink" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"/>
+</marker>
+</defs>
+<!-- source value -->
+<rect class="diagram-ink node-fill" height="44" rx="6" width="160" x="280" y="16"/>
+<text class="node-label" text-anchor="middle" x="360" y="43">值 "Quick Fox"</text>
+<!-- split labels -->
+<text class="branch-label" text-anchor="middle" x="200" y="92">作为 text</text>
+<text class="branch-label" text-anchor="middle" x="540" y="92">作为 keyword</text>
+<!-- value -> two paths -->
+<line class="diagram-ink" marker-end="url(#k-ink)" x1="320" x2="220" y1="60" y2="112"/>
+<line class="diagram-ink" marker-end="url(#k-ink)" x1="400" x2="500" y1="60" y2="112"/>
+<!-- text path: analyzer -->
+<rect class="diagram-ink node-fill" height="48" rx="6" width="200" x="120" y="112"/>
+<text class="node-label" text-anchor="middle" x="220" y="134">analyzer</text>
+<text class="edge-label" text-anchor="middle" x="220" y="151">小写化 · 切词</text>
+<!-- keyword path: no analysis -->
+<rect class="diagram-ink node-fill" height="48" rx="6" width="200" x="400" y="112"/>
+<text class="node-label" text-anchor="middle" x="500" y="134">不分词</text>
+<text class="edge-label" text-anchor="middle" x="500" y="151">整串保留</text>
+<line class="diagram-ink" marker-end="url(#k-ink)" x1="220" x2="220" y1="160" y2="212"/>
+<line class="diagram-ink" marker-end="url(#k-ink)" x1="500" x2="500" y1="160" y2="212"/>
+<!-- text terminal -->
+<rect class="diagram-accent node-fill-accent" height="64" rx="6" width="240" x="100" y="212"/>
+<text class="node-label-accent" text-anchor="middle" x="220" y="234">倒排：[quick, fox]</text>
+<text class="edge-label" text-anchor="middle" x="220" y="252">可全文搜（match）</text>
+<text class="edge-label" text-anchor="middle" x="220" y="269">不可直接聚合排序</text>
+<!-- keyword terminal -->
+<rect class="diagram-ink node-fill" height="64" rx="6" width="240" x="380" y="212"/>
+<text class="node-label" text-anchor="middle" x="500" y="234">doc_values："Quick Fox"</text>
+<text class="edge-label" text-anchor="middle" x="500" y="252">可聚合 · 排序 · 精确匹配</text>
+<text class="edge-label" text-anchor="middle" x="500" y="269">不做全文相关性</text>
+</svg>

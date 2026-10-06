@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="自测三层梯度金字塔：概念层、原理层、应用判别层，认知要求向上递增" role="img" viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<defs>
+<marker id="sc-up" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#525252"/>
+</marker>
+</defs>
+<rect class="diagram-accent node-fill-accent" height="64" rx="6" stroke-width="2" width="160" x="240" y="40"/>
+<text class="node-label-accent" text-anchor="middle" x="320" y="68">应用判别层</text>
+<text class="edge-label" text-anchor="middle" x="320" y="88">跨 01+02+03 · 判别</text>
+<rect class="diagram-ink node-fill" height="64" rx="6" width="280" x="180" y="118"/>
+<text class="node-label" text-anchor="middle" x="320" y="146">原理层</text>
+<text class="edge-label" text-anchor="middle" x="320" y="166">讲清机制 · 02 / 03</text>
+<rect class="diagram-ink node-fill" height="64" rx="6" width="420" x="110" y="196"/>
+<text class="node-label" text-anchor="middle" x="320" y="224">概念层</text>
+<text class="edge-label" text-anchor="middle" x="320" y="244">能复述 · 01</text>
+<text class="edge-label" text-anchor="middle" x="600" y="40">要求↑</text>
+<line class="diagram-ink" marker-end="url(#sc-up)" x1="600" x2="600" y1="252" y2="52"/>
+</svg>

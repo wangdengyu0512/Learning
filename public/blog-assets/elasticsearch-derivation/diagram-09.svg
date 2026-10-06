@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="BM25 词频贡献是先升后平的饱和曲线，TF-IDF 近似一条不封顶的直线" role="img" viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<!-- axes -->
+<line class="diagram-ink" x1="70" x2="510" y1="270" y2="270"/>
+<line class="diagram-ink" x1="70" x2="70" y1="270" y2="40"/>
+<!-- axis labels -->
+<text class="edge-label" text-anchor="end" x="500" y="292">词频 tf →</text>
+<text class="edge-label" text-anchor="end" x="60" y="52">贡献分</text>
+<!-- TF-IDF: near-linear, unbounded -->
+<path class="diagram-soft" d="M 70 268 L 470 70" fill="none"/>
+<text class="edge-label" text-anchor="middle" x="430" y="78">TF-IDF（近似直线·不封顶）</text>
+<!-- BM25: saturating curve, rises then flattens toward an asymptote ~y=110 -->
+<path class="diagram-accent" d="M 70 268 C 160 110, 280 118, 500 112" fill="none"/>
+<text class="node-label-accent" text-anchor="middle" x="404" y="135">BM25（饱和·趋近上限）</text>
+<!-- asymptote hint -->
+<line class="diagram-soft" x1="70" x2="500" y1="108" y2="108"/>
+<text class="edge-label" text-anchor="middle" x="150" y="100">渐近线（非硬上限）</text>
+</svg>

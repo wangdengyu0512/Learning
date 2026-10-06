@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="集群拓扑层级：cluster 包含 node，index 切成 shard 分布在 node 上，shard 内部由多个不可变 segment 组成" role="img" viewBox="0 0 720 470" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<defs>
+<marker id="t-ink" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#525252"/>
+</marker>
+</defs>
+<!-- cluster outer frame -->
+<rect class="diagram-ink node-fill" height="430" rx="8" width="680" x="20" y="20"/>
+<text class="edge-label" font-weight="700" x="40" y="44">CLUSTER · 一组协同的 node</text>
+<!-- node A -->
+<rect class="diagram-ink node-fill" height="364" rx="6" width="300" x="44" y="64"/>
+<text class="edge-label" font-weight="700" x="60" y="86">NODE A</text>
+<!-- node B -->
+<rect class="diagram-ink node-fill" height="364" rx="6" width="300" x="376" y="64"/>
+<text class="edge-label" font-weight="700" x="392" y="86">NODE B</text>
+<!-- shard P0 (primary) on node A -->
+<rect class="diagram-accent node-fill-accent" height="160" rx="5" stroke-width="1.6" width="120" x="64" y="104"/>
+<text class="node-label-accent" text-anchor="middle" x="124" y="124">shard P0</text>
+<text class="edge-label" text-anchor="middle" x="124" y="141">primary</text>
+<!-- segments inside P0 -->
+<rect class="diagram-ink node-fill" height="26" rx="3" width="92" x="78" y="152"/>
+<text class="edge-label" text-anchor="middle" x="124" y="169">segment 1</text>
+<rect class="diagram-ink node-fill" height="26" rx="3" width="92" x="78" y="184"/>
+<text class="edge-label" text-anchor="middle" x="124" y="201">segment 2</text>
+<rect class="diagram-ink node-fill" height="26" rx="3" width="92" x="78" y="216"/>
+<text class="edge-label" text-anchor="middle" x="124" y="233">segment 3</text>
+<!-- shard R1 (replica) on node A -->
+<rect class="diagram-ink node-fill" height="160" rx="5" width="120" x="204" y="104"/>
+<text class="node-label" text-anchor="middle" x="264" y="124">shard R1</text>
+<text class="edge-label" text-anchor="middle" x="264" y="141">replica</text>
+<rect class="diagram-ink node-fill" height="26" rx="3" width="92" x="218" y="152"/>
+<text class="edge-label" text-anchor="middle" x="264" y="169">segment 1</text>
+<rect class="diagram-ink node-fill" height="26" rx="3" width="92" x="218" y="184"/>
+<text class="edge-label" text-anchor="middle" x="264" y="201">segment 2</text>
+<!-- shard P1 (primary) on node B -->
+<rect class="diagram-accent node-fill-accent" height="160" rx="5" stroke-width="1.6" width="120" x="396" y="104"/>
+<text class="node-label-accent" text-anchor="middle" x="456" y="124">shard P1</text>
+<text class="edge-label" text-anchor="middle" x="456" y="141">primary</text>
+<rect class="diagram-ink node-fill" height="26" rx="3" width="92" x="410" y="152"/>
+<text class="edge-label" text-anchor="middle" x="456" y="169">segment 1</text>
+<rect class="diagram-ink node-fill" height="26" rx="3" width="92" x="410" y="184"/>
+<text class="edge-label" text-anchor="middle" x="456" y="201">segment 2</text>
+<rect class="diagram-ink node-fill" height="26" rx="3" width="92" x="410" y="216"/>
+<text class="edge-label" text-anchor="middle" x="456" y="233">segment 3</text>
+<!-- shard R0 (replica) on node B -->
+<rect class="diagram-ink node-fill" height="160" rx="5" width="120" x="536" y="104"/>
+<text class="node-label" text-anchor="middle" x="596" y="124">shard R0</text>
+<text class="edge-label" text-anchor="middle" x="596" y="141">replica</text>
+<rect class="diagram-ink node-fill" height="26" rx="3" width="92" x="550" y="152"/>
+<text class="edge-label" text-anchor="middle" x="596" y="169">segment 1</text>
+<rect class="diagram-ink node-fill" height="26" rx="3" width="92" x="550" y="184"/>
+<text class="edge-label" text-anchor="middle" x="596" y="201">segment 2</text>
+<rect class="diagram-ink node-fill" height="26" rx="3" width="92" x="550" y="216"/>
+<text class="edge-label" text-anchor="middle" x="596" y="233">segment 3</text>
+<!-- index spanning label -->
+<rect class="diagram-soft" height="104" rx="6" width="592" x="64" y="304"/>
+<text class="node-label" text-anchor="middle" x="360" y="328">一个 index = P0 + P1（两个 primary shard）+ 各自副本</text>
+<text class="edge-label" text-anchor="middle" x="360" y="356">primary 收写入，replica 是副本 · 容灾 + 分担查询</text>
+<text class="edge-label" text-anchor="middle" x="360" y="384">同一份数据的 primary 与 replica 一定落在不同 node</text>
+</svg>

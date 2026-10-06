@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="analyzer 管线把一段文本切成规范化 term，再倒排成 term 指向 postings 列表" role="img" viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<defs>
+<marker id="ix-flow" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"/>
+</marker>
+</defs>
+<text class="edge-label" font-weight="700" x="14" y="58">管线</text>
+<!-- input -->
+<rect class="diagram-ink node-fill" height="48" rx="6" width="128" x="56" y="34"/>
+<text class="node-label" text-anchor="middle" x="120" y="63">"The Quick Fox"</text>
+<line class="diagram-ink" marker-end="url(#ix-flow)" x1="184" x2="216" y1="58" y2="58"/>
+<!-- char filter -->
+<rect class="diagram-ink node-fill" height="48" rx="6" width="120" x="216" y="34"/>
+<text class="node-label" text-anchor="middle" x="276" y="56">char filter</text>
+<text class="edge-label" text-anchor="middle" x="276" y="73">清洗字符</text>
+<line class="diagram-ink" marker-end="url(#ix-flow)" x1="336" x2="368" y1="58" y2="58"/>
+<!-- tokenizer -->
+<rect class="diagram-ink node-fill" height="48" rx="6" width="120" x="368" y="34"/>
+<text class="node-label" text-anchor="middle" x="428" y="56">tokenizer</text>
+<text class="edge-label" text-anchor="middle" x="428" y="73">切词</text>
+<line class="diagram-ink" marker-end="url(#ix-flow)" x1="488" x2="520" y1="58" y2="58"/>
+<!-- token filters -->
+<rect class="diagram-ink node-fill" height="48" rx="6" width="184" x="520" y="34"/>
+<text class="node-label" text-anchor="middle" x="612" y="56">token filters</text>
+<text class="edge-label" text-anchor="middle" x="612" y="73">小写 / 去停用词 / 词干</text>
+<!-- down to terms -->
+<line class="diagram-ink" marker-end="url(#ix-flow)" x1="612" x2="612" y1="82" y2="118"/>
+<rect class="diagram-accent node-fill-accent" height="44" rx="6" width="184" x="520" y="118"/>
+<text class="node-label-accent" text-anchor="middle" x="612" y="145">[ quick, fox ]</text>
+<!-- inverted mapping table -->
+<text class="edge-label" font-weight="700" x="56" y="138">倒排映射</text>
+<rect class="diagram-ink node-fill" height="118" rx="6" width="232" x="56" y="158"/>
+<line class="diagram-soft" x1="160" x2="160" y1="158" y2="276"/>
+<line class="diagram-soft" x1="56" x2="288" y1="188" y2="188"/>
+<text class="edge-label" font-weight="700" text-anchor="middle" x="108" y="179">term</text>
+<text class="edge-label" font-weight="700" text-anchor="middle" x="224" y="179">postings (doc id)</text>
+<text class="node-label" text-anchor="middle" x="108" y="212">quick</text>
+<text class="edge-label" text-anchor="middle" x="224" y="212">→ [1, 4, 9]</text>
+<text class="node-label" text-anchor="middle" x="108" y="240">fox</text>
+<text class="edge-label" text-anchor="middle" x="224" y="240">→ [4, 7, 9]</text>
+<text class="node-label" text-anchor="middle" x="108" y="268">brown</text>
+<text class="edge-label" text-anchor="middle" x="224" y="268">→ [2, 4]</text>
+<!-- terms feed mapping -->
+<line class="diagram-soft" marker-end="url(#ix-flow)" x1="520" x2="372" y1="140" y2="140"/>
+<text class="edge-label" text-anchor="middle" x="446" y="132">写入映射</text>
+</svg>

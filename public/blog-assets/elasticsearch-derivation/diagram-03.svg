@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="一条文档按 mapping 拆成多个字段，每个字段按类型走不同的索引路径" role="img" viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<defs>
+<marker id="m-ink" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"/>
+</marker>
+</defs>
+<text class="edge-label" font-weight="700" x="14" y="36">DOC</text>
+<text class="edge-label" font-weight="700" x="14" y="166">FIELD</text>
+<text class="edge-label" font-weight="700" x="14" y="286">存法</text>
+<!-- document box -->
+<rect class="diagram-ink node-fill" height="44" rx="6" width="236" x="232" y="16"/>
+<text class="node-label" text-anchor="middle" x="350" y="43">一条 JSON 文档</text>
+<!-- three fields -->
+<rect class="diagram-ink node-fill" height="56" rx="6" width="160" x="60" y="128"/>
+<text class="node-label" text-anchor="middle" x="140" y="151">title</text>
+<text class="edge-label" text-anchor="middle" x="140" y="171">type: text</text>
+<rect class="diagram-ink node-fill" height="56" rx="6" width="160" x="270" y="128"/>
+<text class="node-label" text-anchor="middle" x="350" y="151">brand</text>
+<text class="edge-label" text-anchor="middle" x="350" y="171">type: keyword</text>
+<rect class="diagram-ink node-fill" height="56" rx="6" width="160" x="480" y="128"/>
+<text class="node-label" text-anchor="middle" x="560" y="151">price</text>
+<text class="edge-label" text-anchor="middle" x="560" y="171">type: integer</text>
+<!-- doc -> fields -->
+<line class="diagram-ink" marker-end="url(#m-ink)" x1="300" x2="160" y1="60" y2="128"/>
+<line class="diagram-ink" marker-end="url(#m-ink)" x1="350" x2="350" y1="60" y2="128"/>
+<line class="diagram-ink" marker-end="url(#m-ink)" x1="400" x2="540" y1="60" y2="128"/>
+<text class="edge-label" text-anchor="middle" x="350" y="100">mapping 决定每个字段的类型</text>
+<!-- storage row -->
+<rect class="diagram-accent node-fill-accent" height="48" rx="5" width="160" x="60" y="248"/>
+<text class="node-label-accent" text-anchor="middle" x="140" y="270">倒排索引</text>
+<text class="edge-label" text-anchor="middle" x="140" y="287">分词 · 可全文搜</text>
+<rect class="diagram-ink node-fill" height="48" rx="5" width="160" x="270" y="248"/>
+<text class="node-label" text-anchor="middle" x="350" y="270">倒排 + doc_values</text>
+<text class="edge-label" text-anchor="middle" x="350" y="287">原样 · 可聚合排序</text>
+<rect class="diagram-ink node-fill" height="48" rx="5" width="160" x="480" y="248"/>
+<text class="node-label" text-anchor="middle" x="560" y="270">doc_values</text>
+<text class="edge-label" text-anchor="middle" x="560" y="287">数值 · 可范围排序</text>
+<!-- field -> storage -->
+<line class="diagram-ink" marker-end="url(#m-ink)" x1="140" x2="140" y1="184" y2="248"/>
+<line class="diagram-ink" marker-end="url(#m-ink)" x1="350" x2="350" y1="184" y2="248"/>
+<line class="diagram-ink" marker-end="url(#m-ink)" x1="560" x2="560" y1="184" y2="248"/>
+</svg>
