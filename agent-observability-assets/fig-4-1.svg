@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="工具地图：两轴自托管对SaaS，纯obs对all-in-one，各工具定位其中" role="img" viewbox="0 0 820 480" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ax-arrow" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+</defs>
+<!-- 2-axis scatter (no shaded background; axes + labels define quadrants) -->
+<!-- 轴线 -->
+<!-- 横轴：纯obs ← → all-in-one -->
+<line class="diagram-ink" marker-end="url(#ax-arrow)" x1="60" x2="740" y1="235" y2="235"></line>
+<!-- 纵轴：SaaS ↑ → 自托管 ↓ -->
+<line class="diagram-ink" marker-end="url(#ax-arrow)" x1="400" x2="400" y1="430" y2="40"></line>
+<!-- 轴标签 -->
+<text class="edge-label" text-anchor="start" x="70" y="228">← 纯 obs</text>
+<text class="edge-label" text-anchor="end" x="720" y="228">all-in-one →</text>
+<text class="edge-label" x="408" y="56">自托管</text>
+<text class="edge-label" x="408" y="445">SaaS</text>
+<!-- 象限标签 -->
+<text class="edge-label" fill="#A3A3A3" x="110" y="80">自托管 · 纯 obs</text>
+<text class="edge-label" fill="#A3A3A3" x="450" y="80">自托管 · all-in-one</text>
+<text class="edge-label" fill="#A3A3A3" x="110" y="420">SaaS · 纯 obs</text>
+<text class="edge-label" fill="#A3A3A3" x="450" y="420">SaaS · all-in-one</text>
+<!-- Emitter 层（顶部横幅，跨全轴） -->
+<rect fill="none" height="28" rx="4" stroke="#A3A3A3" stroke-dasharray="4 3" stroke-width="1" width="660" x="70" y="46"></rect>
+<text class="edge-label" fill="#525252" text-anchor="middle" x="400" y="64">Emitter 层（不依赖轴位置）：OpenLLMetry · OpenInference · 代理网关 Helicone/LiteLLM</text>
+<!-- 节点：Langfuse（自托管可选，接近纯obs，偏自托管） -->
+<rect class="diagram-ink node-fill" height="34" rx="4" width="90" x="130" y="130"></rect>
+<text class="node-label" text-anchor="middle" x="175" y="151">Langfuse</text>
+<text class="edge-label" text-anchor="middle" x="175" y="165">OSS · 自托管</text>
+<!-- 节点：Phoenix（自托管，纯obs+eval） -->
+<rect class="diagram-ink node-fill" height="34" rx="4" width="80" x="420" y="110"></rect>
+<text class="node-label" text-anchor="middle" x="460" y="131">Phoenix</text>
+<text class="edge-label" text-anchor="middle" x="460" y="145">OSS+eval</text>
+<!-- 节点：Datadog（SaaS，纯obs+监控基础设施） -->
+<rect class="diagram-ink node-fill" height="34" rx="4" width="90" x="80" y="320"></rect>
+<text class="node-label" text-anchor="middle" x="125" y="341">Datadog</text>
+<text class="edge-label" text-anchor="middle" x="125" y="355">企业合规</text>
+<!-- 节点：LangSmith（SaaS，all-in-one，LangChain耦合） -->
+<rect class="diagram-accent node-fill-accent" height="34" rx="4" width="94" x="530" y="310"></rect>
+<text class="node-label-accent" text-anchor="middle" x="577" y="331">LangSmith</text>
+<text class="edge-label" text-anchor="middle" x="577" y="345">LangChain生态</text>
+<!-- 节点：Braintrust（SaaS，all-in-one，eval-first） -->
+<rect class="diagram-ink node-fill" height="34" rx="4" width="90" x="610" y="360"></rect>
+<text class="node-label" text-anchor="middle" x="655" y="381">Braintrust</text>
+<text class="edge-label" text-anchor="middle" x="655" y="395">eval-first</text>
+<!-- 节点：Weave（SaaS，偏all-in-one） -->
+<rect class="diagram-ink node-fill" height="34" rx="4" width="70" x="490" y="370"></rect>
+<text class="node-label" text-anchor="middle" x="525" y="391">Weave</text>
+<text class="edge-label" text-anchor="middle" x="525" y="405">W&amp;B生态</text>
+<!-- 节点：HoneyHive（SaaS，all-in-one） -->
+<rect class="diagram-ink node-fill" height="34" rx="4" width="90" x="620" y="270"></rect>
+<text class="node-label" text-anchor="middle" x="665" y="291">HoneyHive</text>
+<text class="edge-label" text-anchor="middle" x="665" y="305">product+eval</text>
+<style>
+.diagram-ink{stroke:#0A0A0A;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}.diagram-accent{stroke:#B73B2F;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.diagram-soft{stroke:#A3A3A3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}.node-fill{fill:#FFFFFF}.node-fill-accent{fill:rgba(183,59,47,.06)}.node-label{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:13px;font-weight:500;fill:#0A0A0A}.node-label-accent{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:13px;font-weight:700;fill:#B73B2F}.edge-label{font-family:monospace;font-size:11px;fill:#525252;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}.branch-label{font-family:monospace;font-size:11px;font-weight:700;fill:#B73B2F;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}</style>
+</svg>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="投产陷阱四族因果图：A隐私 B成本 C可见性 D可重建，箭头指向后果" role="img" viewbox="0 0 820 440" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="trap-arrow" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#525252"></path>
+</marker>
+<marker id="trap-red" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- Title row: four tribe boxes -->
+<!-- A: Privacy -->
+<rect class="diagram-ink node-fill" height="66" rx="7" width="185" x="10" y="10"></rect>
+<text class="node-label" text-anchor="middle" x="102" y="33">A 族 · 隐私</text>
+<text class="edge-label" text-anchor="middle" x="102" y="51">① prompt 进三方 SaaS</text>
+<text class="edge-label" text-anchor="middle" x="102" y="67">② 推理链 PII 泄漏</text>
+<!-- B: Cost -->
+<rect class="diagram-ink node-fill" height="66" rx="7" width="185" x="215" y="10"></rect>
+<text class="node-label" text-anchor="middle" x="307" y="33">B 族 · 成本</text>
+<text class="edge-label" text-anchor="middle" x="307" y="51">③ 全量捕获账单爆炸</text>
+<text class="edge-label" text-anchor="middle" x="307" y="67"> </text>
+<!-- C: Visibility -->
+<rect class="diagram-ink node-fill" height="66" rx="7" width="185" x="420" y="10"></rect>
+<text class="node-label" text-anchor="middle" x="512" y="33">C 族 · 可见性</text>
+<text class="edge-label" text-anchor="middle" x="512" y="51">④⑤⑥⑦⑧ 数据质量</text>
+<text class="edge-label" text-anchor="middle" x="512" y="67">采样丢 bug / 截断 / 孤儿</text>
+<!-- D: Reproducibility -->
+<rect class="diagram-ink node-fill" height="66" rx="7" width="185" x="625" y="10"></rect>
+<text class="node-label" text-anchor="middle" x="717" y="33">D 族 · 可重建</text>
+<text class="edge-label" text-anchor="middle" x="717" y="51">⑨ 同步日志阻塞</text>
+<text class="edge-label" text-anchor="middle" x="717" y="67">⑩ 非确定杀死复现</text>
+<!-- Consequence boxes: second row -->
+<!-- A → compliance risk -->
+<rect class="diagram-accent node-fill-accent" height="56" rx="6" width="185" x="10" y="140"></rect>
+<text class="node-label-accent" text-anchor="middle" x="102" y="164">合规风险</text>
+<text class="edge-label" text-anchor="middle" x="102" y="182">GDPR/HIPAA 受管</text>
+<line class="diagram-ink" marker-end="url(#trap-arrow)" x1="102" x2="102" y1="76" y2="140"></line>
+<!-- B → budget explosion -->
+<rect class="diagram-accent node-fill-accent" height="56" rx="6" width="185" x="215" y="140"></rect>
+<text class="node-label-accent" text-anchor="middle" x="307" y="164">账单高于服务本身</text>
+<text class="edge-label" text-anchor="middle" x="307" y="182">40–200% 观测成本</text>
+<line class="diagram-ink" marker-end="url(#trap-arrow)" x1="307" x2="307" y1="76" y2="140"></line>
+<!-- C → invisible bugs -->
+<rect class="diagram-accent node-fill-accent" height="56" rx="6" width="185" x="420" y="140"></rect>
+<text class="node-label-accent" text-anchor="middle" x="512" y="164">bug 不可见</text>
+<text class="edge-label" text-anchor="middle" x="512" y="182">低频失败完全丢失</text>
+<line class="diagram-ink" marker-end="url(#trap-arrow)" x1="512" x2="512" y1="76" y2="140"></line>
+<!-- D → replay fails -->
+<rect class="diagram-accent node-fill-accent" height="56" rx="6" width="185" x="625" y="140"></rect>
+<text class="node-label-accent" text-anchor="middle" x="717" y="164">复现/调试失效</text>
+<text class="edge-label" text-anchor="middle" x="717" y="182">多步后行为发散</text>
+<line class="diagram-ink" marker-end="url(#trap-arrow)" x1="717" x2="717" y1="76" y2="140"></line>
+<!-- Common outcome: third row -->
+<rect class="diagram-soft node-fill" height="60" rx="8" width="420" x="200" y="260"></rect>
+<text class="node-label" text-anchor="middle" x="410" y="286">共同后果：可观测性系统本身成为新风险源</text>
+<text class="edge-label" text-anchor="middle" x="410" y="306">上线三个月后炸——不是 agent 出问题，而是观测层出问题</text>
+<line class="diagram-soft" marker-end="url(#trap-red)" x1="102" x2="200" y1="196" y2="280"></line>
+<line class="diagram-soft" marker-end="url(#trap-red)" x1="307" x2="300" y1="196" y2="260"></line>
+<line class="diagram-soft" marker-end="url(#trap-red)" x1="512" x2="480" y1="196" y2="260"></line>
+<line class="diagram-soft" marker-end="url(#trap-red)" x1="717" x2="620" y1="196" y2="280"></line>
+<!-- Mitigation line -->
+<rect class="diagram-soft node-fill" height="78" rx="6" width="660" x="80" y="356"></rect>
+<text class="node-label" text-anchor="middle" x="410" y="378">应对原则</text>
+<text class="edge-label" text-anchor="middle" x="410" y="399">A：opt-in 捕获 + 脱敏推理链　　B：按采样有选择捕获全文</text>
+<text class="edge-label" text-anchor="middle" x="410" y="419">C：尾部采样 + 限制 label 基数　　D：异步 exporter + 存逐字 prompt</text>
+<line class="diagram-soft" marker-end="url(#trap-arrow)" x1="410" x2="410" y1="320" y2="356"></line>
+<style>
+.diagram-ink{stroke:#0A0A0A;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}.diagram-accent{stroke:#B73B2F;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.diagram-soft{stroke:#A3A3A3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}.node-fill{fill:#FFFFFF}.node-fill-accent{fill:rgba(183,59,47,.06)}.node-label{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:13px;font-weight:500;fill:#0A0A0A}.node-label-accent{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:13px;font-weight:700;fill:#B73B2F}.edge-label{font-family:monospace;font-size:11px;fill:#525252;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}.branch-label{font-family:monospace;font-size:11px;font-weight:700;fill:#B73B2F;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}</style>
+</svg>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="前沿时间线（纵向）：2024末弃用属性、2025 多次规格与并购、到 2026-03 Helicone 转维护，规格/并购/停滞/过时四类事件" role="img" viewbox="0 0 820 472" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="tl-down" markerheight="8" markerwidth="8" orient="auto" refx="5" refy="9" viewbox="0 0 10 10">
+<path d="M 0 0 L 5 10 L 10 0 z" fill="#525252"></path>
+</marker>
+</defs>
+<!-- 纵向时间轴（时间向下流） -->
+<text class="edge-label" text-anchor="middle" x="152" y="30">时间 ↓</text>
+<line class="diagram-ink" marker-end="url(#tl-down)" x1="152" x2="152" y1="44" y2="434"></line>
+<!-- 1 · 2024末 · v1.38 -->
+<circle cx="152" cy="70" fill="#0A0A0A" r="5"></circle>
+<text class="edge-label" text-anchor="end" x="140" y="74">2024末</text>
+<rect class="diagram-ink node-fill" height="34" rx="4" width="566" x="178" y="53"></rect>
+<text class="node-label" font-size="12" text-anchor="start" x="192" y="74">v1.38：弃用 gen_ai.prompt → 改 gen_ai.input.messages</text>
+<!-- 2 · 2025-02 · OpenLLMetry 捐赠停滞 -->
+<circle cx="152" cy="122" fill="#A3A3A3" r="5"></circle>
+<text class="edge-label" text-anchor="end" x="140" y="126">2025-02</text>
+<rect fill="none" height="34" rx="4" stroke="#A3A3A3" stroke-dasharray="3 3" stroke-width="1" width="566" x="178" y="105"></rect>
+<text class="node-label" font-size="12" text-anchor="start" x="192" y="126">OpenLLMetry 提交捐赠 OTel —— 至今停滞 14+ 个月（未决）</text>
+<!-- 3 · 2025-03 · Arize 收 Velvet -->
+<circle cx="152" cy="174" fill="#0A0A0A" r="5"></circle>
+<text class="edge-label" text-anchor="end" x="140" y="178">2025-03</text>
+<rect class="diagram-ink node-fill" height="34" rx="4" width="566" x="178" y="157"></rect>
+<text class="node-label" font-size="12" text-anchor="start" x="192" y="178">Arize 收购 Velvet（同期 Arize 完成 $70M C 轮）</text>
+<!-- 4 · 2025-04 · v1.41 -->
+<circle cx="152" cy="226" fill="#0A0A0A" r="5"></circle>
+<text class="edge-label" text-anchor="end" x="140" y="230">2025-04</text>
+<rect class="diagram-ink node-fill" height="34" rx="4" width="566" x="178" y="209"></rect>
+<text class="node-label" font-size="12" text-anchor="start" x="192" y="230">v1.41：拆分 invoke_agent + 加 cache / reasoning token 属性</text>
+<!-- 5 · 2025-06 · Langfuse eval 开源 -->
+<circle cx="152" cy="278" fill="#B73B2F" r="5"></circle>
+<text class="edge-label" text-anchor="end" x="140" y="282">2025-06</text>
+<rect class="diagram-accent node-fill-accent" height="34" rx="4" width="566" x="178" y="261"></rect>
+<text class="node-label" font-size="12" text-anchor="start" x="192" y="282">Langfuse 开源 LLM-as-judge 在线评估（eval × obs 融合）</text>
+<!-- 6 · 2026-01 · ClickHouse 收 Langfuse -->
+<circle cx="152" cy="330" fill="#B73B2F" r="5"></circle>
+<text class="edge-label" text-anchor="end" x="140" y="334">2026-01</text>
+<rect class="diagram-accent node-fill-accent" height="34" rx="4" width="566" x="178" y="313"></rect>
+<text class="node-label" font-size="12" text-anchor="start" x="192" y="334">ClickHouse 收购 Langfuse（$400M · $15B 估值）</text>
+<!-- 7 · 2026-03 · Helicone 转维护 -->
+<circle cx="152" cy="382" fill="#B73B2F" r="5"></circle>
+<text class="edge-label" text-anchor="end" x="140" y="386">2026-03</text>
+<rect fill="none" height="34" rx="4" stroke="#B73B2F" stroke-width="1.5" width="566" x="178" y="365"></rect>
+<text class="node-label" font-size="12" text-anchor="start" x="192" y="386">Helicone 被 Mintlify 收购 → 转维护模式（新项目勿选）</text>
+<!-- 图例 -->
+<rect class="diagram-ink node-fill" height="12" width="12" x="40" y="440"></rect>
+<text class="edge-label" text-anchor="start" x="58" y="450">规格变更</text>
+<rect class="diagram-accent node-fill-accent" height="12" width="12" x="180" y="440"></rect>
+<text class="edge-label" text-anchor="start" x="198" y="450">融合/并购</text>
+<rect fill="none" height="12" rx="0" stroke="#A3A3A3" stroke-dasharray="3 3" stroke-width="1" width="12" x="320" y="440"></rect>
+<text class="edge-label" text-anchor="start" x="338" y="450">停滞/未决</text>
+<rect fill="none" height="12" stroke="#B73B2F" stroke-width="1.5" width="12" x="470" y="440"></rect>
+<text class="edge-label" text-anchor="start" x="488" y="450">过时/维护</text>
+<style>
+.diagram-ink{stroke:#0A0A0A;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}.diagram-accent{stroke:#B73B2F;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.diagram-soft{stroke:#A3A3A3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}.node-fill{fill:#FFFFFF}.node-fill-accent{fill:rgba(183,59,47,.06)}.node-label{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:13px;font-weight:500;fill:#0A0A0A}.node-label-accent{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:13px;font-weight:700;fill:#B73B2F}.edge-label{font-family:monospace;font-size:11px;fill:#525252;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}.branch-label{font-family:monospace;font-size:11px;font-weight:700;fill:#B73B2F;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}</style>
+</svg>

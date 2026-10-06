@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="图2.3 三条 instrumentation 路相对 app 的位置，及 emitter→OTLP→backend 分层" role="img" viewbox="0 0 840 440" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arr3-ink" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="arr3-soft" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#A3A3A3"></path>
+</marker>
+<marker id="arr3-accent" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- Agent App 进程 box -->
+<rect class="diagram-ink node-fill" height="200" rx="8" width="350" x="20" y="60"></rect>
+<text class="node-label" text-anchor="middle" x="195" y="84">Agent App 进程</text>
+<!-- inside app: LLM call logic -->
+<rect class="diagram-soft node-fill" height="50" rx="4" width="150" x="40" y="100"></rect>
+<text class="edge-label" text-anchor="middle" x="115" y="122">LLM 调用逻辑</text>
+<text class="edge-label" text-anchor="middle" x="115" y="138">chain / callback</text>
+<!-- inside app: SDK/callback label -->
+<rect class="node-fill-accent" height="50" rx="4" width="140" x="210" y="100"></rect>
+<text class="node-label-accent" text-anchor="middle" x="280" y="118">① SDK/callback</text>
+<text class="edge-label" text-anchor="middle" x="280" y="136">看见推理状态</text>
+<!-- inside app: auto-instrument label -->
+<rect class="diagram-soft node-fill" height="44" rx="4" width="310" x="40" y="170"></rect>
+<text class="node-label" text-anchor="middle" x="195" y="189">② auto-instrument (monkey-patch)</text>
+<text class="edge-label" text-anchor="middle" x="195" y="206">看见推理状态 · OTLP 原生</text>
+<!-- OTLP export arrow from app to collector -->
+<line class="diagram-ink" marker-end="url(#arr3-ink)" x1="370" x2="430" y1="160" y2="160"></line>
+<text class="edge-label" text-anchor="middle" x="400" y="150">OTLP</text>
+<!-- OTel Collector / OTLP endpoint -->
+<rect class="diagram-ink node-fill" height="60" rx="6" width="160" x="430" y="130"></rect>
+<text class="node-label" text-anchor="middle" x="510" y="156">OTLP</text>
+<text class="edge-label" text-anchor="middle" x="510" y="174">Collector</text>
+<!-- from collector to backends -->
+<line class="diagram-ink" marker-end="url(#arr3-ink)" x1="590" x2="650" y1="160" y2="120"></line>
+<line class="diagram-ink" marker-end="url(#arr3-ink)" x1="590" x2="650" y1="160" y2="160"></line>
+<line class="diagram-ink" marker-end="url(#arr3-ink)" x1="590" x2="650" y1="160" y2="200"></line>
+<!-- Backends -->
+<rect class="diagram-ink node-fill" height="40" rx="5" width="160" x="650" y="96"></rect>
+<text class="node-label" text-anchor="middle" x="730" y="121">LangSmith</text>
+<rect class="diagram-ink node-fill" height="40" rx="5" width="160" x="650" y="144"></rect>
+<text class="node-label" text-anchor="middle" x="730" y="169">Langfuse</text>
+<rect class="diagram-ink node-fill" height="40" rx="5" width="160" x="650" y="192"></rect>
+<text class="node-label" text-anchor="middle" x="730" y="217">Phoenix / 自选</text>
+<!-- Proxy gateway path (below) -->
+<rect class="diagram-soft node-fill" height="50" rx="6" width="320" x="40" y="310"></rect>
+<text class="node-label" text-anchor="middle" x="200" y="331">③ 代理网关（HTTP 路径）</text>
+<text class="edge-label" text-anchor="middle" x="200" y="349">仅 HTTP I/O · 进程内不可见</text>
+<!-- gateway arrow to LLM API -->
+<line class="diagram-soft" marker-end="url(#arr3-soft)" stroke-dasharray="6 3" x1="360" x2="660" y1="335" y2="335"></line>
+<text class="edge-label" text-anchor="middle" x="510" y="326">HTTP to LLM API</text>
+<rect class="diagram-soft node-fill" height="50" rx="6" width="150" x="660" y="310"></rect>
+<text class="edge-label" text-anchor="middle" x="735" y="331">LLM API</text>
+<text class="edge-label" text-anchor="middle" x="735" y="349">(OpenAI/Anthropic)</text>
+<!-- gateway self record -->
+<text class="edge-label" text-anchor="middle" x="200" y="392">网关自记 cost/latency → 专属 backend（锁定）</text>
+<!-- legend -->
+<text class="edge-label" x="20" y="430">锁定风险：在 emitter（①②），backend 可自由换；在网关（③），换网关即换 backend</text>
+<style>
+.diagram-ink{stroke:#0A0A0A;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}.diagram-accent{stroke:#B73B2F;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.diagram-soft{stroke:#A3A3A3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}.node-fill{fill:#FFFFFF}.node-fill-accent{fill:rgba(183,59,47,.06)}.node-label{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:13px;font-weight:500;fill:#0A0A0A}.node-label-accent{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:13px;font-weight:700;fill:#B73B2F}.edge-label{font-family:monospace;font-size:11px;fill:#525252;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}.branch-label{font-family:monospace;font-size:11px;font-weight:700;fill:#B73B2F;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}</style>
+</svg>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="一个 chat span 的解剖：左侧是 attributes（结构化元数据），右侧是 events（prompt/completion 文本），底部是 status 和时间" role="img" viewbox="0 0 760 460" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arr13" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#525252"></path>
+</marker>
+<marker id="arr13-r" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- span outer frame -->
+<rect class="diagram-accent node-fill-accent" height="400" rx="8" stroke-width="2" width="700" x="30" y="20"></rect>
+<text class="node-label-accent" font-size="15" text-anchor="middle" x="380" y="46">chat span</text>
+<text class="edge-label" text-anchor="middle" x="380" y="62">name="chat" · kind=CLIENT · trace_id=t001 · span_id=s003 · parent=s001</text>
+<!-- left: attributes box -->
+<rect class="diagram-ink node-fill" height="256" rx="5" width="300" x="50" y="76"></rect>
+<text class="node-label" font-weight="700" text-anchor="middle" x="200" y="100">attributes</text>
+<text class="edge-label" text-anchor="middle" x="200" y="118">gen_ai.provider.name: openai</text>
+<text class="edge-label" text-anchor="middle" x="200" y="136">gen_ai.request.model: gpt-4o</text>
+<text class="edge-label" text-anchor="middle" x="200" y="154">gen_ai.response.model: gpt-4o-2024-11-20</text>
+<text class="edge-label" text-anchor="middle" x="200" y="172">gen_ai.usage.input_tokens: 1284</text>
+<text class="edge-label" text-anchor="middle" x="200" y="190">gen_ai.usage.output_tokens: 312</text>
+<text class="edge-label" text-anchor="middle" x="200" y="208">gen_ai.usage.cache_read.input_tokens: 800</text>
+<text class="edge-label" text-anchor="middle" x="200" y="226">gen_ai.response.finish_reasons: [stop]</text>
+<text class="edge-label" text-anchor="middle" x="200" y="244">gen_ai.response.time_to_first_chunk: 0.83</text>
+<text class="branch-label" text-anchor="middle" x="200" y="278">低基数·可聚合·可过滤</text>
+<text class="edge-label" text-anchor="middle" x="200" y="296">成本 ← 后端 ingestion 时算</text>
+<text class="edge-label" text-anchor="middle" x="200" y="314">（semconv 不定义 gen_ai.cost.*）</text>
+<!-- right: events box -->
+<rect class="diagram-soft node-fill" height="256" rx="5" width="300" x="410" y="76"></rect>
+<text class="node-label" font-weight="700" text-anchor="middle" x="560" y="100">events（opt-in）</text>
+<text class="edge-label" text-anchor="middle" x="560" y="118">name: gen_ai.input.messages</text>
+<text class="edge-label" text-anchor="middle" x="560" y="136">timestamp: 2026-06-03T09:00:00Z</text>
+<text class="edge-label" text-anchor="middle" x="560" y="154">body: [{role:system, …},</text>
+<text class="edge-label" text-anchor="middle" x="560" y="170">       {role:user, content:…}]</text>
+<line class="diagram-soft" x1="480" x2="640" y1="182" y2="182"></line>
+<text class="edge-label" text-anchor="middle" x="560" y="200">name: gen_ai.output.messages</text>
+<text class="edge-label" text-anchor="middle" x="560" y="218">timestamp: 2026-06-03T09:00:01Z</text>
+<text class="edge-label" text-anchor="middle" x="560" y="236">body: [{role:assistant,</text>
+<text class="edge-label" text-anchor="middle" x="560" y="252">       content:…, tool_calls:[…]}]</text>
+<text class="branch-label" text-anchor="middle" x="560" y="278">大体积·敏感·opt-in</text>
+<text class="edge-label" text-anchor="middle" x="560" y="296">v1.38 起替换 gen_ai.prompt</text>
+<text class="edge-label" text-anchor="middle" x="560" y="314">/ gen_ai.completion（已弃用）</text>
+<!-- bottom: status + time -->
+<rect class="diagram-ink node-fill" height="46" rx="5" width="660" x="50" y="354"></rect>
+<text class="node-label" text-anchor="middle" x="220" y="374">status: OK</text>
+<text class="edge-label" text-anchor="middle" x="380" y="374">|</text>
+<text class="node-label" text-anchor="middle" x="540" y="374">start: T+0.00s → end: T+1.43s</text>
+<text class="edge-label" text-anchor="middle" x="380" y="392">延迟 = LLM 外部 I/O，不是 CPU</text>
+<style>
+.diagram-ink{stroke:#0A0A0A;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}.diagram-accent{stroke:#B73B2F;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.diagram-soft{stroke:#A3A3A3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}.node-fill{fill:#FFFFFF}.node-fill-accent{fill:rgba(183,59,47,.06)}.node-label{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:13px;font-weight:500;fill:#0A0A0A}.node-label-accent{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:13px;font-weight:700;fill:#B73B2F}.edge-label{font-family:monospace;font-size:11px;fill:#525252;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}.branch-label{font-family:monospace;font-size:11px;font-weight:700;fill:#B73B2F;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}</style>
+</svg>
