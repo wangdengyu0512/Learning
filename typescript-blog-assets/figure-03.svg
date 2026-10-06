@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="unknown 是单向膜：值进得来，用之前必须收窄才能出去；any 两个方向都不拦，关闭检查" height="300" role="img" viewBox="0 0 700 300" width="700" xmlns="http://www.w3.org/2000/svg"><style>
+:root { --bg:#fff; --ink:#0a0a0a; --ink-soft:#525252; --ink-faint:#a3a3a3; --vermilion:#b73b2f; --vermilion-soft:rgba(183,59,47,.08); }
+svg { background:#fff; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif; }
+.diagram-ink { stroke:var(--ink); fill:none; stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round; }
+.diagram-accent { stroke:var(--vermilion); fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+.diagram-soft { stroke:var(--ink-faint); fill:none; stroke-width:1.1; stroke-dasharray:3 3; }
+.node-fill { fill:var(--bg); }
+.node-fill-accent { fill:var(--vermilion-soft); }
+.node-label { font-size:13px; font-weight:500; fill:var(--ink); }
+.node-label-accent { font-size:13px; font-weight:700; fill:var(--vermilion); }
+.edge-label { font-family:Consolas,"SFMono-Regular",monospace; font-size:11px; fill:var(--ink-soft); paint-order:stroke; stroke:var(--bg); stroke-width:4px; stroke-linejoin:round; }
+.branch-label { font-family:Consolas,"SFMono-Regular",monospace; font-size:11px; font-weight:700; fill:var(--vermilion); paint-order:stroke; stroke:var(--bg); stroke-width:4px; stroke-linejoin:round; }
+</style>
+<defs>
+<marker id="ar-ink" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="ar-verm" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- unknown side -->
+<text class="node-label" text-anchor="middle" x="155" y="44">unknown（安全顶类型）</text>
+<rect class="diagram-ink node-fill" height="64" rx="6" width="120" x="95" y="110"></rect>
+<text class="node-label" text-anchor="middle" x="155" y="147">unknown</text>
+<!-- value in -->
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="20" x2="93" y1="142" y2="142"></line>
+<text class="edge-label" style="stroke:none" text-anchor="middle" x="56" y="128">任意值</text>
+<!-- out blocked -->
+<line class="diagram-soft" x1="215" x2="280" y1="142" y2="142"></line>
+<line class="diagram-accent" stroke-width="2.4" x1="285" x2="285" y1="124" y2="160"></line>
+<text class="branch-label" text-anchor="middle" x="250" y="186">✗ 用前必须收窄</text>
+<!-- divider -->
+<line class="diagram-soft" x1="350" x2="350" y1="70" y2="240"></line>
+<!-- any side -->
+<text class="node-label-accent" text-anchor="middle" x="545" y="44">any（逃生舱）</text>
+<rect class="diagram-accent node-fill-accent" height="64" rx="6" width="120" x="485" y="110"></rect>
+<text class="node-label-accent" text-anchor="middle" x="545" y="147">any</text>
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="410" x2="483" y1="142" y2="142"></line>
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="607" x2="680" y1="142" y2="142"></line>
+<text class="edge-label" style="stroke:none" text-anchor="middle" x="545" y="200">进出都不拦，检查关闭</text>
+<text class="branch-label" text-anchor="middle" x="545" y="222">代价：错误静默漏到运行时</text>
+</svg>
