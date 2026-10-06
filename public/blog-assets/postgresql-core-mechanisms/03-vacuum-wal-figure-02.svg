@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="事务 ID 回卷环：冻结安全区与未冻结的危险区" role="img" viewbox="0 0 520 380" xmlns="http://www.w3.org/2000/svg"><style>:root {
+  --bg: #ffffff;
+  --ink: #0a0a0a;
+  --ink-soft: #525252;
+  --ink-faint: #a3a3a3;
+  --vermilion: #b73b2f;
+  --vermilion-soft: rgba(183, 59, 47, 0.08);
+  --sans: "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  --mono: "JetBrains Mono", Consolas, monospace;
+}
+.diagram-ink { stroke: var(--ink); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: var(--vermilion); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: var(--ink-faint); fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: var(--bg); }
+.node-fill-accent { fill: var(--vermilion-soft); }
+.node-label { font-family: var(--sans); font-size: 13px; font-weight: 500; fill: var(--ink); }
+.node-label-accent { font-family: var(--sans); font-size: 13px; font-weight: 700; fill: var(--vermilion); }
+.edge-label { font-family: var(--mono); font-size: 11px; fill: var(--ink-soft); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: var(--mono); font-size: 11px; font-weight: 700; fill: var(--vermilion); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="m-verm-r" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+<marker id="m-ink-r" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+</defs>
+<!-- the ring -->
+<circle class="diagram-ink" cx="260" cy="195" r="120"></circle>
+<!-- "current xid" pointer at top -->
+<circle cx="260" cy="75" fill="#0A0A0A" r="5"></circle>
+<text class="node-label" text-anchor="middle" x="260" y="52">当前 xid</text>
+<text class="edge-label" text-anchor="middle" x="260" y="38">环上不断前移</text>
+<!-- past half (right side, safe-ish) arrow direction -->
+<path class="diagram-ink" d="M 305 92 A 120 120 0 0 1 348 240" fill="none" marker-end="url(#m-ink-r)"></path>
+<text class="edge-label" text-anchor="middle" x="372" y="150">过去</text>
+<text class="edge-label" text-anchor="middle" x="372" y="166">2³¹ 内</text>
+<!-- danger zone label (far side / approaching future) -->
+<path class="diagram-soft" d="M 172 240 A 120 120 0 0 1 215 92" fill="none"></path>
+<text class="branch-label" text-anchor="middle" x="148" y="150">危险区</text>
+<text class="edge-label" text-anchor="middle" x="148" y="166">看似在未来</text>
+<!-- bottom: wrap point -->
+<text class="edge-label" text-anchor="middle" x="260" y="332">0 / 2³² 回卷点</text>
+<!-- old tuple position (left, sliding toward danger) -->
+<circle cx="155" cy="270" fill="#B73B2F" r="5"></circle>
+<text class="branch-label" text-anchor="middle" x="118" y="290">老行 xmin</text>
+<!-- frozen safe zone callout box -->
+<rect class="diagram-accent node-fill-accent" height="70" rx="6" stroke-width="1.6" width="120" x="200" y="160"></rect>
+<text class="node-label-accent" text-anchor="middle" x="260" y="188">frozen</text>
+<text class="edge-label" text-anchor="middle" x="260" y="208">不参与比大小</text>
+<text class="edge-label" text-anchor="middle" x="260" y="223">永久可见</text>
+<!-- arrow: old tuple slides toward danger if not frozen -->
+<path class="diagram-accent" d="M 150 260 A 120 120 0 0 1 168 150" fill="none" marker-end="url(#m-verm-r)"></path>
+<text class="branch-label" text-anchor="middle" x="95" y="210">不冻结则滑入</text>
+</svg>

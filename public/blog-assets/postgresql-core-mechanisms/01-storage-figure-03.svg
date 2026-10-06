@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="主表行通过指针引用 TOAST 表中的切片" role="img" viewbox="0 0 620 250" xmlns="http://www.w3.org/2000/svg"><style>:root {
+  --bg: #ffffff;
+  --ink: #0a0a0a;
+  --ink-soft: #525252;
+  --ink-faint: #a3a3a3;
+  --vermilion: #b73b2f;
+  --vermilion-soft: rgba(183, 59, 47, 0.08);
+  --sans: "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  --mono: "JetBrains Mono", Consolas, monospace;
+}
+.diagram-ink { stroke: var(--ink); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: var(--vermilion); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: var(--ink-faint); fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: var(--bg); }
+.node-fill-accent { fill: var(--vermilion-soft); }
+.node-label { font-family: var(--sans); font-size: 13px; font-weight: 500; fill: var(--ink); }
+.node-label-accent { font-family: var(--sans); font-size: 13px; font-weight: 700; fill: var(--vermilion); }
+.edge-label { font-family: var(--mono); font-size: 11px; fill: var(--ink-soft); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: var(--mono); font-size: 11px; font-weight: 700; fill: var(--vermilion); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="m-verm3" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- main table row -->
+<rect class="diagram-ink node-fill" height="92" rx="6" width="210" x="30" y="80"></rect>
+<text class="node-label" text-anchor="middle" x="135" y="74">主表行（&lt; 8KB）</text>
+<rect class="diagram-ink node-fill" height="56" width="80" x="46" y="98"></rect>
+<text class="edge-label" text-anchor="middle" x="86" y="122">普通列</text>
+<text class="edge-label" text-anchor="middle" x="86" y="140">就地存</text>
+<rect class="diagram-accent node-fill-accent" height="56" width="82" x="142" y="98"></rect>
+<text class="branch-label" text-anchor="middle" x="183" y="122">大列</text>
+<text class="edge-label" text-anchor="middle" x="183" y="140">→ 指针</text>
+<!-- pointer arrow -->
+<line class="diagram-accent" marker-end="url(#m-verm3)" x1="224" x2="372" y1="126" y2="126"></line>
+<text class="branch-label" text-anchor="middle" x="298" y="116">TOAST 指针</text>
+<!-- toast table slices -->
+<text class="node-label" text-anchor="middle" x="488" y="60">TOAST 表（pg_toast）</text>
+<rect class="diagram-ink node-fill" height="36" rx="4" width="216" x="380" y="74"></rect>
+<text class="edge-label" text-anchor="middle" x="488" y="96">分片 #1 · 压缩后 ≈2KB</text>
+<rect class="diagram-ink node-fill" height="36" rx="4" width="216" x="380" y="116"></rect>
+<text class="edge-label" text-anchor="middle" x="488" y="138">分片 #2 · ≈2KB</text>
+<rect class="diagram-ink node-fill" height="36" rx="4" width="216" x="380" y="158"></rect>
+<text class="edge-label" text-anchor="middle" x="488" y="180">分片 #3 · 末片</text>
+</svg>

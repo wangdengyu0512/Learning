@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="三层学习梯度金字塔：概念层、原理层、应用判别层" role="img" viewbox="0 0 680 400" xmlns="http://www.w3.org/2000/svg"><style>:root {
+  --bg: #ffffff;
+  --ink: #0a0a0a;
+  --ink-soft: #525252;
+  --ink-faint: #a3a3a3;
+  --vermilion: #b73b2f;
+  --vermilion-soft: rgba(183, 59, 47, 0.08);
+  --sans: "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  --mono: "JetBrains Mono", Consolas, monospace;
+}
+.diagram-ink { stroke: var(--ink); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: var(--vermilion); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: var(--ink-faint); fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: var(--bg); }
+.node-fill-accent { fill: var(--vermilion-soft); }
+.node-label { font-family: var(--sans); font-size: 13px; font-weight: 500; fill: var(--ink); }
+.node-label-accent { font-family: var(--sans); font-size: 13px; font-weight: 700; fill: var(--vermilion); }
+.edge-label { font-family: var(--mono); font-size: 11px; fill: var(--ink-soft); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: var(--mono); font-size: 11px; font-weight: 700; fill: var(--vermilion); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="up-arrow" markerHeight="8" markerWidth="8" orient="auto" refX="5" refY="1" viewBox="0 0 10 10">
+<path d="M 0 10 L 5 0 L 10 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- left vertical "harder upward" arrow -->
+<line class="diagram-accent" marker-end="url(#up-arrow)" x1="78" x2="78" y1="338" y2="70"></line>
+<text class="branch-label" text-anchor="middle" x="78" y="362">越往上越难</text>
+<text class="edge-label" text-anchor="middle" x="78" y="378">越接近真正学会</text>
+<!-- bottom band (widest): 概念层 -->
+<polygon class="diagram-ink node-fill" points="193,234 487,234 566,326 114,326"></polygon>
+<text class="node-label" text-anchor="middle" x="340" y="276">概念层 · 回忆</text>
+<text class="edge-label" text-anchor="middle" x="340" y="296">xmin/xmax、ctid、TOAST、默认隔离级别是什么</text>
+<!-- middle band: 原理层 -->
+<polygon class="diagram-ink node-fill" points="266,140 414,140 487,234 193,234"></polygon>
+<text class="node-label" text-anchor="middle" x="340" y="180">原理层 · 为什么</text>
+<text class="edge-label" text-anchor="middle" x="340" y="200">读不阻塞写、HOT、bitmap、回卷</text>
+<!-- top band: 应用判别层 -->
+<polygon class="diagram-accent node-fill-accent" points="340,58 414,140 266,140"></polygon>
+<text class="node-label-accent" text-anchor="middle" x="340" y="118">应用判别层</text>
+<text class="edge-label" text-anchor="middle" x="340" y="134">这个场景该用哪一章</text>
+</svg>

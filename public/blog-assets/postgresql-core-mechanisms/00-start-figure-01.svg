@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="以 MVCC 行版本为中心的 PostgreSQL 核心概念地图" role="img" viewbox="0 0 860 580" xmlns="http://www.w3.org/2000/svg"><style>:root {
+  --bg: #ffffff;
+  --ink: #0a0a0a;
+  --ink-soft: #525252;
+  --ink-faint: #a3a3a3;
+  --vermilion: #b73b2f;
+  --vermilion-soft: rgba(183, 59, 47, 0.08);
+  --sans: "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  --mono: "JetBrains Mono", Consolas, monospace;
+}
+.diagram-ink { stroke: var(--ink); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: var(--vermilion); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: var(--ink-faint); fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: var(--bg); }
+.node-fill-accent { fill: var(--vermilion-soft); }
+.node-label { font-family: var(--sans); font-size: 13px; font-weight: 500; fill: var(--ink); }
+.node-label-accent { font-family: var(--sans); font-size: 13px; font-weight: 700; fill: var(--vermilion); }
+.edge-label { font-family: var(--mono); font-size: 11px; fill: var(--ink-soft); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: var(--mono); font-size: 11px; font-weight: 700; fill: var(--vermilion); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="m-ink" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="m-verm" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- ============ Center node ============ -->
+<rect class="diagram-accent node-fill-accent" height="68" rx="8" stroke-width="2" width="168" x="346" y="256"></rect>
+<text class="node-label-accent" text-anchor="middle" x="430" y="285">行版本 · MVCC</text>
+<text class="edge-label" text-anchor="middle" x="430" y="305">一行存在多个版本</text>
+<!-- ============ Spokes (drawn first, under nodes) ============ -->
+<!-- N -->
+<line class="diagram-accent" marker-end="url(#m-verm)" x1="430" x2="430" y1="256" y2="93"></line>
+<text class="edge-label" text-anchor="middle" x="430" y="178">决定可见性</text>
+<!-- S -->
+<line class="diagram-ink" marker-end="url(#m-ink)" x1="430" x2="430" y1="324" y2="487"></line>
+<text class="edge-label" text-anchor="middle" x="430" y="408">先写日志·恢复</text>
+<!-- E -->
+<line class="diagram-accent" marker-end="url(#m-verm)" x1="514" x2="668" y1="290" y2="290"></line>
+<text class="edge-label" text-anchor="middle" x="591" y="282">回收死元组</text>
+<!-- W -->
+<line class="diagram-ink" marker-end="url(#m-ink)" x1="346" x2="194" y1="290" y2="290"></line>
+<text class="edge-label" text-anchor="middle" x="270" y="282">index-only scan</text>
+<!-- NE corner -> dead tuple BL -->
+<line class="diagram-ink" marker-end="url(#m-ink)" x1="514" x2="640" y1="262" y2="179"></line>
+<text class="edge-label" text-anchor="middle" x="592" y="214">旧版本→</text>
+<!-- NW corner -> heap BR -->
+<line class="diagram-ink" marker-end="url(#m-ink)" x1="346" x2="222" y1="262" y2="179"></line>
+<text class="edge-label" text-anchor="middle" x="266" y="214">存放于</text>
+<!-- SE corner -> planner TL -->
+<line class="diagram-ink" marker-end="url(#m-ink)" x1="514" x2="638" y1="318" y2="399"></line>
+<text class="edge-label" text-anchor="middle" x="600" y="362">按统计选计划</text>
+<!-- SW corner -> index TR -->
+<line class="diagram-ink" marker-end="url(#m-ink)" x1="346" x2="224" y1="318" y2="399"></line>
+<text class="edge-label" text-anchor="middle" x="262" y="362">加速定位</text>
+<!-- ============ Outer nodes ============ -->
+<!-- N: snapshot -->
+<rect class="diagram-ink node-fill" height="54" rx="6" width="174" x="343" y="39"></rect>
+<text class="node-label" text-anchor="middle" x="430" y="62">快照 + 隔离级别</text>
+<text class="edge-label" text-anchor="middle" x="430" y="80">snapshot</text>
+<!-- NE: dead tuple -->
+<rect class="diagram-ink node-fill" height="56" rx="6" width="170" x="640" y="123"></rect>
+<text class="node-label" text-anchor="middle" x="725" y="146">死元组</text>
+<text class="edge-label" text-anchor="middle" x="725" y="165">dead tuple</text>
+<!-- E: VACUUM -->
+<rect class="diagram-ink node-fill" height="58" rx="6" width="184" x="668" y="261"></rect>
+<text class="node-label" text-anchor="middle" x="760" y="285">VACUUM / autovacuum</text>
+<text class="edge-label" text-anchor="middle" x="760" y="304">含冻结防回卷</text>
+<!-- SE: planner -->
+<rect class="diagram-ink node-fill" height="58" rx="6" width="176" x="638" y="399"></rect>
+<text class="node-label" text-anchor="middle" x="726" y="423">规划器 + 统计信息</text>
+<text class="edge-label" text-anchor="middle" x="726" y="442">cost-based</text>
+<!-- S: WAL -->
+<rect class="diagram-ink node-fill" height="56" rx="6" width="174" x="343" y="487"></rect>
+<text class="node-label" text-anchor="middle" x="430" y="510">WAL</text>
+<text class="edge-label" text-anchor="middle" x="430" y="529">预写日志</text>
+<!-- SW: indexes -->
+<rect class="diagram-ink node-fill" height="58" rx="6" width="174" x="50" y="399"></rect>
+<text class="node-label" text-anchor="middle" x="137" y="423">索引</text>
+<text class="edge-label" text-anchor="middle" x="137" y="442">B-tree / GIN / BRIN</text>
+<!-- W: visibility map -->
+<rect class="diagram-ink node-fill" height="58" rx="6" width="174" x="20" y="261"></rect>
+<text class="node-label" text-anchor="middle" x="107" y="285">可见性图</text>
+<text class="edge-label" text-anchor="middle" x="107" y="304">visibility map</text>
+<!-- NW: heap -->
+<rect class="diagram-ink node-fill" height="56" rx="6" width="172" x="50" y="123"></rect>
+<text class="node-label" text-anchor="middle" x="136" y="146">堆表 + 8KB Page</text>
+<text class="edge-label" text-anchor="middle" x="136" y="165">+ HOT 更新</text>
+</svg>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="同一行的两个版本对两个不同快照呈现不同可见性" role="img" viewbox="0 0 640 360" xmlns="http://www.w3.org/2000/svg"><style>:root {
+  --bg: #ffffff;
+  --ink: #0a0a0a;
+  --ink-soft: #525252;
+  --ink-faint: #a3a3a3;
+  --vermilion: #b73b2f;
+  --vermilion-soft: rgba(183, 59, 47, 0.08);
+  --sans: "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  --mono: "JetBrains Mono", Consolas, monospace;
+}
+.diagram-ink { stroke: var(--ink); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: var(--vermilion); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: var(--ink-faint); fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: var(--bg); }
+.node-fill-accent { fill: var(--vermilion-soft); }
+.node-label { font-family: var(--sans); font-size: 13px; font-weight: 500; fill: var(--ink); }
+.node-label-accent { font-family: var(--sans); font-size: 13px; font-weight: 700; fill: var(--vermilion); }
+.edge-label { font-family: var(--mono); font-size: 11px; fill: var(--ink-soft); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: var(--mono); font-size: 11px; font-weight: 700; fill: var(--vermilion); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="m-ink" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="m-verm" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- timeline axis -->
+<line class="diagram-ink" marker-end="url(#m-ink)" x1="40" x2="600" y1="70" y2="70"></line>
+<text class="edge-label" text-anchor="end" x="600" y="60">txid 递增 →</text>
+<!-- tick: 100 -->
+<line class="diagram-ink" x1="120" x2="120" y1="64" y2="76"></line>
+<text class="edge-label" text-anchor="middle" x="120" y="92">100</text>
+<!-- tick: 205 -->
+<line class="diagram-accent" x1="400" x2="400" y1="64" y2="76"></line>
+<text class="branch-label" text-anchor="middle" x="400" y="92">205</text>
+<!-- v1 lifespan bar -->
+<rect class="diagram-ink node-fill" height="30" rx="4" width="280" x="120" y="108"></rect>
+<text class="node-label" text-anchor="start" x="150" y="127">v1</text>
+<text class="edge-label" text-anchor="end" x="350" y="127">xmin=100 xmax=205</text>
+<!-- v2 lifespan bar -->
+<rect class="diagram-accent node-fill-accent" height="30" rx="4" stroke-width="2" width="200" x="400" y="108"></rect>
+<text class="node-label-accent" text-anchor="start" x="430" y="127">v2</text>
+<text class="edge-label" text-anchor="end" x="560" y="127">xmin=205</text>
+<!-- reader A snapshot @150 -->
+<line class="diagram-soft" x1="230" x2="230" y1="100" y2="190"></line>
+<rect class="diagram-ink node-fill" height="58" rx="6" width="160" x="150" y="190"></rect>
+<text class="node-label" text-anchor="middle" x="230" y="212">快照 A · txid 150</text>
+<text class="edge-label" text-anchor="middle" x="230" y="232">205 尚未提交</text>
+<line class="diagram-ink" marker-end="url(#m-ink)" x1="230" x2="230" y1="138" y2="188"></line>
+<text class="branch-label" text-anchor="middle" x="230" y="272">看到 v1</text>
+<!-- reader B snapshot @300 -->
+<line class="diagram-soft" x1="500" x2="500" y1="100" y2="190"></line>
+<rect class="diagram-accent node-fill-accent" height="58" rx="6" stroke-width="2" width="160" x="420" y="190"></rect>
+<text class="node-label-accent" text-anchor="middle" x="500" y="212">快照 B · txid 300</text>
+<text class="edge-label" text-anchor="middle" x="500" y="232">205 已提交</text>
+<line class="diagram-accent" marker-end="url(#m-verm)" x1="500" x2="500" y1="138" y2="188"></line>
+<text class="branch-label" text-anchor="middle" x="500" y="272">看到 v2</text>
+<!-- bottom note -->
+<text class="edge-label" text-anchor="middle" x="320" y="320">同一物理行 · 两张快照 · 谁都没被阻塞</text>
+</svg>

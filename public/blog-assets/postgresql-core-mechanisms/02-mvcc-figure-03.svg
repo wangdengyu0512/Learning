@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="长事务持有老快照导致回收水平线卡住、多表系统性膨胀的因果链" role="img" viewbox="0 0 640 360" xmlns="http://www.w3.org/2000/svg"><style>:root {
+  --bg: #ffffff;
+  --ink: #0a0a0a;
+  --ink-soft: #525252;
+  --ink-faint: #a3a3a3;
+  --vermilion: #b73b2f;
+  --vermilion-soft: rgba(183, 59, 47, 0.08);
+  --sans: "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  --mono: "JetBrains Mono", Consolas, monospace;
+}
+.diagram-ink { stroke: var(--ink); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: var(--vermilion); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: var(--ink-faint); fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: var(--bg); }
+.node-fill-accent { fill: var(--vermilion-soft); }
+.node-label { font-family: var(--sans); font-size: 13px; font-weight: 500; fill: var(--ink); }
+.node-label-accent { font-family: var(--sans); font-size: 13px; font-weight: 700; fill: var(--vermilion); }
+.edge-label { font-family: var(--mono); font-size: 11px; fill: var(--ink-soft); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: var(--mono); font-size: 11px; font-weight: 700; fill: var(--vermilion); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="m-ink3" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="m-verm3" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- step 1 -->
+<rect class="diagram-accent node-fill-accent" height="48" rx="6" stroke-width="2" width="280" x="180" y="20"></rect>
+<text class="node-label-accent" text-anchor="middle" x="320" y="40">idle-in-transaction 长事务</text>
+<text class="edge-label" text-anchor="middle" x="320" y="58">持一张老快照不放</text>
+<line class="diagram-ink" marker-end="url(#m-ink3)" x1="320" x2="320" y1="68" y2="92"></line>
+<!-- step 2 -->
+<rect class="diagram-ink node-fill" height="48" rx="6" width="280" x="180" y="92"></rect>
+<text class="node-label" text-anchor="middle" x="320" y="112">回收水平线 (xmin horizon)</text>
+<text class="edge-label" text-anchor="middle" x="320" y="130">被钉住 · 不前进</text>
+<line class="diagram-ink" marker-end="url(#m-ink3)" x1="320" x2="320" y1="140" y2="164"></line>
+<!-- step 3 -->
+<rect class="diagram-ink node-fill" height="52" rx="6" width="320" x="160" y="164"></rect>
+<text class="node-label" text-anchor="middle" x="320" y="184">死元组无法判定为「对谁都不可见」</text>
+<text class="edge-label" text-anchor="middle" x="320" y="202">VACUUM 跑了也不敢回收</text>
+<line class="diagram-accent" marker-end="url(#m-verm3)" x1="320" x2="320" y1="216" y2="240"></line>
+<!-- step 4: multiple tables -->
+<text class="branch-label" text-anchor="middle" x="320" y="258">多张表一起膨胀</text>
+<rect class="diagram-ink node-fill" height="56" rx="6" width="120" x="120" y="270"></rect>
+<text class="edge-label" text-anchor="middle" x="180" y="294">表 A ↑</text>
+<text class="edge-label" text-anchor="middle" x="180" y="312">长事务读过</text>
+<rect class="diagram-ink node-fill" height="56" rx="6" width="120" x="260" y="270"></rect>
+<text class="edge-label" text-anchor="middle" x="320" y="294">表 B ↑</text>
+<text class="edge-label" text-anchor="middle" x="320" y="312">没读过 · 照胖</text>
+<rect class="diagram-ink node-fill" height="56" rx="6" width="120" x="400" y="270"></rect>
+<text class="edge-label" text-anchor="middle" x="460" y="294">表 C ↑</text>
+<text class="edge-label" text-anchor="middle" x="460" y="312">没读过 · 照胖</text>
+</svg>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="非 HOT 更新与 HOT 更新对索引的不同影响" role="img" viewbox="0 0 660 330" xmlns="http://www.w3.org/2000/svg"><style>:root {
+  --bg: #ffffff;
+  --ink: #0a0a0a;
+  --ink-soft: #525252;
+  --ink-faint: #a3a3a3;
+  --vermilion: #b73b2f;
+  --vermilion-soft: rgba(183, 59, 47, 0.08);
+  --sans: "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  --mono: "JetBrains Mono", Consolas, monospace;
+}
+.diagram-ink { stroke: var(--ink); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: var(--vermilion); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: var(--ink-faint); fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: var(--bg); }
+.node-fill-accent { fill: var(--vermilion-soft); }
+.node-label { font-family: var(--sans); font-size: 13px; font-weight: 500; fill: var(--ink); }
+.node-label-accent { font-family: var(--sans); font-size: 13px; font-weight: 700; fill: var(--vermilion); }
+.edge-label { font-family: var(--mono); font-size: 11px; fill: var(--ink-soft); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: var(--mono); font-size: 11px; font-weight: 700; fill: var(--vermilion); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="m-ink2" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="m-verm2" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- divider -->
+<line class="diagram-soft" x1="330" x2="330" y1="20" y2="310"></line>
+<!-- LEFT: non-HOT -->
+<text class="node-label" text-anchor="middle" x="160" y="34">非 HOT（改了带索引的列）</text>
+<!-- index node -->
+<rect class="diagram-ink node-fill" height="40" rx="4" width="100" x="40" y="56"></rect>
+<text class="node-label" text-anchor="middle" x="90" y="73">索引</text>
+<text class="edge-label" text-anchor="middle" x="90" y="89">两条项</text>
+<!-- old tuple -->
+<rect class="diagram-ink node-fill" height="40" rx="4" width="110" x="190" y="56"></rect>
+<text class="edge-label" text-anchor="middle" x="245" y="79">旧版本 (0,1)</text>
+<!-- new tuple + new index entry -->
+<rect class="diagram-accent node-fill-accent" height="44" rx="4" stroke-width="2" width="110" x="190" y="150"></rect>
+<text class="node-label-accent" text-anchor="middle" x="245" y="168">新版本 (0,2)</text>
+<text class="edge-label" text-anchor="middle" x="245" y="184">+ 新索引项</text>
+<!-- arrows: index -> old, index -> new -->
+<line class="diagram-ink" marker-end="url(#m-ink2)" x1="140" x2="188" y1="72" y2="74"></line>
+<line class="diagram-accent" x1="90" x2="90" y1="96" y2="172"></line>
+<line class="diagram-accent" marker-end="url(#m-verm2)" x1="90" x2="188" y1="172" y2="172"></line>
+<text class="branch-label" text-anchor="middle" x="120" y="232">索引被迫长大</text>
+<!-- RIGHT: HOT -->
+<text class="node-label" text-anchor="middle" x="500" y="34">HOT（只改无索引的列）</text>
+<!-- index node -->
+<rect class="diagram-ink node-fill" height="40" rx="4" width="100" x="372" y="56"></rect>
+<text class="node-label" text-anchor="middle" x="422" y="73">索引</text>
+<text class="edge-label" text-anchor="middle" x="422" y="89">一条项 · 不变</text>
+<!-- old line pointer -->
+<rect class="diagram-ink node-fill" height="44" rx="4" width="124" x="513" y="56"></rect>
+<text class="edge-label" text-anchor="middle" x="575" y="74">旧 line ptr (0,1)</text>
+<text class="edge-label" text-anchor="middle" x="575" y="90">HOT_UPDATED</text>
+<!-- new tuple same page -->
+<rect class="diagram-accent node-fill-accent" height="44" rx="4" stroke-width="2" width="124" x="513" y="150"></rect>
+<text class="node-label-accent" text-anchor="middle" x="575" y="168">新版本 (0,2)</text>
+<text class="edge-label" text-anchor="middle" x="575" y="184">同页 · 无新索引项</text>
+<!-- arrow: index -> old line ptr -->
+<line class="diagram-ink" marker-end="url(#m-ink2)" x1="472" x2="513" y1="74" y2="74"></line>
+<!-- HOT chain: old line ptr -> new tuple -->
+<line class="diagram-accent" marker-end="url(#m-verm2)" x1="575" x2="575" y1="100" y2="148"></line>
+<text class="branch-label" text-anchor="middle" x="575" y="128">HOT 链</text>
+<text class="branch-label" text-anchor="middle" x="500" y="232">索引一动不动</text>
+<!-- bottom note both sides -->
+<text class="edge-label" text-anchor="middle" x="330" y="290">一个索引就能让 HOT 失效 → 退回左侧路径</text>
+</svg>

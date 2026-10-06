@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="规划器选择 join 算法的决策树" role="img" viewbox="0 0 660 360" xmlns="http://www.w3.org/2000/svg"><style>:root {
+  --bg: #ffffff;
+  --ink: #0a0a0a;
+  --ink-soft: #525252;
+  --ink-faint: #a3a3a3;
+  --vermilion: #b73b2f;
+  --vermilion-soft: rgba(183, 59, 47, 0.08);
+  --sans: "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  --mono: "JetBrains Mono", Consolas, monospace;
+}
+.diagram-ink { stroke: var(--ink); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: var(--vermilion); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: var(--ink-faint); fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: var(--bg); }
+.node-fill-accent { fill: var(--vermilion-soft); }
+.node-label { font-family: var(--sans); font-size: 13px; font-weight: 500; fill: var(--ink); }
+.node-label-accent { font-family: var(--sans); font-size: 13px; font-weight: 700; fill: var(--vermilion); }
+.edge-label { font-family: var(--mono); font-size: 11px; fill: var(--ink-soft); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: var(--mono); font-size: 11px; font-weight: 700; fill: var(--vermilion); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="m5-ink2" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+</defs>
+<!-- D1: both sorted? -->
+<polygon class="diagram-ink node-fill" points="330,20 470,60 330,100 190,60"></polygon>
+<text class="node-label" text-anchor="middle" x="330" y="56">两边已按连接键有序？</text>
+<text class="edge-label" text-anchor="middle" x="330" y="74">索引序 / 显式 Sort</text>
+<!-- D1 yes -> merge -->
+<line class="diagram-ink" marker-end="url(#m5-ink2)" x1="190" x2="110" y1="60" y2="60"></line>
+<text class="branch-label" text-anchor="middle" x="150" y="50">是</text>
+<rect class="diagram-accent node-fill-accent" height="48" rx="6" stroke-width="1.6" width="86" x="20" y="36"></rect>
+<text class="node-label-accent" text-anchor="middle" x="63" y="58">merge join</text>
+<text class="edge-label" text-anchor="middle" x="63" y="75">线性归并</text>
+<!-- D1 no -> D2 -->
+<line class="diagram-ink" marker-end="url(#m5-ink2)" x1="330" x2="330" y1="100" y2="138"></line>
+<text class="branch-label" text-anchor="middle" x="344" y="122">否</text>
+<!-- D2: equi-join & build fits work_mem? -->
+<polygon class="diagram-ink node-fill" points="330,140 480,182 330,224 180,182"></polygon>
+<text class="node-label" text-anchor="middle" x="330" y="178">等值连接且较小侧可入内存？</text>
+<text class="edge-label" text-anchor="middle" x="330" y="196">build 端 ≤ work_mem</text>
+<!-- D2 yes -> hash -->
+<line class="diagram-ink" marker-end="url(#m5-ink2)" x1="480" x2="556" y1="182" y2="182"></line>
+<text class="branch-label" text-anchor="middle" x="518" y="172">是</text>
+<rect class="diagram-accent node-fill-accent" height="48" rx="6" stroke-width="1.6" width="86" x="558" y="158"></rect>
+<text class="node-label-accent" text-anchor="middle" x="601" y="180">hash join</text>
+<text class="edge-label" text-anchor="middle" x="601" y="197">建表·探表</text>
+<!-- D2 no -> D3 -->
+<line class="diagram-ink" marker-end="url(#m5-ink2)" x1="330" x2="330" y1="224" y2="262"></line>
+<text class="branch-label" text-anchor="middle" x="344" y="246">否</text>
+<!-- D3: outer small & inner indexed? -->
+<polygon class="diagram-ink node-fill" points="330,264 480,306 330,348 180,306"></polygon>
+<text class="node-label" text-anchor="middle" x="330" y="302">外表小且内表连接键有索引？</text>
+<text class="edge-label" text-anchor="middle" x="330" y="320">外表每行探内表索引</text>
+<!-- D3 yes -> nested loop -->
+<line class="diagram-ink" marker-end="url(#m5-ink2)" x1="480" x2="556" y1="306" y2="306"></line>
+<text class="branch-label" text-anchor="middle" x="518" y="296">是</text>
+<rect class="diagram-accent node-fill-accent" height="48" rx="6" stroke-width="1.6" width="92" x="558" y="282"></rect>
+<text class="node-label-accent" text-anchor="middle" x="604" y="304">nested loop</text>
+<text class="edge-label" text-anchor="middle" x="604" y="321">行数估错最危险</text>
+</svg>

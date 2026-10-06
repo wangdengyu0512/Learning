@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="bitmap heap scan 的两阶段：先建按页排序的位图，再按物理顺序成批回堆" role="img" viewbox="0 0 640 290" xmlns="http://www.w3.org/2000/svg"><style>:root {
+  --bg: #ffffff;
+  --ink: #0a0a0a;
+  --ink-soft: #525252;
+  --ink-faint: #a3a3a3;
+  --vermilion: #b73b2f;
+  --vermilion-soft: rgba(183, 59, 47, 0.08);
+  --sans: "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  --mono: "JetBrains Mono", Consolas, monospace;
+}
+.diagram-ink { stroke: var(--ink); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: var(--vermilion); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: var(--ink-faint); fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: var(--bg); }
+.node-fill-accent { fill: var(--vermilion-soft); }
+.node-label { font-family: var(--sans); font-size: 13px; font-weight: 500; fill: var(--ink); }
+.node-label-accent { font-family: var(--sans); font-size: 13px; font-weight: 700; fill: var(--vermilion); }
+.edge-label { font-family: var(--mono); font-size: 11px; fill: var(--ink-soft); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: var(--mono); font-size: 11px; font-weight: 700; fill: var(--vermilion); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="m5-verm" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- stage 1: index scan -->
+<rect class="diagram-ink node-fill" height="64" rx="6" width="150" x="30" y="40"></rect>
+<text class="node-label" text-anchor="middle" x="105" y="66">Bitmap Index Scan</text>
+<text class="edge-label" text-anchor="middle" x="105" y="86">扫索引·收 ctid</text>
+<!-- arrow 1 -->
+<line class="diagram-accent" marker-end="url(#m5-verm)" x1="180" x2="243" y1="72" y2="72"></line>
+<!-- stage 2: the bitmap (page-sorted) -->
+<rect class="diagram-accent node-fill-accent" height="80" rx="6" stroke-width="1.6" width="150" x="245" y="32"></rect>
+<text class="node-label-accent" text-anchor="middle" x="320" y="54">位图（按 Page 排序）</text>
+<text class="edge-label" text-anchor="middle" x="320" y="74">P0 ■  P2 ■  P5 ■</text>
+<text class="edge-label" text-anchor="middle" x="320" y="94">哪些页有命中行</text>
+<!-- arrow 2 -->
+<line class="diagram-accent" marker-end="url(#m5-verm)" x1="395" x2="458" y1="72" y2="72"></line>
+<!-- stage 3: heap scan -->
+<rect class="diagram-ink node-fill" height="64" rx="6" width="150" x="460" y="40"></rect>
+<text class="node-label" text-anchor="middle" x="535" y="66">Bitmap Heap Scan</text>
+<text class="edge-label" text-anchor="middle" x="535" y="86">按页序成批取</text>
+<!-- the heap pages row -->
+<text class="node-label" text-anchor="middle" x="320" y="158">堆（按物理 Page 顺序访问，每页只碰一次）</text>
+<g>
+<rect class="diagram-accent node-fill-accent" height="44" rx="4" width="56" x="120" y="176"></rect>
+<text class="edge-label" text-anchor="middle" x="148" y="202">P0</text>
+<rect class="diagram-soft node-fill" height="44" rx="4" width="56" x="196" y="176"></rect>
+<text class="edge-label" text-anchor="middle" x="224" y="202">P1</text>
+<rect class="diagram-accent node-fill-accent" height="44" rx="4" width="56" x="272" y="176"></rect>
+<text class="edge-label" text-anchor="middle" x="300" y="202">P2</text>
+<rect class="diagram-soft node-fill" height="44" rx="4" width="56" x="348" y="176"></rect>
+<text class="edge-label" text-anchor="middle" x="376" y="202">P3</text>
+<rect class="diagram-soft node-fill" height="44" rx="4" width="56" x="424" y="176"></rect>
+<text class="edge-label" text-anchor="middle" x="452" y="202">P4</text>
+<rect class="diagram-accent node-fill-accent" height="44" rx="4" width="56" x="500" y="176"></rect>
+<text class="edge-label" text-anchor="middle" x="528" y="202">P5</text>
+</g>
+<text class="edge-label" text-anchor="middle" x="320" y="244">实心 = 位图标记有命中（P0/P2/P5）·按 0→5 顺序取，不回头</text>
+<text class="branch-label" text-anchor="middle" x="320" y="268">还能 bitmap AND / OR 多个索引的位图再取一次堆</text>
+</svg>

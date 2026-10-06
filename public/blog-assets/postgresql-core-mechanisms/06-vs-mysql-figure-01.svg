@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="左侧 InnoDB 聚簇索引与二级索引回表，右侧 PG 堆加独立索引" role="img" viewbox="0 0 760 430" xmlns="http://www.w3.org/2000/svg"><style>:root {
+  --bg: #ffffff;
+  --ink: #0a0a0a;
+  --ink-soft: #525252;
+  --ink-faint: #a3a3a3;
+  --vermilion: #b73b2f;
+  --vermilion-soft: rgba(183, 59, 47, 0.08);
+  --sans: "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  --mono: "JetBrains Mono", Consolas, monospace;
+}
+.diagram-ink { stroke: var(--ink); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: var(--vermilion); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: var(--ink-faint); fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: var(--bg); }
+.node-fill-accent { fill: var(--vermilion-soft); }
+.node-label { font-family: var(--sans); font-size: 13px; font-weight: 500; fill: var(--ink); }
+.node-label-accent { font-family: var(--sans); font-size: 13px; font-weight: 700; fill: var(--vermilion); }
+.edge-label { font-family: var(--mono); font-size: 11px; fill: var(--ink-soft); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: var(--mono); font-size: 11px; font-weight: 700; fill: var(--vermilion); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="m-verm-h" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+<marker id="m-ink-h" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+</defs>
+<!-- divider -->
+<line class="diagram-soft" x1="380" x2="380" y1="30" y2="410"></line>
+<text class="node-label-accent" text-anchor="middle" x="190" y="22">InnoDB · 聚簇</text>
+<text class="node-label" text-anchor="middle" x="570" y="22">PostgreSQL · 堆</text>
+<!-- ===== LEFT: InnoDB ===== -->
+<!-- secondary index tree -->
+<rect class="diagram-ink node-fill" height="40" rx="4" width="150" x="24" y="48"></rect>
+<text class="node-label" text-anchor="middle" x="99" y="65">二级索引 B+tree</text>
+<text class="edge-label" text-anchor="middle" x="99" y="80">叶子 = 主键值</text>
+<!-- first descent label -->
+<line class="diagram-ink" marker-end="url(#m-ink-h)" x1="99" x2="99" y1="88" y2="128"></line>
+<text class="edge-label" text-anchor="start" x="105" y="110">①下降</text>
+<!-- secondary leaf -->
+<rect class="diagram-ink node-fill" height="34" rx="4" width="130" x="34" y="128"></rect>
+<text class="edge-label" text-anchor="middle" x="99" y="149">得主键 = 42</text>
+<!-- second descent: into clustered -->
+<line class="diagram-accent" marker-end="url(#m-verm-h)" x1="164" x2="214" y1="145" y2="200"></line>
+<text class="branch-label" text-anchor="start" x="148" y="186">②回表</text>
+<!-- clustered index tree -->
+<rect class="diagram-accent node-fill-accent" height="40" rx="4" width="150" x="206" y="200"></rect>
+<text class="node-label-accent" text-anchor="middle" x="281" y="217">聚簇 B+tree</text>
+<text class="edge-label" text-anchor="middle" x="281" y="232">按主键排序</text>
+<line class="diagram-accent" marker-end="url(#m-verm-h)" x1="281" x2="281" y1="240" y2="280"></line>
+<!-- clustered leaf = full row -->
+<rect class="diagram-accent node-fill" height="46" rx="4" width="150" x="206" y="280"></rect>
+<text class="branch-label" text-anchor="middle" x="281" y="300">叶子 = 整行</text>
+<text class="edge-label" text-anchor="middle" x="281" y="317">行就住在树里</text>
+<text class="edge-label" text-anchor="middle" x="190" y="360">两次 B+tree 下降才取到行</text>
+<text class="edge-label" text-anchor="middle" x="190" y="380">主键单调=顺序追加</text>
+<text class="branch-label" text-anchor="middle" x="190" y="398">UUID 主键=页分裂+二级索引变胖</text>
+<!-- ===== RIGHT: PG ===== -->
+<!-- pk index -->
+<rect class="diagram-ink node-fill" height="40" rx="4" width="120" x="416" y="48"></rect>
+<text class="node-label" text-anchor="middle" x="476" y="65">主键索引</text>
+<text class="edge-label" text-anchor="middle" x="476" y="80">叶子 = ctid</text>
+<!-- secondary index -->
+<rect class="diagram-ink node-fill" height="40" rx="4" width="130" x="600" y="48"></rect>
+<text class="node-label" text-anchor="middle" x="665" y="65">二级索引</text>
+<text class="edge-label" text-anchor="middle" x="665" y="80">叶子 = ctid</text>
+<!-- both point to heap, one jump each -->
+<line class="diagram-accent" marker-end="url(#m-verm-h)" x1="476" x2="540" y1="88" y2="206"></line>
+<line class="diagram-accent" marker-end="url(#m-verm-h)" x1="665" x2="600" y1="88" y2="206"></line>
+<text class="branch-label" text-anchor="middle" x="556" y="150">各一跳</text>
+<!-- heap (unordered rows) -->
+<rect class="diagram-ink node-fill" height="96" rx="6" width="290" x="430" y="210"></rect>
+<text class="node-label" text-anchor="middle" x="575" y="230">堆（无序行）</text>
+<rect class="diagram-ink node-fill" height="46" rx="3" width="58" x="446" y="244"></rect>
+<text class="edge-label" text-anchor="middle" x="475" y="271">行 c</text>
+<rect class="diagram-ink node-fill" height="46" rx="3" width="58" x="516" y="244"></rect>
+<text class="edge-label" text-anchor="middle" x="545" y="271">行 a</text>
+<rect class="diagram-ink node-fill" height="46" rx="3" width="58" x="586" y="244"></rect>
+<text class="edge-label" text-anchor="middle" x="615" y="271">行 b</text>
+<rect class="diagram-soft node-fill" height="46" rx="3" width="50" x="656" y="244"></rect>
+<text class="edge-label" text-anchor="middle" x="681" y="271">空位</text>
+<text class="edge-label" text-anchor="middle" x="575" y="360">每个索引平权·都一跳定位</text>
+<text class="edge-label" text-anchor="middle" x="575" y="380">主键不决定行的物理位置</text>
+<text class="branch-label" text-anchor="middle" x="575" y="398">UUID 主键基本无惩罚</text>
+</svg>

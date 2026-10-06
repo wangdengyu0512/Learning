@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="一个 8KB Page 的内部分层结构" role="img" viewbox="0 0 560 420" xmlns="http://www.w3.org/2000/svg"><style>:root {
+  --bg: #ffffff;
+  --ink: #0a0a0a;
+  --ink-soft: #525252;
+  --ink-faint: #a3a3a3;
+  --vermilion: #b73b2f;
+  --vermilion-soft: rgba(183, 59, 47, 0.08);
+  --sans: "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  --mono: "JetBrains Mono", Consolas, monospace;
+}
+.diagram-ink { stroke: var(--ink); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: var(--vermilion); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: var(--ink-faint); fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: var(--bg); }
+.node-fill-accent { fill: var(--vermilion-soft); }
+.node-label { font-family: var(--sans); font-size: 13px; font-weight: 500; fill: var(--ink); }
+.node-label-accent { font-family: var(--sans); font-size: 13px; font-weight: 700; fill: var(--vermilion); }
+.edge-label { font-family: var(--mono); font-size: 11px; fill: var(--ink-soft); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: var(--mono); font-size: 11px; font-weight: 700; fill: var(--vermilion); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="m-ink" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="m-verm" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- outer page frame -->
+<rect class="diagram-ink node-fill" height="380" rx="6" stroke-width="1.6" width="260" x="150" y="20"></rect>
+<!-- page header -->
+<rect class="diagram-ink node-fill-accent" height="46" rx="6" width="260" x="150" y="20"></rect>
+<text class="node-label" text-anchor="middle" x="280" y="40">page header</text>
+<text class="edge-label" text-anchor="middle" x="280" y="57">24B · 校验/空闲指针</text>
+<!-- line pointer array -->
+<rect class="diagram-ink node-fill" height="56" width="260" x="150" y="66"></rect>
+<text class="node-label" text-anchor="middle" x="280" y="88">line pointer 数组</text>
+<text class="edge-label" text-anchor="middle" x="280" y="105">ItemId · 4B/槽</text>
+<!-- free space -->
+<rect class="diagram-soft node-fill" height="120" width="260" x="150" y="122"></rect>
+<text class="node-label" text-anchor="middle" x="280" y="178">free space</text>
+<text class="edge-label" text-anchor="middle" x="280" y="196">两端相向吃掉</text>
+<!-- tuple data -->
+<rect class="diagram-ink node-fill" height="106" width="260" x="150" y="242"></rect>
+<text class="node-label" text-anchor="middle" x="280" y="288">tuple 数据</text>
+<text class="edge-label" text-anchor="middle" x="280" y="306">从页尾往前堆</text>
+<!-- special space -->
+<rect class="diagram-ink node-fill" height="52" rx="6" width="260" x="150" y="348"></rect>
+<text class="node-label" text-anchor="middle" x="280" y="370">special space</text>
+<text class="edge-label" text-anchor="middle" x="280" y="387">堆表空·索引页用</text>
+<!-- growth direction arrows -->
+<line class="diagram-accent" marker-end="url(#m-verm)" x1="120" x2="120" y1="70" y2="118"></line>
+<text class="branch-label" text-anchor="end" x="112" y="96">前→后</text>
+<line class="diagram-accent" marker-end="url(#m-verm)" x1="440" x2="440" y1="344" y2="246"></line>
+<text class="branch-label" text-anchor="start" x="448" y="298">尾→前</text>
+</svg>

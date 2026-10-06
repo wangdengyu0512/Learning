@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="按数据形态选索引的决策树" role="img" viewbox="0 0 620 460" xmlns="http://www.w3.org/2000/svg"><style>:root {
+  --bg: #ffffff;
+  --ink: #0a0a0a;
+  --ink-soft: #525252;
+  --ink-faint: #a3a3a3;
+  --vermilion: #b73b2f;
+  --vermilion-soft: rgba(183, 59, 47, 0.08);
+  --sans: "Noto Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+  --mono: "JetBrains Mono", Consolas, monospace;
+}
+.diagram-ink { stroke: var(--ink); fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-accent { stroke: var(--vermilion); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.diagram-soft { stroke: var(--ink-faint); fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+.node-fill { fill: var(--bg); }
+.node-fill-accent { fill: var(--vermilion-soft); }
+.node-label { font-family: var(--sans); font-size: 13px; font-weight: 500; fill: var(--ink); }
+.node-label-accent { font-family: var(--sans); font-size: 13px; font-weight: 700; fill: var(--vermilion); }
+.edge-label { font-family: var(--mono); font-size: 11px; fill: var(--ink-soft); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }
+.branch-label { font-family: var(--mono); font-size: 11px; font-weight: 700; fill: var(--vermilion); paint-order: stroke; stroke: var(--bg); stroke-width: 4px; stroke-linejoin: round; }</style>
+<defs>
+<marker id="m-ink-dt" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+</defs>
+<!-- Q1 diamond: 等值/范围/排序? -->
+<polygon class="diagram-ink node-fill" points="310,20 420,70 310,120 200,70"></polygon>
+<text class="node-label" text-anchor="middle" x="310" y="66">等值/范围/排序？</text>
+<text class="edge-label" text-anchor="middle" x="310" y="84">标量全序</text>
+<!-- Q1 yes -> B-tree terminal -->
+<line class="diagram-ink" marker-end="url(#m-ink-dt)" x1="420" x2="500" y1="70" y2="70"></line>
+<text class="branch-label" text-anchor="middle" x="458" y="60">是</text>
+<rect class="diagram-ink node-fill-accent" height="44" rx="4" width="96" x="500" y="48"></rect>
+<text class="node-label-accent" text-anchor="middle" x="548" y="68">B-tree</text>
+<text class="edge-label" text-anchor="middle" x="548" y="84">默认</text>
+<!-- Q1 no -> Q2 -->
+<line class="diagram-ink" marker-end="url(#m-ink-dt)" x1="310" x2="310" y1="120" y2="150"></line>
+<text class="branch-label" text-anchor="start" x="322" y="138">否</text>
+<!-- Q2 diamond: jsonb/数组/全文 多值? -->
+<polygon class="diagram-ink node-fill" points="310,150 420,200 310,250 200,200"></polygon>
+<text class="node-label" text-anchor="middle" x="310" y="196">jsonb/数组/全文？</text>
+<text class="edge-label" text-anchor="middle" x="310" y="214">一行多值</text>
+<!-- Q2 yes -> GIN -->
+<line class="diagram-ink" marker-end="url(#m-ink-dt)" x1="420" x2="500" y1="200" y2="200"></line>
+<text class="branch-label" text-anchor="middle" x="458" y="190">是</text>
+<rect class="diagram-ink node-fill" height="44" rx="4" width="96" x="500" y="178"></rect>
+<text class="node-label" text-anchor="middle" x="548" y="204">GIN</text>
+<!-- Q2 no -> Q3 -->
+<line class="diagram-ink" marker-end="url(#m-ink-dt)" x1="310" x2="310" y1="250" y2="280"></line>
+<text class="branch-label" text-anchor="start" x="322" y="268">否</text>
+<!-- Q3 diamond: 几何/最近邻? -->
+<polygon class="diagram-ink node-fill" points="310,280 420,330 310,380 200,330"></polygon>
+<text class="node-label" text-anchor="middle" x="310" y="326">几何/最近邻？</text>
+<text class="edge-label" text-anchor="middle" x="310" y="344">空间 · KNN</text>
+<!-- Q3 yes -> GiST -->
+<line class="diagram-ink" marker-end="url(#m-ink-dt)" x1="420" x2="500" y1="330" y2="330"></line>
+<text class="branch-label" text-anchor="middle" x="458" y="320">是</text>
+<rect class="diagram-ink node-fill" height="44" rx="4" width="96" x="500" y="308"></rect>
+<text class="node-label" text-anchor="middle" x="548" y="334">GiST</text>
+<!-- Q3 no -> BRIN terminal -->
+<line class="diagram-ink" marker-end="url(#m-ink-dt)" x1="310" x2="310" y1="380" y2="410"></line>
+<text class="branch-label" text-anchor="start" x="322" y="398">否</text>
+<rect class="diagram-ink node-fill" height="44" rx="4" width="220" x="200" y="410"></rect>
+<text class="node-label" text-anchor="middle" x="310" y="430">超大表 + 物理有序 → BRIN</text>
+<text class="edge-label" text-anchor="middle" x="310" y="446">否则回到 B-tree</text>
+</svg>
