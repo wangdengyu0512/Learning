@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="难度金字塔：底层概念层最宽、中层原理层、顶层应用判别层最窄最难" role="img" viewbox="0 0 680 300" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<defs>
+<marker id="ar-up" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- 难度轴 -->
+<line class="diagram-accent" marker-end="url(#ar-up)" x1="78" x2="78" y1="262" y2="66"></line>
+<text class="branch-label" text-anchor="middle" transform="rotate(-90 58 170)" x="58" y="170">难度递增</text>
+<!-- 顶：应用判别层 -->
+<rect class="diagram-accent node-fill-accent" height="66" rx="6" stroke-width="1.8" width="220" x="230" y="44"></rect>
+<text class="node-label-accent" text-anchor="middle" x="340" y="76">应用判别层</text>
+<text class="edge-label" text-anchor="middle" x="340" y="96">跨 01–06 场景 · 综合压轴</text>
+<!-- 中：原理层 -->
+<rect class="diagram-ink node-fill" height="66" rx="6" width="320" x="180" y="124"></rect>
+<text class="node-label" text-anchor="middle" x="340" y="156">原理层</text>
+<text class="edge-label" text-anchor="middle" x="340" y="176">机制 why · 02 / 04 / 05</text>
+<!-- 底：概念层 -->
+<rect class="diagram-ink node-fill" height="66" rx="6" width="440" x="120" y="204"></rect>
+<text class="node-label" text-anchor="middle" x="340" y="236">概念层</text>
+<text class="edge-label" text-anchor="middle" x="340" y="256">词汇与定义 · 01 / 03</text>
+</svg>

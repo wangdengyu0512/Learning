@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="lookup 嵌套循环：左侧 N 个文档每个都对右集合触发一次全扫描" role="img" viewbox="0 0 700 300" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<defs>
+<marker id="ar-loop" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<text class="node-label" text-anchor="middle" x="120" y="32">左侧输入 · N 个文档</text>
+<text class="node-label-accent" text-anchor="middle" x="510" y="32">右集合</text>
+<!-- left docs -->
+<rect class="diagram-ink node-fill" height="40" rx="5" width="160" x="40" y="58"></rect>
+<text class="node-label" text-anchor="middle" x="120" y="83">doc 1 · localField</text>
+<rect class="diagram-ink node-fill" height="40" rx="5" width="160" x="40" y="112"></rect>
+<text class="node-label" text-anchor="middle" x="120" y="137">doc 2 · localField</text>
+<rect class="diagram-ink node-fill" height="40" rx="5" width="160" x="40" y="166"></rect>
+<text class="node-label" text-anchor="middle" x="120" y="191">doc 3 · localField</text>
+<text class="branch-label" text-anchor="middle" x="120" y="236">… 共 N 个</text>
+<!-- right collection big box -->
+<rect class="diagram-accent node-fill-accent" height="150" rx="6" stroke-width="1.8" width="240" x="420" y="74"></rect>
+<text class="node-label-accent" text-anchor="middle" x="540" y="132">foreignField 无索引</text>
+<text class="edge-label" text-anchor="middle" x="540" y="156">每次查找 = 一次全扫描</text>
+<text class="edge-label" text-anchor="middle" x="540" y="178">M 条文档</text>
+<!-- N lines from each left doc to right box edge -->
+<line class="diagram-accent" marker-end="url(#ar-loop)" x1="200" x2="420" y1="78" y2="110"></line>
+<line class="diagram-accent" marker-end="url(#ar-loop)" x1="200" x2="420" y1="132" y2="150"></line>
+<line class="diagram-accent" marker-end="url(#ar-loop)" x1="200" x2="420" y1="186" y2="190"></line>
+<text class="branch-label" text-anchor="middle" x="310" y="270">N 次扫描 → 复杂度 O(N × M)</text>
+</svg>

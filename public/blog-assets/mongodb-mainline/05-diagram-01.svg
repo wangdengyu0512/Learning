@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="副本集拓扑：一个 primary 持有 oplog，两个 secondary 主动从 primary 的 oplog 拉取并重放" role="img" viewbox="0 0 700 340" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<defs>
+<marker id="ar-acc" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<text class="node-label" text-anchor="middle" x="350" y="34">副本集：3 节点，secondary 主动拉取</text>
+<!-- primary 顶部居中 -->
+<rect class="diagram-accent node-fill-accent" height="64" rx="6" stroke-width="1.8" width="160" x="270" y="58"></rect>
+<text class="node-label-accent" text-anchor="middle" x="350" y="84">PRIMARY</text>
+<text class="edge-label" text-anchor="middle" x="350" y="104">持有 oplog · 接受写</text>
+<!-- oplog 块，挂在 primary 下方 -->
+<rect class="diagram-ink node-fill" height="40" rx="4" width="130" x="285" y="140"></rect>
+<text class="node-label" text-anchor="middle" x="350" y="158">oplog.rs</text>
+<text class="edge-label" text-anchor="middle" x="350" y="172">capped · 幂等</text>
+<line class="diagram-ink" x1="350" x2="350" y1="122" y2="140"></line>
+<!-- 两个 secondary 底部两侧，留足间距 -->
+<rect class="diagram-ink node-fill" height="64" rx="6" width="170" x="40" y="248"></rect>
+<text class="node-label" text-anchor="middle" x="125" y="274">SECONDARY</text>
+<text class="edge-label" text-anchor="middle" x="125" y="294">OplogFetcher</text>
+<rect class="diagram-ink node-fill" height="64" rx="6" width="170" x="490" y="248"></rect>
+<text class="node-label" text-anchor="middle" x="575" y="274">SECONDARY</text>
+<text class="edge-label" text-anchor="middle" x="575" y="294">OplogFetcher</text>
+<!-- 箭头从 secondary 指向 primary 的 oplog：强调主动拉 -->
+<line class="diagram-accent" marker-end="url(#ar-acc)" x1="195" x2="300" y1="252" y2="178"></line>
+<text class="branch-label" text-anchor="middle" x="218" y="222">PULL / tail</text>
+<line class="diagram-accent" marker-end="url(#ar-acc)" x1="505" x2="400" y1="252" y2="178"></line>
+<text class="branch-label" text-anchor="middle" x="482" y="222">PULL / tail</text>
+</svg>

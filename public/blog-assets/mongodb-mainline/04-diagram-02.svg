@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="左侧正常态 cache 未满后台 worker 干活应用线程畅通，右侧超阈值态 cache 满应用线程被拉去 evict" role="img" viewbox="0 0 720 300" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<defs>
+<marker id="ar-ink3" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#525252"></path>
+</marker>
+<marker id="ar-acc3" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<text class="node-label" text-anchor="middle" x="180" y="34">正常态：cache 未满</text>
+<text class="node-label-accent" text-anchor="middle" x="540" y="34">超阈值态：cache 满</text>
+<line class="diagram-soft" x1="360" x2="360" y1="20" y2="284"></line>
+<!-- 左：正常态 -->
+<rect class="diagram-ink node-fill" height="50" rx="6" width="120" x="60" y="60"></rect>
+<text class="node-label" text-anchor="middle" x="120" y="82">应用线程</text>
+<text class="edge-label" text-anchor="middle" x="120" y="98">畅通读写</text>
+<rect class="diagram-ink node-fill" height="50" rx="6" width="120" x="60" y="178"></rect>
+<text class="node-label" text-anchor="middle" x="120" y="200">eviction</text>
+<text class="edge-label" text-anchor="middle" x="120" y="216">worker 后台</text>
+<rect class="diagram-ink node-fill" height="92" rx="6" width="80" x="240" y="118"></rect>
+<text class="node-label" text-anchor="middle" x="280" y="160">cache</text>
+<text class="edge-label" text-anchor="middle" x="280" y="178">有空位</text>
+<line class="diagram-ink" marker-end="url(#ar-ink3)" x1="180" x2="240" y1="85" y2="135"></line>
+<line class="diagram-ink" marker-end="url(#ar-ink3)" x1="180" x2="240" y1="203" y2="180"></line>
+<text class="edge-label" text-anchor="middle" x="216" y="248">后台默默腾空间</text>
+<!-- 右：超阈值态 -->
+<rect class="diagram-accent node-fill-accent" height="50" rx="6" stroke-width="1.8" width="120" x="420" y="60"></rect>
+<text class="node-label-accent" text-anchor="middle" x="480" y="82">应用线程</text>
+<text class="edge-label" text-anchor="middle" x="480" y="98">被征用</text>
+<rect class="diagram-accent node-fill-accent" height="92" rx="6" stroke-width="1.8" width="86" x="600" y="118"></rect>
+<text class="node-label-accent" text-anchor="middle" x="643" y="160">cache</text>
+<text class="edge-label" text-anchor="middle" x="643" y="178">已满</text>
+<path class="diagram-accent" d="M 480 110 L 480 150 L 598 160" marker-end="url(#ar-acc3)"></path>
+<text class="branch-label" text-anchor="middle" x="500" y="200">先帮引擎 evict</text>
+<text class="edge-label" text-anchor="middle" x="540" y="232">才能推进自己的操作</text>
+<text class="branch-label" text-anchor="middle" x="540" y="262">→ 延迟悬崖 · p99 陡升</text>
+</svg>

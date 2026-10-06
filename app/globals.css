@@ -924,6 +924,77 @@ button {
   border-top: 2px solid var(--accent);
 }
 
+.prose-anchor {
+  display: block;
+  position: relative;
+  top: -24px;
+  visibility: hidden;
+}
+
+.prose-figure {
+  margin: 42px 0 18px;
+  padding: 20px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.prose-figure img {
+  display: block;
+  width: 100%;
+  min-width: 560px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.prose-figure + p {
+  margin-top: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.prose-table-wrap {
+  margin: 34px 0;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+}
+
+.prose table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  background: #fff;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.prose th,
+.prose td {
+  padding: 14px 16px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.prose th:last-child,
+.prose td:last-child {
+  border-right: 0;
+}
+
+.prose tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.prose th {
+  color: var(--ink);
+  background: var(--surface);
+  font-weight: 800;
+}
+
 .article-footer {
   margin-top: 90px;
   padding: 34px;

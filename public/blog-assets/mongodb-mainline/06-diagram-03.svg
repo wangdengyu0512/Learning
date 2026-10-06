@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="选型决策树：从 schema 是否多变且以文档为读写单位出发，依次判断是否需要复杂即席 join 或多实体强事务、访问模式是否固定且极端规模写，最终指向关系型、Dynamo/Cassandra 或 MongoDB" role="img" viewbox="0 0 700 524" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<defs>
+<marker id="ar-ink3" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#525252"></path>
+</marker>
+</defs>
+<!-- start -->
+<rect class="diagram-ink node-fill" height="40" rx="6" width="160" x="175" y="18"></rect>
+<text class="node-label" text-anchor="middle" x="255" y="42">开始选型</text>
+<line class="diagram-ink" marker-end="url(#ar-ink3)" x1="255" x2="255" y1="58" y2="74"></line>
+<!-- D1 diamond (center 255,128) -->
+<polygon class="diagram-accent node-fill-accent" points="255,74 425,128 255,182 85,128" stroke-width="1.8"></polygon>
+<text class="node-label-accent" text-anchor="middle" x="255" y="122">schema 多变 &amp;</text>
+<text class="node-label-accent" text-anchor="middle" x="255" y="140">以文档为读写单位?</text>
+<!-- D1 否 -> 关系型 (right terminal) -->
+<rect class="diagram-ink node-fill" height="40" rx="6" width="150" x="500" y="108"></rect>
+<text class="node-label" text-anchor="middle" x="575" y="132">关系型</text>
+<line class="diagram-ink" marker-end="url(#ar-ink3)" x1="425" x2="500" y1="128" y2="128"></line>
+<text class="branch-label" text-anchor="middle" x="462" y="120">否</text>
+<!-- D1 是 -> D2 -->
+<line class="diagram-ink" marker-end="url(#ar-ink3)" x1="255" x2="255" y1="182" y2="206"></line>
+<text class="branch-label" text-anchor="middle" x="271" y="198">是</text>
+<!-- D2 diamond (center 255,260) -->
+<polygon class="diagram-ink node-fill" points="255,206 425,260 255,314 85,260"></polygon>
+<text class="node-label" text-anchor="middle" x="255" y="254">复杂即席 join</text>
+<text class="node-label" text-anchor="middle" x="255" y="272">或多实体强事务?</text>
+<!-- D2 是 -> 关系型/谨慎 (right terminal) -->
+<rect class="diagram-ink node-fill" height="40" rx="6" width="150" x="500" y="240"></rect>
+<text class="node-label" text-anchor="middle" x="575" y="258">关系型</text>
+<text class="edge-label" text-anchor="middle" x="575" y="274">或谨慎评估</text>
+<line class="diagram-ink" marker-end="url(#ar-ink3)" x1="425" x2="500" y1="260" y2="260"></line>
+<text class="branch-label" text-anchor="middle" x="462" y="252">是</text>
+<!-- D2 否 -> D3 -->
+<line class="diagram-ink" marker-end="url(#ar-ink3)" x1="255" x2="255" y1="314" y2="338"></line>
+<text class="branch-label" text-anchor="middle" x="271" y="330">否</text>
+<!-- D3 diamond (center 255,392) -->
+<polygon class="diagram-ink node-fill" points="255,338 425,392 255,446 85,392"></polygon>
+<text class="node-label" text-anchor="middle" x="255" y="386">访问模式固定</text>
+<text class="node-label" text-anchor="middle" x="255" y="404">且极端规模写?</text>
+<!-- D3 是 -> Dynamo/Cassandra (right terminal) -->
+<rect class="diagram-ink node-fill" height="40" rx="6" width="190" x="478" y="372"></rect>
+<text class="node-label" text-anchor="middle" x="573" y="396">Dynamo / Cassandra</text>
+<line class="diagram-ink" marker-end="url(#ar-ink3)" x1="425" x2="478" y1="392" y2="392"></line>
+<text class="branch-label" text-anchor="middle" x="450" y="384">是</text>
+<!-- D3 否 -> MongoDB (bottom terminal, accent) -->
+<rect class="diagram-accent node-fill-accent" height="40" rx="6" stroke-width="1.8" width="150" x="180" y="466"></rect>
+<text class="node-label-accent" text-anchor="middle" x="255" y="490">MongoDB</text>
+<line class="diagram-ink" marker-end="url(#ar-ink3)" x1="255" x2="255" y1="446" y2="466"></line>
+<text class="branch-label" text-anchor="middle" x="271" y="460">否</text>
+</svg>

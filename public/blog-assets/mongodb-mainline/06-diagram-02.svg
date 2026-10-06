@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="同一份写入流在三种 shard key 下的落点对比：单调递增压向一个过载分片，hashed 均匀分到三个分片，compound 均匀且范围局部" role="img" viewbox="0 0 720 320" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<!-- common source label -->
+<text class="node-label" text-anchor="middle" x="360" y="28">同一份写入流，三种 shard key 的负载形状</text>
+<!-- panel 1: monotonic -->
+<text class="node-label-accent" text-anchor="middle" x="130" y="62">单调递增</text>
+<rect class="diagram-ink node-fill" height="160" rx="3" width="40" x="58" y="78"></rect>
+<text class="edge-label" text-anchor="middle" x="78" y="258">S1</text>
+<rect class="diagram-accent node-fill-accent" height="160" rx="3" stroke-width="1.8" width="40" x="110" y="78"></rect>
+<rect fill="#B73B2F" height="144" opacity="0.85" rx="2" width="40" x="110" y="86"></rect>
+<text class="branch-label" text-anchor="middle" x="130" y="258">S2 过载</text>
+<rect class="diagram-ink node-fill" height="160" rx="3" width="40" x="162" y="78"></rect>
+<text class="edge-label" text-anchor="middle" x="182" y="258">S3</text>
+<text class="edge-label" text-anchor="middle" x="130" y="284">全压一根柱</text>
+<!-- panel 2: hashed -->
+<text class="node-label" text-anchor="middle" x="360" y="62">hashed</text>
+<rect class="diagram-ink node-fill" height="160" rx="3" width="40" x="288" y="78"></rect>
+<rect fill="#525252" height="80" opacity="0.5" rx="2" width="40" x="288" y="150"></rect>
+<text class="edge-label" text-anchor="middle" x="308" y="258">S1</text>
+<rect class="diagram-ink node-fill" height="160" rx="3" width="40" x="340" y="78"></rect>
+<rect fill="#525252" height="80" opacity="0.5" rx="2" width="40" x="340" y="150"></rect>
+<text class="edge-label" text-anchor="middle" x="360" y="258">S2</text>
+<rect class="diagram-ink node-fill" height="160" rx="3" width="40" x="392" y="78"></rect>
+<rect fill="#525252" height="80" opacity="0.5" rx="2" width="40" x="392" y="150"></rect>
+<text class="edge-label" text-anchor="middle" x="412" y="258">S3</text>
+<text class="edge-label" text-anchor="middle" x="360" y="284">摊成三根 · 范围打散</text>
+<!-- panel 3: compound -->
+<text class="node-label" text-anchor="middle" x="590" y="62">compound</text>
+<rect class="diagram-ink node-fill" height="160" rx="3" width="40" x="518" y="78"></rect>
+<rect fill="#525252" height="80" opacity="0.5" rx="2" width="40" x="518" y="150"></rect>
+<text class="edge-label" text-anchor="middle" x="538" y="258">S1</text>
+<rect class="diagram-ink node-fill" height="160" rx="3" width="40" x="570" y="78"></rect>
+<rect fill="#525252" height="80" opacity="0.5" rx="2" width="40" x="570" y="150"></rect>
+<text class="edge-label" text-anchor="middle" x="590" y="258">S2</text>
+<rect class="diagram-ink node-fill" height="160" rx="3" width="40" x="622" y="78"></rect>
+<rect fill="#525252" height="80" opacity="0.5" rx="2" width="40" x="622" y="150"></rect>
+<text class="edge-label" text-anchor="middle" x="642" y="258">S3</text>
+<text class="edge-label" text-anchor="middle" x="590" y="284">均匀 + 范围局部</text>
+<line class="diagram-soft" x1="232" x2="232" y1="78" y2="290"></line>
+<line class="diagram-soft" x1="462" x2="462" y1="78" y2="290"></line>
+</svg>

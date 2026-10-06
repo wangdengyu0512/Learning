@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="两条泳道对比建模方向：关系型从数据结构出发到查询时 JOIN，文档从访问模式出发到单次读取" role="img" viewbox="0 0 700 280" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<defs>
+<marker id="ar-ink2" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#525252"></path>
+</marker>
+<marker id="ar-acc2" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<text class="edge-label" font-weight="700" text-anchor="middle" x="40" y="112">关系型</text>
+<text class="branch-label" text-anchor="middle" x="40" y="222">文档</text>
+<!-- lane 1 -->
+<rect class="diagram-ink node-fill" height="48" rx="6" width="150" x="90" y="84"></rect>
+<text class="node-label" text-anchor="middle" x="165" y="113">数据逻辑结构</text>
+<rect class="diagram-ink node-fill" height="48" rx="6" width="120" x="300" y="84"></rect>
+<text class="node-label" text-anchor="middle" x="360" y="113">范式化的表</text>
+<rect class="diagram-ink node-fill" height="48" rx="6" width="160" x="500" y="84"></rect>
+<text class="node-label" text-anchor="middle" x="580" y="113">查询时 JOIN 拼装</text>
+<line class="diagram-ink" marker-end="url(#ar-ink2)" x1="240" x2="300" y1="108" y2="108"></line>
+<text class="edge-label" text-anchor="middle" x="270" y="100">范式化</text>
+<line class="diagram-ink" marker-end="url(#ar-ink2)" x1="420" x2="500" y1="108" y2="108"></line>
+<text class="edge-label" text-anchor="middle" x="460" y="100">查询时</text>
+<!-- lane 2 -->
+<rect class="diagram-accent node-fill-accent" height="48" rx="6" stroke-width="1.8" width="150" x="90" y="194"></rect>
+<text class="node-label-accent" text-anchor="middle" x="165" y="223">访问模式 / 查询</text>
+<rect class="diagram-ink node-fill" height="48" rx="6" width="120" x="300" y="194"></rect>
+<text class="node-label" text-anchor="middle" x="360" y="223">文档形状</text>
+<rect class="diagram-ink node-fill" height="48" rx="6" width="160" x="500" y="194"></rect>
+<text class="node-label" text-anchor="middle" x="580" y="223">单次读取命中</text>
+<line class="diagram-accent" marker-end="url(#ar-acc2)" x1="240" x2="300" y1="218" y2="218"></line>
+<text class="edge-label" text-anchor="middle" x="270" y="210">决定</text>
+<line class="diagram-accent" marker-end="url(#ar-acc2)" x1="420" x2="500" y1="218" y2="218"></line>
+<text class="edge-label" text-anchor="middle" x="460" y="210">预先拼好</text>
+</svg>

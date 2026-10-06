@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="聚合管道横向流水线：documents 经 match group sort project 到结果，流出文档数逐级递减" role="img" viewbox="0 0 720 220" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<defs>
+<marker id="ar-flow" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#525252"></path>
+</marker>
+</defs>
+<text class="node-label" text-anchor="middle" x="360" y="34">文档流逐 stage 变换，流出数递减</text>
+<!-- documents -->
+<rect class="diagram-ink node-fill" height="52" rx="6" width="104" x="14" y="74"></rect>
+<text class="node-label" text-anchor="middle" x="66" y="105">documents</text>
+<!-- $match -->
+<rect class="diagram-accent node-fill-accent" height="52" rx="6" stroke-width="1.8" width="92" x="156" y="74"></rect>
+<text class="node-label-accent" text-anchor="middle" x="202" y="105">$match</text>
+<!-- $group -->
+<rect class="diagram-ink node-fill" height="52" rx="6" width="92" x="286" y="74"></rect>
+<text class="node-label" text-anchor="middle" x="332" y="105">$group</text>
+<!-- $sort -->
+<rect class="diagram-ink node-fill" height="52" rx="6" width="84" x="416" y="74"></rect>
+<text class="node-label" text-anchor="middle" x="458" y="105">$sort</text>
+<!-- $project -->
+<rect class="diagram-ink node-fill" height="52" rx="6" width="100" x="538" y="74"></rect>
+<text class="node-label" text-anchor="middle" x="588" y="105">$project</text>
+<!-- 结果 -->
+<rect class="diagram-ink node-fill" height="52" rx="6" width="48" x="664" y="74"></rect>
+<text class="node-label" text-anchor="middle" x="688" y="105">结果</text>
+<!-- arrows on box edges -->
+<line class="diagram-ink" marker-end="url(#ar-flow)" x1="118" x2="156" y1="100" y2="100"></line>
+<line class="diagram-ink" marker-end="url(#ar-flow)" x1="248" x2="286" y1="100" y2="100"></line>
+<line class="diagram-ink" marker-end="url(#ar-flow)" x1="378" x2="416" y1="100" y2="100"></line>
+<line class="diagram-ink" marker-end="url(#ar-flow)" x1="500" x2="538" y1="100" y2="100"></line>
+<line class="diagram-ink" marker-end="url(#ar-flow)" x1="638" x2="664" y1="100" y2="100"></line>
+<!-- flow counts under boxes -->
+<text class="edge-label" text-anchor="middle" x="66" y="150">10⁶</text>
+<text class="branch-label" text-anchor="middle" x="202" y="150">10⁴</text>
+<text class="edge-label" text-anchor="middle" x="332" y="150">50</text>
+<text class="edge-label" text-anchor="middle" x="458" y="150">50</text>
+<text class="edge-label" text-anchor="middle" x="588" y="150">50</text>
+<text class="edge-label" text-anchor="middle" x="688" y="150">50</text>
+<text class="edge-label" text-anchor="middle" x="360" y="186">流出文档数：$match 砍掉 99%，下游每个 stage 都受益</text>
+</svg>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="multi-planner：一个新查询形状并行试跑多个候选计划，选胜者存入 plan cache 供后续复用" role="img" viewbox="0 0 700 240" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<defs>
+<marker id="ar-plan" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#525252"></path>
+</marker>
+<marker id="ar-plan-acc" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- new query -->
+<rect class="diagram-ink node-fill" height="52" rx="6" width="120" x="24" y="92"></rect>
+<text class="node-label" text-anchor="middle" x="84" y="116">新查询形状</text>
+<text class="edge-label" text-anchor="middle" x="84" y="134">未命中缓存</text>
+<!-- candidate plans -->
+<rect class="diagram-ink node-fill" height="40" rx="5" width="150" x="240" y="40"></rect>
+<text class="node-label" text-anchor="middle" x="315" y="65">候选计划 A · 索引</text>
+<rect class="diagram-accent node-fill-accent" height="40" rx="5" stroke-width="1.8" width="150" x="240" y="98"></rect>
+<text class="node-label-accent" text-anchor="middle" x="315" y="123">候选计划 B · 索引</text>
+<rect class="diagram-ink node-fill" height="40" rx="5" width="150" x="240" y="156"></rect>
+<text class="node-label" text-anchor="middle" x="315" y="181">候选计划 C · 全扫描</text>
+<line class="diagram-ink" marker-end="url(#ar-plan)" x1="144" x2="240" y1="108" y2="60"></line>
+<line class="diagram-ink" marker-end="url(#ar-plan)" x1="144" x2="240" y1="118" y2="118"></line>
+<line class="diagram-ink" marker-end="url(#ar-plan)" x1="144" x2="240" y1="128" y2="176"></line>
+<text class="edge-label" text-anchor="middle" x="192" y="92">并行试跑</text>
+<!-- plan cache -->
+<rect class="diagram-accent node-fill-accent" height="52" rx="6" stroke-width="1.8" width="172" x="500" y="92"></rect>
+<text class="node-label-accent" text-anchor="middle" x="586" y="116">plan cache</text>
+<text class="edge-label" text-anchor="middle" x="586" y="134">存胜者 · 后续复用</text>
+<line class="diagram-accent" marker-end="url(#ar-plan-acc)" x1="390" x2="500" y1="118" y2="118"></line>
+<text class="branch-label" text-anchor="middle" x="445" y="108">选胜者</text>
+<text class="edge-label" text-anchor="middle" x="350" y="224">统计变化或表现退化 → 触发 replan 重新竞速</text>
+</svg>

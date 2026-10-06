@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="嵌入 vs 引用决策树：依次判断总是一起读、是否无界增长、是否被多实体共享，任一命中则引用，全部安全才嵌入" role="img" viewbox="0 0 680 460" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<defs>
+<marker id="ar-ink3" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#525252"></path>
+</marker>
+</defs>
+<!-- 开始 -->
+<rect class="diagram-ink node-fill" height="40" rx="6" width="140" x="270" y="20"></rect>
+<text class="node-label" text-anchor="middle" x="340" y="45">开始：字段放哪</text>
+<!-- Q1 菱形 -->
+<polygon class="diagram-ink node-fill" points="340,80 444,128 340,176 236,128"></polygon>
+<text class="node-label" text-anchor="middle" x="340" y="124">总是一起读?</text>
+<text class="edge-label" text-anchor="middle" x="340" y="142">和主体同时取</text>
+<!-- Q2 菱形 -->
+<polygon class="diagram-ink node-fill" points="340,196 444,244 340,292 236,244"></polygon>
+<text class="node-label" text-anchor="middle" x="340" y="240">会无界增长?</text>
+<text class="edge-label" text-anchor="middle" x="340" y="258">数量是否有上界</text>
+<!-- Q3 菱形 -->
+<polygon class="diagram-ink node-fill" points="340,312 444,360 340,408 236,360"></polygon>
+<text class="node-label" text-anchor="middle" x="340" y="356">被多实体共享?</text>
+<text class="edge-label" text-anchor="middle" x="340" y="374">多主体引用同一份</text>
+<!-- 终点：引用（右侧竖列）-->
+<rect class="diagram-ink node-fill" height="44" rx="6" width="120" x="520" y="240"></rect>
+<text class="node-label" text-anchor="middle" x="580" y="267">引用</text>
+<!-- 终点：嵌入（底部）-->
+<rect class="diagram-accent node-fill-accent" height="32" rx="6" stroke-width="1.8" width="120" x="280" y="424"></rect>
+<text class="node-label-accent" text-anchor="middle" x="340" y="445">嵌入</text>
+<!-- 开始 → Q1 -->
+<line class="diagram-ink" marker-end="url(#ar-ink3)" x1="340" x2="340" y1="60" y2="80"></line>
+<!-- Q1 否 → 引用：右行再下折，箭头落在引用框顶边 -->
+<line class="diagram-ink" x1="444" x2="560" y1="128" y2="128"></line>
+<line class="diagram-ink" marker-end="url(#ar-ink3)" x1="560" x2="560" y1="128" y2="240"></line>
+<text class="branch-label" text-anchor="middle" x="500" y="120">否</text>
+<!-- Q1 是 → Q2 -->
+<line class="diagram-ink" marker-end="url(#ar-ink3)" x1="340" x2="340" y1="176" y2="196"></line>
+<text class="branch-label" text-anchor="middle" x="356" y="190">是</text>
+<!-- Q2 是 → 引用 -->
+<line class="diagram-ink" marker-end="url(#ar-ink3)" x1="444" x2="520" y1="244" y2="262"></line>
+<text class="branch-label" text-anchor="middle" x="478" y="244">是</text>
+<!-- Q2 否 → Q3 -->
+<line class="diagram-ink" marker-end="url(#ar-ink3)" x1="340" x2="340" y1="292" y2="312"></line>
+<text class="branch-label" text-anchor="middle" x="356" y="306">否</text>
+<!-- Q3 是 → 引用 -->
+<line class="diagram-ink" x1="444" x2="580" y1="360" y2="360"></line>
+<line class="diagram-ink" marker-end="url(#ar-ink3)" x1="580" x2="580" y1="360" y2="284"></line>
+<text class="branch-label" text-anchor="middle" x="500" y="352">是</text>
+<!-- Q3 否 → 嵌入 -->
+<line class="diagram-ink" marker-end="url(#ar-ink3)" x1="340" x2="340" y1="408" y2="424"></line>
+<text class="branch-label" text-anchor="middle" x="356" y="420">否</text>
+</svg>

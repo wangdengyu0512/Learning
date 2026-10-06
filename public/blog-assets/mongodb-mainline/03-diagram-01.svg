@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="ESR 规则示意：Equality 把全集缩成一段连续键，Sort 在该段内保持有序，Range 在末端扫描一个子区间" role="img" viewbox="0 0 700 240" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<text class="node-label" text-anchor="middle" x="350" y="34">复合索引 B-tree 的有序键空间</text>
+<!-- 全集底条 -->
+<rect class="diagram-soft node-fill" height="26" rx="4" width="580" x="60" y="58"></rect>
+<text class="edge-label" text-anchor="middle" x="350" y="76">全部索引键（按 a → b → c 有序）</text>
+<!-- E 段：高亮连续区间 -->
+<rect class="diagram-accent node-fill-accent" height="46" rx="6" stroke-width="1.8" width="236" x="232" y="104"></rect>
+<text class="node-label-accent" text-anchor="middle" x="350" y="125">Equality</text>
+<text class="edge-label" text-anchor="middle" x="350" y="142">等值 → 缩成一段连续键</text>
+<line class="diagram-soft" x1="232" x2="232" y1="84" y2="104"></line>
+<line class="diagram-soft" x1="468" x2="468" y1="84" y2="104"></line>
+<!-- S 盒 -->
+<rect class="diagram-ink node-fill" height="44" rx="6" width="112" x="232" y="172"></rect>
+<text class="node-label" text-anchor="middle" x="288" y="192">Sort</text>
+<text class="edge-label" text-anchor="middle" x="288" y="208">段内天然有序</text>
+<!-- R 盒 -->
+<rect class="diagram-ink node-fill" height="44" rx="6" width="112" x="356" y="172"></rect>
+<text class="node-label" text-anchor="middle" x="412" y="192">Range</text>
+<text class="edge-label" text-anchor="middle" x="412" y="208">末端扫子区间</text>
+<line class="diagram-accent" x1="288" x2="288" y1="150" y2="172"></line>
+<line class="diagram-accent" x1="412" x2="412" y1="150" y2="172"></line>
+</svg>

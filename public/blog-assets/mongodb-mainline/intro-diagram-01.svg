@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="MongoDB 概念地图：文档模型在顶端，向下依赖到查询聚合、索引、schema 设计，再到 WiredTiger 存储，再到副本集与分片，最后汇到选型" role="img" viewbox="0 0 760 560" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<defs>
+<marker id="ar-ink" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#525252"></path>
+</marker>
+</defs>
+<!-- L0: 文档模型 (protagonist) -->
+<rect class="diagram-accent node-fill-accent" height="58" rx="6" stroke-width="2" width="150" x="305" y="24"></rect>
+<text class="node-label-accent" text-anchor="middle" x="380" y="50">文档模型</text>
+<text class="edge-label" text-anchor="middle" x="380" y="69">为访问模式建模</text>
+<!-- L1: 三个建模面 -->
+<rect class="diagram-ink node-fill" height="56" rx="6" width="160" x="70" y="150"></rect>
+<text class="node-label" text-anchor="middle" x="150" y="176">查询 · 聚合</text>
+<text class="edge-label" text-anchor="middle" x="150" y="194">find / pipeline</text>
+<rect class="diagram-ink node-fill" height="56" rx="6" width="160" x="300" y="150"></rect>
+<text class="node-label" text-anchor="middle" x="380" y="176">索引</text>
+<text class="edge-label" text-anchor="middle" x="380" y="194">multikey / ESR</text>
+<rect class="diagram-ink node-fill" height="56" rx="6" width="160" x="530" y="150"></rect>
+<text class="node-label" text-anchor="middle" x="610" y="176">schema 设计</text>
+<text class="edge-label" text-anchor="middle" x="610" y="194">嵌入 vs 引用</text>
+<!-- L0 -> L1 edges -->
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="345" x2="170" y1="82" y2="150"></line>
+<text class="edge-label" text-anchor="middle" x="232" y="116">怎么读</text>
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="380" x2="380" y1="82" y2="150"></line>
+<text class="edge-label" text-anchor="middle" x="380" y="122">怎么查</text>
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="415" x2="590" y1="82" y2="150"></line>
+<text class="edge-label" text-anchor="middle" x="528" y="116">怎么放</text>
+<!-- 索引 <-> schema: 同一决策 -->
+<line class="diagram-soft" x1="460" x2="530" y1="172" y2="172"></line>
+<text class="branch-label" text-anchor="middle" x="495" y="164">同一决策</text>
+<!-- L2: WiredTiger -->
+<rect class="diagram-ink node-fill" height="58" rx="6" width="520" x="120" y="262"></rect>
+<text class="node-label" text-anchor="middle" x="380" y="288">WiredTiger 存储引擎</text>
+<text class="edge-label" text-anchor="middle" x="380" y="307">B-tree · 文档级 MVCC · journal · 无 VACUUM</text>
+<!-- L1 -> L2 edges -->
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="150" x2="150" y1="206" y2="262"></line>
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="380" x2="380" y1="206" y2="262"></line>
+<text class="edge-label" text-anchor="middle" x="380" y="240">落到磁盘</text>
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="610" x2="610" y1="206" y2="262"></line>
+<!-- L3: 副本集 / 分片 -->
+<rect class="diagram-ink node-fill" height="58" rx="6" width="210" x="110" y="372"></rect>
+<text class="node-label" text-anchor="middle" x="215" y="398">副本集 · 一致性</text>
+<text class="edge-label" text-anchor="middle" x="215" y="417">oplog · 读写关注 · HLC</text>
+<rect class="diagram-ink node-fill" height="58" rx="6" width="210" x="440" y="372"></rect>
+<text class="node-label" text-anchor="middle" x="545" y="398">分片</text>
+<text class="edge-label" text-anchor="middle" x="545" y="417">shard key · chunk · balancer</text>
+<!-- L2 -> L3 edges -->
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="215" x2="215" y1="320" y2="372"></line>
+<text class="edge-label" text-anchor="middle" x="215" y="350">复制</text>
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="545" x2="545" y1="320" y2="372"></line>
+<text class="edge-label" text-anchor="middle" x="545" y="350">水平扩展</text>
+<!-- 副本集 -> 分片: 构建于 -->
+<line class="diagram-soft" x1="320" x2="440" y1="401" y2="401"></line>
+<text class="branch-label" text-anchor="middle" x="380" y="393">构建于</text>
+<!-- L4: 选型 -->
+<rect class="diagram-ink node-fill" height="56" rx="6" width="280" x="240" y="480"></rect>
+<text class="node-label" text-anchor="middle" x="380" y="506">何时用 / 何时不用 MongoDB</text>
+<text class="edge-label" text-anchor="middle" x="380" y="524">vs Postgres · MySQL · Dynamo</text>
+<!-- L3 -> L4 edges -->
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="240" x2="320" y1="430" y2="480"></line>
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="540" x2="455" y1="430" y2="480"></line>
+</svg>

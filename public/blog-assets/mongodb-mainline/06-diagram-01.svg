@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="分片架构：顶部 mongos 路由器，下方三个分片各为一个副本集，旁边 config server，并画出 targeted 与 scatter-gather 两类查询路径" role="img" viewbox="0 0 740 380" xmlns="http://www.w3.org/2000/svg"><style>.node-fill{fill:#ffffff}.node-fill-accent{fill:#fff1ec}
+.diagram-ink{stroke:#242424;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#d94a2b;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#a3a3a3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#242424}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#d94a2b}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#666;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#d94a2b;paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}</style>
+<defs>
+<marker id="ar-ink" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#525252"></path>
+</marker>
+<marker id="ar-acc" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- mongos -->
+<rect class="diagram-ink node-fill" height="50" rx="6" width="170" x="285" y="26"></rect>
+<text class="node-label" text-anchor="middle" x="370" y="48">mongos 路由器</text>
+<text class="edge-label" text-anchor="middle" x="370" y="65">读元数据 · 转发查询</text>
+<!-- config server -->
+<rect class="diagram-soft node-fill" height="50" rx="6" width="158" x="556" y="26"></rect>
+<text class="node-label" text-anchor="middle" x="635" y="48">config server</text>
+<text class="edge-label" text-anchor="middle" x="635" y="65">元数据 + balancer</text>
+<line class="diagram-soft" marker-end="url(#ar-ink)" x1="556" x2="455" y1="51" y2="51"></line>
+<!-- shard 1 (targeted target) -->
+<rect class="diagram-accent node-fill-accent" height="150" rx="8" stroke-width="1.8" width="180" x="40" y="200"></rect>
+<text class="node-label-accent" text-anchor="middle" x="130" y="222">Shard A 副本集</text>
+<rect class="diagram-ink node-fill" height="40" rx="5" width="136" x="62" y="238"></rect>
+<text class="node-label" text-anchor="middle" x="130" y="263">Primary</text>
+<rect class="diagram-ink node-fill" height="40" rx="5" width="136" x="62" y="288"></rect>
+<text class="node-label" text-anchor="middle" x="130" y="313">Secondary</text>
+<!-- shard 2 -->
+<rect class="diagram-ink node-fill" height="150" rx="8" width="180" x="280" y="200"></rect>
+<text class="node-label" text-anchor="middle" x="370" y="222">Shard B 副本集</text>
+<rect class="diagram-ink node-fill" height="40" rx="5" width="136" x="302" y="238"></rect>
+<text class="node-label" text-anchor="middle" x="370" y="263">Primary</text>
+<rect class="diagram-ink node-fill" height="40" rx="5" width="136" x="302" y="288"></rect>
+<text class="node-label" text-anchor="middle" x="370" y="313">Secondary</text>
+<!-- shard 3 -->
+<rect class="diagram-ink node-fill" height="150" rx="8" width="180" x="520" y="200"></rect>
+<text class="node-label" text-anchor="middle" x="610" y="222">Shard C 副本集</text>
+<rect class="diagram-ink node-fill" height="40" rx="5" width="136" x="542" y="238"></rect>
+<text class="node-label" text-anchor="middle" x="610" y="263">Primary</text>
+<rect class="diagram-ink node-fill" height="40" rx="5" width="136" x="542" y="288"></rect>
+<text class="node-label" text-anchor="middle" x="610" y="313">Secondary</text>
+<!-- targeted path: mongos -> shard A only (accent solid) -->
+<line class="diagram-accent" marker-end="url(#ar-acc)" x1="320" x2="150" y1="76" y2="200"></line>
+<text class="branch-label" text-anchor="middle" x="190" y="150">targeted</text>
+<text class="edge-label" text-anchor="middle" x="206" y="166">带 shard key → 单分片</text>
+<!-- scatter-gather path: mongos -> all shards (soft dashed) -->
+<line class="diagram-soft" marker-end="url(#ar-ink)" x1="400" x2="370" y1="76" y2="200"></line>
+<line class="diagram-soft" marker-end="url(#ar-ink)" x1="430" x2="600" y1="76" y2="200"></line>
+<text class="edge-label" text-anchor="middle" x="540" y="150">scatter-gather</text>
+<text class="edge-label" text-anchor="middle" x="556" y="166">不带 shard key → 全广播</text>
+</svg>
