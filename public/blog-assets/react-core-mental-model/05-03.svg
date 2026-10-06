@@ -1,0 +1,37 @@
+<svg aria-label="服务端组件直读数据不进bundle，use client边界之后是带state的客户端组件，服务端渲染输出流向客户端" role="img" viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<defs>
+<marker id="b-ink" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+</defs>
+<rect class="diagram-soft node-fill" height="180" rx="10" width="290" x="24" y="50"></rect>
+<text class="edge-label" font-weight="700" text-anchor="middle" x="169" y="40">服务端</text>
+<rect class="diagram-ink node-fill" height="60" rx="6" width="242" x="48" y="74"></rect>
+<text class="node-label" text-anchor="middle" x="169" y="100">Server Component</text>
+<text class="edge-label" text-anchor="middle" x="169" y="120">直读数据 · 不进 bundle</text>
+<rect class="diagram-ink node-fill" height="56" rx="6" width="242" x="48" y="150"></rect>
+<text class="node-label" text-anchor="middle" x="169" y="174">纯展示组件</text>
+<text class="edge-label" text-anchor="middle" x="169" y="192">无 state / effect</text>
+<line class="diagram-accent" x1="365" x2="365" y1="50" y2="234"></line>
+<text class="branch-label" text-anchor="middle" x="365" y="252">"use client" 边界</text>
+<rect class="diagram-soft node-fill" height="180" rx="10" width="290" x="406" y="50"></rect>
+<text class="edge-label" font-weight="700" text-anchor="middle" x="551" y="40">客户端（浏览器）</text>
+<rect class="diagram-accent node-fill-accent" height="80" rx="6" width="242" x="430" y="100"></rect>
+<text class="node-label-accent" text-anchor="middle" x="551" y="130">Client Component</text>
+<text class="edge-label" text-anchor="middle" x="551" y="150">state / effect / 事件</text>
+<text class="edge-label" text-anchor="middle" x="551" y="168">前四章的交互核心在这里</text>
+<line class="diagram-ink" marker-end="url(#b-ink)" x1="314" x2="404" y1="140" y2="140"></line>
+<text class="edge-label" text-anchor="middle" x="359" y="128">输出</text>
+</svg>

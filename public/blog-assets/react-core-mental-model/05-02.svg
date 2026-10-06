@@ -1,0 +1,34 @@
+<svg aria-label="class把订阅关注点切到三个生命周期方法，Hook把它聚合进一个useEffect" role="img" viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<rect class="diagram-soft node-fill" height="170" rx="8" width="300" x="30" y="46"></rect>
+<text class="edge-label" font-weight="700" text-anchor="middle" x="180" y="36">class · 按生命周期切割</text>
+<rect class="diagram-ink node-fill" height="42" rx="6" width="260" x="50" y="60"></rect>
+<text class="node-label" text-anchor="middle" x="180" y="78">componentDidMount</text>
+<text class="branch-label" text-anchor="middle" x="180" y="95">订阅 + 日志</text>
+<rect class="diagram-ink node-fill" height="42" rx="6" width="260" x="50" y="110"></rect>
+<text class="node-label" text-anchor="middle" x="180" y="128">componentDidUpdate</text>
+<text class="branch-label" text-anchor="middle" x="180" y="145">订阅(重订) + 日志</text>
+<rect class="diagram-ink node-fill" height="42" rx="6" width="260" x="50" y="160"></rect>
+<text class="node-label" text-anchor="middle" x="180" y="178">componentWillUnmount</text>
+<text class="branch-label" text-anchor="middle" x="180" y="195">订阅(退订)</text>
+<rect class="diagram-soft node-fill" height="170" rx="8" width="300" x="390" y="46"></rect>
+<text class="edge-label" font-weight="700" text-anchor="middle" x="540" y="36">Hook · 按关注点聚合</text>
+<rect class="diagram-accent node-fill-accent" height="64" rx="6" width="260" x="410" y="64"></rect>
+<text class="node-label-accent" text-anchor="middle" x="540" y="90">useEffect（订阅）</text>
+<text class="edge-label" text-anchor="middle" x="540" y="110">connect + cleanup 收在一处</text>
+<rect class="diagram-ink node-fill" height="50" rx="6" width="260" x="410" y="142"></rect>
+<text class="node-label" text-anchor="middle" x="540" y="172">useEffect（日志）</text>
+<text class="edge-label" text-anchor="middle" x="360" y="262">同一个“订阅”关注点（朱红）：左边被切成 3 块，右边收进 1 块</text>
+<text class="branch-label" text-anchor="middle" x="360" y="284">代价：换来的是必须遵守 Hook 调用顺序（§4.1）</text>
+</svg>

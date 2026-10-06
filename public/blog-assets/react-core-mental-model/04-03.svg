@@ -1,0 +1,48 @@
+<svg aria-label="决策树：一段逻辑能算就渲染中算，用户触发放事件处理函数，需同步外部才用effect，否则多半不需要effect" role="img" viewBox="0 0 560 450" xmlns="http://www.w3.org/2000/svg"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<defs>
+<marker id="d-ink" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+</defs>
+<ellipse class="diagram-ink node-fill" cx="350" cy="34" rx="72" ry="22"></ellipse>
+<text class="node-label" text-anchor="middle" x="350" y="40">一段逻辑</text>
+<line class="diagram-ink" marker-end="url(#d-ink)" x1="350" x2="350" y1="56" y2="72"></line>
+<polygon class="diagram-ink node-fill" points="350,72 510,110 350,148 190,110"></polygon>
+<text class="node-label" text-anchor="middle" x="350" y="114">能从现有值算出？</text>
+<line class="diagram-ink" marker-end="url(#d-ink)" x1="190" x2="162" y1="110" y2="110"></line>
+<text class="branch-label" text-anchor="middle" x="176" y="103">是</text>
+<rect class="diagram-ink node-fill" height="44" rx="6" width="140" x="20" y="88"></rect>
+<text class="node-label" text-anchor="middle" x="90" y="115">渲染中直接算</text>
+<line class="diagram-ink" marker-end="url(#d-ink)" x1="350" x2="350" y1="148" y2="170"></line>
+<text class="branch-label" text-anchor="middle" x="366" y="164">否</text>
+<polygon class="diagram-ink node-fill" points="350,170 510,210 350,250 190,210"></polygon>
+<text class="node-label" text-anchor="middle" x="350" y="214">用户操作触发？</text>
+<line class="diagram-ink" marker-end="url(#d-ink)" x1="190" x2="172" y1="210" y2="210"></line>
+<text class="branch-label" text-anchor="middle" x="180" y="203">是</text>
+<rect class="diagram-ink node-fill" height="44" rx="6" width="150" x="20" y="188"></rect>
+<text class="node-label" text-anchor="middle" x="95" y="215">放事件处理函数</text>
+<line class="diagram-ink" marker-end="url(#d-ink)" x1="350" x2="350" y1="250" y2="272"></line>
+<text class="branch-label" text-anchor="middle" x="366" y="266">否</text>
+<polygon class="diagram-ink node-fill" points="350,272 524,312 350,352 176,312"></polygon>
+<text class="node-label" text-anchor="middle" x="350" y="316">要和外部系统同步？</text>
+<line class="diagram-accent" marker-end="url(#d-ink)" x1="176" x2="162" y1="312" y2="312"></line>
+<text class="branch-label" text-anchor="middle" x="170" y="305">是</text>
+<rect class="diagram-accent node-fill-accent" height="44" rx="6" width="140" x="20" y="290"></rect>
+<text class="node-label-accent" text-anchor="middle" x="90" y="317">用 useEffect</text>
+<line class="diagram-ink" marker-end="url(#d-ink)" x1="350" x2="350" y1="352" y2="386"></line>
+<text class="branch-label" text-anchor="middle" x="366" y="372">否</text>
+<rect class="diagram-ink node-fill" height="44" rx="6" width="184" x="258" y="388"></rect>
+<text class="node-label" text-anchor="middle" x="350" y="415">多半不需要 effect</text>
+</svg>

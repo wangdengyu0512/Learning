@@ -1,0 +1,43 @@
+<svg aria-label="命令式与声明式对比：命令式中你直接改 DOM，声明式中 React 介入并负责 diff" role="img" viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<defs>
+<marker id="ar-ink" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="ar-ver" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<text class="edge-label" font-weight="700" x="24" y="72">命令式</text>
+<rect class="diagram-ink node-fill" height="48" rx="6" width="70" x="110" y="46"></rect>
+<text class="node-label" text-anchor="middle" x="145" y="75">你</text>
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="180" x2="338" y1="70" y2="70"></line>
+<text class="edge-label" text-anchor="middle" x="259" y="60">手写每步 DOM</text>
+<rect class="diagram-ink node-fill" height="48" rx="6" width="150" x="340" y="46"></rect>
+<text class="node-label" text-anchor="middle" x="415" y="75">真实 DOM</text>
+<text class="branch-label" text-anchor="middle" x="415" y="116">同步责任 = 你</text>
+<line class="diagram-soft" x1="40" x2="680" y1="140" y2="140"></line>
+<text class="edge-label" font-weight="700" x="24" y="192">声明式</text>
+<rect class="diagram-ink node-fill" height="48" rx="6" width="70" x="110" y="166"></rect>
+<text class="node-label" text-anchor="middle" x="145" y="195">你</text>
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="180" x2="248" y1="190" y2="190"></line>
+<text class="edge-label" text-anchor="middle" x="214" y="180">给描述</text>
+<rect class="diagram-accent node-fill-accent" height="48" rx="6" width="110" x="250" y="166"></rect>
+<text class="node-label-accent" text-anchor="middle" x="305" y="195">React</text>
+<line class="diagram-accent" marker-end="url(#ar-ver)" x1="360" x2="478" y1="190" y2="190"></line>
+<text class="edge-label" text-anchor="middle" x="419" y="180">diff + 更新</text>
+<rect class="diagram-ink node-fill" height="48" rx="6" width="140" x="480" y="166"></rect>
+<text class="node-label" text-anchor="middle" x="550" y="195">真实 DOM</text>
+<text class="branch-label" text-anchor="middle" x="305" y="236">同步责任 = React</text>
+</svg>

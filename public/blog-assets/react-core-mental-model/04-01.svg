@@ -1,0 +1,39 @@
+<svg aria-label="渲染时Hook按调用顺序认领fiber上的记忆槽0、1、2" role="img" viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<defs>
+<marker id="h-ink" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+</defs>
+<text class="edge-label" font-weight="700" text-anchor="middle" x="140" y="36">本次渲染的调用顺序</text>
+<rect class="diagram-ink node-fill" height="42" rx="6" width="200" x="40" y="56"></rect>
+<text class="node-label" text-anchor="middle" x="140" y="82">① useState(0)</text>
+<rect class="diagram-ink node-fill" height="42" rx="6" width="200" x="40" y="110"></rect>
+<text class="node-label" text-anchor="middle" x="140" y="136">② useState("")</text>
+<rect class="diagram-ink node-fill" height="42" rx="6" width="200" x="40" y="164"></rect>
+<text class="node-label" text-anchor="middle" x="140" y="190">③ useEffect(…)</text>
+<text class="edge-label" font-weight="700" text-anchor="middle" x="580" y="36">fiber · Hook 列表</text>
+<rect class="diagram-accent node-fill-accent" height="42" rx="6" width="200" x="480" y="56"></rect>
+<text class="node-label" text-anchor="middle" x="580" y="82">槽 0 · count = 0</text>
+<rect class="diagram-accent node-fill-accent" height="42" rx="6" width="200" x="480" y="110"></rect>
+<text class="node-label" text-anchor="middle" x="580" y="136">槽 1 · name = ""</text>
+<rect class="diagram-accent node-fill-accent" height="42" rx="6" width="200" x="480" y="164"></rect>
+<text class="node-label" text-anchor="middle" x="580" y="190">槽 2 · effect</text>
+<line class="diagram-ink" marker-end="url(#h-ink)" x1="240" x2="478" y1="77" y2="77"></line>
+<text class="edge-label" text-anchor="middle" x="360" y="69">按序认领</text>
+<line class="diagram-ink" marker-end="url(#h-ink)" x1="240" x2="478" y1="131" y2="131"></line>
+<line class="diagram-ink" marker-end="url(#h-ink)" x1="240" x2="478" y1="185" y2="185"></line>
+<text class="branch-label" text-anchor="middle" x="360" y="246">把 ① 放进 if：某次渲染跳过它</text>
+<text class="branch-label" text-anchor="middle" x="360" y="270">→ ② 认领到槽 0、③ 认领到槽 1，全部错位</text>
+</svg>

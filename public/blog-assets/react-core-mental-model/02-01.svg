@@ -1,0 +1,35 @@
+<svg aria-label="渲染三步流程：触发到渲染到提交再到浏览器绘制，渲染阶段不碰DOM，提交阶段才改DOM" role="img" viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<defs>
+<marker id="f-ink" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+</defs>
+<rect class="diagram-ink node-fill" height="58" rx="6" width="140" x="24" y="60"></rect>
+<text class="node-label" text-anchor="middle" x="94" y="84">① 触发</text>
+<text class="edge-label" text-anchor="middle" x="94" y="103">state 变 / 首次</text>
+<line class="diagram-ink" marker-end="url(#f-ink)" x1="164" x2="204" y1="89" y2="89"></line>
+<rect class="diagram-accent node-fill-accent" height="58" rx="6" width="160" x="206" y="60"></rect>
+<text class="node-label-accent" text-anchor="middle" x="286" y="84">② 渲染 Render</text>
+<text class="edge-label" text-anchor="middle" x="286" y="103">调用组件 → 新树</text>
+<text class="edge-label" text-anchor="middle" x="286" y="150">纯计算 · 不碰 DOM</text>
+<line class="diagram-ink" marker-end="url(#f-ink)" x1="366" x2="406" y1="89" y2="89"></line>
+<rect class="diagram-ink node-fill" height="58" rx="6" width="150" x="408" y="60"></rect>
+<text class="node-label" text-anchor="middle" x="483" y="84">③ 提交 Commit</text>
+<text class="edge-label" text-anchor="middle" x="483" y="103">diff → 改 DOM</text>
+<text class="branch-label" text-anchor="middle" x="483" y="150">同步 · 真正改 DOM</text>
+<line class="diagram-ink" marker-end="url(#f-ink)" x1="558" x2="598" y1="89" y2="89"></line>
+<rect class="diagram-ink node-fill" height="58" rx="6" width="100" x="600" y="60"></rect>
+<text class="node-label" text-anchor="middle" x="650" y="93">浏览器绘制</text>
+</svg>

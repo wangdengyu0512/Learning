@@ -1,0 +1,46 @@
+<svg aria-label="协调：对比旧树和新树，同位置同类型则复用更新，类型不同则销毁重建" role="img" viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<defs>
+<marker id="r-ink" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="r-ver" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<text class="edge-label" font-weight="700" text-anchor="middle" x="120" y="40">旧树</text>
+<rect class="diagram-ink node-fill" height="46" rx="6" width="120" x="60" y="54"></rect>
+<text class="node-label" text-anchor="middle" x="120" y="82">div</text>
+<line class="diagram-ink" x1="120" x2="90" y1="100" y2="150"></line>
+<line class="diagram-ink" x1="120" x2="150" y1="100" y2="150"></line>
+<rect class="diagram-ink node-fill" height="46" rx="6" width="120" x="30" y="150"></rect>
+<text class="node-label" text-anchor="middle" x="90" y="178">p · "Hi"</text>
+<rect class="diagram-ink node-fill" height="46" rx="6" width="120" x="160" y="150"></rect>
+<text class="node-label" text-anchor="middle" x="220" y="178">input</text>
+<text class="edge-label" font-weight="700" text-anchor="middle" x="600" y="40">新树</text>
+<rect class="diagram-ink node-fill" height="46" rx="6" width="120" x="540" y="54"></rect>
+<text class="node-label" text-anchor="middle" x="600" y="82">div</text>
+<line class="diagram-ink" x1="600" x2="570" y1="100" y2="150"></line>
+<line class="diagram-ink" x1="600" x2="630" y1="100" y2="150"></line>
+<rect class="diagram-ink node-fill" height="46" rx="6" width="120" x="510" y="150"></rect>
+<text class="node-label" text-anchor="middle" x="570" y="178">p · "Yo"</text>
+<rect class="diagram-ink node-fill" height="46" rx="6" width="120" x="640" y="150"></rect>
+<text class="node-label" text-anchor="middle" x="700" y="178">input</text>
+<line class="diagram-soft" marker-end="url(#r-ink)" x1="180" x2="538" y1="77" y2="77"></line>
+<text class="edge-label" text-anchor="middle" x="360" y="68">div=div：复用</text>
+<line class="diagram-accent" marker-end="url(#r-ver)" x1="150" x2="508" y1="173" y2="173"></line>
+<text class="branch-label" text-anchor="middle" x="330" y="164">只改文字 Hi→Yo</text>
+<text class="edge-label" text-anchor="middle" x="360" y="232">input 同位置同类型 → 复用同一 DOM，连输入内容一起保留</text>
+<text class="branch-label" text-anchor="middle" x="360" y="258">若 input 变成 textarea（类型变）→ 销毁重建，输入内容丢失</text>
+</svg>

@@ -1,0 +1,46 @@
+<svg aria-label="值式更新三次只得1，函数式更新三次得3的队列对比" role="img" viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<defs>
+<marker id="q-ink" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="q-ver" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<text class="edge-label" font-weight="700" x="26" y="78">值式</text>
+<rect class="diagram-ink node-fill" height="58" rx="6" width="210" x="84" y="48"></rect>
+<text class="node-label" text-anchor="middle" x="189" y="72">setCount(count + 1) ×3</text>
+<text class="edge-label" text-anchor="middle" x="189" y="92">count 本帧 ≡ 0</text>
+<line class="diagram-ink" marker-end="url(#q-ink)" x1="294" x2="344" y1="77" y2="77"></line>
+<rect class="diagram-ink node-fill" height="58" rx="6" width="190" x="346" y="48"></rect>
+<text class="node-label" text-anchor="middle" x="441" y="72">队列：设1 · 设1 · 设1</text>
+<text class="edge-label" text-anchor="middle" x="441" y="92">后者覆盖前者</text>
+<line class="diagram-ink" marker-end="url(#q-ink)" x1="536" x2="586" y1="77" y2="77"></line>
+<rect class="diagram-ink node-fill" height="54" rx="6" width="108" x="588" y="50"></rect>
+<text class="node-label" text-anchor="middle" x="642" y="82">count = 1</text>
+<line class="diagram-soft" x1="40" x2="700" y1="140" y2="140"></line>
+<text class="branch-label" font-weight="700" x="26" y="198">函数式</text>
+<rect class="diagram-accent node-fill-accent" height="58" rx="6" width="210" x="84" y="168"></rect>
+<text class="node-label" text-anchor="middle" x="189" y="192">setCount(c =&gt; c + 1) ×3</text>
+<text class="edge-label" text-anchor="middle" x="189" y="212">拿上一个结果 +1</text>
+<line class="diagram-accent" marker-end="url(#q-ver)" x1="294" x2="344" y1="197" y2="197"></line>
+<rect class="diagram-ink node-fill" height="58" rx="6" width="190" x="346" y="168"></rect>
+<text class="node-label" text-anchor="middle" x="441" y="192">队列：c+1 · c+1 · c+1</text>
+<text class="edge-label" text-anchor="middle" x="441" y="212">依次折叠</text>
+<line class="diagram-accent" marker-end="url(#q-ver)" x1="536" x2="586" y1="197" y2="197"></line>
+<rect class="diagram-accent node-fill-accent" height="54" rx="6" width="108" x="588" y="170"></rect>
+<text class="node-label-accent" text-anchor="middle" x="642" y="197">0→1→2→3</text>
+<text class="branch-label" text-anchor="middle" x="642" y="214">= 3</text>
+</svg>

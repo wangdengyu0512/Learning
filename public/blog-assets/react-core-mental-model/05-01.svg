@@ -1,0 +1,39 @@
+<svg aria-label="React 分层架构：你的组件、元素树、Reconciler/Fiber、Renderer、宿主平台 DOM 自上而下" role="img" viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<defs>
+<marker id="a-ink" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#525252"></path>
+</marker>
+</defs>
+<text class="edge-label" font-weight="700" x="22" y="52">APP</text>
+<text class="edge-label" font-weight="700" x="22" y="116">描述</text>
+<text class="edge-label" fill="#B73B2F" font-weight="700" x="22" y="186">CORE</text>
+<text class="edge-label" font-weight="700" x="22" y="252">RENDER</text>
+<text class="edge-label" font-weight="700" x="22" y="314">HOST</text>
+<rect class="diagram-ink node-fill" height="44" rx="4" width="540" x="110" y="26"></rect>
+<text class="node-label" text-anchor="middle" x="380" y="53">你的组件（render 返回元素）</text>
+<rect class="diagram-ink node-fill" height="44" rx="4" width="540" x="110" y="92"></rect>
+<text class="node-label" text-anchor="middle" x="380" y="119">React 元素树（描述）</text>
+<rect class="diagram-accent node-fill-accent" height="56" rx="4" width="540" x="110" y="158"></rect>
+<text class="node-label-accent" text-anchor="middle" x="380" y="181">Reconciler · Fiber</text>
+<text class="edge-label" text-anchor="middle" x="380" y="200">diff · 可中断 · 前四章都在这层</text>
+<rect class="diagram-ink node-fill" height="44" rx="4" width="540" x="110" y="236"></rect>
+<text class="node-label" text-anchor="middle" x="380" y="263">Renderer：react-dom / react-native</text>
+<rect class="diagram-ink node-fill" height="40" rx="4" width="540" x="110" y="296"></rect>
+<text class="node-label" text-anchor="middle" x="380" y="321">宿主平台：浏览器 DOM</text>
+<line marker-end="url(#a-ink)" stroke="#525252" stroke-width="1.4" x1="200" x2="200" y1="70" y2="90"></line>
+<line marker-end="url(#a-ink)" stroke="#525252" stroke-width="1.4" x1="200" x2="200" y1="136" y2="156"></line>
+<line marker-end="url(#a-ink)" stroke="#525252" stroke-width="1.4" x1="560" x2="560" y1="214" y2="234"></line>
+<line marker-end="url(#a-ink)" stroke="#525252" stroke-width="1.4" x1="560" x2="560" y1="280" y2="294"></line>
+</svg>

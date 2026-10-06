@@ -1,0 +1,39 @@
+<svg aria-label="effect同步时间线：roomId从A变B时先cleanup断开A再连接B，卸载时断开B" role="img" viewBox="0 0 768 200" xmlns="http://www.w3.org/2000/svg"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<defs>
+<marker id="t-ink" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+</defs>
+<text class="edge-label" text-anchor="middle" x="64" y="74">渲染</text>
+<rect class="diagram-ink node-fill" height="46" rx="6" width="100" x="14" y="86"></rect>
+<text class="node-label" text-anchor="middle" x="64" y="114">roomId=A</text>
+<line class="diagram-ink" marker-end="url(#t-ink)" x1="114" x2="146" y1="109" y2="109"></line>
+<text class="branch-label" text-anchor="middle" x="183" y="74">effect 运行</text>
+<rect class="diagram-accent node-fill-accent" height="46" rx="6" width="110" x="148" y="86"></rect>
+<text class="node-label-accent" text-anchor="middle" x="203" y="114">connect A</text>
+<line class="diagram-ink" marker-end="url(#t-ink)" x1="258" x2="290" y1="109" y2="109"></line>
+<text class="edge-label" text-anchor="middle" x="342" y="74">roomId 变</text>
+<rect class="diagram-ink node-fill" height="46" rx="6" width="100" x="292" y="86"></rect>
+<text class="node-label" text-anchor="middle" x="342" y="114">roomId=B</text>
+<line class="diagram-ink" marker-end="url(#t-ink)" x1="392" x2="424" y1="109" y2="109"></line>
+<text class="edge-label" text-anchor="middle" x="487" y="74">先 cleanup 旧的</text>
+<rect class="diagram-soft node-fill" height="46" rx="6" width="122" x="426" y="86"></rect>
+<text class="node-label" text-anchor="middle" x="487" y="114">disconnect A</text>
+<line class="diagram-ink" marker-end="url(#t-ink)" x1="548" x2="580" y1="109" y2="109"></line>
+<text class="branch-label" text-anchor="middle" x="637" y="74">再运行新 effect</text>
+<rect class="diagram-accent node-fill-accent" height="46" rx="6" width="110" x="582" y="86"></rect>
+<text class="node-label-accent" text-anchor="middle" x="637" y="114">connect B</text>
+<text class="edge-label" text-anchor="middle" x="487" y="160">[roomId] 变了，才重新同步：旧连接先断、新连接再建</text>
+</svg>

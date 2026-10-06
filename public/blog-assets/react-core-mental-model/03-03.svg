@@ -1,0 +1,47 @@
+<svg aria-label="原地修改导致引用相同被Object.is判定没变而跳过渲染，新引用则触发渲染" role="img" viewBox="0 0 720 250" xmlns="http://www.w3.org/2000/svg"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<defs>
+<marker id="m-ink" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="m-ver" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<text class="edge-label" font-weight="700" x="24" y="62">原地改</text>
+<rect class="diagram-ink node-fill" height="50" rx="6" width="180" x="92" y="36"></rect>
+<text class="node-label" text-anchor="middle" x="182" y="58">push 后 setTodos</text>
+<text class="edge-label" text-anchor="middle" x="182" y="76">引用没变</text>
+<line class="diagram-ink" marker-end="url(#m-ink)" x1="272" x2="318" y1="61" y2="61"></line>
+<rect class="diagram-ink node-fill" height="50" rx="6" width="170" x="320" y="36"></rect>
+<text class="node-label" text-anchor="middle" x="405" y="58">Object.is(旧,新)</text>
+<text class="edge-label" text-anchor="middle" x="405" y="76">= true 同引用</text>
+<line class="diagram-ink" marker-end="url(#m-ink)" x1="490" x2="536" y1="61" y2="61"></line>
+<rect class="diagram-ink node-fill" height="50" rx="6" width="158" x="538" y="36"></rect>
+<text class="node-label" text-anchor="middle" x="617" y="58">跳过渲染</text>
+<text class="edge-label" text-anchor="middle" x="617" y="76">UI 不动</text>
+<line class="diagram-soft" x1="40" x2="700" y1="124" y2="124"></line>
+<text class="branch-label" font-weight="700" x="24" y="186">新引用</text>
+<rect class="diagram-accent node-fill-accent" height="50" rx="6" width="180" x="92" y="160"></rect>
+<text class="node-label" text-anchor="middle" x="182" y="182">[...todos, x]</text>
+<text class="edge-label" text-anchor="middle" x="182" y="200">新数组</text>
+<line class="diagram-accent" marker-end="url(#m-ver)" x1="272" x2="318" y1="185" y2="185"></line>
+<rect class="diagram-ink node-fill" height="50" rx="6" width="170" x="320" y="160"></rect>
+<text class="node-label" text-anchor="middle" x="405" y="182">Object.is(旧,新)</text>
+<text class="edge-label" text-anchor="middle" x="405" y="200">= false 新引用</text>
+<line class="diagram-accent" marker-end="url(#m-ver)" x1="490" x2="536" y1="185" y2="185"></line>
+<rect class="diagram-accent node-fill-accent" height="50" rx="6" width="158" x="538" y="160"></rect>
+<text class="node-label-accent" text-anchor="middle" x="617" y="182">重新渲染</text>
+<text class="edge-label" text-anchor="middle" x="617" y="200">UI 更新</text>
+</svg>

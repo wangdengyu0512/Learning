@@ -1,0 +1,38 @@
+<svg aria-label="state存在React记忆槽里跨渲染保留，每次渲染函数从槽里取出一个快照赋给本帧的const" role="img" viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<defs>
+<marker id="s-ink" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+</defs>
+<rect class="diagram-accent node-fill-accent" height="56" rx="8" width="340" x="190" y="28"></rect>
+<text class="node-label-accent" text-anchor="middle" x="360" y="52">React 记忆槽（在 fiber 上）</text>
+<text class="edge-label" text-anchor="middle" x="360" y="71">count: 0 → 1 → 2 · 跨渲染保留</text>
+<rect class="diagram-ink node-fill" height="76" rx="6" width="190" x="30" y="170"></rect>
+<text class="node-label" text-anchor="middle" x="125" y="196">渲染 #1</text>
+<text class="edge-label" text-anchor="middle" x="125" y="216">const count = 0</text>
+<text class="edge-label" text-anchor="middle" x="125" y="234">（本帧快照）</text>
+<rect class="diagram-ink node-fill" height="76" rx="6" width="190" x="265" y="170"></rect>
+<text class="node-label" text-anchor="middle" x="360" y="196">渲染 #2</text>
+<text class="edge-label" text-anchor="middle" x="360" y="216">const count = 1</text>
+<text class="edge-label" text-anchor="middle" x="360" y="234">（本帧快照）</text>
+<rect class="diagram-ink node-fill" height="76" rx="6" width="190" x="500" y="170"></rect>
+<text class="node-label" text-anchor="middle" x="595" y="196">渲染 #3</text>
+<text class="edge-label" text-anchor="middle" x="595" y="216">const count = 2</text>
+<text class="edge-label" text-anchor="middle" x="595" y="234">（本帧快照）</text>
+<line class="diagram-ink" marker-end="url(#s-ink)" x1="300" x2="135" y1="84" y2="170"></line>
+<line class="diagram-ink" marker-end="url(#s-ink)" x1="360" x2="360" y1="84" y2="170"></line>
+<text class="edge-label" text-anchor="start" x="378" y="130">useState 取出</text>
+<line class="diagram-ink" marker-end="url(#s-ink)" x1="420" x2="585" y1="84" y2="170"></line>
+</svg>

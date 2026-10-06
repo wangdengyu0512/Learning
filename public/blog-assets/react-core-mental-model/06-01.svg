@@ -1,0 +1,31 @@
+<svg aria-label="认知梯度金字塔：底层概念回忆，中层原理分析，顶层应用判别迁移" role="img" viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<defs>
+<marker id="g-ink" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#525252"></path>
+</marker>
+</defs>
+<polygon class="diagram-ink node-fill" points="110,256 570,256 500,200 180,200"></polygon>
+<text class="node-label" text-anchor="middle" x="340" y="224">概念层 · 回忆与理解</text>
+<text class="edge-label" text-anchor="middle" x="340" y="242">对应 01–02 · 题 1–4</text>
+<polygon class="diagram-ink node-fill" points="180,200 500,200 432,144 248,144"></polygon>
+<text class="node-label" text-anchor="middle" x="340" y="168">原理层 · 分析机制</text>
+<text class="edge-label" text-anchor="middle" x="340" y="186">对应 02–05 · 题 5–10</text>
+<polygon class="diagram-accent node-fill-accent" points="248,144 432,144 372,84 308,84"></polygon>
+<text class="node-label-accent" text-anchor="middle" x="340" y="118">判别层</text>
+<text class="branch-label" text-anchor="middle" x="340" y="135">S1–S5</text>
+<line marker-end="url(#g-ink)" stroke="#525252" stroke-width="1.4" x1="626" x2="626" y1="256" y2="90"></line>
+<text class="edge-label" text-anchor="middle" x="626" y="76">迁移度 ↑</text>
+<text class="edge-label" text-anchor="middle" x="626" y="272">回忆</text>
+</svg>

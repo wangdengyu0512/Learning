@@ -1,0 +1,40 @@
+<svg aria-label="五道判别场景各自横跨两章的映射矩阵" role="img" viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<text class="edge-label" font-weight="700" x="20" y="44">场景 \ 章节</text>
+<text class="node-label" text-anchor="middle" x="240" y="44">01</text>
+<text class="node-label" text-anchor="middle" x="330" y="44">02</text>
+<text class="node-label" text-anchor="middle" x="420" y="44">03</text>
+<text class="node-label" text-anchor="middle" x="510" y="44">04</text>
+<text class="node-label" text-anchor="middle" x="600" y="44">05</text>
+<line class="diagram-soft" x1="240" x2="240" y1="60" y2="268"></line>
+<line class="diagram-soft" x1="330" x2="330" y1="60" y2="268"></line>
+<line class="diagram-soft" x1="420" x2="420" y1="60" y2="268"></line>
+<line class="diagram-soft" x1="510" x2="510" y1="60" y2="268"></line>
+<line class="diagram-soft" x1="600" x2="600" y1="60" y2="268"></line>
+<text class="edge-label" x="20" y="92">S1 · 列表串状态</text>
+<circle cx="330" cy="88" fill="#B73B2F" r="7"></circle>
+<circle cx="420" cy="88" fill="#B73B2F" r="7"></circle>
+<text class="edge-label" x="20" y="132">S2 · 定时器不动</text>
+<circle cx="420" cy="128" fill="#B73B2F" r="7"></circle>
+<circle cx="510" cy="128" fill="#B73B2F" r="7"></circle>
+<text class="edge-label" x="20" y="172">S3 · 选型权衡</text>
+<circle cx="330" cy="168" fill="#B73B2F" r="7"></circle>
+<circle cx="600" cy="168" fill="#B73B2F" r="7"></circle>
+<text class="edge-label" x="20" y="212">S4 · ref 还是 state</text>
+<circle cx="420" cy="208" fill="#B73B2F" r="7"></circle>
+<circle cx="510" cy="208" fill="#B73B2F" r="7"></circle>
+<text class="edge-label" x="20" y="252">S5 · RSC 切分</text>
+<circle cx="240" cy="248" fill="#B73B2F" r="7"></circle>
+<circle cx="600" cy="248" fill="#B73B2F" r="7"></circle>
+</svg>

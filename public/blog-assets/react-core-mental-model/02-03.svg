@@ -1,0 +1,42 @@
+<svg aria-label="用下标当key的失败：删除中间的Bob后，React按位置复用，导致Cay继承了Bob输入框里的草稿" role="img" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<defs>
+<marker id="k-ink" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="k-ver" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<text class="edge-label" font-weight="700" x="28" y="70">旧列表</text>
+<rect class="diagram-ink node-fill" height="52" rx="6" width="140" x="120" y="40"></rect>
+<text class="node-label" text-anchor="middle" x="190" y="62">key=0 · Ann</text>
+<rect class="diagram-ink node-fill" height="52" rx="6" width="140" x="280" y="40"></rect>
+<text class="node-label" text-anchor="middle" x="350" y="60">key=1 · Bob</text>
+<text class="branch-label" text-anchor="middle" x="350" y="80">输入草稿：X</text>
+<rect class="diagram-ink node-fill" height="52" rx="6" width="140" x="440" y="40"></rect>
+<text class="node-label" text-anchor="middle" x="510" y="62">key=2 · Cay</text>
+<text class="edge-label" font-weight="700" x="28" y="240">新列表</text>
+<rect class="diagram-ink node-fill" height="52" rx="6" width="140" x="120" y="210"></rect>
+<text class="node-label" text-anchor="middle" x="190" y="240">key=0 · Ann</text>
+<rect class="diagram-accent node-fill-accent" height="52" rx="6" width="140" x="280" y="210"></rect>
+<text class="node-label" text-anchor="middle" x="350" y="240">key=1 · Cay</text>
+<line class="diagram-ink" marker-end="url(#k-ink)" x1="190" x2="190" y1="92" y2="210"></line>
+<text class="edge-label" text-anchor="middle" x="190" y="155">位置0 复用</text>
+<line class="diagram-accent" marker-end="url(#k-ver)" x1="350" x2="350" y1="92" y2="210"></line>
+<text class="branch-label" text-anchor="middle" x="350" y="155">位置1 复用</text>
+<line class="diagram-soft" x1="510" x2="510" y1="92" y2="150"></line>
+<text class="branch-label" text-anchor="middle" x="510" y="170">位置2 整体删除</text>
+<text class="branch-label" text-anchor="middle" x="350" y="288">Cay 继承了 Bob 的旧节点，连草稿 X 一起</text>
+</svg>

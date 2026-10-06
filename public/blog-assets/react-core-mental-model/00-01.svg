@@ -1,0 +1,66 @@
+<svg aria-label="React 核心概念地图：UI=f(state) 为中心，组件、Props、State、渲染、Hook、Effect 六个概念围绕它" role="img" viewBox="0 0 760 480" xmlns="http://www.w3.org/2000/svg"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<defs>
+<marker id="arrow-ink" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="arrow-vermilion" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+<marker id="arrow-soft" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#A3A3A3"></path>
+</marker>
+</defs>
+<!-- center -->
+<rect class="diagram-accent node-fill-accent" height="64" rx="8" stroke-width="2" width="160" x="300" y="208"></rect>
+<text class="node-label-accent" font-size="15" text-anchor="middle" x="380" y="234">UI = f(state)</text>
+<text class="edge-label" text-anchor="middle" x="380" y="254">声明式 · 纯函数</text>
+<!-- Component (top-left) -->
+<rect class="diagram-ink node-fill" height="54" rx="6" width="140" x="145" y="63"></rect>
+<text class="node-label" text-anchor="middle" x="215" y="86">组件 Component</text>
+<text class="edge-label" text-anchor="middle" x="215" y="104">props 的纯函数</text>
+<!-- State (top-right) -->
+<rect class="diagram-ink node-fill" height="54" rx="6" width="140" x="475" y="63"></rect>
+<text class="node-label" text-anchor="middle" x="545" y="86">状态 State</text>
+<text class="edge-label" text-anchor="middle" x="545" y="104">一帧的快照</text>
+<!-- Props (left) -->
+<rect class="diagram-ink node-fill" height="54" rx="6" width="140" x="25" y="213"></rect>
+<text class="node-label" text-anchor="middle" x="95" y="236">Props</text>
+<text class="edge-label" text-anchor="middle" x="95" y="254">输入 · 只读</text>
+<!-- Render (right) -->
+<rect class="diagram-ink node-fill" height="54" rx="6" width="140" x="595" y="213"></rect>
+<text class="node-label" text-anchor="middle" x="665" y="236">渲染 Render</text>
+<text class="edge-label" text-anchor="middle" x="665" y="254">触发→渲染→提交</text>
+<!-- Hook (bottom-left) -->
+<rect class="diagram-ink node-fill" height="54" rx="6" width="140" x="145" y="363"></rect>
+<text class="node-label" text-anchor="middle" x="215" y="386">Hook</text>
+<text class="edge-label" text-anchor="middle" x="215" y="404">按调用顺序</text>
+<!-- Effect (bottom-right) -->
+<rect class="diagram-ink node-fill" height="54" rx="6" width="140" x="475" y="363"></rect>
+<text class="node-label" text-anchor="middle" x="545" y="386">Effect</text>
+<text class="edge-label" text-anchor="middle" x="545" y="404">与外部同步</text>
+<!-- edges: outer -> center -->
+<line class="diagram-ink" marker-end="url(#arrow-ink)" x1="255" x2="332" y1="117" y2="208"></line>
+<text class="edge-label" text-anchor="middle" x="300" y="160">是那个 f</text>
+<line class="diagram-accent" marker-end="url(#arrow-vermilion)" x1="525" x2="428" y1="117" y2="208"></line>
+<text class="branch-label" text-anchor="middle" x="470" y="160">输入·会变</text>
+<line class="diagram-ink" marker-end="url(#arrow-ink)" x1="165" x2="300" y1="235" y2="232"></line>
+<text class="edge-label" text-anchor="middle" x="228" y="223">输入·只读</text>
+<line class="diagram-ink" marker-end="url(#arrow-ink)" x1="595" x2="460" y1="235" y2="232"></line>
+<text class="edge-label" text-anchor="middle" x="528" y="223">state 变→重算</text>
+<line class="diagram-ink" marker-end="url(#arrow-ink)" x1="255" x2="332" y1="363" y2="272"></line>
+<text class="edge-label" text-anchor="middle" x="298" y="328">给 f 记忆</text>
+<line class="diagram-soft" marker-end="url(#arrow-soft)" x1="525" x2="428" y1="363" y2="272"></line>
+<text class="edge-label" text-anchor="middle" x="470" y="328">f 之外</text>
+</svg>

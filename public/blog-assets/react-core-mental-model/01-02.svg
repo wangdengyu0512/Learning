@@ -1,0 +1,41 @@
+<svg aria-label="UI=f(state) 的循环：state 输入组件函数，输出 UI 描述并提交 DOM；用户交互触发 setState 产生新 state" role="img" viewBox="0 0 720 340" xmlns="http://www.w3.org/2000/svg"><style>
+  svg { background: #fbfaf7; }
+  .diagram-ink { stroke: #24211d; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-accent { stroke: #b73b2f; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .diagram-soft { stroke: #aaa39a; fill: none; stroke-width: 1.1; stroke-dasharray: 3 3; }
+  .node-fill { fill: #fffdf8; }
+  .node-fill-accent { fill: #f8e6e1; }
+  .node-label { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 500; fill: #24211d; }
+  .node-label-accent { font-family: Inter, system-ui, sans-serif; font-size: 13px; font-weight: 700; fill: #b73b2f; }
+  .edge-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; fill: #615b54; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  .branch-label { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #b73b2f; paint-order: stroke; stroke: #fbfaf7; stroke-width: 4px; stroke-linejoin: round; }
+  text { font-family: Inter, system-ui, sans-serif; }
+</style>
+<defs>
+<marker id="cyc-ink" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="cyc-ver" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<rect class="diagram-ink node-fill" height="56" rx="6" width="120" x="40" y="130"></rect>
+<text class="node-label" text-anchor="middle" x="100" y="155">state</text>
+<text class="edge-label" text-anchor="middle" x="100" y="173">当前值</text>
+<line class="diagram-ink" marker-end="url(#cyc-ink)" x1="160" x2="258" y1="158" y2="158"></line>
+<text class="edge-label" text-anchor="middle" x="209" y="148">作为输入</text>
+<rect class="diagram-accent node-fill-accent" height="56" rx="6" width="140" x="260" y="130"></rect>
+<text class="node-label-accent" text-anchor="middle" x="330" y="155">组件函数 f</text>
+<text class="edge-label" text-anchor="middle" x="330" y="173">纯函数</text>
+<line class="diagram-ink" marker-end="url(#cyc-ink)" x1="400" x2="498" y1="158" y2="158"></line>
+<text class="edge-label" text-anchor="middle" x="449" y="148">返回描述</text>
+<rect class="diagram-ink node-fill" height="56" rx="6" width="150" x="500" y="130"></rect>
+<text class="node-label" text-anchor="middle" x="575" y="155">UI 描述</text>
+<text class="edge-label" text-anchor="middle" x="575" y="173">→ 真实 DOM</text>
+<polyline class="diagram-ink" fill="none" marker-end="url(#cyc-ink)" points="575,186 575,275 442,275"></polyline>
+<text class="edge-label" text-anchor="middle" x="600" y="232">用户交互</text>
+<rect class="diagram-ink node-fill" height="50" rx="6" width="140" x="300" y="250"></rect>
+<text class="node-label" text-anchor="middle" x="370" y="280">setState(新值)</text>
+<polyline class="diagram-accent" fill="none" marker-end="url(#cyc-ver)" points="300,275 100,275 100,186"></polyline>
+<text class="branch-label" text-anchor="middle" x="188" y="291">触发新一轮</text>
+</svg>
