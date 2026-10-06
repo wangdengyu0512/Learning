@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="RabbitMQ 核心抽象的关系：producer 经 exchange 与 binding 到 queue 再到 consumer，ack 后删除" role="img" viewBox="0 0 790 360" xmlns="http://www.w3.org/2000/svg"><style>
+.diagram-ink{stroke:#0A0A0A;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#B73B2F;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#A3A3A3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-fill{fill:#FFFFFF}.node-fill-accent{fill:rgba(183,59,47,0.06)}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#0A0A0A}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#B73B2F}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#525252;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#B73B2F;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}
+</style>
+<defs>
+<marker id="m-ink" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="m-verm" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<rect class="diagram-soft node-fill" height="170" rx="12" width="432" x="196" y="104"></rect>
+<text class="edge-label" font-weight="700" text-anchor="middle" x="412" y="96">vhost · 命名空间隔离</text>
+<rect class="diagram-ink node-fill" height="56" rx="6" width="104" x="24" y="158"></rect>
+<text class="node-label" text-anchor="middle" x="76" y="190">Producer</text>
+<rect class="diagram-accent node-fill-accent" height="72" rx="6" stroke-width="2" width="140" x="214" y="150"></rect>
+<text class="node-label-accent" text-anchor="middle" x="284" y="182">Exchange</text>
+<text class="edge-label" text-anchor="middle" x="284" y="202">不存消息·只路由</text>
+<rect class="diagram-ink node-fill" height="72" rx="6" width="164" x="440" y="150"></rect>
+<text class="node-label" text-anchor="middle" x="522" y="182">Queue</text>
+<text class="edge-label" text-anchor="middle" x="522" y="202">消费即删除</text>
+<rect class="diagram-ink node-fill" height="56" rx="6" width="104" x="664" y="158"></rect>
+<text class="node-label" text-anchor="middle" x="716" y="190">Consumer</text>
+<line class="diagram-ink" marker-end="url(#m-ink)" x1="128" x2="214" y1="186" y2="186"></line>
+<text class="edge-label" text-anchor="middle" x="171" y="176">publish</text>
+<line class="diagram-accent" marker-end="url(#m-verm)" x1="354" x2="440" y1="186" y2="186"></line>
+<text class="branch-label" text-anchor="middle" x="397" y="176">binding</text>
+<line class="diagram-ink" marker-end="url(#m-ink)" x1="604" x2="664" y1="186" y2="186"></line>
+<text class="edge-label" text-anchor="middle" x="634" y="176">push</text>
+<path class="diagram-accent" d="M 716 214 C 716 320, 522 320, 522 222" fill="none" marker-end="url(#m-verm)"></path>
+<text class="branch-label" text-anchor="middle" x="619" y="312">ack → broker 删除</text>
+</svg>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="一条 TCP 连接上复用三个 channel" role="img" viewBox="0 0 700 290" xmlns="http://www.w3.org/2000/svg"><style>
+.diagram-ink{stroke:#0A0A0A;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#B73B2F;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#A3A3A3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-fill{fill:#FFFFFF}.node-fill-accent{fill:rgba(183,59,47,0.06)}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#0A0A0A}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#B73B2F}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#525252;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#B73B2F;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}
+</style>
+<defs>
+<marker id="ar-ink" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+</defs>
+<rect class="diagram-ink node-fill" height="40" rx="6" width="92" x="20" y="55"></rect>
+<text class="node-label" text-anchor="middle" x="66" y="79">线程 A</text>
+<rect class="diagram-ink node-fill" height="40" rx="6" width="92" x="20" y="125"></rect>
+<text class="node-label" text-anchor="middle" x="66" y="149">线程 B</text>
+<rect class="diagram-ink node-fill" height="40" rx="6" width="92" x="20" y="195"></rect>
+<text class="node-label" text-anchor="middle" x="66" y="219">线程 C</text>
+<rect class="diagram-soft node-fill" height="214" rx="10" width="250" x="225" y="38"></rect>
+<text class="edge-label" font-weight="700" text-anchor="middle" x="350" y="28">1 条 TCP Connection</text>
+<rect class="diagram-ink node-fill" height="40" rx="5" width="204" x="248" y="55"></rect>
+<text class="node-label" text-anchor="middle" x="350" y="79">channel 1</text>
+<rect class="diagram-ink node-fill" height="40" rx="5" width="204" x="248" y="125"></rect>
+<text class="node-label" text-anchor="middle" x="350" y="149">channel 2</text>
+<rect class="diagram-ink node-fill" height="40" rx="5" width="204" x="248" y="195"></rect>
+<text class="node-label" text-anchor="middle" x="350" y="219">channel 3</text>
+<rect class="diagram-ink node-fill" height="60" rx="6" width="105" x="575" y="115"></rect>
+<text class="node-label" text-anchor="middle" x="627" y="150">Broker</text>
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="112" x2="248" y1="75" y2="75"></line>
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="112" x2="248" y1="145" y2="145"></line>
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="112" x2="248" y1="215" y2="215"></line>
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="475" x2="575" y1="145" y2="145"></line>
+<text class="edge-label" text-anchor="middle" x="525" y="135">带 channel 号</text>
+</svg>

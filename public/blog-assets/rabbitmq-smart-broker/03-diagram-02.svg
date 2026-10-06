@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="每个队列是一个 Erlang 进程钉在一个核上，热队列瓶颈在单核而其他核空闲" role="img" viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg"><style>
+.diagram-ink{stroke:#0A0A0A;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#B73B2F;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#A3A3A3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-fill{fill:#FFFFFF}.node-fill-accent{fill:rgba(183,59,47,0.06)}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#0A0A0A}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#B73B2F}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#525252;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#B73B2F;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}
+</style>
+<defs>
+<marker id="ar-ink2" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="ar-verm2" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<text class="edge-label" font-weight="700" x="30" y="30">一台 4 核机器 · 一队列 = 一进程 = 钉在一个核</text>
+<!-- core 1 HOT -->
+<rect class="diagram-accent node-fill-accent" height="110" rx="8" stroke-width="2" width="150" x="30" y="52"></rect>
+<text class="node-label-accent" text-anchor="middle" x="105" y="74">核 1</text>
+<rect class="diagram-accent node-fill" height="34" rx="5" stroke-width="1.6" width="110" x="50" y="86"></rect>
+<text class="node-label-accent" text-anchor="middle" x="105" y="108">队列 H 进程</text>
+<text class="branch-label" text-anchor="middle" x="105" y="142">100% · 满载</text>
+<!-- core 2 -->
+<rect class="diagram-ink node-fill" height="110" rx="8" width="150" x="200" y="52"></rect>
+<text class="node-label" text-anchor="middle" x="275" y="74">核 2</text>
+<rect class="diagram-ink node-fill" height="34" rx="5" width="110" x="220" y="86"></rect>
+<text class="node-label" text-anchor="middle" x="275" y="108">队列 A 进程</text>
+<text class="edge-label" text-anchor="middle" x="275" y="142">12% · 空闲</text>
+<!-- core 3 -->
+<rect class="diagram-ink node-fill" height="110" rx="8" width="150" x="370" y="52"></rect>
+<text class="node-label" text-anchor="middle" x="445" y="74">核 3</text>
+<rect class="diagram-ink node-fill" height="34" rx="5" width="110" x="390" y="86"></rect>
+<text class="node-label" text-anchor="middle" x="445" y="108">队列 B 进程</text>
+<text class="edge-label" text-anchor="middle" x="445" y="142">8% · 空闲</text>
+<!-- core 4 -->
+<rect class="diagram-ink node-fill" height="110" rx="8" width="130" x="540" y="52"></rect>
+<text class="node-label" text-anchor="middle" x="605" y="74">核 4</text>
+<text class="edge-label" text-anchor="middle" x="605" y="112">空转</text>
+<text class="edge-label" text-anchor="middle" x="605" y="142">0% · 闲置</text>
+<!-- traffic into HOT queue -->
+<rect class="diagram-ink node-fill" height="40" rx="6" width="90" x="60" y="222"></rect>
+<text class="node-label" text-anchor="middle" x="105" y="246">高流量</text>
+<line class="diagram-accent" marker-end="url(#ar-verm2)" x1="105" x2="105" y1="222" y2="162"></line>
+<text class="branch-label" text-anchor="start" x="180" y="196">全压在队列 H 一个进程上</text>
+<text class="edge-label" text-anchor="middle" x="350" y="296">加核 / 换更大机器 → 队列 H 仍只跑在一个核上，吞吐不变</text>
+<text class="branch-label" text-anchor="middle" x="350" y="314">解法：把流量分片到多个队列，吃满多个核</text>
+</svg>

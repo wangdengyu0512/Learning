@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="一次 publish 由 method 帧、header 帧、body 帧依次组成，每帧带 channel 编号" role="img" viewBox="0 0 700 250" xmlns="http://www.w3.org/2000/svg"><style>
+.diagram-ink{stroke:#0A0A0A;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#B73B2F;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#A3A3A3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-fill{fill:#FFFFFF}.node-fill-accent{fill:rgba(183,59,47,0.06)}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#0A0A0A}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#B73B2F}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#525252;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#B73B2F;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}
+</style>
+<defs>
+<marker id="ar-ink" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+</defs>
+<text class="edge-label" font-weight="700" x="30" y="34">一次逻辑 publish（同一 channel 上严格有序）</text>
+<!-- method frame -->
+<rect class="diagram-accent node-fill-accent" height="92" rx="6" stroke-width="2" width="150" x="30" y="56"></rect>
+<text class="node-label-accent" text-anchor="middle" x="105" y="80">method</text>
+<text class="edge-label" text-anchor="middle" x="105" y="98">类型 1</text>
+<text class="edge-label" text-anchor="middle" x="105" y="118">Basic.Publish</text>
+<text class="edge-label" text-anchor="middle" x="105" y="136">exchange · key</text>
+<!-- header frame -->
+<rect class="diagram-ink node-fill" height="92" rx="6" width="150" x="220" y="56"></rect>
+<text class="node-label" text-anchor="middle" x="295" y="80">content-header</text>
+<text class="edge-label" text-anchor="middle" x="295" y="98">类型 2</text>
+<text class="edge-label" text-anchor="middle" x="295" y="118">属性 · body 大小</text>
+<!-- body frame 1 -->
+<rect class="diagram-ink node-fill" height="92" rx="6" width="125" x="410" y="56"></rect>
+<text class="node-label" text-anchor="middle" x="472" y="80">content-body</text>
+<text class="edge-label" text-anchor="middle" x="472" y="98">类型 3</text>
+<text class="edge-label" text-anchor="middle" x="472" y="118">消息体字节</text>
+<!-- body frame n -->
+<rect class="diagram-soft node-fill" height="92" rx="6" width="115" x="555" y="56"></rect>
+<text class="node-label" text-anchor="middle" x="612" y="80">content-body</text>
+<text class="edge-label" text-anchor="middle" x="612" y="98">类型 3</text>
+<text class="edge-label" text-anchor="middle" x="612" y="118">体 &gt; frame_max</text>
+<text class="edge-label" text-anchor="middle" x="612" y="136">才出现</text>
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="180" x2="220" y1="102" y2="102"></line>
+<line class="diagram-ink" marker-end="url(#ar-ink)" x1="370" x2="410" y1="102" y2="102"></line>
+<line class="diagram-soft" marker-end="url(#ar-ink)" x1="535" x2="555" y1="102" y2="102"></line>
+<!-- channel id strip -->
+<rect class="diagram-soft node-fill" height="44" rx="6" width="640" x="30" y="172"></rect>
+<text class="edge-label" text-anchor="middle" x="350" y="190">每帧前缀都带同一个 2 字节 channel 编号 → broker 按编号归属到同一会话</text>
+<text class="edge-label" text-anchor="middle" x="350" y="208">帧尾 0xCE（206）校验成帧；不匹配即断连</text>
+</svg>

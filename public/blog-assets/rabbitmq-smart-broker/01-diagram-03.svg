@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="消息状态机 Ready 到 Unacked 到 Deleted，含 requeue 回环" role="img" viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg"><style>
+.diagram-ink{stroke:#0A0A0A;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#B73B2F;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#A3A3A3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-fill{fill:#FFFFFF}.node-fill-accent{fill:rgba(183,59,47,0.06)}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#0A0A0A}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#B73B2F}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#525252;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#B73B2F;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}
+</style>
+<defs>
+<marker id="ar-ink3" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="ar-verm3" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<rect class="diagram-ink node-fill" height="60" rx="6" width="150" x="40" y="120"></rect>
+<text class="node-label" text-anchor="middle" x="115" y="146">Ready</text>
+<text class="edge-label" text-anchor="middle" x="115" y="166">已入队 · 待投递</text>
+<rect class="diagram-accent node-fill-accent" height="60" rx="6" stroke-width="2" width="150" x="275" y="120"></rect>
+<text class="node-label-accent" text-anchor="middle" x="350" y="146">Unacked</text>
+<text class="edge-label" text-anchor="middle" x="350" y="166">已推送 · 待 ack</text>
+<rect class="diagram-ink node-fill" height="60" rx="6" width="150" x="510" y="120"></rect>
+<text class="node-label" text-anchor="middle" x="585" y="146">Deleted</text>
+<text class="edge-label" text-anchor="middle" x="585" y="166">broker 删除</text>
+<line class="diagram-ink" marker-end="url(#ar-ink3)" x1="190" x2="275" y1="150" y2="150"></line>
+<text class="edge-label" text-anchor="middle" x="232" y="140">push</text>
+<line class="diagram-ink" marker-end="url(#ar-ink3)" x1="425" x2="510" y1="150" y2="150"></line>
+<text class="edge-label" text-anchor="middle" x="467" y="140">ack</text>
+<path class="diagram-accent" d="M 350 120 C 350 56, 115 56, 115 120" fill="none" marker-end="url(#ar-verm3)"></path>
+<text class="branch-label" text-anchor="middle" x="232" y="50">nack / 断连 → requeue</text>
+<text class="edge-label" text-anchor="middle" x="585" y="212">对照 Kafka：消息不删，</text>
+<text class="edge-label" text-anchor="middle" x="585" y="228">只是 offset 前移</text>
+</svg>

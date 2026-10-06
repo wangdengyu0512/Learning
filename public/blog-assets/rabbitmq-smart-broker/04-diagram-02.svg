@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="Kafka 与 RabbitMQ 峰值吞吐对比条形图" role="img" viewBox="0 0 700 240" xmlns="http://www.w3.org/2000/svg"><style>
+.diagram-ink{stroke:#0A0A0A;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#B73B2F;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#A3A3A3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-fill{fill:#FFFFFF}.node-fill-accent{fill:rgba(183,59,47,0.06)}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#0A0A0A}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#B73B2F}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#525252;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#B73B2F;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}
+</style>
+<line class="diagram-ink" x1="150" x2="150" y1="40" y2="180"></line>
+<text class="edge-label" text-anchor="middle" x="150" y="200">峰值吞吐（MB/s · 越长越快）</text>
+<!-- Kafka bar: 605 -> 480px -->
+<rect class="diagram-accent node-fill-accent" height="38" rx="2" stroke-width="1.6" width="480" x="150" y="56"></rect>
+<text class="node-label" text-anchor="end" x="142" y="80">Kafka</text>
+<text class="node-label-accent" text-anchor="end" x="622" y="80">~605 MB/s</text>
+<!-- RabbitMQ bar: 38 -> ~30px -->
+<rect class="diagram-ink node-fill" height="38" rx="2" width="30" x="150" y="128"></rect>
+<text class="node-label" text-anchor="end" x="142" y="152">RabbitMQ</text>
+<text class="node-label" text-anchor="start" x="190" y="152">~38 MB/s</text>
+<text class="edge-label" text-anchor="middle" x="400" y="224">同硬件、1KB、3 副本（Confluent 2024）</text>
+</svg>

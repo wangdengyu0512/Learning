@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="Raft 多副本：一个 leader 两个 follower，多数派提交后才返回 confirm" role="img" viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg"><style>
+.diagram-ink{stroke:#0A0A0A;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.diagram-accent{stroke:#B73B2F;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.diagram-soft{stroke:#A3A3A3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}
+.node-fill{fill:#FFFFFF}.node-fill-accent{fill:rgba(183,59,47,0.06)}
+.node-label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:500;fill:#0A0A0A}
+.node-label-accent{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:13px;font-weight:700;fill:#B73B2F}
+.edge-label{font-family:Consolas,monospace;font-size:11px;fill:#525252;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}
+.branch-label{font-family:Consolas,monospace;font-size:11px;font-weight:700;fill:#B73B2F;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}
+</style>
+<defs>
+<marker id="ar-ink3" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="ar-verm3" markerHeight="8" markerWidth="8" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- producer -->
+<rect class="diagram-ink node-fill" height="50" rx="6" width="104" x="24" y="128"></rect>
+<text class="node-label" text-anchor="middle" x="76" y="158">Producer</text>
+<line class="diagram-ink" marker-end="url(#ar-ink3)" x1="128" x2="228" y1="143" y2="143"></line>
+<text class="edge-label" text-anchor="middle" x="178" y="133">publish</text>
+<!-- leader -->
+<rect class="diagram-accent node-fill-accent" height="70" rx="6" stroke-width="2" width="150" x="228" y="118"></rect>
+<text class="node-label-accent" text-anchor="middle" x="303" y="146">Leader</text>
+<text class="edge-label" text-anchor="middle" x="303" y="166">写 log entry</text>
+<!-- follower 1 -->
+<rect class="diagram-ink node-fill" height="60" rx="6" width="150" x="468" y="46"></rect>
+<text class="node-label" text-anchor="middle" x="543" y="72">Follower 1</text>
+<text class="edge-label" text-anchor="middle" x="543" y="90">复制 + 落盘</text>
+<!-- follower 2 -->
+<rect class="diagram-ink node-fill" height="60" rx="6" width="150" x="468" y="200"></rect>
+<text class="node-label" text-anchor="middle" x="543" y="226">Follower 2</text>
+<text class="edge-label" text-anchor="middle" x="543" y="244">复制 + 落盘</text>
+<line class="diagram-ink" marker-end="url(#ar-ink3)" x1="378" x2="468" y1="140" y2="82"></line>
+<text class="edge-label" text-anchor="middle" x="430" y="104">replicate</text>
+<line class="diagram-ink" marker-end="url(#ar-ink3)" x1="378" x2="468" y1="166" y2="224"></line>
+<text class="edge-label" text-anchor="middle" x="430" y="206">replicate</text>
+<!-- ack back from follower1 (majority reached: leader + 1) -->
+<line class="diagram-soft" marker-end="url(#ar-ink3)" x1="468" x2="378" y1="92" y2="150"></line>
+<!-- confirm back to producer -->
+<path class="diagram-accent" d="M 228 168 C 150 200, 90 200, 76 178" fill="none" marker-end="url(#ar-verm3)"></path>
+<text class="branch-label" text-anchor="middle" x="150" y="214">confirm</text>
+<text class="edge-label" text-anchor="middle" x="350" y="296">3 副本，多数派 = 2（leader + 1 个 follower）记下日志</text>
+<text class="branch-label" text-anchor="middle" x="350" y="314">→ entry committed → confirm 此刻才返回，不等第 3 个</text>
+</svg>
