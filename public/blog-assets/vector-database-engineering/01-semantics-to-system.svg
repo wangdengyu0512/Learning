@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="向量检索从语义输入、嵌入、几何距离、近似索引到生产检索链路" role="img" viewBox="0 0 900 390" xmlns="http://www.w3.org/2000/svg">
+<style>
+.node{fill:#fff;stroke:#242424;stroke-width:1.4}.accent{fill:#fff1ec;stroke:#d94a2b;stroke-width:1.8}.soft{fill:#fafafa;stroke:#a3a3a3;stroke-width:1.1;stroke-dasharray:4 4}.edge{stroke:#525252;stroke-width:1.4;fill:none;marker-end:url(#arrow)}.edge2{stroke:#d94a2b;stroke-width:1.6;fill:none;marker-end:url(#arrow2)}
+.label{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:14px;font-weight:600;fill:#242424}.small{font-family:Arial,"Microsoft YaHei",sans-serif;font-size:12px;fill:#666}.orange{fill:#d94a2b;font-weight:700}
+</style>
+<defs><marker id="arrow" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10"><path d="M0 0L10 5L0 10z" fill="#525252"/></marker><marker id="arrow2" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10"><path d="M0 0L10 5L0 10z" fill="#d94a2b"/></marker></defs>
+<rect class="accent" x="28" y="54" width="138" height="72" rx="8"/><text class="label orange" x="97" y="83" text-anchor="middle">文本 / 图像</text><text class="small" x="97" y="105" text-anchor="middle">业务语义</text>
+<rect class="node" x="207" y="54" width="138" height="72" rx="8"/><text class="label" x="276" y="83" text-anchor="middle">Embedding</text><text class="small" x="276" y="105" text-anchor="middle">d 维坐标</text>
+<rect class="node" x="386" y="54" width="138" height="72" rx="8"/><text class="label" x="455" y="83" text-anchor="middle">距离度量</text><text class="small" x="455" y="105" text-anchor="middle">cosine / dot / L2</text>
+<rect class="node" x="565" y="54" width="138" height="72" rx="8"/><text class="label" x="634" y="83" text-anchor="middle">ANN 索引</text><text class="small" x="634" y="105" text-anchor="middle">HNSW / IVF / DiskANN</text>
+<rect class="accent" x="744" y="54" width="128" height="72" rx="8"/><text class="label orange" x="808" y="83" text-anchor="middle">Top-K</text><text class="small" x="808" y="105" text-anchor="middle">近似近邻</text>
+<path class="edge2" d="M166 90H207"/><path class="edge" d="M345 90H386"/><path class="edge" d="M524 90H565"/><path class="edge2" d="M703 90H744"/>
+<rect class="soft" x="140" y="214" width="620" height="118" rx="10"/><text class="label" x="450" y="240" text-anchor="middle">生产系统不是只有 ANN</text>
+<rect class="node" x="166" y="263" width="128" height="46" rx="6"/><text class="small" x="230" y="291" text-anchor="middle">metadata 过滤</text>
+<rect class="node" x="313" y="263" width="128" height="46" rx="6"/><text class="small" x="377" y="291" text-anchor="middle">dense + sparse</text>
+<rect class="node" x="460" y="263" width="128" height="46" rx="6"/><text class="small" x="524" y="291" text-anchor="middle">rerank / rescore</text>
+<rect class="node" x="607" y="263" width="128" height="46" rx="6"/><text class="small" x="671" y="291" text-anchor="middle">一致性 / CRUD</text>
+<path class="edge" d="M808 126V178H450V214"/><text class="small" x="636" y="170" text-anchor="middle">把“能搜”变成“能上线”</text>
+</svg>

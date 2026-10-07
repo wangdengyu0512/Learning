@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="向量数据库写入、索引可见、更新软删与压缩重建生命周期" role="img" viewBox="0 0 900 350" xmlns="http://www.w3.org/2000/svg">
+<style>.node{fill:#fff;stroke:#242424;stroke-width:1.4}.accent{fill:#fff1ec;stroke:#d94a2b;stroke-width:1.7}.soft{fill:#fafafa;stroke:#999;stroke-width:1.2;stroke-dasharray:4 4}.edge{stroke:#555;stroke-width:1.4;fill:none;marker-end:url(#a)}.back{stroke:#d94a2b;stroke-width:1.5;fill:none;stroke-dasharray:5 4;marker-end:url(#b)}.t{font-family:Arial,"Microsoft YaHei",sans-serif;fill:#242424;font-size:14px;font-weight:700}.s{font-family:Arial,"Microsoft YaHei",sans-serif;fill:#666;font-size:12px}.r{fill:#d94a2b}</style><defs><marker id="a" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10"><path d="M0 0L10 5L0 10z" fill="#555"/></marker><marker id="b" markerHeight="7" markerWidth="7" orient="auto" refX="9" refY="5" viewBox="0 0 10 10"><path d="M0 0L10 5L0 10z" fill="#d94a2b"/></marker></defs>
+<text class="t" x="450" y="28" text-anchor="middle">向量记录的生命周期</text>
+<rect class="node" x="32" y="92" width="144" height="70" rx="8"/><text class="t" x="104" y="120" text-anchor="middle">Insert / Upsert</text><text class="s" x="104" y="142" text-anchor="middle">先落 WAL / 数据段</text>
+<rect class="soft" x="216" y="92" width="144" height="70" rx="8"/><text class="t" x="288" y="120" text-anchor="middle">Growing</text><text class="s" x="288" y="142" text-anchor="middle">数据已写，索引追赶中</text>
+<rect class="node" x="400" y="92" width="144" height="70" rx="8"/><text class="t" x="472" y="120" text-anchor="middle">Indexed / Sealed</text><text class="s" x="472" y="142" text-anchor="middle">可被 ANN 高效检索</text>
+<rect class="accent" x="584" y="92" width="144" height="70" rx="8"/><text class="t r" x="656" y="120" text-anchor="middle">Tombstone</text><text class="s" x="656" y="142" text-anchor="middle">逻辑删除，结构仍占用</text>
+<rect class="node" x="768" y="92" width="104" height="70" rx="8"/><text class="t" x="820" y="120" text-anchor="middle">Rebuild</text><text class="s" x="820" y="142" text-anchor="middle">物理回收</text>
+<path class="edge" d="M176 127H216"/><path class="edge" d="M360 127H400"/><path class="edge" d="M544 127H584"/><path class="edge" d="M728 127H768"/>
+<text class="s" x="288" y="204" text-anchor="middle">最终一致下存在“写成功但暂时搜不到”的窗口</text><path class="back" d="M820 162V260H472V166"/><text class="s" x="650" y="282" text-anchor="middle">compaction / rebuild 后形成干净索引</text><text class="s" x="656" y="228" text-anchor="middle">墓碑累积会稀释有效候选并劣化导航</text>
+</svg>

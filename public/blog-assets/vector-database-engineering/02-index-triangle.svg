@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="向量索引在召回率、查询延迟与内存成本三角中的位置" role="img" viewBox="0 0 820 520" xmlns="http://www.w3.org/2000/svg">
+<style>.line{stroke:#242424;stroke-width:1.8;fill:none}.dash{stroke:#aaa;stroke-width:1.1;stroke-dasharray:4 4;fill:none}.dot{stroke:#fff;stroke-width:2}.t{font-family:Arial,"Microsoft YaHei",sans-serif;fill:#242424;font-size:15px;font-weight:700}.s{font-family:Arial,"Microsoft YaHei",sans-serif;fill:#666;font-size:12px}.p{font-family:Consolas,"Microsoft YaHei",sans-serif;fill:#242424;font-size:13px;font-weight:700}.a{fill:#d94a2b}.b{fill:#3478c7}.g{fill:#4a8f65}.k{fill:#333}</style>
+<path class="line" d="M410 52L90 440H730Z"/><text class="t" x="410" y="29" text-anchor="middle">高召回</text><text class="s" x="410" y="48" text-anchor="middle">recall ↑</text><text class="t" x="62" y="470" text-anchor="middle">低延迟</text><text class="s" x="62" y="489" text-anchor="middle">latency ↓</text><text class="t" x="758" y="470" text-anchor="middle">低内存</text><text class="s" x="758" y="489" text-anchor="middle">memory ↓</text>
+<path class="dash" d="M410 52V440M90 440L570 246M730 440L250 246"/>
+<circle class="dot k" cx="408" cy="100" r="9"/><text class="p" x="428" y="104">Flat</text><text class="s" x="428" y="121">精确，但规模上去后慢</text>
+<circle class="dot a" cx="286" cy="234" r="10"/><text class="p" x="210" y="226">HNSW</text><text class="s" x="184" y="244">用 RAM 买低延迟与高召回</text>
+<circle class="dot b" cx="414" cy="286" r="9"/><text class="p" x="431" y="291">IVF</text><text class="s" x="431" y="308">nprobe 调召回与延迟</text>
+<circle class="dot g" cx="584" cy="354" r="10"/><text class="p" x="601" y="350">DiskANN</text><text class="s" x="601" y="368">SSD 换 RAM，保较高召回</text>
+<circle class="dot b" cx="640" cy="411" r="9"/><text class="p" x="558" y="407">IVF-PQ</text><text class="s" x="520" y="425">强压缩，靠 rescore 补精度</text>
+<text class="s" x="410" y="503" text-anchor="middle">没有“最好的索引”，只有符合当前紧约束的位置</text>
+</svg>
