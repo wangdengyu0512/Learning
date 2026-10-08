@@ -2,7 +2,7 @@
 title: Agent 推理模式：用两根轴看懂 CoT、ReAct 与它们的家族
 description: 从推理期算力与外部接地两条主线，理解 CoT、Self-Consistency、ReAct、Reflexion、ToT、Plan-and-Execute，以及推理模型时代的选型变化。
 date: 2026-10-05
-tags: AI Agent, LLM, 推理模式, ReAct, CoT
+tags: AI Agent, LLM, 推理模式
 featured: true
 ---
 

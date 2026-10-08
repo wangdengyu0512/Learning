@@ -2,7 +2,7 @@
 title: 当向量检索成为 Postgres 的一种索引：理解 pgvector 的真正边界
 description: 从排序契约、HNSW 构建、MVCC、过滤检索到量化与选型，系统理解 pgvector 在生产环境中的行为。
 date: 2026-10-06
-tags: PostgreSQL, pgvector, 向量检索, RAG, HNSW
+tags: PostgreSQL, pgvector, RAG
 featured: true
 ---
 

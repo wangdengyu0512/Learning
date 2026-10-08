@@ -2,7 +2,7 @@
 title: 把 Nacos 当成一个按数据类型切换一致性的系统
 description: 从 ephemeral 分流、Distro、Raft、健康检查、客户端缓存与配置刷新出发，建立一套能解释 Nacos 注册、配置、选型和排障的完整心智模型。
 date: 2026-10-06
-tags: Nacos, 微服务, 注册中心, 配置中心, 分布式系统, Spring Cloud Alibaba
+tags: Nacos, 微服务, 分布式系统
 featured: true
 ---
 

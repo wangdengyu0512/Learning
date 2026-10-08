@@ -2,7 +2,7 @@
 title: Next.js App Router：从 React 到服务端组件
 description: 从文件系统路由、React Server Components、流式渲染与数据获取，到缓存和 Server Actions，建立一套完整的 App Router 心智模型。
 date: 2026-10-06
-tags: Next.js, React, App Router, React Server Components, Server Actions
+tags: Next.js, React, Server Components
 featured: true
 ---
 

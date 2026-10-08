@@ -2,7 +2,7 @@
 title: 把 MCP 拆成一条有状态、双向的能力协商会话
 description: 从 host/client/server、三类 primitive、initialize 握手与能力协商，到 sampling、elicitation、安全边界和技术选型，建立完整的 MCP 心智模型。
 date: 2026-10-06
-tags: MCP, Model Context Protocol, AI Agent, Tool Calling, JSON-RPC, Agent 安全
+tags: MCP, AI Agent, Agent 安全
 featured: true
 ---
 

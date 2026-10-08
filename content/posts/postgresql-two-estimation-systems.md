@@ -2,7 +2,7 @@
 title: 让两个自动系统的估算贴近现实：一套可解释的 PostgreSQL 性能调优方法论
 description: 从查询优化器与 autovacuum 两个自动系统出发，串起 EXPLAIN、统计信息、索引、MVCC、VACUUM、内存和配置，建立可测量、可解释、可复用的 PostgreSQL 调优方法。
 date: 2026-10-07
-tags: PostgreSQL, 数据库, 性能调优, SQL, 后端
+tags: PostgreSQL, 性能调优, SQL
 featured: false
 ---
 

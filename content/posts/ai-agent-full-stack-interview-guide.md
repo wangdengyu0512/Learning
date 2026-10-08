@@ -2,7 +2,7 @@
 title: AI Agent 全栈工程师面试通关：从模型原理到生产落地
 description: 把 LLM、RAG、Agent 架构、工程化和系统设计串成一条因果链，整理一套面向中高级面试的判断框架。
 date: 2026-10-05
-tags: AI Agent, 面试准备, LLM, RAG, 全栈工程
+tags: AI Agent, RAG, 面试准备
 featured: true
 ---
 

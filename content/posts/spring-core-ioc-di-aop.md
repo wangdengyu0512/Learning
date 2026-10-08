@@ -2,7 +2,7 @@
 title: Spring 核心：IoC 容器、依赖注入与 AOP
 description: 从 BeanDefinition、refresh()、Bean 生命周期与三级缓存出发，串起依赖注入、后置处理器、AOP 代理及事务失效的完整机制。
 date: 2026-10-06
-tags: Spring, Java, IoC, DI, AOP, Bean 生命周期
+tags: Spring, IoC, AOP
 featured: true
 ---
 

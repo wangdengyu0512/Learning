@@ -2,7 +2,7 @@
 title: 一文读懂 ERP：整体业务流程、MRP 原理、系统对接、MCP 与领域本体
 description: 从客户订单、采购、生产、库存和财务出发，系统讲清 ERP 的经营闭环，并进一步说明如何用 API、事件、MCP 和领域本体建设可集成、可审计的智能 ERP。
 date: 2026-10-08
-tags: ERP, MRP, 企业架构, 系统集成, MCP, 领域本体
+tags: ERP, MRP, 企业架构
 featured: true
 ---
 

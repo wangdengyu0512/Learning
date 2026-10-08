@@ -2,7 +2,7 @@
 title: Reflexion：把失败翻译成语言，写进记忆
 description: 从 Actor、Evaluator、Self-Reflection 与 episodic memory 出发，理解 Reflexion 如何在不更新模型权重的前提下，把失败转成可复用的语言教训，并完成可运行实现、陷阱分析与选型判断。
 date: 2026-10-06
-tags: AI Agent, Reflexion, LLM, 智能体记忆, 推理模式
+tags: AI Agent, Reflexion, 推理模式
 featured: true
 ---
 

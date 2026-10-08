@@ -2,7 +2,7 @@
 title: 把“检索 + LLM”拆成一条可定位、可优化的工程系统
 description: 从知识解耦、分块、混合召回、重排、Grounding 到分阶段评估，建立一套能定位 RAG 失败并逐段优化的工程方法。
 date: 2026-10-06
-tags: RAG, LLM, 检索, 混合检索, 评估
+tags: RAG, LLM, 检索
 featured: true
 ---
 

@@ -2,7 +2,7 @@
 title: 向量数据库：把语义变成几何，再把几何变成工程
 description: 从 Embedding、相似度与 ANN 出发，推导 HNSW、IVF、PQ、DiskANN，并把过滤、混合检索、一致性、删除和选型串成一套生产级心智模型。
 date: 2026-10-07
-tags: 向量数据库, Embedding, ANN, HNSW, RAG
+tags: 向量数据库, RAG, HNSW
 featured: true
 ---
 

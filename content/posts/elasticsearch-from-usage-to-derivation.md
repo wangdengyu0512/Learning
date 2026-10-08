@@ -2,7 +2,7 @@
 title: Elasticsearch：从“会用”到“会推导”
 description: 以“Lucene segment 不可变”和“主分片数量固定”为两条公理，串起 mapping、近实时写入、BM25、分布式检索、doc_values 与技术选型。
 date: 2026-10-06
-tags: Elasticsearch, Lucene, 搜索引擎, 分布式系统, 数据库
+tags: Elasticsearch, 搜索引擎, 分布式系统
 featured: true
 ---
 

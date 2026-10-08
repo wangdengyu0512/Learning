@@ -2,7 +2,7 @@
 title: 从一条规则读懂 PostgreSQL：从行版本到 MVCC、VACUUM 与查询规划
 description: 从“写入创建新行版本”这一条规则出发，串起 PostgreSQL 的堆表、MVCC、VACUUM、WAL、索引、查询规划器，以及与 MySQL/InnoDB 的核心差异。
 date: 2026-10-06
-tags: PostgreSQL, MVCC, VACUUM, WAL, 数据库原理
+tags: PostgreSQL, 数据库原理, 性能调优
 featured: true
 ---
 

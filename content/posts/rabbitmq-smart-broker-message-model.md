@@ -2,7 +2,7 @@
 title: RabbitMQ：智能 broker 的消息模型
 description: 从 exchange、queue、binding 到 publisher confirms、quorum 队列与 Kafka 对比，建立 RabbitMQ 这套智能 broker 的完整心智模型。
 date: 2026-10-06
-tags: RabbitMQ, 消息队列, AMQP, 分布式系统, Kafka
+tags: RabbitMQ, 消息队列, 分布式系统
 featured: true
 ---
 

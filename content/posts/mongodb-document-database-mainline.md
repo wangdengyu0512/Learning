@@ -2,7 +2,7 @@
 title: MongoDB：把文档数据库还原成一条主线
 description: 从关系型工程师视角，把文档模型、查询聚合、索引与 Schema、WiredTiger、副本集、一致性和分片串成一条完整主线。
 date: 2026-10-06
-tags: MongoDB, 文档数据库, 数据库设计, 分布式系统
+tags: MongoDB, 文档数据库, 分布式系统
 featured: false
 ---
 

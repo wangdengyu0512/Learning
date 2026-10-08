@@ -2,7 +2,7 @@
 title: 把 FastAPI 当作一台机器拆开：从类型注解到请求生命周期
 description: 从类型注解、Pydantic、依赖注入与 async 并发模型出发，沿 Uvicorn、ASGI、Starlette 到 FastAPI，追踪一次请求的完整生命周期。
 date: 2026-10-06
-tags: FastAPI, Python, ASGI, Pydantic, 后端工程
+tags: FastAPI, Python, 后端工程
 featured: true
 ---
 

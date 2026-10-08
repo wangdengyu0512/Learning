@@ -2,7 +2,7 @@
 title: 提示工程：从手艺到工程——把 Prompt 变成可测量的系统
 description: 从“提示是条件化上下文”出发，系统理解指令、few-shot、CoT、结构化输出、上下文工程、注入防御与 prompt ops，完成从会写提示到会构建可靠 AI 系统的认知升级。
 date: 2026-10-07
-tags: 提示工程, LLM, AI Agent, 上下文工程, Prompt Ops
+tags: 提示工程, LLM, AI Agent
 featured: true
 ---
 

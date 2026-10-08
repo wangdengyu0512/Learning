@@ -2,7 +2,7 @@
 title: DeepSeek Harness 工程实践：从可逆插件运行时到自进化 Agent
 description: 从 Cordis 的可逆副作用与插件生命周期出发，系统拆解工具执行、安全沙箱、事件溯源会话、上下文压缩、多 Agent 编排，以及规则自进化闭环。
 date: 2026-10-07
-tags: DeepSeek Harness, AI Agent, Cordis, 多智能体, TypeScript
+tags: AI Agent, 多智能体, TypeScript
 featured: true
 ---
 

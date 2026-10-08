@@ -2,7 +2,7 @@
 title: 把 RAG 从 Demo 推到生产：Milvus 生产化设计指南
 description: 从租户隔离、数据建模、混合检索、一致性、元数据过滤到模型迁移，系统梳理 Milvus 上生产级 RAG 的关键设计。
 date: 2026-10-06
-tags: RAG, Milvus, 向量数据库, 多租户, 混合检索
+tags: Milvus, RAG, 向量数据库
 featured: true
 ---
 

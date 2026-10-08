@@ -2,7 +2,7 @@
 title: 把 Spring Boot 拆成一条 refresh() 流水线
 description: 从 BeanDefinition、后置处理器、自动配置、AOP 代理到内嵌 Web 服务器，用一条 refresh() 主线还原 Spring Boot 的“魔法”。
 date: 2026-10-06
-tags: Spring Boot, Spring Framework, IoC, AOP, 自动配置
+tags: Spring Boot, IoC, 自动配置
 featured: true
 ---
 

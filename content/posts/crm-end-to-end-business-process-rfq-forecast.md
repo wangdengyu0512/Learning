@@ -2,7 +2,7 @@
 title: 一文讲透 CRM 全业务流程：从客户开发、RFQ、项目定点到交付回款与持续增长
 description: 以汽车零部件和制造业 B2B 场景为主线，系统讲清 CRM 的企业定位，以及客户开发、商机、RFQ、报价定点、Forecast、订单交付、回款、客诉和新商机的端到端流程。
 date: 2026-10-08
-tags: CRM, 制造业, RFQ, 客户关系管理, 企业架构, 数字化转型
+tags: CRM, 企业架构, 数字化转型
 featured: true
 ---
 

@@ -2,7 +2,7 @@
 title: 前端 UI 设计不是玄学：一套工程师可推导的系统
 description: 从视觉层级、色彩、排版、空间与布局，到 Design Tokens、动效和设计系统，用工程化方法做出专业、清晰且可维护的界面。
 date: 2026-10-06
-tags: 前端, UI 设计, CSS, Design System, Design Tokens
+tags: 前端, UI 设计, Design System
 featured: false
 ---
 

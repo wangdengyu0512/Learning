@@ -2,7 +2,7 @@
 title: 腾讯 AI 应用开发一面复盘：15 道题背后的工程主线
 description: 从记忆、Agent 架构、Skill、工程落地到算法题，把 15 道腾讯 AI 应用开发面试题整理成一套可复述、可迁移的判断框架。
 date: 2026-10-07
-tags: AI Agent, 面试准备, 记忆系统, LangGraph, RAG
+tags: AI Agent, RAG, 面试准备
 featured: true
 ---
 

@@ -2,7 +2,7 @@
 title: 把 Milvus 当成一个流式分布式数据库来学
 description: 从 WAL、Segment、存算分离、索引取舍、读写路径与一致性出发，建立一套能解释 Milvus 行为的完整心智模型。
 date: 2026-10-06
-tags: Milvus, 向量数据库, 分布式系统, RAG, HNSW, 数据库
+tags: Milvus, 向量数据库, 分布式系统
 featured: true
 ---
 

@@ -2,7 +2,7 @@
 title: Effect TS：把异步、错误、依赖写进类型的程序值
 description: 从 Effect<A, E, R> 出发，理解类型化错误、依赖注入、Fiber、结构化并发与资源安全，并实现一个可超时、可取消、失败隔离的 Agent 工具调度器。
 date: 2026-10-06
-tags: TypeScript, Effect TS, 函数式编程, 并发, 后端工程
+tags: TypeScript, 函数式编程, 后端工程
 featured: true
 ---
 

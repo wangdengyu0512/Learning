@@ -2,7 +2,7 @@
 title: 智能体记忆系统：从写入路径到生命周期、分层架构与工程选型
 description: 记忆不是更长的上下文，也不只是向量检索。本文从写入—治理—读取闭环出发，系统拆解 Agent 记忆的类型、生命周期、分层架构、状态归属、框架选型与生产失败模式。
 date: 2026-10-07
-tags: AI Agent, Agent Memory, LLM, RAG, 系统设计
+tags: AI Agent, 记忆系统, 系统设计
 featured: true
 ---
 

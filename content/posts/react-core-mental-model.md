@@ -2,7 +2,7 @@
 title: React 核心心智模型：从 UI=f(state) 到并发与服务端组件
 description: 从声明式 UI、渲染与协调、状态快照、Hook 与副作用，到 React 19、Compiler、Server Components 和三层自测，建立一套能预测代码行为的 React 心智模型。
 date: 2026-10-06
-tags: React, JavaScript, 前端, Hook, React 19, Server Components
+tags: React, 前端, JavaScript
 featured: true
 ---
 
