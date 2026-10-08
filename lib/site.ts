@@ -7,6 +7,10 @@ export const siteConfig = {
   url: "https://wangdengyu0512.github.io/Learning",
   github: "https://github.com/wangdengyu0512",
   email: "",
+  now: {
+    title: "构建自己的数字花园",
+    detail: "学习 · 编程 · 写作 · 复盘",
+  },
   nav: [
     { label: "首页", href: "/" },
     { label: "文章", href: "/posts" },

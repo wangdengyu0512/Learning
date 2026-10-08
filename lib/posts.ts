@@ -12,6 +12,8 @@ export type Post = {
   content: string;
 };
 
+export type PostSummary = Omit<Post, "content">;
+
 const postsDirectory = path.join(process.cwd(), "content", "posts");
 
 function parseFrontmatter(source: string) {
@@ -80,13 +82,3 @@ export function getPostBySlug(slug: string) {
   const fullPath = path.join(postsDirectory, fileName);
   return fs.existsSync(fullPath) ? loadPost(fileName) : undefined;
 }
-
-export function formatPostDate(date: string) {
-  return new Intl.DateTimeFormat("zh-CN", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    timeZone: "UTC",
-  }).format(new Date(`${date}T00:00:00Z`));
-}
-

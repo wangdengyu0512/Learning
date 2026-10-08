@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { getHeadingText, getUniqueHeadingId } from "@/lib/markdown";
 
 function renderInline(text: string): ReactNode[] {
   const pattern = /(\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\([^)]+\)|\*[^*]+\*)/g;
@@ -65,6 +66,7 @@ function isBlockStart(line: string, nextLine?: string) {
 export function Markdown({ content }: { content: string }) {
   const lines = content.replace(/\r\n/g, "\n").split("\n");
   const blocks: ReactNode[] = [];
+  const headingCounts = new Map<string, number>();
   let index = 0;
 
   while (index < lines.length) {
@@ -113,12 +115,15 @@ export function Markdown({ content }: { content: string }) {
 
     const heading = /^(#{1,4})\s+(.+)$/.exec(line);
     if (heading) {
-      const level = heading[1].length;
+      const level = heading[1].length === 1 ? 2 : heading[1].length;
+      const id = getUniqueHeadingId(heading[2], headingCounts);
       const children = renderInline(heading[2]);
-      if (level === 1) blocks.push(<h2 key={`h-${index}`}>{children}</h2>);
-      if (level === 2) blocks.push(<h2 key={`h-${index}`}>{children}</h2>);
-      if (level === 3) blocks.push(<h3 key={`h-${index}`}>{children}</h3>);
-      if (level === 4) blocks.push(<h4 key={`h-${index}`}>{children}</h4>);
+      const anchor = (
+        <a aria-label={`链接到“${getHeadingText(heading[2])}”`} className="heading-anchor" href={`#${id}`}>#</a>
+      );
+      if (level === 2) blocks.push(<h2 id={id} key={`h-${index}`}>{children}{anchor}</h2>);
+      if (level === 3) blocks.push(<h3 id={id} key={`h-${index}`}>{children}{anchor}</h3>);
+      if (level === 4) blocks.push(<h4 id={id} key={`h-${index}`}>{children}{anchor}</h4>);
       index += 1;
       continue;
     }

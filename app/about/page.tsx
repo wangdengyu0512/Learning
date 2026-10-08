@@ -41,7 +41,7 @@ export default function AboutPage() {
             <li><strong>学习方法：</strong>如何阅读、做笔记并形成自己的理解。</li>
             <li><strong>生活观察：</strong>那些值得停下来认真想一想的小事。</li>
           </ul>
-          <p className="about-note">这是一版可直接修改的自我介绍。把这里换成你的真实经历、项目和兴趣，网站就会从“一个博客模板”开始变成“你的博客”。</p>
+          <p className="about-note">这个空间会随着学习和项目持续更新。比起一次写完的介绍，我更希望它保留正在生长的痕迹。</p>
         </div>
       </div>
     </section>

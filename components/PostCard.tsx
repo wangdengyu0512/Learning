@@ -1,8 +1,8 @@
 import Link from "next/link";
-import type { Post } from "@/lib/posts";
-import { formatPostDate } from "@/lib/posts";
+import type { PostSummary } from "@/lib/posts";
+import { formatPostDate } from "@/lib/date";
 
-export function PostCard({ post, index }: { post: Post; index?: number }) {
+export function PostCard({ post, index }: { post: PostSummary; index?: number }) {
   return (
     <article className="post-card">
       {typeof index === "number" ? <span className="post-index">{String(index + 1).padStart(2, "0")}</span> : null}

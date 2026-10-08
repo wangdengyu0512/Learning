@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { siteConfig } from "@/lib/site";
+import { Navigation } from "@/components/Navigation";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { siteConfig } from "@/lib/site";
 
 export function Header() {
   return (
@@ -10,16 +11,11 @@ export function Header() {
           <span className="brand-mark">{siteConfig.mark}</span>
           <span>{siteConfig.name}</span>
         </Link>
-        <nav aria-label="主要导航" className="main-nav">
-          {siteConfig.nav.map((item) => (
-            <Link href={item.href} key={item.href}>
-              {item.label}
-            </Link>
-          ))}
+        <div className="header-actions">
+          <Navigation />
           <ThemeToggle />
-        </nav>
+        </div>
       </div>
     </header>
   );
 }
-

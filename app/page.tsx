@@ -4,6 +4,7 @@ import { getAllPosts } from "@/lib/posts";
 import { siteConfig } from "@/lib/site";
 
 export default function HomePage() {
+  const currentYear = new Date().getFullYear();
   const posts = getAllPosts();
   const featured = posts.filter((post) => post.featured);
   const selectedPosts = (featured.length ? featured : posts).slice(0, 3);
@@ -12,7 +13,7 @@ export default function HomePage() {
     <>
       <section className="hero shell">
         <div className="hero-copy">
-          <p className="eyebrow"><span /> PERSONAL FIELD NOTES · 2026</p>
+          <p className="eyebrow"><span /> PERSONAL FIELD NOTES · {currentYear}</p>
           <h1>
             把复杂的事情
             <br />
@@ -36,8 +37,8 @@ export default function HomePage() {
           <div className="monogram" aria-hidden="true">{siteConfig.mark}</div>
           <div className="now-card-body">
             <p className="label">最近在做</p>
-            <strong>构建自己的数字花园</strong>
-            <p>学习 · 编程 · 写作 · 复盘</p>
+            <strong>{siteConfig.now.title}</strong>
+            <p>{siteConfig.now.detail}</p>
           </div>
         </aside>
       </section>
