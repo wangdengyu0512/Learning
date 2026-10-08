@@ -142,7 +142,7 @@ MES 需要把异常变成一条受控流程：
 
 MES 是 Manufacturing Execution System，即制造执行系统。
 
-SAP 将 MES 概括为监控、跟踪、记录和控制从原材料到成品制造过程的软件系统；ISA-95 则把制造运营管理放在 Level 3，位于 Level 4 的业务计划与物流活动和 Level 0～2 的物理过程、感知与控制活动之间。
+[SAP 对 MES 的定义](https://www.sap.com/uk/resources/what-is-mes)强调，它用于监控、跟踪、记录和控制从原材料到成品的制造过程；[ISA-95](https://www.isa.org/standards-and-publications/isa-standards/isa-95-standard)则把制造运营管理放在 Level 3，位于 Level 4 的业务计划与物流活动和 Level 0～2 的物理过程、感知与控制活动之间。
 
 结合制造企业实际，可以给出一个更完整的定义：
 
@@ -444,6 +444,10 @@ MES 最终要建立的不是一堆孤立记录，而是一张制造关系网：
 
 为了避免按菜单罗列功能，可以把 MES 端到端流程分成三个阶段、五道放行门。
 
+![汽车零部件 MES 总览：订单接收、排程派工、生产准备、生产执行、质量异常、完工入库与分析追溯](/blog-assets/mes-end-to-end/01-mes-overview.jpg)
+
+图 1：MES 主流程可归纳为生产前、生产中和生产后三个阶段；ERP、APS、PLM、WMS、QMS 与 MES 围绕同一张生产订单协同。
+
 ### 1. 三个阶段
 
 ```text
@@ -518,6 +522,10 @@ MES 最终要建立的不是一堆孤立记录，而是一张制造关系网：
 > **MES 收到生产订单，并不等于现场已经具备生产条件。**
 
 阶段一要完成的，是把企业计划转换成一张经过验证的车间任务，并让所有必要资源在正确时间、正确地点、以正确状态就绪。
+
+![MES 生产前流程：订单和技术版本进入车间，经过排程、齐套检查、备料配送和扫码绑定后开工](/blog-assets/mes-end-to-end/02-before-production.jpg)
+
+图 2：生产前不是简单接单，而是把订单、技术版本和人机料法等条件校验为一张真正可执行的现场任务。
 
 ### 1. ERP 或 APS 下达生产需求
 
@@ -746,6 +754,10 @@ AND 前置审批或清场完成
 ## 八、阶段二：首件放行、批量生产与过程控制
 
 进入阶段二以后，MES 的任务从“准备”转为“控制真实生产过程”。这一阶段不应只在开始和结束各扫码一次，而要在关键动作之间建立连续的执行记录。
+
+![MES 生产中流程：首件检验、批量生产、数据采集，以及不合格和设备异常闭环](/blog-assets/mes-end-to-end/03-during-production.jpg)
+
+图 3：首件合格后才能进入批量生产；发生停机或不良时，产品和批次必须经过拦截、隔离、处置与复检后才能恢复。
 
 ### 1. 工位登录与任务接收
 
@@ -1389,6 +1401,10 @@ MES 的优势，是可以进一步按产品、班次、设备、模具、人员�
 - 包装、标签和追溯关系是否完整；
 - 仓库是否已经接收；
 - ERP 是否已经收到生产实绩。
+
+![MES 生产后流程：最终检验、质量放行、批次与序列号、包装入库、ERP 回报和产品追溯](/blog-assets/mes-end-to-end/04-after-production.jpg)
+
+图 4：最后一道工序完成并不是业务终点，最终检验、包装入库、实绩回报和制造谱系缺一不可。
 
 ### 1. 完工申报
 
@@ -2275,11 +2291,12 @@ MES 的真正价值，不是把车间的数据搬到电脑上，而是做到四�
 
 ## 参考资料
 
-- ISA，ISA-95 Standard: Enterprise-Control System Integration。
-- ISA，《The MOM Chronicles: ISA-95 Best Practices Book 3.0》相关介绍。
-- SAP，What is a Manufacturing Execution System (MES)?
-- Siemens，Manufacturing Execution Systems / Manufacturing Operations Management 相关资料。
-- Rockwell Automation，Manufacturing Execution System 与 Production Management 相关资料。
-- IBM，What is a Manufacturing Execution System (MES)?
+- [ISA，ISA-95 Standard: Enterprise-Control System Integration](https://www.isa.org/standards-and-publications/isa-standards/isa-95-standard)。
+- [ISA，The ISA-95 Enterprise-Control System Integration Standards](https://www.isa.org/intech/2020/september-october/the-isa-95-enterprise-control-system-integration-s)。
+- [SAP，What is a Manufacturing Execution System (MES)?](https://www.sap.com/uk/resources/what-is-mes)。
+- [Siemens，Manufacturing Execution Systems and ERP Systems: How They Relate](https://blogs.sw.siemens.com/opcenter/manufacturing-execution-systems-mes-and-enterprise-resource-planning-erp-systems-how-they-relate/)。
+- [Rockwell Automation，What is a Manufacturing Execution System?](https://www.rockwellautomation.com/en-us/products/software/factorytalk/operationsuite/mes/what-is-manufacturing-execution-system.html)。
+- [国家市场监督管理总局、国家标准化管理委员会，GB/T 39466.1—2020《ERP、MES与控制系统之间软件互联互通接口 第1部分：通用要求》](https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=C76FE13490A45A57416D83BCE57D77FD)。
+- [工业和信息化部，《国家智能制造标准体系建设指南（2024版）》](https://www.miit.gov.cn/jgsj/kjs/wjfb/art/2025/art_44dfda8e2220425daaa08501ec917f8f.html)。
 
-以上资料用于理解 MES/MOM 的概念、ISA-95 分层、生产运营范围，以及现代 MES 在生产控制、质量、追溯和系统集成中的常见定位。具体实施时，应以企业自身流程、行业法规、客户要求和系统边界为准。
+以上资料用于理解 MES/MOM 的概念、ISA-95 分层、制造运营范围，以及现代 MES 在生产控制、质量、追溯和系统集成中的常见定位。具体实施时，应以企业自身流程、行业法规、客户要求和系统边界为准。
