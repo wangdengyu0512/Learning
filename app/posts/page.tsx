@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "文章",
-  description: `浏览${siteConfig.name}关于技术、学习和生活的文章。`,
+  description: `浏览${siteConfig.name}关于技术原理、系统设计与工程实践的文章。`,
   alternates: { canonical: `${siteConfig.url}/posts/` },
 };
 

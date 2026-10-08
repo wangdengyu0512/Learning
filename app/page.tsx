@@ -13,7 +13,7 @@ export default function HomePage() {
     <>
       <section className="hero shell">
         <div className="hero-copy">
-          <p className="eyebrow"><span /> PERSONAL FIELD NOTES · {currentYear}</p>
+          <p className="eyebrow"><span /> INWARD GROWTH · {currentYear}</p>
           <h1>
             把复杂的事情
             <br />
@@ -43,11 +43,11 @@ export default function HomePage() {
         </aside>
       </section>
 
-      <section className="manifesto-band">
+      <section className="manifesto-band" aria-label={siteConfig.motto}>
         <div className="shell manifesto-grid">
-          <p>写作不是输出结论，</p>
-          <p>而是留下思考的路径。</p>
-          <span>THINK → BUILD → WRITE</span>
+          <p>求木之长者，</p>
+          <p>必固其根本。</p>
+          <span>ROOT DEEP · BUILD FAR</span>
         </div>
       </section>
 
@@ -65,11 +65,11 @@ export default function HomePage() {
       </section>
 
       <section className="shell principle-section">
-        <p className="kicker">MY PRINCIPLES</p>
+        <p className="kicker">GROWTH PRINCIPLES</p>
         <div className="principle-grid">
-          <div><span>01</span><h3>保持具体</h3><p>少一点空泛判断，多一点真实问题、过程和细节。</p></div>
-          <div><span>02</span><h3>长期积累</h3><p>不追赶每一个热点，只记录值得反复回看的东西。</p></div>
-          <div><span>03</span><h3>公开学习</h3><p>把未完成的理解写出来，让反馈帮助它继续生长。</p></div>
+          <div><span>01</span><h3>向内求解</h3><p>不止停留在怎么使用，而是继续追问为什么这样设计。</p></div>
+          <div><span>02</span><h3>扎根原理</h3><p>穿过变化很快的工具，寻找值得长期保留的底层规律。</p></div>
+          <div><span>03</span><h3>向外构建</h3><p>把理解变成文章、项目和行动，让认知接受真实反馈。</p></div>
         </div>
       </section>
     </>

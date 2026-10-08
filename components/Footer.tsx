@@ -6,7 +6,7 @@ export function Footer() {
       <div className="shell footer-inner">
         <div>
           <strong>{siteConfig.name}</strong>
-          <p>保持好奇，缓慢积累。</p>
+          <p>{siteConfig.tagline}</p>
         </div>
         <div className="footer-links">
           <a href={siteConfig.github} rel="noreferrer" target="_blank">

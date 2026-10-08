@@ -6,11 +6,14 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
+  applicationName: siteConfig.name,
   title: {
     default: siteConfig.title,
     template: `%s · ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  keywords: ["技术博客", "软件工程", "系统设计", "AI Agent", "数据库", "学习笔记"],
+  category: "technology",
   authors: [{ name: siteConfig.name, url: siteConfig.github }],
   icons: { icon: "/favicon.svg" },
   openGraph: {
@@ -19,7 +22,12 @@ export const metadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description,
     url: siteConfig.url,
-    siteName: siteConfig.title,
+    siteName: siteConfig.name,
+  },
+  twitter: {
+    card: "summary",
+    title: siteConfig.title,
+    description: siteConfig.description,
   },
   alternates: { canonical: siteConfig.url },
 };
@@ -39,12 +47,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body>
+        <a className="skip-link" href="#main-content">跳到正文</a>
         <div className="page-grid" aria-hidden="true" />
         <Header />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <Footer />
       </body>
     </html>
   );
 }
-

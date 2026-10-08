@@ -1,6 +1,6 @@
-# 缓慢生长
+# 向内生长
 
-一个基于 Next.js 的静态个人博客，部署到 GitHub Pages。
+一个记录技术原理、系统设计与工程实践的静态个人博客，基于 Next.js 构建并部署到 GitHub Pages。
 
 ## 本地运行
 
@@ -69,4 +69,3 @@ const message = "这是一段代码";
 - 全局视觉样式：`app/globals.css`
 
 推送到 `main` 分支后，GitHub Actions 会自动构建并发布到 GitHub Pages。
-

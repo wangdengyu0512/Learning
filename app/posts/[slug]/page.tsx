@@ -72,7 +72,7 @@ export default async function PostPage({ params }: Props) {
             <TableOfContents headings={headings} mobile />
             <Markdown content={post.content} />
             <footer className="article-footer">
-              <p>感谢你读到这里。</p>
+              <p>向内理解，向外交流。</p>
               <strong>如果这篇文章让你想到什么，欢迎通过 GitHub 和我交流。</strong>
               <a href={siteConfig.github} rel="noreferrer" target="_blank">在 GitHub 找到我 ↗</a>
             </footer>

@@ -1,5 +1,5 @@
 {
-  "name": "slow-growth-notes",
+  "name": "inward-growth-notes",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -20,4 +20,3 @@
     "typescript": "7.0.2"
   }
 }
-
