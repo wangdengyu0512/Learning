@@ -45,7 +45,9 @@ export default async function PostPage({ params }: Props) {
   const currentIndex = posts.findIndex((item) => item.slug === post.slug);
   const newerPost = currentIndex > 0 ? posts[currentIndex - 1] : undefined;
   const olderPost = currentIndex >= 0 ? posts[currentIndex + 1] : undefined;
-  const headings = extractHeadings(post.content, 2);
+  const headings = extractHeadings(post.content, 2).filter((heading, index) =>
+    !(index === 0 && heading.text === post.title),
+  );
 
   return (
     <>

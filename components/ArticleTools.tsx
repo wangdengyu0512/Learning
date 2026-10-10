@@ -61,22 +61,46 @@ export function TableOfContents({ headings, mobile = false }: { headings: Articl
     return () => observer.disconnect();
   }, [headings]);
 
+  useEffect(() => {
+    if (!activeId || mobile) return;
+    const toc = document.querySelector<HTMLElement>(".article-toc");
+    const activeLink = toc?.querySelector<HTMLAnchorElement>(`a[href="#${CSS.escape(activeId)}"]`);
+    if (!toc || !activeLink || toc.scrollHeight <= toc.clientHeight) return;
+
+    const headerHeight = toc.querySelector<HTMLElement>(".toc-header")?.offsetHeight ?? 0;
+    const itemTop = activeLink.offsetTop;
+    const itemBottom = itemTop + activeLink.offsetHeight;
+    const visibleTop = toc.scrollTop + headerHeight;
+    const visibleBottom = toc.scrollTop + toc.clientHeight;
+
+    if (itemTop < visibleTop) toc.scrollTo({ top: Math.max(0, itemTop - headerHeight - 10), behavior: "smooth" });
+    if (itemBottom > visibleBottom) toc.scrollTo({ top: itemBottom - toc.clientHeight + 10, behavior: "smooth" });
+  }, [activeId, mobile]);
+
   if (!headings.length) return null;
 
   const list = (
     <ol>
-      {headings.map((heading) => (
-        <li className={activeId === heading.id ? "is-active" : undefined} key={heading.id}>
-          <a aria-current={activeId === heading.id ? "location" : undefined} href={`#${heading.id}`}>{heading.text}</a>
-        </li>
-      ))}
+      {headings.map((heading) => {
+        const active = activeId === heading.id;
+        return (
+          <li className={active ? "is-active" : undefined} data-level={heading.level} key={heading.id}>
+            <a aria-current={active ? "location" : undefined} href={`#${heading.id}`}>
+              <span>{heading.text}</span>
+            </a>
+          </li>
+        );
+      })}
     </ol>
   );
 
   if (mobile) {
     return (
       <details className="mobile-toc">
-        <summary><span>文章目录</span><small>{headings.length} 节</small></summary>
+        <summary>
+          <span className="mobile-toc-title">文章目录</span>
+          <small>{headings.length} 节</small>
+        </summary>
         {list}
       </details>
     );
@@ -84,7 +108,13 @@ export function TableOfContents({ headings, mobile = false }: { headings: Articl
 
   return (
     <aside aria-label="文章目录" className="article-toc">
-      <p>CONTENTS</p>
+      <div className="toc-header">
+        <div>
+          <p>CONTENTS</p>
+          <strong>文章目录</strong>
+        </div>
+        <span>{headings.length} 节</span>
+      </div>
       {list}
     </aside>
   );
