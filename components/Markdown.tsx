@@ -1,6 +1,15 @@
 import type { ReactNode } from "react";
 import { getHeadingText, getUniqueHeadingId } from "@/lib/markdown";
 
+function resolveImageSource(source: string) {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  if (!basePath || !source.startsWith("/") || source.startsWith(`${basePath}/`)) {
+    return source;
+  }
+
+  return `${basePath}${source}`;
+}
+
 function renderInline(text: string): ReactNode[] {
   const pattern = /(\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\([^)]+\)|\*[^*]+\*)/g;
   const parts = text.split(pattern).filter(Boolean);
@@ -183,7 +192,7 @@ export function Markdown({ content }: { content: string }) {
       blocks.push(
         <figure className="prose-figure" key={`image-${index}`}>
           {/* The source diagrams are local SVG assets with intrinsic viewBox sizing. */}
-          <img alt={image[1]} loading="lazy" src={image[2]} />
+          <img alt={image[1]} loading="lazy" src={resolveImageSource(image[2])} />
         </figure>,
       );
       index += 1;
