@@ -863,6 +863,75 @@ button {
   font-style: italic;
 }
 
+.answer-reveal {
+  margin: 24px 0 32px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  background: var(--surface);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+.answer-reveal summary {
+  display: flex;
+  min-height: 52px;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.5;
+  list-style: none;
+  user-select: none;
+}
+
+.answer-reveal summary::-webkit-details-marker {
+  display: none;
+}
+
+.answer-reveal summary::after {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  place-items: center;
+  margin-left: auto;
+  border: 1px solid var(--line);
+  color: var(--accent-dark);
+  background: var(--paper);
+  content: "+";
+  font-family: ui-monospace, monospace;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.answer-reveal[open] summary::after {
+  content: "-";
+}
+
+.answer-reveal summary:hover {
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+}
+
+.answer-reveal-body {
+  padding: 20px 20px 22px;
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.answer-reveal-body > .prose {
+  font-family: Georgia, "Songti SC", "STSong", serif;
+  font-size: 0.94em;
+  line-height: 1.9;
+}
+
+.answer-reveal-body > .prose > :last-child {
+  margin-bottom: 0;
+}
+
 .prose ul,
 .prose ol {
   margin: 0 0 30px;

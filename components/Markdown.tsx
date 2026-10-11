@@ -58,8 +58,45 @@ function parseTableRow(line: string) {
     .map((cell) => cell.trim());
 }
 
+function getAnswerSummary(line: string) {
+  const match = /^\s*\*\*(.+)\*\*\s*$/.exec(line);
+  if (!match) return undefined;
+
+  const label = match[1].trim();
+  const isAnswerLabel = label.startsWith("展开答案")
+    || label.startsWith("展开参考答案")
+    || (label.startsWith("答案") && label.includes("展开"));
+
+  return isAnswerLabel ? label : undefined;
+}
+
+function getDetailsLine(line: string, quoted: boolean) {
+  return quoted ? line.replace(/^\s*>\s?/, "") : line;
+}
+
+function getDetailsSummary(line: string) {
+  const match = /^\s*<summary>([\s\S]+)<\/summary>\s*$/.exec(line);
+  return match?.[1].replace(/<\/?strong>/g, "").trim();
+}
+
+function isAnswerBoundary(line: string) {
+  const trimmed = line.trim();
+  return /^(#{1,4})\s/.test(trimmed)
+    || /^<a\s+id=["'][^"']+["']><\/a>$/.test(trimmed)
+    || /^<details(?:\s[^>]*)?>$/.test(trimmed)
+    || (/^\*\*.+\*\*$/.test(trimmed) && !getAnswerSummary(trimmed))
+    || /^\*\*\u4e0e\u4e0b\u4e00(?:\u4e2a\u6982\u5ff5|\u8282)\u7684\u5173\u7cfb\*\*/.test(trimmed)
+    || /^>\s?/.test(trimmed)
+    || /^!\[[^\]]*\]\([^)]+\)$/.test(trimmed)
+    || /^(?:table|\u8868)\s*\d/i.test(trimmed)
+    || /^(?:think about it|predict|cross-concept question|\u60f3\u4e00\u60f3|\u9884\u6d4b\u4e00\u4e0b|\u8de8\u6982\u5ff5\u7efc\u5408\u9898)$/i.test(trimmed)
+    || trimmed === "---";
+}
+
 function isBlockStart(line: string, nextLine?: string) {
-  return /^(#{1,4})\s|^```|^>\s?|^[-*]\s|^\d+\.\s|^---$|^!\[[^\]]*\]\([^)]+\)$|^<a\s+id=["'][^"']+["']><\/a>$/.test(line)
+  return Boolean(getAnswerSummary(line))
+    || /^<details(?:\s[^>]*)?>$/.test(line.trim())
+    || /^(#{1,4})\s|^```|^>\s?|^[-*]\s|^\d+\.\s|^---$|^!\[[^\]]*\]\([^)]+\)$|^<a\s+id=["'][^"']+["']><\/a>$/.test(line)
     || (isTableRow(line) && Boolean(nextLine && isTableDelimiter(nextLine)));
 }
 
@@ -74,6 +111,63 @@ export function Markdown({ content }: { content: string }) {
 
     if (!line.trim()) {
       index += 1;
+      continue;
+    }
+
+    const answerSummary = getAnswerSummary(line);
+    if (answerSummary) {
+      let end = index + 1;
+      while (end < lines.length && !isAnswerBoundary(lines[end])) {
+        end += 1;
+      }
+
+      const answer = lines.slice(index + 1, end).join("\n").trim();
+      blocks.push(
+        <details className="answer-reveal" key={`answer-${index}`}>
+          <summary>{renderInline(answerSummary)}</summary>
+          <div className="answer-reveal-body">
+            <Markdown content={answer} />
+          </div>
+        </details>,
+      );
+      index = end;
+      continue;
+    }
+
+    const quotedDetails = /^\s*>\s*<details(?:\s[^>]*)?>\s*$/.test(line);
+    if (quotedDetails || /^\s*<details(?:\s[^>]*)?>\s*$/.test(line)) {
+      const detailsStart = index;
+      index += 1;
+
+      while (index < lines.length && !getDetailsLine(lines[index], quotedDetails).trim()) {
+        index += 1;
+      }
+
+      const summary = index < lines.length
+        ? getDetailsSummary(getDetailsLine(lines[index], quotedDetails))
+        : undefined;
+
+      if (summary) index += 1;
+
+      const answer: string[] = [];
+      while (
+        index < lines.length
+        && getDetailsLine(lines[index], quotedDetails).trim() !== "</details>"
+      ) {
+        answer.push(getDetailsLine(lines[index], quotedDetails));
+        index += 1;
+      }
+
+      if (index < lines.length) index += 1;
+
+      blocks.push(
+        <details className="answer-reveal" key={`details-${detailsStart}`}>
+          <summary>{renderInline(summary ?? "展开内容")}</summary>
+          <div className="answer-reveal-body">
+            <Markdown content={answer.join("\n").trim()} />
+          </div>
+        </details>,
+      );
       continue;
     }
 
