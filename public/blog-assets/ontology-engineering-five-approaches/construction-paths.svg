@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="820" viewBox="0 0 1440 820" role="img" aria-labelledby="title desc">
+  <title id="title">拆解、聚合和两步走的构建路径</title>
+  <desc id="desc">以设备故障诊断领域展示三种概念构建方向。</desc>
+  <defs>
+    <marker id="a1" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#2f6b5f"/></marker>
+    <marker id="a2" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#356d98"/></marker>
+    <marker id="a3" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#b5642f"/></marker>
+    <style>
+      text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; fill: #17212b; }
+      .title { font-size: 36px; font-weight: 800; }
+      .subtitle { font-size: 19px; fill: #52606d; }
+      .head { font-size: 25px; font-weight: 800; }
+      .en { font-size: 14px; font-weight: 700; fill: #66737f; }
+      .node { font-size: 17px; font-weight: 700; }
+      .note { font-size: 16px; fill: #52606d; }
+    </style>
+  </defs>
+  <rect width="1440" height="820" fill="#f6f7f5"/>
+  <text x="70" y="72" class="title">同一设备领域，三种概念生长方向</text>
+  <text x="70" y="108" class="subtitle">箭头表示主要建模方向，不表示只能单向工作</text>
+
+  <g transform="translate(70 160)">
+    <rect width="400" height="580" rx="8" fill="#fff" stroke="#c9d0d5"/>
+    <rect width="400" height="8" rx="4" fill="#2f6b5f"/>
+    <text x="28" y="52" class="head">拆解派</text>
+    <text x="28" y="78" class="en">TOP-DOWN</text>
+    <rect x="90" y="118" width="220" height="58" rx="7" fill="#dcebe6"/>
+    <text x="200" y="154" text-anchor="middle" class="node">实体 / 过程 / 信息</text>
+    <path d="M200 180V225" stroke="#2f6b5f" stroke-width="3" marker-end="url(#a1)"/>
+    <rect x="90" y="235" width="220" height="58" rx="7" fill="#e8f2ef"/>
+    <text x="200" y="271" text-anchor="middle" class="node">设备 / 观测 / 结论</text>
+    <path d="M200 297V342" stroke="#2f6b5f" stroke-width="3" marker-end="url(#a1)"/>
+    <rect x="90" y="352" width="220" height="58" rx="7" fill="#f0f6f4"/>
+    <text x="200" y="388" text-anchor="middle" class="node">泵 / 压力观测 / 气蚀</text>
+    <path d="M200 414V459" stroke="#2f6b5f" stroke-width="3" marker-end="url(#a1)"/>
+    <rect x="90" y="469" width="220" height="58" rx="7" fill="#f7faf9" stroke="#9ebcb4"/>
+    <text x="200" y="505" text-anchor="middle" class="node">P-101 / PT-17 / 事件-08</text>
+    <text x="200" y="558" text-anchor="middle" class="note">从一般承诺进入具体事实</text>
+  </g>
+
+  <g transform="translate(520 160)">
+    <rect width="400" height="580" rx="8" fill="#fff" stroke="#c9d0d5"/>
+    <rect width="400" height="8" rx="4" fill="#356d98"/>
+    <text x="28" y="52" class="head">聚合派</text>
+    <text x="28" y="78" class="en">BOTTOM-UP</text>
+    <rect x="90" y="118" width="220" height="58" rx="7" fill="#f7fafc" stroke="#9ab9cd"/>
+    <text x="200" y="154" text-anchor="middle" class="node">工单 / 字段 / 报警码</text>
+    <path d="M200 180V225" stroke="#356d98" stroke-width="3" marker-end="url(#a2)"/>
+    <rect x="90" y="235" width="220" height="58" rx="7" fill="#edf4f8"/>
+    <text x="200" y="271" text-anchor="middle" class="node">同义词 / 模式 / 候选类</text>
+    <path d="M200 297V342" stroke="#356d98" stroke-width="3" marker-end="url(#a2)"/>
+    <rect x="90" y="352" width="220" height="58" rx="7" fill="#e4eff5"/>
+    <text x="200" y="388" text-anchor="middle" class="node">设备 / 观测 / 故障</text>
+    <path d="M200 414V459" stroke="#356d98" stroke-width="3" marker-end="url(#a2)"/>
+    <rect x="90" y="469" width="220" height="58" rx="7" fill="#dceaf3"/>
+    <text x="200" y="505" text-anchor="middle" class="node">稳定领域概念</text>
+    <text x="200" y="558" text-anchor="middle" class="note">从事实噪声归纳共同含义</text>
+  </g>
+
+  <g transform="translate(970 160)">
+    <rect width="400" height="580" rx="8" fill="#fff" stroke="#c9d0d5"/>
+    <rect width="400" height="8" rx="4" fill="#b5642f"/>
+    <text x="28" y="52" class="head">两步走派</text>
+    <text x="28" y="78" class="en">MIDDLE-OUT</text>
+    <rect x="90" y="260" width="220" height="72" rx="7" fill="#f6e4d8" stroke="#d99a70" stroke-width="2"/>
+    <text x="200" y="289" text-anchor="middle" class="node">设备 / 观测 / 故障</text>
+    <text x="200" y="316" text-anchor="middle" class="note">领域核心</text>
+    <path d="M200 254V185" stroke="#b5642f" stroke-width="3" marker-end="url(#a3)"/>
+    <rect x="90" y="118" width="220" height="58" rx="7" fill="#fbf2ec"/>
+    <text x="200" y="154" text-anchor="middle" class="node">实体 / 过程 / 信息</text>
+    <path d="M200 338V407" stroke="#b5642f" stroke-width="3" marker-end="url(#a3)"/>
+    <rect x="90" y="417" width="220" height="58" rx="7" fill="#fbf2ec"/>
+    <text x="200" y="453" text-anchor="middle" class="node">泵 / 压力观测 / 气蚀</text>
+    <path d="M200 479V524" stroke="#b5642f" stroke-width="3" marker-end="url(#a3)"/>
+    <rect x="90" y="534" width="220" height="58" rx="7" fill="#fdf8f4" stroke="#ddb497"/>
+    <text x="200" y="570" text-anchor="middle" class="node">实例与业务词汇</text>
+  </g>
+</svg>

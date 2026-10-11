@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="860" viewBox="0 0 1440 860" role="img" aria-labelledby="title desc">
+  <title id="title">五派系混合工程闭环</title>
+  <desc id="desc">能力问题驱动核心骨架、语义校准、数据归纳、最小交付和生命周期治理。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto"><path d="M0 0L11 5.5L0 11Z" fill="#596671"/></marker>
+    <style>
+      text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; fill: #17212b; }
+      .title { font-size: 36px; font-weight: 800; }
+      .subtitle { font-size: 19px; fill: #52606d; }
+      .step { font-size: 22px; font-weight: 800; }
+      .method { font-size: 14px; font-weight: 800; }
+      .copy { font-size: 16px; fill: #465460; }
+      .center { font-size: 25px; font-weight: 800; }
+      .center-copy { font-size: 17px; fill: #52606d; }
+    </style>
+  </defs>
+  <rect width="1440" height="860" fill="#f6f7f5"/>
+  <text x="70" y="72" class="title">五派不是选项，而是一条可重复的工程闭环</text>
+  <text x="70" y="108" class="subtitle">每一轮都从问题开始，以可运行证据结束，再把新问题送入下一轮</text>
+
+  <path d="M720 220C980 220 1165 355 1165 518C1165 690 955 760 720 760C465 760 275 675 275 510C275 350 460 220 720 220Z" fill="none" stroke="#c4cbd0" stroke-width="3" stroke-dasharray="8 9"/>
+
+  <g transform="translate(555 150)">
+    <rect width="330" height="118" rx="8" fill="#fff" stroke="#b5642f" stroke-width="3"/>
+    <text x="24" y="37" class="method" fill="#8e4921">两步走派</text>
+    <text x="24" y="70" class="step">建立核心骨架</text>
+    <text x="24" y="97" class="copy">稳定模块与关键关系</text>
+  </g>
+
+  <g transform="translate(950 280)">
+    <rect width="330" height="118" rx="8" fill="#fff" stroke="#2f6b5f" stroke-width="3"/>
+    <text x="24" y="37" class="method" fill="#24564c">拆解派</text>
+    <text x="24" y="70" class="step">校准语义边界</text>
+    <text x="24" y="97" class="copy">向上对齐概念承诺</text>
+  </g>
+
+  <g transform="translate(950 550)">
+    <rect width="330" height="118" rx="8" fill="#fff" stroke="#356d98" stroke-width="3"/>
+    <text x="24" y="37" class="method" fill="#275675">聚合派</text>
+    <text x="24" y="70" class="step">吸收现场语言</text>
+    <text x="24" y="97" class="copy">映射术语、数据与实例</text>
+  </g>
+
+  <g transform="translate(555 680)">
+    <rect width="330" height="118" rx="8" fill="#fff" stroke="#a33f46" stroke-width="3"/>
+    <text x="24" y="37" class="method" fill="#7c3035">直给派</text>
+    <text x="24" y="70" class="step">交付最小闭环</text>
+    <text x="24" y="97" class="copy">实例、查询、推理与校验</text>
+  </g>
+
+  <g transform="translate(160 550)">
+    <rect width="330" height="118" rx="8" fill="#fff" stroke="#704b8f" stroke-width="3"/>
+    <text x="24" y="37" class="method" fill="#57396f">框架派</text>
+    <text x="24" y="70" class="step">纳入生命周期治理</text>
+    <text x="24" y="97" class="copy">版本、测试、发布与维护</text>
+  </g>
+
+  <g transform="translate(160 280)">
+    <rect width="330" height="118" rx="8" fill="#fff" stroke="#66737f" stroke-width="3"/>
+    <text x="24" y="37" class="method" fill="#52606d">共同入口</text>
+    <text x="24" y="70" class="step">提出能力问题</text>
+    <text x="24" y="97" class="copy">用户、答案、证据与行动</text>
+  </g>
+
+  <path d="M492 310C515 270 535 250 570 235" fill="none" stroke="#596671" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M875 230C920 235 952 258 978 289" fill="none" stroke="#596671" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M1185 400V535" fill="none" stroke="#596671" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M970 655C935 695 900 713 865 725" fill="none" stroke="#596671" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M555 742C505 730 470 700 440 660" fill="none" stroke="#596671" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M255 550C230 505 230 445 255 398" fill="none" stroke="#596671" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <circle cx="720" cy="470" r="145" fill="#ffffff" stroke="#17212b" stroke-width="3"/>
+  <text x="720" y="445" text-anchor="middle" class="center">可执行证据</text>
+  <text x="720" y="480" text-anchor="middle" class="center-copy">查询结果 · 推理结论</text>
+  <text x="720" y="510" text-anchor="middle" class="center-copy">SHACL 报告 · 变更记录</text>
+</svg>

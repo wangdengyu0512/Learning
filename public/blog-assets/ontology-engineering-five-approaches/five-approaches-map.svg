@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="860" viewBox="0 0 1440 860" role="img" aria-labelledby="title desc">
+  <title id="title">本体工程五派系全景图</title>
+  <desc id="desc">前三派回答概念从哪里来，后两派回答项目如何推进。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#52606d"/>
+    </marker>
+    <style>
+      text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; fill: #17212b; }
+      .eyebrow { font-size: 18px; font-weight: 700; letter-spacing: 0; fill: #52606d; }
+      .title { font-size: 38px; font-weight: 800; letter-spacing: 0; }
+      .subtitle { font-size: 20px; fill: #52606d; }
+      .axis { font-size: 17px; font-weight: 700; fill: #52606d; }
+      .card-title { font-size: 27px; font-weight: 800; }
+      .card-en { font-size: 15px; font-weight: 700; fill: #52606d; }
+      .card-copy { font-size: 17px; fill: #34424f; }
+      .pill { font-size: 15px; font-weight: 700; }
+    </style>
+  </defs>
+
+  <rect width="1440" height="860" fill="#f6f7f5"/>
+  <text x="72" y="68" class="eyebrow">ONTOLOGY ENGINEERING</text>
+  <text x="72" y="118" class="title">五种起手式，处理两类不同问题</text>
+  <text x="72" y="158" class="subtitle">概念如何形成是一条轴，项目如何推进是另一条轴</text>
+
+  <line x1="150" y1="705" x2="1290" y2="705" stroke="#52606d" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="150" y="742" class="axis">抽象原则</text>
+  <text x="1220" y="742" class="axis">现场数据</text>
+  <text x="627" y="790" class="axis">概念从哪里来</text>
+
+  <line x1="102" y1="660" x2="102" y2="235" stroke="#52606d" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="46" y="642" class="axis" transform="rotate(-90 46 642)">短反馈环</text>
+  <text x="46" y="368" class="axis" transform="rotate(-90 46 368)">生命周期治理</text>
+
+  <g transform="translate(155 225)">
+    <rect width="350" height="190" rx="8" fill="#ffffff" stroke="#2f6b5f" stroke-width="3"/>
+    <rect width="9" height="190" rx="4" fill="#2f6b5f"/>
+    <text x="34" y="46" class="card-title">拆解派</text>
+    <text x="34" y="73" class="card-en">TOP-DOWN</text>
+    <text x="34" y="112" class="card-copy">从上层概念逐层细化</text>
+    <text x="34" y="141" class="card-copy">优先保证语义一致性</text>
+    <rect x="228" y="24" width="92" height="30" rx="6" fill="#dcebe6"/>
+    <text x="245" y="45" class="pill" fill="#24564c">概念轴</text>
+  </g>
+
+  <g transform="translate(545 225)">
+    <rect width="350" height="190" rx="8" fill="#ffffff" stroke="#b5642f" stroke-width="3"/>
+    <rect width="9" height="190" rx="4" fill="#b5642f"/>
+    <text x="34" y="46" class="card-title">两步走派</text>
+    <text x="34" y="73" class="card-en">MIDDLE-OUT</text>
+    <text x="34" y="112" class="card-copy">先找稳定核心，再上下扩展</text>
+    <text x="34" y="141" class="card-copy">兼顾对齐能力与业务可读性</text>
+    <rect x="228" y="24" width="92" height="30" rx="6" fill="#f6e4d8"/>
+    <text x="245" y="45" class="pill" fill="#8e4921">概念轴</text>
+  </g>
+
+  <g transform="translate(935 225)">
+    <rect width="350" height="190" rx="8" fill="#ffffff" stroke="#356d98" stroke-width="3"/>
+    <rect width="9" height="190" rx="4" fill="#356d98"/>
+    <text x="34" y="46" class="card-title">聚合派</text>
+    <text x="34" y="73" class="card-en">BOTTOM-UP</text>
+    <text x="34" y="112" class="card-copy">从术语、实例和 Schema 归纳</text>
+    <text x="34" y="141" class="card-copy">优先保证模型贴近现场</text>
+    <rect x="228" y="24" width="92" height="30" rx="6" fill="#dceaf3"/>
+    <text x="245" y="45" class="pill" fill="#275675">概念轴</text>
+  </g>
+
+  <g transform="translate(350 480)">
+    <rect width="350" height="170" rx="8" fill="#ffffff" stroke="#704b8f" stroke-width="3"/>
+    <rect width="9" height="170" rx="4" fill="#704b8f"/>
+    <text x="34" y="46" class="card-title">框架派</text>
+    <text x="34" y="73" class="card-en">LIFECYCLE-DRIVEN</text>
+    <text x="34" y="111" class="card-copy">角色、交付物、发布与演化</text>
+    <text x="34" y="140" class="card-copy">适合长期协作与治理</text>
+  </g>
+
+  <g transform="translate(740 480)">
+    <rect width="350" height="170" rx="8" fill="#ffffff" stroke="#a33f46" stroke-width="3"/>
+    <rect width="9" height="170" rx="4" fill="#a33f46"/>
+    <text x="34" y="46" class="card-title">直给派</text>
+    <text x="34" y="73" class="card-en">ITERATION-DRIVEN</text>
+    <text x="34" y="111" class="card-copy">最小模型、实例、查询、反馈</text>
+    <text x="34" y="140" class="card-copy">适合快速验证业务价值</text>
+  </g>
+
+  <path d="M530 565C600 530 670 530 730 565" fill="none" stroke="#89939d" stroke-width="2" stroke-dasharray="7 8" marker-end="url(#arrow)"/>
+  <text x="575" y="505" class="axis">项目组织轴</text>
+</svg>
