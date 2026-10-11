@@ -1,5 +1,5 @@
 ---
-title: 用 Next.js 和 GitHub Pages 搭建这座数字花园
+title: 用 Next.js 和 GitHub Pages 搭建这座知识空间
 description: 这篇文章记录博客的技术结构，以及为什么第一版刻意保持简单。
 date: 2026-09-07
 tags: Next.js, GitHub

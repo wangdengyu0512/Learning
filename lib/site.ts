@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "向内生长",
   mark: "内",
-  title: "向内生长 · 技术与认知的数字花园",
+  title: "向内生长 · 技术与认知的知识空间",
   description: "向内理解原理，向外构建系统。记录技术、学习与实践中的长期思考。",
   tagline: "向内理解原理，向外构建系统。",
   motto: "求木之长者，必固其根本。",
