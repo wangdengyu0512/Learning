@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="TypeScript 编译流水线：源码经类型检查、擦除生成纯 JS、再运行；tsx 和 Node 原生绕过类型检查直接剥离类型" height="250" role="img" viewBox="0 0 760 250" width="760" xmlns="http://www.w3.org/2000/svg"><style>
+:root { --bg:#fff; --ink:#0a0a0a; --ink-soft:#525252; --ink-faint:#a3a3a3; --vermilion:#b73b2f; --vermilion-soft:rgba(183,59,47,.08); }
+svg { background:#fff; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif; }
+.diagram-ink { stroke:var(--ink); fill:none; stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round; }
+.diagram-accent { stroke:var(--vermilion); fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+.diagram-soft { stroke:var(--ink-faint); fill:none; stroke-width:1.1; stroke-dasharray:3 3; }
+.node-fill { fill:var(--bg); }
+.node-fill-accent { fill:var(--vermilion-soft); }
+.node-label { font-size:13px; font-weight:500; fill:var(--ink); }
+.node-label-accent { font-size:13px; font-weight:700; fill:var(--vermilion); }
+.edge-label { font-family:Consolas,"SFMono-Regular",monospace; font-size:11px; fill:var(--ink-soft); paint-order:stroke; stroke:var(--bg); stroke-width:4px; stroke-linejoin:round; }
+.branch-label { font-family:Consolas,"SFMono-Regular",monospace; font-size:11px; font-weight:700; fill:var(--vermilion); paint-order:stroke; stroke:var(--bg); stroke-width:4px; stroke-linejoin:round; }
+</style>
+<defs>
+<marker id="ar-flow" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="ar-soft" markerHeight="8" markerWidth="8" orient="auto" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#A3A3A3"></path>
+</marker>
+</defs>
+<!-- 4 boxes -->
+<rect class="diagram-ink node-fill" height="58" rx="6" width="150" x="16" y="60"></rect>
+<text class="node-label" text-anchor="middle" x="91" y="84">.ts 源码</text>
+<text class="edge-label" style="stroke:none" text-anchor="middle" x="91" y="103">值 + 类型</text>
+<rect class="diagram-ink node-fill" height="58" rx="6" width="140" x="206" y="60"></rect>
+<text class="node-label" text-anchor="middle" x="276" y="84">tsc 类型检查</text>
+<text class="edge-label" style="stroke:none" text-anchor="middle" x="276" y="103">报错就停</text>
+<rect class="diagram-accent node-fill-accent" height="58" rx="6" width="150" x="386" y="60"></rect>
+<text class="node-label-accent" text-anchor="middle" x="461" y="84">擦除 → 生成</text>
+<text class="edge-label" style="stroke:none" text-anchor="middle" x="461" y="103">类型在此丢弃</text>
+<rect class="diagram-ink node-fill" height="58" rx="6" width="168" x="576" y="60"></rect>
+<text class="node-label" text-anchor="middle" x="660" y="84">运行时 · 纯 JS</text>
+<text class="edge-label" style="stroke:none" text-anchor="middle" x="660" y="103">无任何类型</text>
+<!-- arrows -->
+<line class="diagram-ink" marker-end="url(#ar-flow)" x1="166" x2="204" y1="89" y2="89"></line>
+<line class="diagram-ink" marker-end="url(#ar-flow)" x1="346" x2="384" y1="89" y2="89"></line>
+<line class="diagram-ink" marker-end="url(#ar-flow)" x1="536" x2="574" y1="89" y2="89"></line>
+<!-- bypass: tsx / Node native -->
+<polyline class="diagram-soft" marker-end="url(#ar-soft)" points="91,118 91,200 660,200 660,118"></polyline>
+<text class="branch-label" text-anchor="middle" x="375" y="194">tsx / Node 原生：直接剥离类型，跳过检查</text>
+<text class="edge-label" style="stroke:none" text-anchor="middle" x="375" y="226">所以类型把关要靠 CI 里单独跑 tsc --noEmit</text>
+</svg>

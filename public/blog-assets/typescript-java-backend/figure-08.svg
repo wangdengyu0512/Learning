@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="自测三层梯度金字塔：底层概念回忆，中层原理理解应用，顶层跨章判别迁移" height="360" role="img" viewBox="0 0 680 360" width="680" xmlns="http://www.w3.org/2000/svg"><style>
+:root { --bg:#fff; --ink:#0a0a0a; --ink-soft:#525252; --ink-faint:#a3a3a3; --vermilion:#b73b2f; --vermilion-soft:rgba(183,59,47,.08); }
+svg { background:#fff; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif; }
+.diagram-ink { stroke:var(--ink); fill:none; stroke-width:1.4; stroke-linecap:round; stroke-linejoin:round; }
+.diagram-accent { stroke:var(--vermilion); fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+.diagram-soft { stroke:var(--ink-faint); fill:none; stroke-width:1.1; stroke-dasharray:3 3; }
+.node-fill { fill:var(--bg); }
+.node-fill-accent { fill:var(--vermilion-soft); }
+.node-label { font-size:13px; font-weight:500; fill:var(--ink); }
+.node-label-accent { font-size:13px; font-weight:700; fill:var(--vermilion); }
+.edge-label { font-family:Consolas,"SFMono-Regular",monospace; font-size:11px; fill:var(--ink-soft); paint-order:stroke; stroke:var(--bg); stroke-width:4px; stroke-linejoin:round; }
+.branch-label { font-family:Consolas,"SFMono-Regular",monospace; font-size:11px; font-weight:700; fill:var(--vermilion); paint-order:stroke; stroke:var(--bg); stroke-width:4px; stroke-linejoin:round; }
+</style>
+<!-- bottom band -->
+<polygon class="diagram-ink node-fill" points="120,320 560,320 500,228 180,228"></polygon>
+<text class="node-label" text-anchor="middle" x="340" y="270">概念层 · 回忆 / 理解</text>
+<text class="edge-label" style="stroke:none" text-anchor="middle" x="340" y="292">对应第 1 章 · 8 题</text>
+<!-- middle band -->
+<polygon class="diagram-ink node-fill" points="180,228 500,228 440,140 240,140"></polygon>
+<text class="node-label" text-anchor="middle" x="340" y="180">原理层 · 理解 / 应用</text>
+<text class="edge-label" style="stroke:none" text-anchor="middle" x="340" y="202">对应第 2 章 · 7 题</text>
+<!-- top band -->
+<polygon class="diagram-accent node-fill-accent" points="240,140 440,140 340,44"></polygon>
+<text class="node-label-accent" text-anchor="middle" x="340" y="108">应用判别层</text>
+<text class="edge-label" style="stroke:none" text-anchor="middle" x="340" y="128">跨章 · 5 题</text>
+<!-- right gradient axis: 易（底）→ 难（顶） -->
+<line class="diagram-soft" x1="600" x2="600" y1="324" y2="56"></line>
+<text class="branch-label" style="stroke:none" text-anchor="middle" x="600" y="48">难</text>
+<text class="edge-label" style="stroke:none" text-anchor="middle" x="600" y="340">易</text>
+</svg>
