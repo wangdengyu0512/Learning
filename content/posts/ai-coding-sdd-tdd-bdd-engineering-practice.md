@@ -32,8 +32,6 @@ Metrics：判断交付是否真的更快、更稳定、更经济
 
 本文以 OpenSpec、GitHub Spec Kit 和 Superpowers 为代表，讨论如何把 Spec-Driven Development（SDD）、Behavior-Driven Development（BDD）和 Test-Driven Development（TDD）组合起来，并以“订单退款审批”功能为案例，给出一套适合团队逐步采用的 AI Coding 工程化方法。
 
-> **资料边界**：本文在 **2026 年 10 月 12 日**核对了 OpenSpec、GitHub Spec Kit、Superpowers 与 Cucumber 的官方文档。相关工具仍在快速演进，命令名称和默认工作流应以各项目最新文档为准。文中的代码、目录和配置为工程示例，不代表这些项目的固定接口。
-
 ---
 
 ## 一、AI Coding 的主要风险不是“写错代码”，而是“正确地实现了错误理解”
