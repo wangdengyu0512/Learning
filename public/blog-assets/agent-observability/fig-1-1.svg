@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="三方边界定位图：可观测性在运行期还原单条真实运行；eval 在开发期对固定数据集打分；传统 APM 在运行期但只看状态码；在线评估是唯一接缝" role="img" viewbox="0 0 760 340" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arr11" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#525252"></path>
+</marker>
+<marker id="arr11-r" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- Time axis labels -->
+<text class="edge-label" font-weight="700" text-anchor="middle" x="140" y="30">运行期</text>
+<text class="edge-label" font-weight="700" text-anchor="middle" x="580" y="30">开发期 / CI</text>
+<line class="diagram-soft" x1="20" x2="740" y1="36" y2="36"></line>
+<!-- APM box (top-left) -->
+<rect class="diagram-soft node-fill" height="72" rx="6" width="180" x="30" y="50"></rect>
+<text class="node-label" text-anchor="middle" x="120" y="78">传统 APM</text>
+<text class="edge-label" text-anchor="middle" x="120" y="96">状态码 + 延迟</text>
+<text class="edge-label" text-anchor="middle" x="120" y="112">确定性系统</text>
+<!-- Observability box (center-left, highlighted) -->
+<rect class="diagram-accent node-fill-accent" height="96" rx="6" stroke-width="2" width="220" x="30" y="156"></rect>
+<text class="node-label-accent" text-anchor="middle" x="140" y="184">可观测性（本篇）</text>
+<text class="edge-label" text-anchor="middle" x="140" y="202">运行期·单条真实运行</text>
+<text class="edge-label" text-anchor="middle" x="140" y="218">语义失败可见</text>
+<text class="edge-label" text-anchor="middle" x="140" y="234">token/成本/span 树</text>
+<!-- Eval box (right) -->
+<rect class="diagram-ink node-fill" height="96" rx="6" width="220" x="490" y="100"></rect>
+<text class="node-label" text-anchor="middle" x="600" y="128">eval（agent-eval）</text>
+<text class="edge-label" text-anchor="middle" x="600" y="146">开发期·固定数据集</text>
+<text class="edge-label" text-anchor="middle" x="600" y="162">打分·回归·部署卡点</text>
+<text class="edge-label" text-anchor="middle" x="600" y="178">LLM-as-judge</text>
+<!-- APM → Obs: difference arrow -->
+<line class="diagram-soft" marker-end="url(#arr11)" x1="120" x2="120" y1="122" y2="152"></line>
+<text class="edge-label" x="126" y="140">状态码盲</text>
+<!-- Online eval seam: obs → eval -->
+<line class="diagram-accent" marker-end="url(#arr11-r)" stroke-dasharray="5 3" x1="252" x2="488" y1="204" y2="165"></line>
+<text class="branch-label" text-anchor="middle" x="370" y="178">在线评估（唯一接缝）</text>
+<text class="edge-label" text-anchor="middle" x="370" y="193">采样 trace → scorer → 写回分数 → 提拔进离线集</text>
+<!-- X marks on APM corners to show it fails -->
+<text class="branch-label" font-size="13" x="218" y="74">✗ 语义</text>
+<text class="branch-label" font-size="13" x="218" y="92">✗ token</text>
+<text class="branch-label" font-size="13" x="218" y="110">✗ 非确定</text>
+<!-- bottom note -->
+<text class="edge-label" text-anchor="middle" x="380" y="295">三者不竞争——可观测性把生产数据喂给 eval，eval 给部署卡门</text>
+<style>
+.diagram-ink{stroke:#0A0A0A;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}.diagram-accent{stroke:#B73B2F;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.diagram-soft{stroke:#A3A3A3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}.node-fill{fill:#FFFFFF}.node-fill-accent{fill:rgba(183,59,47,.06)}.node-label{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:13px;font-weight:500;fill:#0A0A0A}.node-label-accent{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:13px;font-weight:700;fill:#B73B2F}.edge-label{font-family:monospace;font-size:11px;fill:#525252;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}.branch-label{font-family:monospace;font-size:11px;font-weight:700;fill:#B73B2F;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}</style>
+</svg>

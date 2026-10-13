@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="图2.1 差旅助理 context propagation：orchestrator 与预订子 agent 通过 traceparent 头共享同一 trace_id T1" role="img" viewbox="0 0 860 480" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arr-ink" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="arr-accent" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+<marker id="arr-soft" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#A3A3A3"></path>
+</marker>
+</defs>
+<!-- trace_id label at top -->
+<text class="branch-label" text-anchor="middle" x="430" y="24">trace_id = T1（全程不变）</text>
+<!-- ── Orchestrator 进程 ── -->
+<rect class="diagram-soft node-fill" height="32" rx="4" width="400" x="20" y="40"></rect>
+<text class="edge-label" text-anchor="middle" x="220" y="62">Orchestrator 进程</text>
+<!-- S0: invoke_agent root -->
+<rect class="diagram-accent node-fill-accent" height="46" rx="5" width="380" x="30" y="80"></rect>
+<text class="node-label-accent" text-anchor="middle" x="220" y="100">invoke_agent</text>
+<text class="edge-label" text-anchor="middle" x="220" y="117">span_id=S0  parent=∅  trace_id=T1</text>
+<!-- S1: chat -->
+<rect class="diagram-ink node-fill" height="44" rx="5" width="170" x="50" y="140"></rect>
+<text class="node-label" text-anchor="middle" x="135" y="159">chat</text>
+<text class="edge-label" text-anchor="middle" x="135" y="176">S1  parent=S0</text>
+<!-- S2: execute_tool book_flight -->
+<rect class="diagram-ink node-fill" height="44" rx="5" width="158" x="240" y="140"></rect>
+<text class="node-label" text-anchor="middle" x="319" y="159">execute_tool</text>
+<text class="edge-label" text-anchor="middle" x="319" y="176">S2  parent=S0</text>
+<!-- arrows from S0 to S1 and S2 -->
+<line class="diagram-ink" marker-end="url(#arr-ink)" x1="135" x2="135" y1="126" y2="140"></line>
+<line class="diagram-ink" marker-end="url(#arr-ink)" x1="319" x2="319" y1="126" y2="140"></line>
+<!-- traceparent arrow crossing boundary -->
+<line class="diagram-accent" marker-end="url(#arr-accent)" stroke-dasharray="5 3" x1="398" x2="452" y1="162" y2="220"></line>
+<text class="branch-label" text-anchor="end" x="390" y="196">traceparent</text>
+<text class="edge-label" text-anchor="end" x="390" y="210">T1-S2-01</text>
+<!-- boundary line -->
+<line class="diagram-soft" x1="430" x2="430" y1="50" y2="460"></line>
+<text class="edge-label" x="435" y="118">进程边界</text>
+<!-- ── 预订子 agent 进程 ── -->
+<rect class="diagram-soft node-fill" height="32" rx="4" width="400" x="440" y="40"></rect>
+<text class="edge-label" text-anchor="middle" x="640" y="62">预订子 agent 进程</text>
+<!-- S3: sub-agent invoke_agent -->
+<rect class="diagram-ink node-fill" height="46" rx="5" width="380" x="450" y="212"></rect>
+<text class="node-label" text-anchor="middle" x="640" y="232">invoke_agent</text>
+<text class="edge-label" text-anchor="middle" x="640" y="249">S3  parent=S2  trace_id=T1</text>
+<!-- S4: chat in sub-agent -->
+<rect class="diagram-ink node-fill" height="44" rx="5" width="160" x="460" y="272"></rect>
+<text class="node-label" text-anchor="middle" x="540" y="291">chat</text>
+<text class="edge-label" text-anchor="middle" x="540" y="308">S4  parent=S3</text>
+<!-- S5: execute_tool in sub-agent -->
+<rect class="diagram-ink node-fill" height="44" rx="5" width="168" x="650" y="272"></rect>
+<text class="node-label" text-anchor="middle" x="734" y="291">execute_tool</text>
+<text class="edge-label" text-anchor="middle" x="734" y="308">S5  parent=S3</text>
+<!-- arrows inside sub-agent -->
+<line class="diagram-ink" marker-end="url(#arr-ink)" x1="540" x2="540" y1="258" y2="272"></line>
+<line class="diagram-ink" marker-end="url(#arr-ink)" x1="734" x2="734" y1="258" y2="272"></line>
+<!-- "同一棵树" label -->
+<rect class="diagram-soft node-fill" height="36" rx="4" width="380" x="450" y="360"></rect>
+<text class="branch-label" text-anchor="middle" x="640" y="384">backend 查 trace_id=T1 → 整棵树</text>
+<line class="diagram-soft" marker-end="url(#arr-soft)" x1="540" x2="540" y1="316" y2="360"></line>
+<line class="diagram-soft" marker-end="url(#arr-soft)" x1="734" x2="734" y1="316" y2="360"></line>
+<!-- note on failure -->
+<text class="edge-label" text-anchor="middle" x="640" y="424">traceparent 未传 → S3 孤儿，树断裂</text>
+<style>
+.diagram-ink{stroke:#0A0A0A;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}.diagram-accent{stroke:#B73B2F;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.diagram-soft{stroke:#A3A3A3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}.node-fill{fill:#FFFFFF}.node-fill-accent{fill:rgba(183,59,47,.06)}.node-label{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:13px;font-weight:500;fill:#0A0A0A}.node-label-accent{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:13px;font-weight:700;fill:#B73B2F}.edge-label{font-family:monospace;font-size:11px;fill:#525252;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}.branch-label{font-family:monospace;font-size:11px;font-weight:700;fill:#B73B2F;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}</style>
+</svg>

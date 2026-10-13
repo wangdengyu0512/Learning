@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="图2.2 归因上卷：每个 chat span 自记 token，父 span invoke_agent 汇总子树，ingestion 时算成本" role="img" viewbox="0 0 800 420" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arr2-ink" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="arr2-soft" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#A3A3A3"></path>
+</marker>
+</defs>
+<!-- invoke_agent root -->
+<rect class="diagram-accent node-fill-accent" height="60" rx="6" width="320" x="240" y="30"></rect>
+<text class="node-label-accent" text-anchor="middle" x="400" y="54">invoke_agent（根）</text>
+<text class="edge-label" text-anchor="middle" x="400" y="72">汇总: input=2450 output=810 tokens</text>
+<!-- 3 chat spans below -->
+<rect class="diagram-ink node-fill" height="70" rx="5" width="200" x="30" y="140"></rect>
+<text class="node-label" text-anchor="middle" x="130" y="163">chat #1</text>
+<text class="edge-label" text-anchor="middle" x="130" y="181">retrieve_policy 后</text>
+<text class="edge-label" text-anchor="middle" x="130" y="197">input=820 out=210</text>
+<rect class="diagram-ink node-fill" height="70" rx="5" width="200" x="300" y="140"></rect>
+<text class="node-label" text-anchor="middle" x="400" y="163">chat #2</text>
+<text class="edge-label" text-anchor="middle" x="400" y="181">search_flights 后</text>
+<text class="edge-label" text-anchor="middle" x="400" y="197">input=980 out=390</text>
+<rect class="diagram-ink node-fill" height="70" rx="5" width="200" x="570" y="140"></rect>
+<text class="node-label" text-anchor="middle" x="670" y="163">chat #3</text>
+<text class="edge-label" text-anchor="middle" x="670" y="181">book_flight 后</text>
+<text class="edge-label" text-anchor="middle" x="670" y="197">input=650 out=210</text>
+<!-- arrows from root to chats -->
+<line class="diagram-ink" marker-end="url(#arr2-ink)" x1="310" x2="160" y1="90" y2="140"></line>
+<line class="diagram-ink" marker-end="url(#arr2-ink)" x1="400" x2="400" y1="90" y2="140"></line>
+<line class="diagram-ink" marker-end="url(#arr2-ink)" x1="490" x2="640" y1="90" y2="140"></line>
+<!-- upward aggregation label -->
+<line class="diagram-soft" marker-end="url(#arr2-soft)" x1="160" x2="330" y1="210" y2="90"></line>
+<line class="diagram-soft" marker-end="url(#arr2-soft)" x1="400" x2="400" y1="210" y2="90"></line>
+<line class="diagram-soft" marker-end="url(#arr2-soft)" x1="640" x2="470" y1="210" y2="90"></line>
+<text class="edge-label" text-anchor="middle" x="400" y="296">父 span 关闭时汇总子 span token</text>
+<!-- ingestion side panel -->
+<rect class="diagram-soft node-fill" height="64" rx="6" width="600" x="100" y="320"></rect>
+<text class="node-label" text-anchor="middle" x="400" y="344">Backend · Ingestion 时</text>
+<text class="edge-label" text-anchor="middle" x="400" y="362">token × price_table[model] → cost_usd（OTel 协议不含，backend 算）</text>
+<text class="edge-label" text-anchor="middle" x="400" y="378">cache_read / reasoning token 分开计价，漏掉 = 成本多算</text>
+<line class="diagram-soft" marker-end="url(#arr2-soft)" stroke-dasharray="5 4" x1="400" x2="400" y1="60" y2="320"></line>
+<style>
+.diagram-ink{stroke:#0A0A0A;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}.diagram-accent{stroke:#B73B2F;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.diagram-soft{stroke:#A3A3A3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}.node-fill{fill:#FFFFFF}.node-fill-accent{fill:rgba(183,59,47,.06)}.node-label{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:13px;font-weight:500;fill:#0A0A0A}.node-label-accent{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:13px;font-weight:700;fill:#B73B2F}.edge-label{font-family:monospace;font-size:11px;fill:#525252;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}.branch-label{font-family:monospace;font-size:11px;font-weight:700;fill:#B73B2F;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}</style>
+</svg>

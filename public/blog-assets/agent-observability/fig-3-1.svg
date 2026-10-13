@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg aria-label="失败 trace 根因回溯图：差旅助理成本翻 3 倍案例，坏 span 高亮，重试循环标注" role="img" viewbox="0 0 820 542" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="tr-arrow" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#0A0A0A"></path>
+</marker>
+<marker id="tr-red" markerheight="7" markerwidth="7" orient="auto" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#B73B2F"></path>
+</marker>
+</defs>
+<!-- Root span -->
+<rect class="diagram-ink node-fill" height="46" rx="6" width="240" x="20" y="20"></rect>
+<text class="node-label" text-anchor="middle" x="140" y="40">invoke_agent（根）</text>
+<text class="edge-label" text-anchor="middle" x="140" y="58">status=OK · cost=3.1×</text>
+<!-- chat 1: retrieve_policy -->
+<rect class="diagram-ink node-fill" height="44" rx="6" width="230" x="20" y="102"></rect>
+<text class="node-label" text-anchor="middle" x="135" y="120">chat → retrieve_policy</text>
+<text class="edge-label" text-anchor="middle" x="135" y="137">status=OK</text>
+<line class="diagram-ink" marker-end="url(#tr-arrow)" x1="140" x2="135" y1="66" y2="102"></line>
+<!-- chat 2: LLM decides to search -->
+<rect class="diagram-ink node-fill" height="44" rx="6" width="230" x="20" y="180"></rect>
+<text class="node-label" text-anchor="middle" x="135" y="199">chat（决定查航班）</text>
+<text class="edge-label" text-anchor="middle" x="135" y="216">status=OK</text>
+<line class="diagram-ink" marker-end="url(#tr-arrow)" x1="135" x2="135" y1="146" y2="180"></line>
+<!-- search_flights ROOT CAUSE — highlighted red -->
+<rect class="diagram-accent node-fill-accent" height="46" rx="6" stroke-width="2" width="230" x="20" y="258"></rect>
+<text class="node-label-accent" text-anchor="middle" x="135" y="278">execute_tool: search_flights</text>
+<text class="branch-label" text-anchor="middle" x="135" y="295">status=ERROR · 504 超时</text>
+<line class="diagram-accent" marker-end="url(#tr-red)" stroke-width="2" x1="135" x2="135" y1="224" y2="258"></line>
+<!-- Root cause label -->
+<text class="branch-label" x="262" y="282">← 根因 span</text>
+<!-- retry loop box -->
+<rect class="diagram-soft" fill="var(--vermilion-soft)" height="300" rx="8" width="480" x="310" y="180"></rect>
+<text class="branch-label" text-anchor="middle" x="550" y="204">重试循环（4 次额外 chat）</text>
+<!-- retry chat spans (stacked) -->
+<rect class="diagram-ink node-fill" height="40" rx="5" width="200" x="330" y="216"></rect>
+<text class="node-label" text-anchor="middle" x="430" y="232">chat（retry 1）</text>
+<text class="edge-label" text-anchor="middle" x="430" y="248">全量历史重喂</text>
+<rect class="diagram-ink node-fill" height="40" rx="5" width="200" x="330" y="270"></rect>
+<text class="node-label" text-anchor="middle" x="430" y="286">search_flights（retry 1）</text>
+<text class="edge-label" text-anchor="middle" x="430" y="302">status=ERROR</text>
+<rect class="diagram-ink node-fill" height="40" rx="5" width="200" x="330" y="324"></rect>
+<text class="node-label" text-anchor="middle" x="430" y="340">chat（retry 2）</text>
+<text class="edge-label" text-anchor="middle" x="430" y="356">全量历史重喂</text>
+<rect class="diagram-ink node-fill" height="40" rx="5" width="200" x="330" y="378"></rect>
+<text class="node-label" text-anchor="middle" x="430" y="394">search_flights（retry 2）</text>
+<text class="edge-label" text-anchor="middle" x="430" y="410">status=ERROR</text>
+<text class="edge-label" text-anchor="middle" x="430" y="440">… retry 3 / 4 同上 …</text>
+<!-- connect from root to retry box -->
+<line class="diagram-accent" marker-end="url(#tr-red)" stroke-width="1.6" x1="250" x2="310" y1="281" y2="281"></line>
+<!-- token cost annotation -->
+<rect class="diagram-soft node-fill" height="60" rx="5" width="210" x="560" y="226"></rect>
+<text class="node-label" text-anchor="middle" x="665" y="248">token 成本</text>
+<text class="edge-label" text-anchor="middle" x="665" y="265">4 次 × 全量历史</text>
+<text class="edge-label" text-anchor="middle" x="665" y="280">≈ 正常 5 次总量</text>
+<!-- summary box at bottom -->
+<rect class="diagram-soft node-fill" height="40" rx="5" width="760" x="20" y="492"></rect>
+<text class="edge-label" text-anchor="middle" x="400" y="508">根因：工具层无重试上限 → LLM 自发重试 → 每次全量历史 → token 线性叠加</text>
+<text class="edge-label" text-anchor="middle" x="400" y="526">修法：工具层幂等重试上限 + 编排层注入"已重试 N 次，中止"指令</text>
+<style>
+.diagram-ink{stroke:#0A0A0A;fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}.diagram-accent{stroke:#B73B2F;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.diagram-soft{stroke:#A3A3A3;fill:none;stroke-width:1.1;stroke-dasharray:3 3}.node-fill{fill:#FFFFFF}.node-fill-accent{fill:rgba(183,59,47,.06)}.node-label{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:13px;font-weight:500;fill:#0A0A0A}.node-label-accent{font-family:Arial,'Microsoft YaHei',sans-serif;font-size:13px;font-weight:700;fill:#B73B2F}.edge-label{font-family:monospace;font-size:11px;fill:#525252;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}.branch-label{font-family:monospace;font-size:11px;font-weight:700;fill:#B73B2F;paint-order:stroke;stroke:#FFFFFF;stroke-width:4px;stroke-linejoin:round}</style>
+</svg>
