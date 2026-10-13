@@ -33,8 +33,24 @@ export function getUniqueHeadingId(text: string, counts: Map<string, number>) {
 export function extractHeadings(content: string, maxLevel = 2): ArticleHeading[] {
   const counts = new Map<string, number>();
   const headings: ArticleHeading[] = [];
+  let fence: { marker: string; length: number } | null = null;
 
   for (const line of content.replace(/\r\n/g, "\n").split("\n")) {
+    const fenceMatch = /^\s*(`{3,}|~{3,})/.exec(line);
+    if (fenceMatch) {
+      const marker = fenceMatch[1][0];
+      const length = fenceMatch[1].length;
+
+      if (!fence) {
+        fence = { marker, length };
+      } else if (fence.marker === marker && length >= fence.length) {
+        fence = null;
+      }
+      continue;
+    }
+
+    if (fence) continue;
+
     const match = /^(#{1,4})\s+(.+)$/.exec(line);
     if (!match) continue;
 
