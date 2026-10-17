@@ -25,7 +25,7 @@ featured: true
 
 只要抓住这条流水线，自动配置、依赖注入、事务代理、Web 容器和各种启动扩展点，就不再是彼此孤立的“注解魔法”，而是一组有严格先后关系的普通机制。
 
-> 本文按照目录资料所采用的 Spring Boot 4.x / Spring Framework 7 语境整理。版本细节会变化，但 `ApplicationContext.refresh()`、BeanDefinition、两类后置处理器以及代理式 AOP 这条主干长期稳定。
+> 本文采用 Spring Boot 4.x / Spring Framework 7 语境。版本细节会变化，但 `ApplicationContext.refresh()`、BeanDefinition、两类后置处理器以及代理式 AOP 这条主干长期稳定。
 
 ---
 

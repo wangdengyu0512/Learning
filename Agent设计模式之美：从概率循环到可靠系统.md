@@ -525,4 +525,4 @@ Agent 系统最迷人的地方，是它不再要求工程师把每一步控制�
 
 ## 延伸阅读
 
-本文根据本地目录 `F:\fde\Agent 设计模式之美` 中的课程材料整理与重写。课程内容进一步引用并讨论了 CoALA、ReAct、Reflexion，以及 Anthropic、OpenAI 等团队关于 Agent 构建、上下文工程、多 Agent 协作和长程 Harness 的公开论文与工程实践。
+延伸阅读可关注 CoALA、ReAct、Reflexion，以及 Anthropic、OpenAI 等团队关于 Agent 构建、上下文工程、多 Agent 协作和长程 Harness 的公开论文与工程实践。
