@@ -609,6 +609,13 @@ button {
   font-size: clamp(52px, 7vw, 88px);
 }
 
+.page-header h1.archive-title {
+  max-width: none;
+  font-size: 64px;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
 .page-header > p:last-child {
   max-width: 600px;
   margin: 0;
@@ -1113,6 +1120,10 @@ button {
     --shell: min(100% - 36px, 760px);
   }
 
+  .page-header h1.archive-title {
+    font-size: 50px;
+  }
+
   .hero {
     min-height: 0;
     padding-block: 76px 90px;
@@ -1267,6 +1278,11 @@ button {
 
   .page-header h1 {
     font-size: 50px;
+  }
+
+  .page-header h1.archive-title {
+    font-size: 50px;
+    white-space: normal;
   }
 
   .about-hero {

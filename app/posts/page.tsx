@@ -16,7 +16,7 @@ export default function PostsPage() {
     <section className="shell page-section">
       <header className="page-header">
         <p className="eyebrow"><span /> ARCHIVE / 文章归档</p>
-        <h1>写下来的，<em>才真正属于自己。</em></h1>
+        <h1 className="archive-title">写下来的，<em>才真正属于自己。</em></h1>
         <p>在这里按主题浏览学习笔记、项目复盘和长期技术思考。</p>
       </header>
       <PostArchive posts={posts} />
