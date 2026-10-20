@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 import { getHeadingText, getUniqueHeadingId } from "@/lib/markdown";
+import { EnterpriseAiOSDiagram } from "@/components/EnterpriseAiOSDiagram";
+import { OntologyGraph } from "@/components/OntologyGraph";
 
 function resolveImageSource(source: string) {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -104,6 +106,8 @@ function isAnswerBoundary(line: string) {
 
 function isBlockStart(line: string, nextLine?: string) {
   return Boolean(getAnswerSummary(line))
+    || line.trim() === "<!-- enterprise-aios-diagram -->"
+    || line.trim() === "<!-- ontology-graph -->"
     || /^<details(?:\s[^>]*)?>$/.test(line.trim())
     || /^(#{1,4})\s|^```|^>\s?|^[-*]\s|^\d+\.\s|^---$|^!\[[^\]]*\]\([^)]+\)$|^<a\s+id=["'][^"']+["']><\/a>$/.test(line)
     || (isTableRow(line) && Boolean(nextLine && isTableDelimiter(nextLine)));
@@ -119,6 +123,18 @@ export function Markdown({ content }: { content: string }) {
     const line = lines[index];
 
     if (!line.trim()) {
+      index += 1;
+      continue;
+    }
+
+    if (line.trim() === "<!-- enterprise-aios-diagram -->") {
+      blocks.push(<EnterpriseAiOSDiagram key={`enterprise-aios-${index}`} />);
+      index += 1;
+      continue;
+    }
+
+    if (line.trim() === "<!-- ontology-graph -->") {
+      blocks.push(<OntologyGraph key={`ontology-graph-${index}`} />);
       index += 1;
       continue;
     }
