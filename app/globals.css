@@ -2498,7 +2498,103 @@ summary:focus-visible {
 }
 
 .mobile-toc {
+  margin: 0 0 44px;
   display: none;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--surface) 58%, transparent);
+}
+
+.mobile-toc summary {
+  padding: 15px 4px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.mobile-toc summary::-webkit-details-marker {
+  display: none;
+}
+
+.mobile-toc-title {
+  font-family: Georgia, "Songti SC", serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.mobile-toc summary::after {
+  content: "+";
+  width: 24px;
+  margin-left: 2px;
+  color: var(--accent);
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+}
+
+.mobile-toc[open] summary::after {
+  content: "−";
+}
+
+.mobile-toc summary small {
+  margin-left: auto;
+  color: var(--muted);
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.mobile-toc ol {
+  max-height: 48vh;
+  padding: 0 0 12px;
+  overflow-y: auto;
+  border-top: 1px solid var(--line);
+}
+
+.mobile-toc li {
+  position: relative;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.mobile-toc li + li {
+  border-top: 1px solid color-mix(in srgb, var(--line) 60%, transparent);
+}
+
+.mobile-toc a {
+  display: block;
+  padding: 10px 12px;
+}
+
+.mobile-toc li.is-active {
+  color: var(--ink);
+}
+
+.mobile-toc li.is-active::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 0;
+  width: 2px;
+  background: var(--accent);
+}
+
+.mobile-toc li.is-active a {
+  padding-left: 16px;
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+/* Wide diagrams use a single column, so keep the inline contents available. */
+.article-layout:has(.ontology-graph) .mobile-toc,
+.article-layout:has(.enterprise-aios) .mobile-toc {
+  display: block;
+  max-width: 760px;
 }
 
 .prose {
@@ -2600,96 +2696,7 @@ summary:focus-visible {
   }
 
   .mobile-toc {
-    margin: 0 0 44px;
     display: block;
-    border-top: 2px solid var(--ink);
-    border-bottom: 1px solid var(--line);
-    background: color-mix(in srgb, var(--surface) 58%, transparent);
-  }
-
-  .mobile-toc summary {
-    padding: 15px 4px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    list-style: none;
-  }
-
-  .mobile-toc summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .mobile-toc-title {
-    font-family: Georgia, "Songti SC", serif;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-  }
-
-  .mobile-toc summary::after {
-    content: "+";
-    width: 24px;
-    margin-left: 2px;
-    color: var(--accent);
-    font-size: 21px;
-    font-weight: 400;
-    line-height: 1;
-    text-align: center;
-  }
-
-  .mobile-toc[open] summary::after {
-    content: "−";
-  }
-
-  .mobile-toc summary small {
-    margin-left: auto;
-    color: var(--muted);
-    font-family: ui-monospace, monospace;
-    font-size: 10px;
-    font-weight: 500;
-  }
-
-  .mobile-toc ol {
-    max-height: 48vh;
-    padding: 0 0 12px;
-    overflow-y: auto;
-    border-top: 1px solid var(--line);
-  }
-
-  .mobile-toc li {
-    position: relative;
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.55;
-  }
-
-  .mobile-toc li + li {
-    border-top: 1px solid color-mix(in srgb, var(--line) 60%, transparent);
-  }
-
-  .mobile-toc a {
-    display: block;
-    padding: 10px 12px;
-  }
-
-  .mobile-toc li.is-active {
-    color: var(--ink);
-  }
-
-  .mobile-toc li.is-active::before {
-    content: "";
-    position: absolute;
-    top: 10px;
-    bottom: 10px;
-    left: 0;
-    width: 2px;
-    background: var(--accent);
-  }
-
-  .mobile-toc li.is-active a {
-    padding-left: 16px;
-    background: color-mix(in srgb, var(--accent) 8%, transparent);
   }
 }
 
