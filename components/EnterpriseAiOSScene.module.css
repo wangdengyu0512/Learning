@@ -1,0 +1,68 @@
+.scene {
+  min-height: calc(100svh - 60px);
+  color: #dce8f4;
+  background: #0c1016;
+  font-family: Inter, "Segoe UI", "Microsoft YaHei", sans-serif;
+  color-scheme: dark;
+}
+.header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 40px 20px; border-bottom: 1px solid #24303d; }
+.eyebrow { margin: 0 0 5px; color: #7195b5; font: 10px/1.5 ui-monospace, Consolas, monospace; letter-spacing: .16em; }
+.header h1 { margin: 0; font-size: 24px; font-weight: 550; letter-spacing: .04em; }
+.headerRight { display: flex; align-items: center; gap: 28px; font-size: 12px; }
+.headerRight a { color: #b8cfe4; }
+.headerRight a:hover { color: #fff; }
+.badge { color: #7e97ae; }
+.toolbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 14px 40px; }
+.tabs, .zoom { display: flex; align-items: center; gap: 5px; }
+.scene button { border: 1px solid transparent; border-radius: 4px; padding: 6px 13px; color: #8299af; background: transparent; cursor: pointer; font-size: 12px; white-space: nowrap; }
+.scene button:hover { color: #e4f1ff; background: #192330; }
+.scene button[aria-pressed="true"] { color: #c6e5ff; background: #182b3d; border-color: #33526e; }
+.scene button:disabled { opacity: .3; cursor: default; }
+.scene :focus-visible { outline: 2px solid #91cfff; outline-offset: 4px; }
+.zoom output { min-width: 44px; text-align: center; color: #9cb2c8; font: 11px ui-monospace, Consolas, monospace; }
+.zoom button { padding-inline: 10px; }
+.viewport { width: min(100%, max(900px, calc((100svh - 340px) * 2.461538))); margin-inline: auto; overflow: auto; scrollbar-color: #324a62 #0c1016; }
+.canvas { display: block; max-width: none; margin-inline: auto; height: auto; }
+.layer { transition: opacity .3s; }
+.muted { opacity: .22; }
+.node { cursor: pointer; outline: none; }
+.hitbox { fill: transparent; stroke: transparent; }
+.halo { opacity: 0; transition: opacity .15s; }
+.node:hover .halo, .node:focus-visible .halo, .selected .halo { opacity: 1; }
+.node:focus-visible .hitbox { stroke: #a9d8ff; stroke-dasharray: 3 4; }
+.node:hover text, .selected text { fill: #fff; }
+.connectors { animation: scene-flow 22s linear infinite; }
+.network { stroke-dasharray: 4 7; animation: scene-flow 28s linear infinite; }
+.detail { display: flex; align-items: center; gap: 32px; min-height: 108px; margin: 0 40px; padding: 22px 0 26px; border-top: 1px solid #24303d; }
+.detailLabel { min-width: 175px; color: #7195b5; font: 10px ui-monospace, Consolas, monospace; letter-spacing: .06em; }
+.detail strong { font-size: 14px; font-weight: 500; }
+.detail p { max-width: 800px; margin: 5px 0 0; color: #8195a8; font-size: 12px; line-height: 1.8; }
+.hint { margin-left: auto; flex-shrink: 0; color: #576d81; font-size: 10px; }
+@keyframes scene-flow { to { stroke-dashoffset: -220; } }
+@media (prefers-reduced-motion: reduce) { .connectors, .network { animation: none; } .layer, .halo { transition: none; } }
+@media (min-width: 1600px) { .header, .toolbar { padding-inline: 56px; } .detail { margin-inline: 56px; } }
+@media (max-width: 900px) {
+  .header { padding: 22px 20px 18px; }
+  .header h1 { font-size: 21px; }
+  .headerRight .badge { display: none; }
+  .toolbar { padding: 12px 20px; flex-wrap: wrap; gap: 10px; }
+  .scene button { padding-inline: 10px; }
+  .detail { margin-inline: 20px; gap: 16px; align-items: flex-start; }
+  .detailLabel { min-width: 110px; }
+  .hint { display: none; }
+}
+@media (max-width: 520px) {
+  .headerRight { font-size: 10px; }
+  .eyebrow { font-size: 8px; }
+  .tabs { gap: 1px; flex-wrap: wrap; }
+  .scene button { font-size: 11px; padding-inline: 8px; }
+  .detail { display: block; }
+  .detailLabel { display: block; margin-bottom: 10px; }
+}
+:global(body):has(.scene) { background: #0c1016; }
+:global(body):has(.scene) :global(.page-grid),
+:global(body):has(.scene) :global(.site-footer) { display: none; }
+:global(body):has(.scene) :global(.site-header) { color: #b9cadd; background: #0c1016; border-color: #24303d; }
+:global(body):has(.scene) :global(.header-inner) { min-height: 60px; }
+:global(body):has(.scene) :global(.main-nav) a { color: #95acc0; }
+:global(body):has(.scene) :global(.theme-toggle) { display: none; }

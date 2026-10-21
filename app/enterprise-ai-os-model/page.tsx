@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { EnterpriseAiOSDiagram } from "@/components/EnterpriseAiOSDiagram";
+import { EnterpriseAiOSScene } from "@/components/EnterpriseAiOSScene";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 
 export default function EnterpriseAiOSModelPage() {
   return (
-    <div className="aios-model-page">
-      <EnterpriseAiOSDiagram />
+    <div className="aios-scene-page">
+      <EnterpriseAiOSScene />
     </div>
   );
 }
