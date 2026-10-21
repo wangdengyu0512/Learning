@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" role="img" aria-labelledby="title desc">
+<title id="title">采购任务执行链路</title><desc id="desc">需求和规则进入采购 Agent，经人工审批后由工具网关调用 ERP。AgentOS 保存执行记录，ERP 保存订单，两者没有共同事务。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#64748b"/></marker></defs>
+<rect width="960" height="430" rx="16" fill="#f8fafc"/>
+<g font-family="'Microsoft YaHei','PingFang SC',sans-serif" text-anchor="middle">
+<text x="480" y="38" font-size="22" font-weight="700" fill="#0f172a">一次批准的采购动作，跨越两个状态存储边界</text>
+<rect x="218" y="72" width="525" height="300" rx="14" fill="#eff6ff" stroke="#93c5fd" stroke-dasharray="6 5"/>
+<text x="480" y="102" font-size="17" fill="#1d4ed8">AgentOS：编排、授权、执行与恢复</text>
+<g fill="#fff" stroke="#94a3b8" stroke-width="1.5">
+<rect x="24" y="135" width="160" height="84" rx="10"/><rect x="246" y="135" width="134" height="84" rx="10"/><rect x="410" y="135" width="134" height="84" rx="10"/><rect x="574" y="135" width="140" height="84" rx="10"/><rect x="786" y="135" width="150" height="84" rx="10"/>
+<rect x="335" y="280" width="285" height="64" rx="10"/><rect x="786" y="280" width="150" height="64" rx="10"/>
+</g>
+<g font-size="18" fill="#0f172a"><text x="104" y="168">需求与规则</text><text x="313" y="168">采购 Agent</text><text x="477" y="168">人工审批</text><text x="644" y="168">工具网关</text><text x="861" y="168">ERP</text><text x="477" y="306">执行记录与动作状态</text><text x="861" y="306">订单事实</text></g>
+<g font-size="14" fill="#475569"><text x="104" y="194">Data OS</text><text x="313" y="194">生成采购方案</text><text x="477" y="194">批准具体参数</text><text x="644" y="194">创建 / 查询订单</text><text x="861" y="194">提交业务事务</text><text x="477" y="329">Task · Attempt · action_key</text><text x="861" y="329">订单号与流转状态</text></g>
+<g fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"><path d="M184 177H244"/><path d="M380 177H408"/><path d="M544 177H572"/><path d="M714 177H784"/><path d="M644 219V252H477V278"/><path d="M861 219V278"/></g>
+<text x="480" y="405" font-size="16" fill="#b45309">外部订单提交成功，并不意味着本地已经保存成功回执</text>
+</g></svg>

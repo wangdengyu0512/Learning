@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 610" role="img" aria-labelledby="title desc">
+<title id="title">重复采购事故时序</title><desc id="desc">第一次请求使用 req-A，ERP 提交 PO-7311 后响应丢失。运行时把超时当失败，第二次请求使用 req-B，ERP 又提交 PO-7312，任务最终显示成功。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#475569"/></marker></defs>
+<rect width="960" height="610" rx="16" fill="#f8fafc"/>
+<g font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+<text x="480" y="38" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">第一次已成功，恢复流程却再次创建</text>
+<g fill="#eff6ff" stroke="#93c5fd"><rect x="65" y="64" width="170" height="46" rx="8"/><rect x="365" y="64" width="170" height="46" rx="8"/><rect x="705" y="64" width="170" height="46" rx="8"/></g>
+<g text-anchor="middle" font-size="18" fill="#0f172a"><text x="150" y="93">运行时</text><text x="450" y="93">工具网关</text><text x="790" y="93">ERP</text></g>
+<g stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 5"><path d="M150 110V555"/><path d="M450 110V555"/><path d="M790 110V555"/></g>
+<rect x="400" y="203" width="505" height="122" rx="10" fill="#fff7ed" stroke="#fdba74"/>
+<g stroke="#475569" stroke-width="2" fill="none" marker-end="url(#arrow)"><path d="M150 150H448"/><path d="M450 191H788"/><path d="M450 343H152"/><path d="M150 395H448"/><path d="M450 435H788"/><path d="M790 510H452"/><path d="M450 549H152"/></g>
+<g font-size="16" fill="#334155" text-anchor="middle"><text x="300" y="139">Attempt A：执行创建订单</text><text x="620" y="180">请求携带 req-A</text><text x="300" y="333">等待超时，被标记为 failed</text><text x="300" y="384">Attempt B：恢复执行</text><text x="620" y="424">请求携带新键 req-B</text><text x="620" y="499">成功响应：PO-7312</text><text x="300" y="538">保存回执，任务完成</text></g>
+<g font-size="16" fill="#9a3412"><text x="630" y="228">T+2 秒：提交 PO-7311</text><text x="425" y="306">本地无回执，外部订单已存在</text></g>
+<path d="M788 259H540" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 5"/>
+<path d="M518 250L536 268M536 250L518 268" stroke="#dc2626" stroke-width="3"/>
+<text x="645" y="250" text-anchor="middle" font-size="15" fill="#dc2626">响应丢失</text>
+<rect x="632" y="450" width="272" height="28" rx="5" fill="#fee2e2"/><text x="768" y="470" text-anchor="middle" font-size="16" fill="#991b1b">T+16 秒：提交 PO-7312</text>
+<text x="480" y="588" text-anchor="middle" font-size="16" fill="#b45309">两个技术尝试使用不同幂等键，ERP 将其识别为两笔创建请求</text>
+</g></svg>

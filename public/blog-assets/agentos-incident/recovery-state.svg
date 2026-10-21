@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 650" role="img" aria-labelledby="title desc">
+<title id="title">业务动作恢复状态</title><desc id="desc">动作执行超时后进入结果未知并查询源系统。确认成功后验收，仍在执行则继续查询，满足安全重试契约才可复用原动作键提交，无法确认则人工核对。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#64748b"/></marker></defs>
+<rect width="960" height="650" rx="16" fill="#f8fafc"/>
+<g font-family="'Microsoft YaHei','PingFang SC',sans-serif" text-anchor="middle">
+<text x="480" y="38" font-size="22" font-weight="700" fill="#0f172a">超时之后，先保留不确定性，再确认外部事实</text>
+<g stroke="#94a3b8" fill="#fff" stroke-width="1.5"><rect x="340" y="70" width="280" height="56" rx="9"/><rect x="340" y="169" width="280" height="65" rx="9" fill="#fff7ed" stroke="#fb923c"/><rect x="340" y="282" width="280" height="56" rx="9"/>
+<rect x="28" y="418" width="205" height="70" rx="9" fill="#ecfdf5" stroke="#6ee7b7"/><rect x="261" y="418" width="205" height="70" rx="9"/><rect x="494" y="418" width="205" height="70" rx="9"/><rect x="727" y="418" width="205" height="70" rx="9" fill="#fff7ed" stroke="#fb923c"/></g>
+<g font-size="18" fill="#0f172a"><text x="480" y="105">执行中 running</text><text x="480" y="195">结果未知</text><text x="480" y="219" font-size="16">outcome_unknown</text><text x="480" y="317">按稳定 action_key 查询 ERP</text><text x="130" y="445">补写原回执</text><text x="363" y="445">等待并继续查询</text><text x="596" y="445">按原键重新提交</text><text x="829" y="445">人工核对</text></g>
+<g font-size="14" fill="#475569"><text x="130" y="471">检查后置条件，再验收</text><text x="363" y="471">保留未知状态</text><text x="596" y="471">参数与审批保持一致</text><text x="829" y="471">阻止依赖结果的后续写入</text></g>
+<g stroke="#64748b" stroke-width="2" fill="none" marker-end="url(#arrow)"><path d="M480 126V167"/><path d="M480 234V280"/><path d="M480 338V365H130V416"/><path d="M480 365H363V416"/><path d="M480 365H596V416"/><path d="M480 365H829V416"/></g>
+<g font-size="15" fill="#475569"><text x="582" y="151">超时 / 回执缺失</text><text x="580" y="262">启动核对</text><text x="130" y="400">确认已成功</text><text x="363" y="400">仍在执行 / 暂无结果</text><text x="596" y="400">满足安全重试契约</text><text x="829" y="400">无法确认 / 能力不足</text></g>
+<rect x="76" y="527" width="808" height="84" rx="10" fill="#eff6ff" stroke="#93c5fd"/>
+<text x="480" y="555" font-size="16" fill="#1e40af">安全重试须有源系统保证：有效期内的同键并发去重，</text><text x="480" y="581" font-size="16" fill="#1e40af">或能排除迟到提交的未执行证明；一次空查询不足以放行。</text>
+</g></svg>
