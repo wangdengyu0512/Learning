@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="850" viewBox="0 0 1120 850" role="img" aria-labelledby="title desc">
+<title id="title">A2A 研究任务交互时序</title><desc id="desc">用户提出需求后，协调 Agent 发现研究 Agent，发送消息并订阅任务；研究 Agent 请求补充输入后继续执行，最后返回产物并由应用验收。</desc>
+<style>text{font-family:system-ui, -apple-system, "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;fill:#203047} .muted{fill:#52647b}</style>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#526b86" stroke-width="1.5"/></marker></defs>
+<rect width="1120" height="850" rx="20" fill="#f5f8fc"/>
+<text x="44" y="48" text-anchor="start" font-size="28" font-weight="700" class="">一次任务：发现、执行、补充输入与验收</text>
+<text x="44" y="79" text-anchor="start" font-size="17" font-weight="400" class="muted">以已声明 streaming 能力的 A2A v1.0.0 服务为例。</text>
+<rect x="38" y="103" width="184" height="48" rx="12" fill="#e7f0ff" stroke="#80a5d6" stroke-width="1.5"/>
+<text x="130.0" y="135" text-anchor="middle" font-size="20" font-weight="650" class="">用户</text>
+<path d="M 130 155 L 130 788" stroke="#b2c2d5" stroke-dasharray="5 6"/>
+<rect x="328" y="103" width="184" height="48" rx="12" fill="#e7f0ff" stroke="#80a5d6" stroke-width="1.5"/>
+<text x="420.0" y="135" text-anchor="middle" font-size="20" font-weight="650" class="">协调 Agent</text>
+<path d="M 420 155 L 420 788" stroke="#b2c2d5" stroke-dasharray="5 6"/>
+<rect x="643" y="103" width="184" height="48" rx="12" fill="#e7f0ff" stroke="#80a5d6" stroke-width="1.5"/>
+<text x="735.0" y="135" text-anchor="middle" font-size="20" font-weight="650" class="">研究 Agent</text>
+<path d="M 735 155 L 735 788" stroke="#b2c2d5" stroke-dasharray="5 6"/>
+<rect x="898" y="103" width="184" height="48" rx="12" fill="#e7f0ff" stroke="#80a5d6" stroke-width="1.5"/>
+<text x="990.0" y="135" text-anchor="middle" font-size="20" font-weight="650" class="">结果验证器</text>
+<path d="M 990 155 L 990 788" stroke="#b2c2d5" stroke-dasharray="5 6"/>
+<path d="M 130 191 L 420 191" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="275.0" y="180" text-anchor="middle" font-size="16" font-weight="400" class="">提出研究需求</text>
+<path d="M 420 241 L 735 241" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="577.5" y="230" text-anchor="middle" font-size="16" font-weight="400" class="">获取 Agent Card</text>
+<path d="M 735 286 L 420 286" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)" stroke-dasharray="6 5"/>
+<text x="577.5" y="275" text-anchor="middle" font-size="16" font-weight="400" class="">能力、接口与认证要求</text>
+<path d="M 420 336 L 735 336" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="577.5" y="325" text-anchor="middle" font-size="16" font-weight="400" class="">SendMessage：创建任务</text>
+<path d="M 735 381 L 420 381" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)" stroke-dasharray="6 5"/>
+<text x="577.5" y="370" text-anchor="middle" font-size="16" font-weight="400" class="">Task：WORKING</text>
+<path d="M 420 431 L 735 431" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="577.5" y="420" text-anchor="middle" font-size="16" font-weight="400" class="">SubscribeToTask</text>
+<path d="M 735 476 L 420 476" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)" stroke-dasharray="6 5"/>
+<text x="577.5" y="465" text-anchor="middle" font-size="16" font-weight="400" class="">状态更新：INPUT_REQUIRED</text>
+<path d="M 420 521 L 130 521" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="275.0" y="510" text-anchor="middle" font-size="16" font-weight="400" class="">请求补充范围</text>
+<path d="M 130 566 L 420 566" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="275.0" y="555" text-anchor="middle" font-size="16" font-weight="400" class="">提供补充信息</text>
+<path d="M 420 611 L 735 611" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="577.5" y="600" text-anchor="middle" font-size="16" font-weight="400" class="">SendMessage：引用原 taskId</text>
+<path d="M 735 666 L 420 666" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)" stroke-dasharray="6 5"/>
+<text x="577.5" y="655" text-anchor="middle" font-size="16" font-weight="400" class="">Artifact 更新；COMPLETED</text>
+<path d="M 420 721 L 990 721" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="705.0" y="710" text-anchor="middle" font-size="16" font-weight="400" class="">提交产物进行业务验收</text>
+<path d="M 990 766 L 420 766" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)" stroke-dasharray="6 5"/>
+<text x="705.0" y="755" text-anchor="middle" font-size="16" font-weight="400" class="">验收通过或要求修订</text>
+<text x="560" y="821" text-anchor="middle" font-size="17" font-weight="400" class="muted">Task 完成表示远端执行结束；验收结果由应用独立记录。</text>
+</svg>

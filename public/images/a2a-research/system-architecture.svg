@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="700" viewBox="0 0 1120 700" role="img" aria-labelledby="title desc">
+<title id="title">研究报告系统架构</title><desc id="desc">协调 Agent 通过 A2A 对接检索、分析和写作 Agent，管理任务与产物；结果验证器决定验收，各专业 Agent 使用自己的工具与数据。</desc>
+<style>text{font-family:system-ui, -apple-system, "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;fill:#203047} .muted{fill:#52647b}</style>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#526b86" stroke-width="1.5"/></marker></defs>
+<rect width="1120" height="700" rx="20" fill="#f5f8fc"/>
+<text x="48" y="49" text-anchor="start" font-size="28" font-weight="700" class="">研究报告系统：协议、协作与验收</text>
+<text x="48" y="81" text-anchor="start" font-size="17" font-weight="400" class="muted">A2A 承载跨服务交互；任务规划与质量验收由应用实现。</text>
+<rect x="420" y="111" width="280" height="75" rx="12" fill="#ffffff" stroke="#c7d4e3" stroke-width="1.5"/>
+<text x="560.0" y="143" text-anchor="middle" font-size="20" font-weight="650" class="">用户需求</text>
+<text x="560.0" y="171" text-anchor="middle" font-size="16" font-weight="400" class="muted">问题 · 范围 · 交付要求</text>
+<path d="M 560 186 L 560 217" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="420" y="219" width="280" height="104" rx="12" fill="#e7f0ff" stroke="#80a5d6" stroke-width="1.5"/>
+<text x="560.0" y="251" text-anchor="middle" font-size="20" font-weight="650" class="">协调 Agent</text>
+<text x="560.0" y="279" text-anchor="middle" font-size="16" font-weight="400" class="muted">任务拆分 · 预算 · 调度</text>
+<text x="560.0" y="303" text-anchor="middle" font-size="16" font-weight="400" class="muted">传递上下文与产物</text>
+<rect x="60" y="227" width="280" height="90" rx="12" fill="#ffffff" stroke="#c7d4e3" stroke-width="1.5"/>
+<text x="200.0" y="259" text-anchor="middle" font-size="20" font-weight="650" class="">运行记录</text>
+<text x="200.0" y="287" text-anchor="middle" font-size="16" font-weight="400" class="muted">业务编号 ↔ 远端 Task</text>
+<text x="200.0" y="311" text-anchor="middle" font-size="16" font-weight="400" class="muted">状态 · 证据 · 验收结果</text>
+<rect x="780" y="227" width="280" height="90" rx="12" fill="#ffffff" stroke="#c7d4e3" stroke-width="1.5"/>
+<text x="920.0" y="259" text-anchor="middle" font-size="20" font-weight="650" class="">结果验证器</text>
+<text x="920.0" y="287" text-anchor="middle" font-size="16" font-weight="400" class="muted">格式 · 来源 · 需求覆盖</text>
+<text x="920.0" y="311" text-anchor="middle" font-size="16" font-weight="400" class="muted">通过 / 修订 / 人工处理</text>
+<path d="M 420 266 L 344 266" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<path d="M 700 266 L 776 266" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<path d="M 560 323 L 560 354 L 200 354 L 200 392" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<path d="M 560 323 L 560 392" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)"/>
+<path d="M 560 354 L 920 354 L 920 392" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="335" y="346" text-anchor="middle" font-size="16" font-weight="650" class="">A2A</text>
+<text x="735" y="346" text-anchor="middle" font-size="16" font-weight="650" class="">A2A</text>
+<text x="593" y="379" text-anchor="middle" font-size="16" font-weight="650" class="">A2A</text>
+<rect x="60" y="395" width="280" height="105" rx="12" fill="#ffffff" stroke="#c7d4e3" stroke-width="1.5"/>
+<text x="200.0" y="427" text-anchor="middle" font-size="20" font-weight="650" class="">01 检索 Agent</text>
+<text x="200.0" y="455" text-anchor="middle" font-size="16" font-weight="400" class="muted">交付：证据清单</text>
+<text x="200.0" y="479" text-anchor="middle" font-size="16" font-weight="400" class="muted">来源定位 · 适用范围</text>
+<path d="M 200 500 L 200 546" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="200" y="528" text-anchor="middle" font-size="15" font-weight="400" class="muted">内部工具接口 / MCP</text>
+<rect x="420" y="395" width="280" height="105" rx="12" fill="#ffffff" stroke="#c7d4e3" stroke-width="1.5"/>
+<text x="560.0" y="427" text-anchor="middle" font-size="20" font-weight="650" class="">02 分析 Agent</text>
+<text x="560.0" y="455" text-anchor="middle" font-size="16" font-weight="400" class="muted">交付：论点与证据关系</text>
+<text x="560.0" y="479" text-anchor="middle" font-size="16" font-weight="400" class="muted">比较条件 · 冲突与缺口</text>
+<path d="M 560 500 L 560 546" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="560" y="528" text-anchor="middle" font-size="15" font-weight="400" class="muted">内部工具接口 / MCP</text>
+<rect x="780" y="395" width="280" height="105" rx="12" fill="#ffffff" stroke="#c7d4e3" stroke-width="1.5"/>
+<text x="920.0" y="427" text-anchor="middle" font-size="20" font-weight="650" class="">03 写作 Agent</text>
+<text x="920.0" y="455" text-anchor="middle" font-size="16" font-weight="400" class="muted">交付：报告与引用关系</text>
+<text x="920.0" y="479" text-anchor="middle" font-size="16" font-weight="400" class="muted">结构表达 · 不确定性</text>
+<path d="M 920 500 L 920 546" fill="none" stroke="#526b86" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="920" y="528" text-anchor="middle" font-size="15" font-weight="400" class="muted">内部工具接口 / MCP</text>
+<rect x="60" y="550" width="280" height="82" rx="12" fill="#edf6f0" stroke="#aecdb9" stroke-width="1.5"/>
+<text x="200.0" y="582" text-anchor="middle" font-size="20" font-weight="650" class="">检索工具与资料库</text>
+<text x="200.0" y="610" text-anchor="middle" font-size="16" font-weight="400" class="muted">搜索 · 抓取 · 文献读取</text>
+<rect x="420" y="550" width="280" height="82" rx="12" fill="#edf6f0" stroke="#aecdb9" stroke-width="1.5"/>
+<text x="560.0" y="582" text-anchor="middle" font-size="20" font-weight="650" class="">分析与校验工具</text>
+<text x="560.0" y="610" text-anchor="middle" font-size="16" font-weight="400" class="muted">计算 · 表格 · 证据核查</text>
+<rect x="780" y="550" width="280" height="82" rx="12" fill="#edf6f0" stroke="#aecdb9" stroke-width="1.5"/>
+<text x="920.0" y="582" text-anchor="middle" font-size="20" font-weight="650" class="">文档与格式工具</text>
+<text x="920.0" y="610" text-anchor="middle" font-size="16" font-weight="400" class="muted">排版 · 引用检查</text>
+<text x="560" y="671" text-anchor="middle" font-size="16" font-weight="400" class="muted">阶段间产物经协调层转交；图中角色与验收规则均为本文示例设计。</text>
+</svg>
