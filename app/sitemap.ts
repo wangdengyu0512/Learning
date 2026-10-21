@@ -5,7 +5,13 @@ import { siteConfig } from "@/lib/site";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticPages = ["", "/posts/", "/about/"].map((path) => ({
+  const staticPages = [
+    "",
+    "/posts/",
+    "/about/",
+    "/enterprise-ai-os-model/",
+    "/enterprise-ontology-model/",
+  ].map((path) => ({
     url: `${siteConfig.url}${path}`,
     lastModified: new Date(),
   }));

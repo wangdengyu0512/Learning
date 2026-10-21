@@ -1694,13 +1694,15 @@ summary:focus-visible {
   line-height: 1.5;
 }
 
-.aios-model-page {
+.aios-model-page,
+.ontology-model-page {
   width: min(1180px, calc(100vw - 48px));
   margin: 0 auto;
   padding: 48px 0 80px;
 }
 
 .aios-model-page .enterprise-aios { width: 100%; margin: 0; }
+.ontology-model-page .ontology-graph { width: 100%; margin: 0; }
 
 .enterprise-aios * { box-sizing: border-box; }
 
@@ -1942,9 +1944,11 @@ summary:focus-visible {
 }
 
 @media (max-width: 680px) {
-  .aios-model-page { width: calc(100vw - 40px); padding-block: 28px 54px; }
+  .aios-model-page,
+  .ontology-model-page { width: calc(100vw - 40px); padding-block: 28px 54px; }
   .enterprise-aios { width: calc(100vw - 40px); margin-block: 40px 50px; box-shadow: 6px 6px 0 color-mix(in srgb, var(--ink) 9%, transparent); }
   .aios-model-page .enterprise-aios { width: 100%; margin: 0; }
+  .ontology-model-page .ontology-graph { width: 100%; margin: 0; }
 }
 
 .ontology-graph {
