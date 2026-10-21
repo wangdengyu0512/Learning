@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 760" role="img" aria-labelledby="title desc">
+  <title id="title">AI Agent Infra 平台参考架构</title>
+  <desc id="desc">业务入口经过网关进入执行面，控制面提供配置、版本与策略，共享状态服务持久化任务。底层为 Kubernetes 与基础资源，交付、观测和治理贯穿各层。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker>
+  </defs>
+  <rect width="1120" height="760" rx="20" fill="#f8fafc"/>
+  <g font-family="'Microsoft YaHei','PingFang SC',sans-serif">
+    <text x="48" y="52" font-size="26" font-weight="700" fill="#0f172a">AI Agent Infra 平台参考架构</text>
+    <text x="48" y="83" font-size="16" fill="#475569">请求连接、执行实例与任务状态分别管理，统一关联版本和运行证据</text>
+    <rect x="48" y="111" width="804" height="72" rx="12" fill="#e0f2fe" stroke="#7dd3fc"/>
+    <text x="72" y="140" font-size="19" font-weight="700" fill="#075985">业务入口与统一网关</text>
+    <text x="72" y="166" font-size="16" fill="#334155">身份认证 · 租户配额 · 请求路由 · 流式连接 · 任务查询</text>
+    <path d="M450 183 V211" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="48" y="220" width="804" height="116" rx="12" fill="#ecfdf5" stroke="#6ee7b7"/>
+    <text x="72" y="252" font-size="19" font-weight="700" fill="#065f46">执行面</text>
+    <text x="72" y="283" font-size="17" fill="#334155">任务调度 → Agent Worker → 模型接入 / 工具执行沙箱</text>
+    <text x="72" y="311" font-size="16" fill="#475569">租约与接管 · 检查点恢复 · 幂等与补偿 · 并发限制</text>
+    <path d="M255 336 V366" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M650 368 V338" stroke="#64748b" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+    <rect x="48" y="376" width="390" height="136" rx="12" fill="#fff7ed" stroke="#fdba74"/>
+    <text x="72" y="410" font-size="19" font-weight="700" fill="#9a3412">共享状态服务</text>
+    <text x="72" y="444" font-size="16" fill="#334155">任务事实 · 检查点 · 待投递事件</text>
+    <text x="72" y="475" font-size="16" fill="#334155">队列 · 数据库 · 结果与对象存储</text>
+    <rect x="458" y="376" width="394" height="136" rx="12" fill="#eef2ff" stroke="#a5b4fc"/>
+    <text x="482" y="410" font-size="19" font-weight="700" fill="#3730a3">控制面</text>
+    <text x="482" y="444" font-size="16" fill="#334155">服务目录 · 发布版本 · 配置与密钥</text>
+    <text x="482" y="475" font-size="16" fill="#334155">环境 · 配额 · 策略 · 自助入口</text>
+    <rect x="48" y="550" width="804" height="102" rx="12" fill="#e2e8f0" stroke="#94a3b8"/>
+    <text x="72" y="586" font-size="19" font-weight="700" fill="#0f172a">Kubernetes 与基础资源</text>
+    <text x="72" y="622" font-size="16" fill="#334155">多可用区 · 网络与存储 · 计算资源 · 身份权限 · 托管依赖</text>
+    <rect x="880" y="111" width="192" height="541" rx="12" fill="#ffffff" stroke="#94a3b8"/>
+    <text x="902" y="153" font-size="19" font-weight="700" fill="#0f172a">贯穿各层的能力</text>
+    <text x="902" y="211" font-size="17" fill="#334155">CI/CD 与 IaC</text>
+    <text x="902" y="255" font-size="17" fill="#334155">灰度与变更验证</text>
+    <text x="902" y="299" font-size="17" fill="#334155">日志 / 指标 / 链路</text>
+    <text x="902" y="343" font-size="17" fill="#334155">告警与 SLO</text>
+    <text x="902" y="387" font-size="17" fill="#334155">容量与成本</text>
+    <text x="902" y="431" font-size="17" fill="#334155">容灾与故障演练</text>
+    <text x="902" y="475" font-size="17" fill="#334155">审计与权限</text>
+    <text x="902" y="519" font-size="17" fill="#334155">智能诊断</text>
+    <text x="902" y="563" font-size="17" fill="#334155">受控自动处置</text>
+    <text x="48" y="700" font-size="16" fill="#475569">实线表示请求与状态写入方向；虚线表示控制面向执行面提供版本、配置与策略。</text>
+    <text x="48" y="728" font-size="16" fill="#475569">参考设计：各模块的部署边界按业务规模、故障隔离要求和团队运维能力确定。</text>
+  </g>
+</svg>
