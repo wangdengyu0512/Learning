@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="650" viewBox="0 0 1120 650" role="img" aria-labelledby="title desc">
+<title id="title">智能体全生命周期管理平台</title><desc id="desc">管理控制层下发版本与约束，运行执行层推进任务并调用业务系统，观测评测层形成诊断和发布证据。</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect width="1120" height="650" rx="18" fill="#f8fafc"/>
+<g font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif">
+<text x="40" y="47" font-size="26" font-weight="700" fill="#0f172a">智能体全生命周期管理平台</text>
+<rect x="40" y="90" width="670" height="120" rx="12" fill="#e0f2fe" stroke="#cbd5e1"/>
+<text x="60" y="124" font-size="21" font-weight="700" fill="#0f172a">管理与控制</text>
+<text x="60" y="154" font-size="17" fill="#334155">资产与版本 · 任务契约 · 发布路由</text>
+<text x="60" y="182" font-size="17" fill="#334155">身份权限 · 配额预算 · 变更审计</text>
+<rect x="40" y="275" width="670" height="145" rx="12" fill="#dcfce7" stroke="#cbd5e1"/>
+<text x="60" y="309" font-size="21" font-weight="700" fill="#0f172a">运行执行</text>
+<text x="60" y="339" font-size="17" fill="#334155">任务调度 · 模型调用 · 工具网关 · 人工介入</text>
+<text x="60" y="367" font-size="17" fill="#334155">状态持久化 · 检查点 · 动作账本</text>
+<text x="60" y="395" font-size="17" fill="#334155">运行绑定版本，写操作执行前校验有效授权</text>
+<rect x="40" y="480" width="670" height="125" rx="12" fill="#fef3c7" stroke="#cbd5e1"/>
+<text x="60" y="514" font-size="21" font-weight="700" fill="#0f172a">观测与评测</text>
+<text x="60" y="544" font-size="17" fill="#334155">执行事件 · 业务验收 · 指标与轨迹</text>
+<text x="60" y="572" font-size="17" fill="#334155">质量分析 · 故障定位 · 回归集与评测报告</text>
+<rect x="790" y="275" width="290" height="145" rx="12" fill="#ede9fe" stroke="#cbd5e1"/>
+<text x="810" y="309" font-size="21" font-weight="700" fill="#0f172a">外部依赖与业务系统</text>
+<text x="810" y="339" font-size="17" fill="#334155">模型服务 / 知识检索</text>
+<text x="810" y="367" font-size="17" fill="#334155">订单 / 退款 / 审批</text>
+<text x="810" y="395" font-size="17" fill="#334155">幂等受理与结果查询</text>
+<path d="M 360 210 L 360 269" fill="none" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="380" y="246" font-size="16" fill="#475569">下发经过验证的配置与约束</text>
+<path d="M 360 420 L 360 474" fill="none" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="380" y="452" font-size="16" fill="#475569">回传执行事件与业务结果</text>
+<path d="M 710 330 L 784 330" fill="none" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="719" y="313" font-size="16" fill="#475569">调用</text>
+<path d="M 790 382 L 716 382" fill="none" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="719" y="406" font-size="16" fill="#475569">回执</text>
+<path d="M 710 546 L 1095 546 L 1095 148 L 716 148" fill="none" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="787" y="526" font-size="16" fill="#475569">评测证据反馈发布决策</text>
+</g></svg>

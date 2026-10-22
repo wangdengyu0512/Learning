@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="710" viewBox="0 0 1120 710" role="img" aria-labelledby="title desc">
+<title id="title">退款申请超时后的核对与恢复</title><desc id="desc">请求超时后保存结果未知状态，使用同一动作标识核对，根据确切结果继续、受控重试或人工接管，故障样本进入评测与发布闭环。</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#64748b"/></marker></defs>
+<rect width="1120" height="710" rx="18" fill="#f8fafc"/>
+<g font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif">
+<text x="40" y="47" font-size="26" font-weight="700" fill="#0f172a">退款申请超时后的核对与恢复</text>
+<rect x="40" y="90" width="300" height="110" rx="12" fill="#fee2e2" stroke="#cbd5e1"/>
+<text x="60" y="124" font-size="21" font-weight="700" fill="#0f172a">请求超时</text>
+<text x="60" y="154" font-size="17" fill="#334155">保存原动作标识和幂等键</text>
+<text x="60" y="182" font-size="17" fill="#334155">状态：结果未知</text>
+<rect x="410" y="90" width="300" height="110" rx="12" fill="#e0f2fe" stroke="#cbd5e1"/>
+<text x="430" y="124" font-size="21" font-weight="700" fill="#0f172a">核对外部结果</text>
+<text x="430" y="154" font-size="17" fill="#334155">按动作标识查询与对账</text>
+<text x="430" y="182" font-size="17" fill="#334155">核验业务对象与参数</text>
+<path d="M 340 145 L 404 145" fill="none" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="40" y="300" width="310" height="140" rx="12" fill="#dcfce7" stroke="#cbd5e1"/>
+<text x="60" y="334" font-size="21" font-weight="700" fill="#0f172a">确认已经成功</text>
+<text x="60" y="364" font-size="17" fill="#334155">保存外部申请回执</text>
+<text x="60" y="392" font-size="17" fill="#334155">恢复任务并继续验收</text>
+<rect x="405" y="300" width="310" height="140" rx="12" fill="#e0f2fe" stroke="#cbd5e1"/>
+<text x="425" y="334" font-size="21" font-weight="700" fill="#0f172a">确认尚未执行</text>
+<text x="425" y="364" font-size="17" fill="#334155">遵守接口重试契约</text>
+<text x="425" y="392" font-size="17" fill="#334155">复用原幂等键受控重试</text>
+<rect x="770" y="300" width="310" height="140" rx="12" fill="#fef3c7" stroke="#cbd5e1"/>
+<text x="790" y="334" font-size="21" font-weight="700" fill="#0f172a">仍然无法确认</text>
+<text x="790" y="364" font-size="17" fill="#334155">按期限继续核对或转人工</text>
+<text x="790" y="392" font-size="17" fill="#334155">暂停冲突操作</text>
+<path d="M 560 200 L 560 250 L 195 250 L 195 294" fill="none" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M 560 250 L 560 294" fill="none" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M 560 250 L 925 250 L 925 294" fill="none" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="45" y="484" font-size="16" fill="#475569">注意：查询“未找到”若可能来自索引延迟，不能直接认定尚未执行。</text>
+<rect x="40" y="540" width="1040" height="115" rx="12" fill="#ede9fe" stroke="#cbd5e1"/>
+<text x="60" y="574" font-size="21" font-weight="700" fill="#0f172a">将故障转为改进证据</text>
+<text x="60" y="604" font-size="17" fill="#334155">轨迹与业务回执 → 根因定位 → 回归样本 → 修复与评测 → 灰度发布</text>
+<text x="60" y="632" font-size="17" fill="#334155">存量未知动作独立核对；已发生的业务副作用单独处置。</text>
+<path d="M 195 440 L 195 461" fill="none" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M 560 440 L 560 461" fill="none" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M 925 440 L 925 461" fill="none" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+</g></svg>
