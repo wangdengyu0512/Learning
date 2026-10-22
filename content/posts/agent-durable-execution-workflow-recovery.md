@@ -12,7 +12,7 @@ featured: false
 
 **持久化执行要保存的是足以继续推进任务的事实，以及跨越故障之后仍然成立的业务约束。** 它把一次进程内运行，变成可以跨进程、跨时间恢复的业务过程。
 
-本文延续[重复采购单事故推演](../agentos-incident-duplicate-purchase-order/)，使用虚构需求 PR-2048 作为设计案例。状态名、表结构与实验步骤是教学方案，不代表仓库已实现运行时。Temporal 的机制用于解释一种实现路线；业务幂等与核对责任仍需要具体系统承担。
+本文延续[重复采购单事故推演](../agentos-incident-duplicate-purchase-order/)。Temporal 的机制用于解释一种实现路线；业务幂等与核对责任仍需要具体系统承担。
 
 ## 一、先区分三种“继续执行”
 
@@ -197,11 +197,3 @@ Temporal 将工作流执行建立在持久化历史上，恢复时通过重放�
 - [企业级 AI Agent 的生产架构](../production-ai-agent-architecture/)
 - [企业 Agent 的授权链：从用户身份到每一次工具执行](../agent-identity-authorization-security/)
 - [从可观测到可运营：Agent 系统的 SLO、发布与故障恢复](../agent-sre-slo-release-recovery/)
-
-## 参考资料
-
-1. [Temporal：Workflow Execution](https://docs.temporal.io/workflow-execution)，用于理解持久化执行与重放。
-2. [Temporal：Workflow Definition](https://docs.temporal.io/workflow-definition)，用于理解确定性约束与代码演进。
-3. [Temporal：Activity Definition](https://docs.temporal.io/activity-definition)，用于理解外部活动与幂等要求。
-
-本文的采购状态机、适配器契约和故障实验为面向案例的设计推导，不是上述产品提供的完整业务保证。
