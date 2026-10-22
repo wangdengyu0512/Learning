@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="770" viewBox="0 0 1040 770" role="img" aria-labelledby="title desc">
+<title id="title">采购任务：在哪一步偏离目标</title><desc id="desc">工具仅返回受理，原流程没有核验后台结果就宣布成功。</desc>
+<style>text{font-family:Segoe UI,Microsoft YaHei,PingFang SC,sans-serif;fill:#1e293b} .muted{fill:#64748b}</style>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker></defs>
+<rect width="1040" height="770" rx="18" fill="#f8fafc"/>
+<text x="32" y="42" font-size="26" fill="#1e293b" style="fill:#1e293b">一次采购任务：从请求到实际结果</text>
+<text x="32" y="70" font-size="16" fill="#64748b" style="fill:#64748b">教学示例 · 实线为原执行流程，虚线为应补充的验证步骤</text>
+<rect x="340" y="100" width="360" height="66" rx="10" fill="#eff6ff" stroke="#93c5fd"/>
+<text x="356" y="129" font-size="18" fill="#1e293b" style="fill:#1e293b">用户任务 → 模型解析</text>
+<text x="356" y="154" font-size="14" fill="#475569" style="fill:#475569">查询库存、比较报价、创建采购申请</text>
+<path d="M440 166 L260 204" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M600 166 L780 204" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="100" y="204" width="320" height="66" rx="10" fill="#fff" stroke="#cbd5e1"/>
+<text x="116" y="233" font-size="18" fill="#1e293b" style="fill:#1e293b">查询库存 · 2 秒</text>
+<text x="116" y="258" font-size="14" fill="#475569" style="fill:#475569">与供应商 A 查询并行</text>
+<rect x="620" y="204" width="320" height="66" rx="10" fill="#fff" stroke="#cbd5e1"/>
+<text x="636" y="233" font-size="18" fill="#1e293b" style="fill:#1e293b">查询供应商 A · 6 秒</text>
+<text x="636" y="258" font-size="14" fill="#475569" style="fill:#475569">阶段需等待两项查询完成</text>
+<path d="M260 270 L450 312" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M780 270 L590 312" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="290" y="312" width="460" height="66" rx="10" fill="#fff7ed" stroke="#fdba74"/>
+<text x="306" y="341" font-size="18" fill="#1e293b" style="fill:#1e293b">查询供应商 B</text>
+<text x="306" y="366" font-size="14" fill="#475569" style="fill:#475569">超时 8 秒 → 退避 1 秒 → 重试 6 秒</text>
+<path d="M520 378 L520 412" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="290" y="412" width="460" height="66" rx="10" fill="#eff6ff" stroke="#93c5fd"/>
+<text x="306" y="441" font-size="18" fill="#1e293b" style="fill:#1e293b">模型读取报价、比较方案</text>
+<text x="306" y="466" font-size="14" fill="#475569" style="fill:#475569">两次模型调用，共 16 秒</text>
+<path d="M520 478 L520 512" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="290" y="512" width="460" height="66" rx="10" fill="#fff" stroke="#cbd5e1"/>
+<text x="306" y="541" font-size="18" fill="#1e293b" style="fill:#1e293b">提交创建请求 · 2 秒</text>
+<text x="306" y="566" font-size="14" fill="#475569" style="fill:#475569">accepted / req-731 / application_id: null</text>
+<path d="M400 578 L250 620" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M640 578 L790 620" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="6 5"/>
+<rect x="70" y="620" width="360" height="76" rx="10" fill="#fef2f2" stroke="#fca5a5"/>
+<text x="86" y="649" font-size="18" fill="#1e293b" style="fill:#1e293b">原流程：回复“已创建”</text>
+<text x="86" y="674" font-size="14" fill="#475569" style="fill:#475569">3 秒后结束；没有业务结果证据</text>
+<rect x="610" y="620" width="360" height="76" rx="10" fill="#f0fdf4" stroke="#86efac"/>
+<text x="626" y="649" font-size="18" fill="#1e293b" style="fill:#1e293b">补充步骤：查询并验证结果</text>
+<text x="626" y="674" font-size="14" fill="#475569" style="fill:#475569">本例后台拒绝创建，应反馈失败</text>
+<text x="32" y="741" font-size="17" fill="#1e293b" style="fill:#1e293b">定位结论：accepted 被误判为 created，偏差发生在工具返回后的状态判断。</text>
+</svg>

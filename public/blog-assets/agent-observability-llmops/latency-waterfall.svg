@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="720" viewBox="0 0 1080 720" role="img" aria-labelledby="title desc">
+<title id="title">采购任务耗时分布</title><desc id="desc">0至46秒时间线，库存和供应商A并行，供应商B超时后重试。</desc>
+<style>text{font-family:Segoe UI,Microsoft YaHei,PingFang SC,sans-serif;fill:#1e293b} .muted{fill:#64748b}</style>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/></marker></defs>
+<rect width="1080" height="720" rx="18" fill="#f8fafc"/>
+<text x="32" y="42" font-size="26" fill="#1e293b" style="fill:#1e293b">46 秒花在哪里？</text>
+<text x="32" y="70" font-size="16" fill="#64748b" style="fill:#64748b">教学数据 · 这是原流程回复时间，业务创建尚未得到验证</text>
+<path d="M250 108 V620" stroke="#e2e8f0"/>
+<text x="243" y="98" font-size="13" fill="#64748b" style="fill:#64748b">0</text>
+<path d="M325 108 V620" stroke="#e2e8f0"/>
+<text x="318" y="98" font-size="13" fill="#64748b" style="fill:#64748b">5</text>
+<path d="M400 108 V620" stroke="#e2e8f0"/>
+<text x="393" y="98" font-size="13" fill="#64748b" style="fill:#64748b">10</text>
+<path d="M475 108 V620" stroke="#e2e8f0"/>
+<text x="468" y="98" font-size="13" fill="#64748b" style="fill:#64748b">15</text>
+<path d="M550 108 V620" stroke="#e2e8f0"/>
+<text x="543" y="98" font-size="13" fill="#64748b" style="fill:#64748b">20</text>
+<path d="M625 108 V620" stroke="#e2e8f0"/>
+<text x="618" y="98" font-size="13" fill="#64748b" style="fill:#64748b">25</text>
+<path d="M700 108 V620" stroke="#e2e8f0"/>
+<text x="693" y="98" font-size="13" fill="#64748b" style="fill:#64748b">30</text>
+<path d="M775 108 V620" stroke="#e2e8f0"/>
+<text x="768" y="98" font-size="13" fill="#64748b" style="fill:#64748b">35</text>
+<path d="M850 108 V620" stroke="#e2e8f0"/>
+<text x="843" y="98" font-size="13" fill="#64748b" style="fill:#64748b">40</text>
+<path d="M925 108 V620" stroke="#e2e8f0"/>
+<text x="918" y="98" font-size="13" fill="#64748b" style="fill:#64748b">45</text>
+<path d="M1000 108 V620" stroke="#e2e8f0"/>
+<text x="993" y="98" font-size="13" fill="#64748b" style="fill:#64748b">50</text>
+<text x="28" y="145" font-size="16" fill="#1e293b" style="fill:#1e293b">模型：解析需求</text>
+<rect x="250" y="124" width="60" height="30" rx="5" fill="#3b82f6"/>
+<text x="318" y="145" font-size="14" fill="#475569" style="fill:#475569">4 秒</text>
+<text x="28" y="194" font-size="16" fill="#1e293b" style="fill:#1e293b">工具：库存查询</text>
+<rect x="310" y="173" width="30" height="30" rx="5" fill="#14b8a6"/>
+<text x="348" y="194" font-size="14" fill="#475569" style="fill:#475569">2 秒</text>
+<text x="28" y="243" font-size="16" fill="#1e293b" style="fill:#1e293b">工具：供应商 A</text>
+<rect x="310" y="222" width="90" height="30" rx="5" fill="#14b8a6"/>
+<text x="408" y="243" font-size="14" fill="#475569" style="fill:#475569">6 秒</text>
+<text x="28" y="292" font-size="16" fill="#1e293b" style="fill:#1e293b">工具：供应商 B 超时</text>
+<rect x="400" y="271" width="120" height="30" rx="5" fill="#f97316"/>
+<text x="528" y="292" font-size="14" fill="#475569" style="fill:#475569">8 秒</text>
+<text x="28" y="341" font-size="16" fill="#1e293b" style="fill:#1e293b">退避等待</text>
+<rect x="520" y="320" width="15" height="30" rx="5" fill="#94a3b8"/>
+<text x="543" y="341" font-size="14" fill="#475569" style="fill:#475569">1 秒</text>
+<text x="28" y="390" font-size="16" fill="#1e293b" style="fill:#1e293b">工具：供应商 B 重试</text>
+<rect x="535" y="369" width="90" height="30" rx="5" fill="#14b8a6"/>
+<text x="633" y="390" font-size="14" fill="#475569" style="fill:#475569">6 秒</text>
+<text x="28" y="439" font-size="16" fill="#1e293b" style="fill:#1e293b">模型：读取报价</text>
+<rect x="625" y="418" width="120" height="30" rx="5" fill="#3b82f6"/>
+<text x="753" y="439" font-size="14" fill="#475569" style="fill:#475569">8 秒</text>
+<text x="28" y="488" font-size="16" fill="#1e293b" style="fill:#1e293b">模型：比较方案</text>
+<rect x="745" y="467" width="120" height="30" rx="5" fill="#3b82f6"/>
+<text x="873" y="488" font-size="14" fill="#475569" style="fill:#475569">8 秒</text>
+<text x="28" y="537" font-size="16" fill="#1e293b" style="fill:#1e293b">工具：提交创建请求</text>
+<rect x="865" y="516" width="30" height="30" rx="5" fill="#14b8a6"/>
+<text x="903" y="537" font-size="14" fill="#475569" style="fill:#475569">2 秒</text>
+<text x="28" y="586" font-size="16" fill="#1e293b" style="fill:#1e293b">模型：最终回复</text>
+<rect x="895" y="565" width="45" height="30" rx="5" fill="#3b82f6"/>
+<text x="948" y="586" font-size="14" fill="#475569" style="fill:#475569">3 秒</text>
+<text x="32" y="654" font-size="17" fill="#1e293b" style="fill:#1e293b">并行阶段取最长路径：库存 2 秒与供应商 A 6 秒重叠，阶段耗时为 6 秒。</text>
+<text x="32" y="685" font-size="16" fill="#64748b" style="fill:#64748b">供应商 B 若可同时查询，理论上减少 6 秒；新增业务核验的耗时仍需另行测量。</text>
+</svg>
