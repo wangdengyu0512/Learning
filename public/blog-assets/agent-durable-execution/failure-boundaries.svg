@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="580" viewBox="0 0 960 580" role="img" aria-labelledby="title desc">
+  <title id="title">采购 Agent 的三个故障边界</title>
+  <desc id="desc">方案生成后崩溃会丢失未保存决策，等待批准时崩溃需要接管等待状态，ERP 提交后崩溃会留下外部结果未知。三者分别需要决策持久化、事件关联和外部核对。</desc>
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10" fill="#64748b"/></marker></defs>
+  <rect width="960" height="580" rx="20" fill="#f8fafc"/>
+  <g font-family="system-ui, 'Microsoft YaHei', sans-serif">
+    <text x="40" y="52" font-size="26" font-weight="700" fill="#0f172a">同一条采购流程，三种恢复问题</text>
+    <text x="40" y="83" font-size="16" fill="#475569">故障位置决定恢复依据；当前节点本身不足以解释下一步。</text>
+    <g fill="#fff" stroke="#cbd5e1" stroke-width="2">
+      <rect x="40" y="120" width="160" height="64" rx="12"/>
+      <rect x="220" y="120" width="160" height="64" rx="12"/>
+      <rect x="400" y="120" width="160" height="64" rx="12"/>
+      <rect x="580" y="120" width="160" height="64" rx="12"/>
+      <rect x="760" y="120" width="160" height="64" rx="12"/>
+    </g>
+    <g stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"><path d="M201 152h16"/><path d="M381 152h16"/><path d="M561 152h16"/><path d="M741 152h16"/></g>
+    <g fill="#0f172a" font-size="20" text-anchor="middle"><text x="120" y="160">查询库存</text><text x="300" y="160">生成方案</text><text x="480" y="160">等待批准</text><text x="660" y="160">创建订单</text><text x="840" y="160">通知申请人</text></g>
+    <g fill="none" stroke-width="2" stroke-dasharray="5 5"><path d="M300 185v35H180v34" stroke="#2563eb"/><path d="M480 185v69" stroke="#7c3aed"/><path d="M660 185v35h120v34" stroke="#b45309"/></g>
+    <rect x="40" y="254" width="280" height="236" rx="14" fill="#eff6ff" stroke="#bfdbfe"/>
+    <rect x="340" y="254" width="280" height="236" rx="14" fill="#f5f3ff" stroke="#ddd6fe"/>
+    <rect x="640" y="254" width="280" height="236" rx="14" fill="#fffbeb" stroke="#fde68a"/>
+    <g font-size="20" font-weight="700"><text x="60" y="292" fill="#1d4ed8">A · 决策尚未保存</text><text x="360" y="292" fill="#6d28d9">C · 等待期间退出</text><text x="660" y="292" fill="#92400e">B · 外部已经提交</text></g>
+    <g font-size="17" fill="#334155">
+      <text x="60" y="332">方案只存在于进程内存。</text><text x="60" y="362">再次生成可能选择不同供应商。</text>
+      <text x="360" y="332">批准还没有到达。</text><text x="360" y="362">新执行者需要接续原等待。</text>
+      <text x="660" y="332">ERP 已创建订单。</text><text x="660" y="362">本地尚未保存成功回执。</text>
+    </g>
+    <g font-size="17" font-weight="600"><text x="60" y="420" fill="#1d4ed8">恢复依据</text><text x="360" y="420" fill="#6d28d9">恢复依据</text><text x="660" y="420" fill="#92400e">恢复依据</text></g>
+    <g font-size="18" fill="#0f172a"><text x="60" y="454">已持久化的方案与版本</text><text x="360" y="454">等待状态与批准事件关联</text><text x="660" y="454">原动作身份与外部结果证据</text></g>
+    <text x="40" y="540" font-size="17" fill="#475569">恢复执行，需要对齐决策、进度和已经发生的外部事实。</text>
+  </g>
+</svg>
