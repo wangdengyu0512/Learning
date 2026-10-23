@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="650" viewBox="0 0 1120 650" role="img" aria-labelledby="title desc">
+  <title id="title">Agent 推理预算与决策反馈循环</title>
+  <desc id="desc">从目标和验收条件开始，读取共享状态，选择行动并预留预算，执行工具或推理，更新证据并验证。通过验收后交付；未通过时依据反馈回到状态评估；预算耗尽或无进展时说明未完成项。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#64748b"/></marker>
+    <style>
+      text { font-family: 'Microsoft YaHei', 'PingFang SC', 'Noto Sans CJK SC', sans-serif; }
+      .title { font-size: 26px; font-weight: 700; fill: #172554; }
+      .label { font-size: 19px; font-weight: 600; fill: #172554; text-anchor: middle; }
+      .detail { font-size: 15px; fill: #475569; text-anchor: middle; }
+      .note { font-size: 15px; fill: #475569; }
+      .flow { fill: none; stroke: #64748b; stroke-width: 2; marker-end: url(#arrow); }
+      .box { fill: #fff; stroke: #cbd5e1; stroke-width: 1.5; rx: 14; }
+    </style>
+  </defs>
+  <rect width="1120" height="650" rx="20" fill="#f8fafc"/>
+  <text x="40" y="50" class="title">让每次额外计算都有明确目的</text>
+  <text x="40" y="80" class="note">共享状态保留目标、证据、未解决问题与预算；验收结果决定是否继续。</text>
+
+  <rect x="40" y="128" width="230" height="100" class="box"/>
+  <text x="155" y="167" class="label">目标与完成条件</text>
+  <text x="155" y="196" class="detail">预算上限 · 交付要求</text>
+
+  <rect x="330" y="128" width="230" height="100" class="box"/>
+  <text x="445" y="167" class="label">读取并评估状态</text>
+  <text x="445" y="196" class="detail">缺少什么信息？下一步做什么？</text>
+
+  <rect x="620" y="128" width="230" height="100" class="box"/>
+  <text x="735" y="167" class="label">选择行动并预留预算</text>
+  <text x="735" y="196" class="detail">检索 · 推理 · 搜索 · 修正</text>
+
+  <rect x="620" y="310" width="230" height="100" class="box"/>
+  <text x="735" y="349" class="label">执行并保存证据</text>
+  <text x="735" y="378" class="detail">限制并发与超时 · 结算用量</text>
+
+  <rect x="330" y="310" width="230" height="100" class="box"/>
+  <text x="445" y="349" class="label">验证与进展检查</text>
+  <text x="445" y="378" class="detail">规则 · 环境反馈 · 来源支持</text>
+
+  <rect x="40" y="310" width="230" height="100" rx="14" fill="#ecfdf5" stroke="#6ee7b7" stroke-width="1.5"/>
+  <text x="155" y="349" class="label">验收通过后交付</text>
+  <text x="155" y="378" class="detail">标明来源与适用条件</text>
+
+  <rect x="890" y="310" width="190" height="100" rx="14" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.5"/>
+  <text x="985" y="349" class="label">停止并说明状态</text>
+  <text x="985" y="378" class="detail">保留结果与未完成项</text>
+
+  <path d="M270 178 H330" class="flow"/>
+  <path d="M560 178 H620" class="flow"/>
+  <path d="M735 228 V310" class="flow"/>
+  <path d="M620 360 H560" class="flow"/>
+  <path d="M330 360 H270" class="flow"/>
+  <path d="M445 310 V228" class="flow"/>
+  <text x="432" y="264" text-anchor="end" class="note">未通过且可继续</text>
+  <text x="432" y="286" text-anchor="end" class="note">补证据或调整行动</text>
+  <path d="M850 178 H985 V310" class="flow"/>
+  <text x="972" y="262" text-anchor="end" class="note">预算不足</text>
+  <path d="M445 410 V462 H985 V410" class="flow"/>
+  <text x="720" y="449" text-anchor="middle" class="note">连续无进展或无法恢复</text>
+
+  <rect x="40" y="510" width="1040" height="100" rx="14" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="65" y="546" class="note">预算覆盖：规划、执行、验证、重试与最终交付；并行工作先预留，结束后结算。</text>
+  <text x="65" y="576" class="note">状态区分：验收通过、预算耗尽、无进展和执行失败，分别记录；最终内容有变化时重新验证。</text>
+</svg>
