@@ -338,7 +338,6 @@ RTO 表示期望恢复服务所需的时间目标，RPO 表示可接受的数据
 
 - [Agent 可观测性：从 Trace 因果树到生产落地](../agent-observability-trace-production/)
 - [重复采购单事故推演](../agentos-incident-duplicate-purchase-order/)
-- [从一次工具调用到持久化执行：Agent 如何跨越故障完成任务](../agent-durable-execution-workflow-recovery/)
 - [从评测分数到可信结论：AI 工程中的统计与实验设计](../ai-evaluation-statistics-experiment-design/)
 
 ## 参考资料与适用边界

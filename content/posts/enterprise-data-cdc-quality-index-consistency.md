@@ -194,7 +194,6 @@ Agent 不应自行把“可能过时”升级为“可以执行”。执行策�
 
 - [企业数据与知识底座](../enterprise-data-knowledge-foundation-data-os/)
 - [知识库与 RAG：从检索到治理](../knowledge-base-rag-from-retrieval-to-governance/)
-- [企业 Agent 的授权链：从用户身份到每一次工具执行](../agent-identity-authorization-security/)
 
 ## 参考资料
 
