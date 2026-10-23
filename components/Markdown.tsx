@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { getHeadingText, getUniqueHeadingId } from "@/lib/markdown";
 import { EnterpriseAiOSDiagram } from "@/components/EnterpriseAiOSDiagram";
 import { OntologyGraph } from "@/components/OntologyGraph";
+import { CityGovernanceDiagram } from "@/components/CityGovernanceDiagram";
 
 function resolveImageSource(source: string) {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -108,6 +109,7 @@ function isBlockStart(line: string, nextLine?: string) {
   return Boolean(getAnswerSummary(line))
     || line.trim() === "<!-- enterprise-aios-diagram -->"
     || line.trim() === "<!-- ontology-graph -->"
+    || line.trim() === "<!-- city-governance-diagram -->"
     || /^<details(?:\s[^>]*)?>$/.test(line.trim())
     || /^(#{1,4})\s|^```|^>\s?|^[-*]\s|^\d+\.\s|^---$|^!\[[^\]]*\]\([^)]+\)$|^<a\s+id=["'][^"']+["']><\/a>$/.test(line)
     || (isTableRow(line) && Boolean(nextLine && isTableDelimiter(nextLine)));
@@ -135,6 +137,12 @@ export function Markdown({ content }: { content: string }) {
 
     if (line.trim() === "<!-- ontology-graph -->") {
       blocks.push(<OntologyGraph key={`ontology-graph-${index}`} />);
+      index += 1;
+      continue;
+    }
+
+    if (line.trim() === "<!-- city-governance-diagram -->") {
+      blocks.push(<CityGovernanceDiagram key={`city-governance-${index}`} />);
       index += 1;
       continue;
     }

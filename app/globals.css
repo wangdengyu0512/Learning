@@ -1662,22 +1662,22 @@ summary:focus-visible {
 }
 
 .article-layout:has(.ontology-graph),
-.article-layout:has(.enterprise-aios) {
+.article-layout:is(:has(.enterprise-aios), :has(.city-governance-diagram)) {
   grid-template-columns: minmax(0, 1fr);
 }
 
 .article-layout:has(.ontology-graph) > .article-toc,
-.article-layout:has(.enterprise-aios) > .article-toc {
+.article-layout:is(:has(.enterprise-aios), :has(.city-governance-diagram)) > .article-toc {
   display: none;
 }
 
 .article-layout:has(.ontology-graph) .article-main,
-.article-layout:has(.enterprise-aios) .article-main {
+.article-layout:is(:has(.enterprise-aios), :has(.city-governance-diagram)) .article-main {
   width: 100%;
 }
 
-.article-layout:has(.ontology-graph) .prose > :not(.ontology-graph):not(.enterprise-aios),
-.article-layout:has(.enterprise-aios) .prose > :not(.ontology-graph):not(.enterprise-aios) {
+.article-layout:has(.ontology-graph) .prose > :not(.ontology-graph):not(.enterprise-aios):not(.city-governance-diagram),
+.article-layout:is(:has(.enterprise-aios), :has(.city-governance-diagram)) .prose > :not(.ontology-graph):not(.enterprise-aios):not(.city-governance-diagram) {
   max-width: 760px;
 }
 
@@ -2592,7 +2592,7 @@ summary:focus-visible {
 
 /* Wide diagrams use a single column, so keep the inline contents available. */
 .article-layout:has(.ontology-graph) .mobile-toc,
-.article-layout:has(.enterprise-aios) .mobile-toc {
+.article-layout:is(:has(.enterprise-aios), :has(.city-governance-diagram)) .mobile-toc {
   display: block;
   max-width: 760px;
 }
@@ -2945,4 +2945,16 @@ html[data-theme="dark"] {
 
 .skip-link:focus {
   transform: translateY(0);
+}
+
+.city-governance-diagram {
+  width: 100%;
+  margin: 32px 0 48px;
+}
+
+.city-governance-diagram iframe {
+  display: block;
+  width: 100%;
+  height: 1800px;
+  border: 0;
 }
