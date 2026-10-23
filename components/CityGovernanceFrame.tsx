@@ -15,7 +15,8 @@ export function CityGovernanceFrame({ html }: { html: string }) {
       const body = frame.contentDocument?.body;
       if (!body) return;
       const resize = () => {
-        frame.style.height = `${Math.ceil(body.getBoundingClientRect().height)}px`;
+        const height = Math.ceil(Math.max(body.getBoundingClientRect().height, body.scrollHeight));
+        frame.style.height = `${height}px`;
       };
       observer = new ResizeObserver(resize);
       observer.observe(body);
