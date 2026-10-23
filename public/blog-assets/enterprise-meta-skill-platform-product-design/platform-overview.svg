@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1280" viewBox="0 0 1200 1280" role="img" aria-labelledby="title desc">
+  <title id="title">企业级元技能平台：从共性需求到可组合能力</title>
+  <desc id="desc">研发、质量、运营需求抽象为约束抽取、单位归一、实体匹配等共性原子技能，按任务组合成跨规范一致性校验、文档语义提取、多源数据动态融合三类复合能力。复合能力结合领域配置与运行上下文，编排成业务技能。能力契约、证据评测、版本权限与运行管理贯穿全过程。</desc>
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#dce6e4"/></pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#78958f"/></marker>
+    <style>
+      text { font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif; fill: #203d38; }
+      .eyebrow { font-size: 16px; font-weight: 700; letter-spacing: 2px; fill: #487a70; }
+      .title { font-size: 38px; font-weight: 700; }
+      .subtitle { font-size: 20px; fill: #627970; }
+      .section { font-size: 23px; font-weight: 700; }
+      .number { font-size: 17px; font-weight: 700; fill: #fff; text-anchor: middle; }
+      .card-title { font-size: 23px; font-weight: 700; }
+      .body { font-size: 19px; fill: #526c65; }
+      .small { font-size: 17px; fill: #627970; }
+      .chip { font-size: 21px; font-weight: 700; text-anchor: middle; fill: #27685b; }
+      .label { font-size: 17px; font-weight: 700; fill: #507a70; text-anchor: middle; }
+      .connector { fill: none; stroke: #78958f; stroke-width: 2; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1200" height="1280" rx="24" fill="#f6f8f5"/>
+  <rect width="1200" height="1280" rx="24" fill="url(#grid)" opacity=".5"/>
+  <rect x="40" y="40" width="5" height="100" rx="2" fill="#2d7c68"/>
+  <text x="64" y="59" class="eyebrow">META-SKILL PLATFORM / 产品设计总览</text>
+  <text x="64" y="108" class="title">把重复的业务操作，沉淀为可组合的能力</text>
+  <text x="64" y="141" class="subtitle">共性逻辑做成技能，业务差异交给配置，质量与治理贯穿全程。</text>
+
+  <rect x="40" y="180" width="34" height="30" rx="9" fill="#2d7c68"/>
+  <text x="57" y="201" class="number">01</text>
+  <text x="88" y="203" class="section">从真实需求中识别共性</text>
+  <text x="1160" y="202" text-anchor="end" class="small">对象不同，处理动作可以复用</text>
+  <g>
+    <rect x="40" y="228" width="360" height="105" rx="15" fill="#fff" stroke="#d6e2dc"/>
+    <text x="62" y="264" class="card-title">研发 · 需求变更评审</text>
+    <text x="62" y="301" class="body">需求改了，设计与测试是否同步？</text>
+    <rect x="420" y="228" width="360" height="105" rx="15" fill="#fff" stroke="#d6e2dc"/>
+    <text x="442" y="264" class="card-title">质量 · 规范覆盖检查</text>
+    <text x="442" y="301" class="body">检验要求是否覆盖产品规范？</text>
+    <rect x="800" y="228" width="360" height="105" rx="15" fill="#fff" stroke="#d6e2dc"/>
+    <text x="822" y="264" class="card-title">运营 · 客户信息融合</text>
+    <text x="822" y="301" class="body">多系统记录如何形成统一视图？</text>
+  </g>
+  <path d="M220 333V353H980V333 M600 353V388" class="connector"/>
+  <rect x="490" y="344" width="220" height="27" rx="13" fill="#f6f8f5"/>
+  <text x="600" y="364" class="label">拆解操作 · 验证共性</text>
+
+  <rect x="40" y="395" width="1120" height="218" rx="18" fill="#eaf3ee" stroke="#bad6c9"/>
+  <rect x="60" y="415" width="34" height="30" rx="9" fill="#2d7c68"/>
+  <text x="77" y="436" class="number">02</text>
+  <text x="108" y="438" class="section">共性原子技能池</text>
+  <text x="1140" y="437" text-anchor="end" class="small">单一职责 · 独立评估 · 跨场景复用</text>
+  <g fill="#fff" stroke="#c3dbcf">
+    <rect x="60" y="465" width="340" height="51" rx="11"/>
+    <rect x="430" y="465" width="340" height="51" rx="11"/>
+    <rect x="800" y="465" width="340" height="51" rx="11"/>
+    <rect x="60" y="532" width="340" height="51" rx="11"/>
+    <rect x="430" y="532" width="340" height="51" rx="11"/>
+    <rect x="800" y="532" width="340" height="51" rx="11"/>
+  </g>
+  <text x="230" y="498" class="chip">约束抽取</text>
+  <text x="600" y="498" class="chip">单位归一</text>
+  <text x="970" y="498" class="chip">实体匹配</text>
+  <text x="230" y="565" class="chip">条件判断</text>
+  <text x="600" y="565" class="chip">冲突识别</text>
+  <text x="970" y="565" class="chip">证据定位</text>
+  <path d="M600 613V657 M220 676V650H980V676" class="connector"/>
+  <path d="M220 650V676 M600 650V676" class="connector"/>
+  <rect x="488" y="629" width="224" height="29" rx="14" fill="#f6f8f5"/>
+  <text x="600" y="650" class="label">按任务选择、组合技能</text>
+
+  <rect x="40" y="680" width="360" height="158" rx="15" fill="#fff" stroke="#a9cfc2"/>
+  <rect x="40" y="680" width="360" height="7" rx="3" fill="#39866f"/>
+  <text x="62" y="720" class="card-title">跨规范一致性校验</text>
+  <text x="62" y="756" class="body">抽取 → 对齐 → 判断 → 汇总</text>
+  <text x="62" y="809" class="small">输出：差异、证据与待复核项</text>
+  <rect x="420" y="680" width="360" height="158" rx="15" fill="#fff" stroke="#b4cadd"/>
+  <rect x="420" y="680" width="360" height="7" rx="3" fill="#658aa9"/>
+  <text x="442" y="720" class="card-title">研发文档语义提取</text>
+  <text x="442" y="756" class="body">结构识别 → 抽取 → 证据定位</text>
+  <text x="442" y="809" class="small">输出：结构化对象、关系与约束</text>
+  <rect x="800" y="680" width="360" height="158" rx="15" fill="#fff" stroke="#dfc6a3"/>
+  <rect x="800" y="680" width="360" height="7" rx="3" fill="#b98c4c"/>
+  <text x="822" y="720" class="card-title">多源数据动态融合</text>
+  <text x="822" y="756" class="body">实体匹配 → 冲突处理 → 更新</text>
+  <text x="822" y="809" class="small">输出：统一视图与变更事件流</text>
+  <text x="600" y="866" class="label">三类复合能力产品 · 按需选用</text>
+  <path d="M600 877V908" class="connector"/>
+
+  <rect x="40" y="916" width="1120" height="190" rx="18" fill="#fff8ed" stroke="#e2d3b8"/>
+  <rect x="60" y="936" width="34" height="30" rx="9" fill="#aa7d40"/>
+  <text x="77" y="957" class="number">03</text>
+  <text x="108" y="959" class="section">编排成业务技能，交付到业务应用</text>
+  <text x="64" y="1005" style="font-size:24px;font-weight:700;fill:#856337">能力组合 ＋ 领域配置 ＋ 运行上下文 → 业务流程</text>
+  <text x="64" y="1041" class="body">领域配置：术语 / 规则 / 样本　　运行上下文：身份 / 数据范围 / 预算</text>
+  <text x="64" y="1081" class="body">例如：需求变更 → 提取新约束 → 校验设计与测试 → 输出偏差证据 → 人工复核</text>
+
+  <rect x="40" y="1132" width="1120" height="108" rx="17" fill="#233f38"/>
+  <text x="64" y="1169" style="font-size:22px;font-weight:700;fill:#fff">贯穿全过程的治理底座</text>
+  <text x="64" y="1207" style="font-size:20px;fill:#cee0d6">标准能力契约　｜　证据与评测　｜　版本与权限　｜　运行、成本与质量管理</text>
+  <text x="1160" y="1265" text-anchor="end" class="small">企业级元技能平台产品设计 · 概念总览</text>
+</svg>
