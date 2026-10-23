@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="1230" viewBox="0 0 1120 1230" role="img" aria-labelledby="title desc">
+<title id="title">一次网络运营任务如何跨层完成</title>
+<desc id="desc">值班人员通过数字岗位提出影响分析和派单目标，AgentOS 向 Data OS 获取有来源的事实和规则，形成方案并请求审批。批准后重新校验权限与告警状态，通过工具网关创建工单，核验结果并交付。业务系统确认的状态同步回知识底座。数据过期需刷新，写入结果未知先查单。</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#49647a"/></marker></defs>
+<style>text{font-family:"Microsoft YaHei","PingFang SC",sans-serif;fill:#24384b}.title{font-size:27px;font-weight:700}.head{font-size:21px;font-weight:700}.body{font-size:18px}.small{font-size:16px;fill:#52677b}.step{font-size:18px;font-weight:600}.flow{stroke:#49647a;stroke-width:2;fill:none;marker-end:url(#arrow)}.return{stroke-dasharray:7 5}</style>
+<rect width="1120" height="1230" rx="20" fill="#f5f7fb"/>
+
+<text x="36" y="48" class="title" text-anchor="start">一次网络运营任务如何跨层完成</text>
+<text x="36" y="79" class="body" text-anchor="start">从影响分析到授权派单：事实有依据，执行可恢复，结果可核验</text>
+<rect x="36" y="108" width="238" height="79" rx="12" fill="#eef0fe" stroke="#ccd7e2"/>
+<text x="155" y="141" class="head" text-anchor="middle">数字岗位与人员</text>
+<text x="155" y="170" class="small" text-anchor="middle">目标 · 审批 · 验收</text>
+<path d="M155 188 V1057" stroke="#bccbd9" stroke-width="1.5" stroke-dasharray="5 6"/>
+<rect x="306" y="108" width="238" height="79" rx="12" fill="#eaf4ff" stroke="#ccd7e2"/>
+<text x="425" y="141" class="head" text-anchor="middle">AgentOS</text>
+<text x="425" y="170" class="small" text-anchor="middle">编排 · 执行 · 恢复</text>
+<path d="M425 188 V1057" stroke="#bccbd9" stroke-width="1.5" stroke-dasharray="5 6"/>
+<rect x="576" y="108" width="238" height="79" rx="12" fill="#e9f6ef" stroke="#ccd7e2"/>
+<text x="695" y="141" class="head" text-anchor="middle">Data OS</text>
+<text x="695" y="170" class="small" text-anchor="middle">事实 · 规则 · 证据</text>
+<path d="M695 188 V1057" stroke="#bccbd9" stroke-width="1.5" stroke-dasharray="5 6"/>
+<rect x="846" y="108" width="238" height="79" rx="12" fill="#fff4e7" stroke="#ccd7e2"/>
+<text x="965" y="141" class="head" text-anchor="middle">业务系统</text>
+<text x="965" y="170" class="small" text-anchor="middle">告警 · 资源 · 工单</text>
+<path d="M965 188 V1057" stroke="#bccbd9" stroke-width="1.5" stroke-dasharray="5 6"/>
+<path d="M155 240 H425" class="flow"/>
+<text x="290.0" y="227" class="step" text-anchor="middle">① 明确目标与交付标准</text>
+<path d="M425 310 H695" class="flow"/>
+<text x="560.0" y="297" class="step" text-anchor="middle">② 请求任务上下文</text>
+<path d="M695 380 H425" class="flow return"/>
+<text x="560.0" y="367" class="step" text-anchor="middle">③ 返回事实、规则与证据</text>
+<rect x="290" y="401" width="520" height="43" rx="12" fill="#ffffff" stroke="#ccd7e2"/>
+<text x="550" y="429" class="small" text-anchor="middle">质量关口：缺失信息标明限制；关键状态过期则刷新</text>
+<rect x="302" y="468" width="246" height="58" rx="12" fill="#eaf4ff" stroke="#ccd7e2"/>
+<text x="425" y="492" class="step" text-anchor="middle">④ 形成分析与工单草稿</text>
+<text x="425" y="515" class="small" text-anchor="middle">保存计划、状态和证据引用</text>
+<path d="M425 576 H155" class="flow"/>
+<text x="290.0" y="563" class="step" text-anchor="middle">⑤ 提交具体动作审批</text>
+<path d="M155 644 H425" class="flow return"/>
+<text x="290.0" y="631" class="step" text-anchor="middle">⑥ 批准后恢复任务</text>
+<rect x="290" y="666" width="520" height="43" rx="12" fill="#ffffff" stroke="#ccd7e2"/>
+<text x="550" y="694" class="small" text-anchor="middle">执行前复核：权限、动作参数、审批有效期与当前状态</text>
+<path d="M425 757 H965" class="flow"/>
+<text x="695.0" y="744" class="step" text-anchor="middle">⑦ 工具网关授权后创建工单（稳定动作标识）</text>
+<path d="M965 825 H425" class="flow return"/>
+<text x="695.0" y="812" class="step" text-anchor="middle">⑧ 返回回执并核验工单状态</text>
+<rect x="290" y="847" width="520" height="43" rx="12" fill="#ffffff" stroke="#ccd7e2"/>
+<text x="550" y="875" class="small" text-anchor="middle">结果未知时先查单核对；无法确认则转人工处理</text>
+<path d="M425 936 H155" class="flow return"/>
+<text x="290.0" y="923" class="step" text-anchor="middle">⑨ 交付分析与已核验回执</text>
+<path d="M965 1004 H695" class="flow return"/>
+<text x="830.0" y="991" class="step" text-anchor="middle">⑩ 确认的状态同步回流</text>
+<rect x="36" y="1073" width="1048" height="120" rx="12" fill="#ffffff" stroke="#ccd7e2"/>
+<text x="58" y="1108" class="step" text-anchor="start">验收范围：完成影响分析与授权派单；故障恢复另设跟踪任务。</text>
+<text x="58" y="1142" class="body" text-anchor="start">任务验收以源系统核验结果为依据；底座同步存在延迟时，记录同步待确认状态。</text>
+<text x="58" y="1175" class="body" text-anchor="start">业务事实经源系统确认后回流；分析推断保留证据；经验经审核后发布为知识或技能。</text>
+</svg>
