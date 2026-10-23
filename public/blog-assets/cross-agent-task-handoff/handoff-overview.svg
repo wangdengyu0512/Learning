@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="760" viewBox="0 0 1080 760" role="img" aria-labelledby="title desc">
+  <title id="title">跨 Agent 任务交接：从上下文到可靠续接</title>
+  <desc id="desc">发送方保存检查点并生成交接包，接收方核对目标、证据和能力，运行时原子更新所有者与执行代次。新所有者读取已提交状态后执行，结果按原始目标验收。异常恢复以权威任务记录为准，外部写入未知时先查询业务结果。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#64748b"/></marker>
+  </defs>
+  <rect width="1080" height="760" rx="24" fill="#f8fafc"/>
+  <g font-family="system-ui, 'Microsoft YaHei', sans-serif">
+    <text x="40" y="48" font-size="15" font-weight="700" letter-spacing="2" fill="#2563eb">AGENT HANDOFF</text>
+    <text x="40" y="91" font-size="30" font-weight="700" fill="#0f172a">把上下文、执行责任与恢复依据一起交接</text>
+    <text x="40" y="124" font-size="17" fill="#475569">同一个任务持续推进，原始目标与验收条件贯穿全程。</text>
+
+    <rect x="40" y="157" width="300" height="246" rx="16" fill="#eff6ff" stroke="#bfdbfe"/>
+    <rect x="390" y="157" width="300" height="246" rx="16" fill="#f5f3ff" stroke="#ddd6fe"/>
+    <rect x="740" y="157" width="300" height="246" rx="16" fill="#ecfdf5" stroke="#a7f3d0"/>
+    <g font-size="15" font-weight="700">
+      <text x="62" y="190" fill="#1d4ed8">01 / 发送方</text>
+      <text x="412" y="190" fill="#6d28d9">02 / 接收方</text>
+      <text x="762" y="190" fill="#047857">03 / 运行时</text>
+    </g>
+    <g font-size="23" font-weight="700" fill="#0f172a">
+      <text x="62" y="228">保存检查点与交接包</text>
+      <text x="412" y="228">核对信息与执行能力</text>
+      <text x="762" y="228">原子提交责任转移</text>
+    </g>
+    <g font-size="17" fill="#334155">
+      <text x="62" y="267">目标、约束与验收条件</text>
+      <text x="62" y="299">工作状态、证据与产物版本</text>
+      <text x="62" y="331">未完成动作与副作用记录</text>
+      <text x="412" y="267">复述目标，明确第一步</text>
+      <text x="412" y="299">读取证据，检查工具与权限</text>
+      <text x="412" y="331">关键缺口先澄清，再接手</text>
+      <text x="762" y="267">校验版本、资格与有效期</text>
+      <text x="762" y="299">更新所有者与执行代次</text>
+      <text x="762" y="331">同时将交接记为 ACCEPTED</text>
+    </g>
+    <g font-size="15" font-weight="600">
+      <text x="62" y="377" fill="#1d4ed8">持久化后提出交接邀约</text>
+      <text x="412" y="377" fill="#6d28d9">接受提交前，所有者仍未改变</text>
+      <text x="762" y="377" fill="#047857">新所有者读取已提交状态后执行</text>
+    </g>
+    <g fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)">
+      <path d="M343 278H384"/>
+      <path d="M693 278H734"/>
+      <path d="M890 406V440"/>
+    </g>
+
+    <rect x="40" y="446" width="1000" height="96" rx="14" fill="#0f172a"/>
+    <text x="62" y="478" font-size="19" font-weight="700" fill="#f8fafc">权威任务记录：所有权判定与故障恢复的依据</text>
+    <text x="62" y="513" font-size="17" fill="#cbd5e1">任务版本 · 当前所有者 · 执行代次 · 交接状态 · 检查点 · 外部操作记录</text>
+
+    <path d="M540 545V580" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="40" y="586" width="1000" height="100" rx="14" fill="#fff7ed" stroke="#fed7aa"/>
+    <text x="62" y="619" font-size="19" font-weight="700" fill="#9a3412">中断后先核对状态，再决定如何继续</text>
+    <g font-size="16" fill="#9a3412">
+      <text x="62" y="655">确认丢失 → 查询交接记录</text>
+      <text x="389" y="655">旧代次提交 → 拒绝覆盖</text>
+      <text x="716" y="655">外部写入未知 → 先查结果</text>
+    </g>
+    <text x="540" y="727" text-anchor="middle" font-size="17" font-weight="600" fill="#475569">交接被接受后，任务继续执行；最终结果仍须按原始目标验收。</text>
+  </g>
+</svg>
