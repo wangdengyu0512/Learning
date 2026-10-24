@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1150" viewBox="0 0 1100 1150" role="img" aria-labelledby="title desc">
+<title id="title">知识与经验反馈闭环</title><desc id="desc">执行轨迹、核验结果和人工反馈进入候选提炼，依次经过证据与权限校验、质量评估、审核和版本化发布，形成知识、规则与标准能力。运行时按授权和版本加载资产，实际结果再次进入反馈。共享资产支持失效、撤回与回退。</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#3266ad"/></marker>
+<marker id="teal-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#157d7a"/></marker>
+<style>text { font-family: 'Noto Sans CJK SC', 'Microsoft YaHei', 'PingFang SC', sans-serif; } .title { font-size: 32px; font-weight: 700; fill: #182c44; } .heading { font-size: 25px; font-weight: 700; fill: #182c44; } .body { font-size: 22px; fill: #50647b; } .small { font-size: 20px; fill: #50647b; }</style>
+</defs><rect width="1100" height="1150" rx="20" fill="#f8fafc"/>
+<text x="40" y="56" class="title" text-anchor="start">知识与经验反馈闭环</text>
+<text x="40" y="94" class="body" text-anchor="start">运行产生候选经验，经校验与评估后，发布为可复用的共享资产</text>
+<rect x="80" y="140" width="590" height="105" rx="14" fill="#fff" stroke="#d4dfeb" stroke-width="1.5"/>
+<rect x="80" y="155" width="4" height="75" rx="2" fill="#3266ad"/>
+<text x="102" y="176" class="heading" text-anchor="start">01  采集运行证据</text>
+<text x="102" y="210" class="body" text-anchor="start">执行轨迹、核验结果、异常与人工反馈</text>
+<path d="M 375 245 L 375 285" fill="none" stroke="#3266ad" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="80" y="290" width="590" height="105" rx="14" fill="#fff" stroke="#d4dfeb" stroke-width="1.5"/>
+<rect x="80" y="305" width="4" height="75" rx="2" fill="#3266ad"/>
+<text x="102" y="326" class="heading" text-anchor="start">02  提炼候选知识与经验</text>
+<text x="102" y="360" class="body" text-anchor="start">保留来源，标注适用条件与不确定性</text>
+<path d="M 375 395 L 375 435" fill="none" stroke="#3266ad" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="80" y="440" width="590" height="105" rx="14" fill="#fff" stroke="#d4dfeb" stroke-width="1.5"/>
+<rect x="80" y="455" width="4" height="75" rx="2" fill="#3266ad"/>
+<text x="102" y="476" class="heading" text-anchor="start">03  校验与评估</text>
+<text x="102" y="510" class="body" text-anchor="start">证据、权限、有效性、冲突与质量回归</text>
+<path d="M 375 545 L 375 585" fill="none" stroke="#3266ad" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="80" y="590" width="590" height="105" rx="14" fill="#eaf6f3" stroke="#d4dfeb" stroke-width="1.5"/>
+<rect x="80" y="605" width="4" height="75" rx="2" fill="#157d7a"/>
+<text x="102" y="626" class="heading" text-anchor="start">04  审核与版本发布</text>
+<text x="102" y="660" class="body" text-anchor="start">明确维护责任、生效范围与回退条件</text>
+<path d="M 375 695 L 375 735" fill="none" stroke="#3266ad" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="80" y="740" width="590" height="105" rx="14" fill="#eaf6f3" stroke="#d4dfeb" stroke-width="1.5"/>
+<rect x="80" y="755" width="4" height="75" rx="2" fill="#157d7a"/>
+<text x="102" y="776" class="heading" text-anchor="start">05  管理共享资产</text>
+<text x="102" y="810" class="body" text-anchor="start">业务知识、规则、记忆与标准能力</text>
+<path d="M 375 845 L 375 885" fill="none" stroke="#3266ad" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="80" y="890" width="590" height="105" rx="14" fill="#fff" stroke="#d4dfeb" stroke-width="1.5"/>
+<rect x="80" y="905" width="4" height="75" rx="2" fill="#3266ad"/>
+<text x="102" y="926" class="heading" text-anchor="start">06  按权限与版本加载</text>
+<text x="102" y="960" class="body" text-anchor="start">构建任务上下文，观察实际交付质量</text>
+<rect x="730" y="290" width="300" height="415" rx="14" fill="#eef4fc" stroke="#d4dfeb" stroke-width="1.5"/>
+<text x="752" y="332" class="heading" text-anchor="start">贯穿全程的治理要求</text>
+<text x="752" y="380" class="heading" text-anchor="start">可追溯</text>
+<text x="752" y="412" class="body" text-anchor="start">来源、证据与责任归属</text>
+<text x="752" y="463" class="heading" text-anchor="start">可隔离</text>
+<text x="752" y="495" class="body" text-anchor="start">主体、租户与访问权限</text>
+<text x="752" y="546" class="heading" text-anchor="start">可失效</text>
+<text x="752" y="578" class="body" text-anchor="start">有效时间与撤回条件</text>
+<text x="752" y="629" class="heading" text-anchor="start">可回退</text>
+<text x="752" y="661" class="body" text-anchor="start">版本、发布与质量观察</text>
+<rect x="730" y="740" width="300" height="105" rx="14" fill="#fff7ec" stroke="#d4dfeb" stroke-width="1.5"/>
+<rect x="730" y="755" width="4" height="75" rx="2" fill="#a96a22"/>
+<text x="752" y="776" class="heading" text-anchor="start">不通过校验或评估</text>
+<text x="752" y="810" class="body" text-anchor="start">修订候选或停止发布</text>
+<path d="M 670 492 L 700 492 L 700 792 L 725 792" fill="none" stroke="#3266ad" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="7 6" marker-end="url(#arrow)"/>
+<path d="M 670 942 L 1060 942 L 1060 192 L 675 192" fill="none" stroke="#157d7a" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#teal-arrow)"/>
+<text x="880" y="175" class="body" text-anchor="middle" style="fill:#157d7a">运行结果与新增反馈</text>
+<rect x="80" y="1030" width="950" height="64" rx="14" fill="#eef4fc" stroke="#d4dfeb" stroke-width="1.5"/>
+<text x="555" y="1071" class="body" text-anchor="middle">知识来源可追溯  ·  共享变更受控发布  ·  改进效果由任务结果验证</text>
+</svg>

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1190" viewBox="0 0 1100 1190" role="img" aria-labelledby="title desc">
+<title id="title">任务执行与治理流程</title><desc id="desc">任务依次经过目标约定、计划生成、动作校验、受控执行、结果核验与任务验收。审批等待和拒绝在校验阶段处理；执行结果未知时先核对再恢复；不满足验收条件时修正或移交。所有关键阶段记录状态与证据。</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#3266ad"/></marker>
+<marker id="teal-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#157d7a"/></marker>
+<style>text { font-family: 'Noto Sans CJK SC', 'Microsoft YaHei', 'PingFang SC', sans-serif; } .title { font-size: 32px; font-weight: 700; fill: #182c44; } .heading { font-size: 25px; font-weight: 700; fill: #182c44; } .body { font-size: 22px; fill: #50647b; } .small { font-size: 20px; fill: #50647b; }</style>
+</defs><rect width="1100" height="1190" rx="20" fill="#f8fafc"/>
+<text x="40" y="56" class="title" text-anchor="start">任务执行与治理流程</text>
+<text x="40" y="94" class="body" text-anchor="start">执行前判定能否行动，执行后核验实际结果，关键状态全程持久化</text>
+<rect x="90" y="140" width="580" height="105" rx="14" fill="#fff" stroke="#d4dfeb" stroke-width="1.5"/>
+<rect x="90" y="155" width="4" height="75" rx="2" fill="#3266ad"/>
+<text x="112" y="176" class="heading" text-anchor="start">01  创建任务约定</text>
+<text x="112" y="210" class="body" text-anchor="start">目标、范围、授权、预算与完成标准</text>
+<path d="M 380 245 L 380 285" fill="none" stroke="#3266ad" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 90 192 L 40 192" fill="none" stroke="#157d7a" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="7 6"/>
+<rect x="90" y="290" width="580" height="105" rx="14" fill="#fff" stroke="#d4dfeb" stroke-width="1.5"/>
+<rect x="90" y="305" width="4" height="75" rx="2" fill="#3266ad"/>
+<text x="112" y="326" class="heading" text-anchor="start">02  生成与校验计划</text>
+<text x="112" y="360" class="body" text-anchor="start">步骤依赖、输入依据与计划版本</text>
+<path d="M 380 395 L 380 435" fill="none" stroke="#3266ad" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 90 342 L 40 342" fill="none" stroke="#157d7a" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="7 6"/>
+<rect x="90" y="440" width="580" height="105" rx="14" fill="#eef5fd" stroke="#d4dfeb" stroke-width="1.5"/>
+<rect x="90" y="455" width="4" height="75" rx="2" fill="#3266ad"/>
+<text x="112" y="476" class="heading" text-anchor="start">03  检查动作与执行条件</text>
+<text x="112" y="510" class="body" text-anchor="start">权限、按需审批、参数及当前资源状态</text>
+<path d="M 380 545 L 380 585" fill="none" stroke="#3266ad" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 90 492 L 40 492" fill="none" stroke="#157d7a" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="7 6"/>
+<rect x="90" y="590" width="580" height="105" rx="14" fill="#fff" stroke="#d4dfeb" stroke-width="1.5"/>
+<rect x="90" y="605" width="4" height="75" rx="2" fill="#3266ad"/>
+<text x="112" y="626" class="heading" text-anchor="start">04  通过受控入口执行</text>
+<text x="112" y="660" class="body" text-anchor="start">稳定操作标识、目标系统调用与回执</text>
+<path d="M 380 695 L 380 735" fill="none" stroke="#3266ad" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 90 642 L 40 642" fill="none" stroke="#157d7a" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="7 6"/>
+<rect x="90" y="740" width="580" height="105" rx="14" fill="#eef5fd" stroke="#d4dfeb" stroke-width="1.5"/>
+<rect x="90" y="755" width="4" height="75" rx="2" fill="#3266ad"/>
+<text x="112" y="776" class="heading" text-anchor="start">05  核验权威状态</text>
+<text x="112" y="810" class="body" text-anchor="start">核对实际效果，记录差异与可验证证据</text>
+<path d="M 380 845 L 380 885" fill="none" stroke="#3266ad" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 90 792 L 40 792" fill="none" stroke="#157d7a" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="7 6"/>
+<rect x="90" y="890" width="580" height="105" rx="14" fill="#fff" stroke="#d4dfeb" stroke-width="1.5"/>
+<rect x="90" y="905" width="4" height="75" rx="2" fill="#3266ad"/>
+<text x="112" y="926" class="heading" text-anchor="start">06  根据完成标准验收</text>
+<text x="112" y="960" class="body" text-anchor="start">满足条件后关闭；保留最终结果与依据</text>
+<path d="M 90 942 L 40 942" fill="none" stroke="#157d7a" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="7 6"/>
+<path d="M 40 192 L 40 1040 L 90 1040" fill="none" stroke="#157d7a" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="7 6" marker-end="url(#teal-arrow)"/>
+<rect x="90" y="1020" width="950" height="110" rx="14" fill="#eaf6f3" stroke="#d4dfeb" stroke-width="1.5"/>
+<rect x="90" y="1035" width="4" height="80" rx="2" fill="#157d7a"/>
+<text x="112" y="1056" class="heading" text-anchor="start">状态与证据存储</text>
+<text x="112" y="1090" class="body" text-anchor="start">任务 / 动作 / 审批 / 回执 / 核验 / 版本；恢复前先核对未确认操作</text>
+<rect x="770" y="440" width="270" height="135" rx="14" fill="#fff7ec" stroke="#d4dfeb" stroke-width="1.5"/>
+<rect x="770" y="455" width="4" height="105" rx="2" fill="#a96a22"/>
+<text x="792" y="476" class="heading" text-anchor="start">等待或拒绝</text>
+<text x="792" y="510" class="body" text-anchor="start">需要审批：挂起</text>
+<text x="792" y="540" class="body" text-anchor="start">未获授权：阻断</text>
+<path d="M 670 492 L 765 492" fill="none" stroke="#3266ad" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="717" y="480" class="small" text-anchor="middle">未放行</text>
+<rect x="770" y="615" width="270" height="135" rx="14" fill="#fff7ec" stroke="#d4dfeb" stroke-width="1.5"/>
+<rect x="770" y="630" width="4" height="105" rx="2" fill="#a96a22"/>
+<text x="792" y="651" class="heading" text-anchor="start">结果核对与恢复</text>
+<text x="792" y="685" class="body" text-anchor="start">查询原操作状态</text>
+<text x="792" y="715" class="body" text-anchor="start">确认后接续或退出</text>
+<path d="M 670 642 L 710 642 L 710 666 L 765 666" fill="none" stroke="#3266ad" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="715" y="625" class="small" text-anchor="middle">未知</text>
+<path d="M 905 750 L 905 792 L 675 792" fill="none" stroke="#3266ad" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="820" y="781" class="small" text-anchor="middle">已确认</text>
+<rect x="770" y="860" width="270" height="150" rx="14" fill="#fff7ec" stroke="#d4dfeb" stroke-width="1.5"/>
+<rect x="770" y="875" width="4" height="120" rx="2" fill="#a96a22"/>
+<text x="792" y="896" class="heading" text-anchor="start">修正、终止或移交</text>
+<text x="792" y="930" class="body" text-anchor="start">记录差异与原因</text>
+<text x="792" y="960" class="body" text-anchor="start">重新检查计划和授权</text>
+<text x="792" y="990" class="body" text-anchor="start">满足条件才继续执行</text>
+<path d="M 670 820 L 710 820 L 710 900 L 765 900" fill="none" stroke="#3266ad" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M 670 942 L 765 942" fill="none" stroke="#3266ad" stroke-width="2.5" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="716" y="972" class="small" text-anchor="middle">未满足</text>
+<path d="M 1040 920 L 1070 920 L 1070 342 L 675 342" fill="none" stroke="#3266ad" stroke-width="2.5" stroke-linejoin="round" stroke-dasharray="7 6" marker-end="url(#arrow)"/>
+<text x="858" y="328" class="small" text-anchor="middle">修正后重新进入计划校验</text>
+<text x="550" y="1165" class="small" text-anchor="middle">实线：执行及异常分支    虚线：状态记录或重新规划</text>
+</svg>
