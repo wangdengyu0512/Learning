@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 760" role="img" aria-labelledby="title desc">
+<title id="title">从执行问题推导出的五个模块</title>
+<desc id="desc">任务编排维护进度、审批等待和恢复。业务上下文向分析提供带来源的事实，方案经过授权及适用的批准流程，由动作执行服务操作业务系统。结果验收核对实际状态，将结论交回任务编排。结果未知的动作进入待核对状态。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#64748b"/></marker></defs>
+<rect width="1120" height="760" rx="18" fill="#f8fafc"/>
+<g font-family="Microsoft YaHei, PingFang SC, sans-serif" text-anchor="middle">
+<text x="560" y="42" font-size="25" font-weight="700" fill="#0f172a">让每个模块承担一个明确的业务责任</text>
+<rect x="40" y="70" width="1040" height="84" rx="12" fill="#e0f2fe" stroke="#7dd3fc"/>
+<text x="560" y="104" font-size="23" font-weight="700" fill="#075985">任务编排：记录进度，等待批准，中断后继续</text>
+<text x="560" y="135" font-size="17" fill="#334155">业务请求进入任务；验收结论更新任务；无法确认时转给责任人</text>
+<g fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#arrow)"><path d="M160 154V222"/><path d="M425 154V222"/><path d="M690 154V222"/><path d="M955 154V222"/></g>
+<rect x="40" y="226" width="240" height="112" rx="12" fill="#eef2ff" stroke="#a5b4fc"/>
+<text x="160" y="262" font-size="23" font-weight="700" fill="#3730a3">分析</text><text x="160" y="294" font-size="17" fill="#334155">理解目标、评估约束</text><text x="160" y="319" font-size="17" fill="#334155">输出带证据的方案</text>
+<rect x="305" y="226" width="240" height="112" rx="12" fill="#fff" stroke="#94a3b8" stroke-dasharray="5 4"/>
+<text x="425" y="262" font-size="23" font-weight="700" fill="#334155">授权与按需批准</text><text x="425" y="294" font-size="17" fill="#334155">绑定对象、参数与范围</text><text x="425" y="319" font-size="17" fill="#334155">由编排保存等待状态</text>
+<rect x="570" y="226" width="240" height="112" rx="12" fill="#fff7ed" stroke="#fdba74"/>
+<text x="690" y="262" font-size="23" font-weight="700" fill="#9a3412">动作执行</text><text x="690" y="294" font-size="17" fill="#334155">校验批准、受控写入</text><text x="690" y="319" font-size="17" fill="#334155">超时先核对，限制重复</text>
+<rect x="835" y="226" width="240" height="112" rx="12" fill="#ecfdf5" stroke="#6ee7b7"/>
+<text x="955" y="262" font-size="23" font-weight="700" fill="#065f46">结果验收</text><text x="955" y="294" font-size="17" fill="#334155">回查实际业务状态</text><text x="955" y="319" font-size="17" fill="#334155">判断业务目标是否完成</text>
+<g fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"><path d="M280 282H303"/><path d="M545 282H568"/><path d="M810 282H833"/></g>
+<rect x="40" y="424" width="240" height="106" rx="12" fill="#eef2ff" stroke="#a5b4fc"/>
+<text x="160" y="459" font-size="23" font-weight="700" fill="#3730a3">业务上下文</text><text x="160" y="490" font-size="17" fill="#334155">统一口径、过滤权限</text><text x="160" y="515" font-size="17" fill="#334155">保留事实来源与版本</text>
+<path d="M160 424V340" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="235" y="385" font-size="16" fill="#475569">提供证据</text>
+<rect x="570" y="424" width="505" height="106" rx="12" fill="#f1f5f9" stroke="#94a3b8"/>
+<text x="822" y="460" font-size="23" font-weight="700" fill="#0f172a">业务系统 · 当前事实的来源</text><text x="822" y="495" font-size="17" fill="#475569">外部系统保留业务事实，平台保存过程与依据</text>
+<g fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"><path d="M690 338V422"/><path d="M955 338V422"/><path d="M570 477H282"/></g>
+<g font-size="16" fill="#475569"><text x="750" y="385">写入 / 核对</text><text x="1010" y="385">受控回查</text><text x="425" y="463">实时事实</text></g>
+<rect x="40" y="579" width="1040" height="74" rx="12" fill="#fff" stroke="#cbd5e1"/>
+<text x="560" y="609" font-size="20" font-weight="700" fill="#0f172a">共同依据：任务状态、证据、批准记录、执行回执</text><text x="560" y="636" font-size="17" fill="#475569">支持恢复、问题定位、成本统计和业务验收；逻辑模块可合并部署</text>
+<text x="560" y="697" font-size="17" fill="#475569">实线表示业务交接与外部依赖；虚线表示任务编排管理各步骤。</text>
+<text x="560" y="727" font-size="17" fill="#475569">人工批准按策略介入；图中包含五个系统模块。</text>
+</g></svg>
