@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1260" viewBox="0 0 1200 1260" role="img" aria-labelledby="title desc">
+<title id="title">数字员工与 AI 原生组织总体架构</title>
+<desc id="desc">组织负责人定义目标、预算、授权与验收规则。任务由入口接收，经整体负责人协调，由执行者交付，再由获授权的验收方核验；异常升级给具名人类负责人。数字岗位、具体任务、执行实例分别管理。运行底座提供状态恢复、权限控制与容量调度，知识、技能和企业工具支持执行。任务经验经过评估与版本发布，回到后续工作。</desc>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#3c689d"/></marker>
+  <marker id="feedback" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#168077"/></marker>
+  <style>
+    text { font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif; }
+    .title { font-size: 34px; font-weight: 700; fill: #172e49; }
+    .heading { font-size: 25px; font-weight: 700; fill: #172e49; }
+    .body { font-size: 22px; fill: #425b74; }
+    .small { font-size: 20px; fill: #425b74; }
+    .label { font-size: 19px; font-weight: 600; fill: #38658d; }
+    .green { font-size: 20px; fill: #137469; }
+    .line { fill: none; stroke: #3c689d; stroke-width: 2.5; stroke-linejoin: round; marker-end: url(#arrow); }
+  </style>
+</defs>
+<rect width="1200" height="1260" rx="24" fill="#f7f9fc"/>
+
+<text x="64" y="61" class="title" text-anchor="start">数字员工与 AI 原生组织</text>
+<text x="64" y="99" class="body" text-anchor="start">从可交付的工作边界，推导责任分配、执行方式与平台能力</text>
+<rect x="64" y="130" width="1072" height="132" rx="14" fill="#edf2fc" stroke="#b9cce6" stroke-width="1.5"/>
+<text x="86" y="168" class="heading" text-anchor="start">01  组织治理 · 具名人类负责人</text>
+<text x="86" y="205" class="body" text-anchor="start">确定目标与约束  /  授权与预算  /  验收标准  /  异常裁决</text>
+<text x="86" y="239" class="small" text-anchor="start">统一组织底线与评价口径；领域维护专业方法和局部调度。</text>
+<path d="M 600 262 V 310" class="line" />
+<text x="617" y="292" class="label" text-anchor="start">规则约束全程</text>
+<rect x="64" y="314" width="1072" height="244" rx="14" fill="#eef5fc" stroke="#c3d5e9" stroke-width="1.5"/>
+<text x="86" y="353" class="heading" text-anchor="start">02  工作交付 · 整体负责人持续承担结果责任</text>
+<rect x="86" y="378" width="236" height="117" rx="14" fill="#ffffff" stroke="#d2deea" stroke-width="1.5"/>
+<text x="204" y="411" class="heading" text-anchor="middle">工作入口</text>
+<text x="204" y="445" class="small" text-anchor="middle">检查前提与容量</text>
+<text x="204" y="474" class="small" text-anchor="middle">接收 / 排队 / 拒收</text>
+<rect x="350" y="378" width="236" height="117" rx="14" fill="#ffffff" stroke="#d2deea" stroke-width="1.5"/>
+<text x="468" y="411" class="heading" text-anchor="middle">任务协调</text>
+<text x="468" y="445" class="small" text-anchor="middle">确认整体负责人</text>
+<text x="468" y="474" class="small" text-anchor="middle">分配、依赖与交接</text>
+<rect x="614" y="378" width="236" height="117" rx="14" fill="#ffffff" stroke="#d2deea" stroke-width="1.5"/>
+<text x="732" y="411" class="heading" text-anchor="middle">受控执行</text>
+<text x="732" y="445" class="small" text-anchor="middle">按授权选择方法</text>
+<text x="732" y="474" class="small" text-anchor="middle">交付产物与证据</text>
+<rect x="878" y="378" width="236" height="117" rx="14" fill="#ffffff" stroke="#d2deea" stroke-width="1.5"/>
+<text x="996" y="411" class="heading" text-anchor="middle">结果验收</text>
+<text x="996" y="445" class="small" text-anchor="middle">核对标准与实际结果</text>
+<text x="996" y="474" class="small" text-anchor="middle">关闭 / 返工 / 升级</text>
+<path d="M 322 435 H 346" class="line" />
+<path d="M 586 435 H 610" class="line" />
+<path d="M 850 435 H 874" class="line" />
+<text x="86" y="534" class="small" text-anchor="start">交接以接收确认为准；委派不转移整体责任，也不扩大权限。</text>
+<path d="M 1114 397 H 1162 V 196 H 1138" class="line" stroke-dasharray="7 6"/>
+<rect x="64" y="584" width="1072" height="202" rx="14" fill="#f4f1fc" stroke="#d5cce7" stroke-width="1.5"/>
+<text x="86" y="624" class="heading" text-anchor="start">03  三类对象 · 稳定岗位、具体委托与弹性算力分别管理</text>
+<rect x="86" y="644" width="332" height="122" rx="14" fill="#ffffff" stroke="#d2deea" stroke-width="1.5"/>
+<text x="104" y="680" class="heading" text-anchor="start">数字岗位</text>
+<text x="104" y="716" class="small" text-anchor="start">承接范围 · 能力与权限上限</text>
+<text x="104" y="745" class="small" text-anchor="start">交付契约 · 配置版本</text>
+<rect x="434" y="644" width="332" height="122" rx="14" fill="#ffffff" stroke="#d2deea" stroke-width="1.5"/>
+<text x="452" y="680" class="heading" text-anchor="start">具体任务</text>
+<text x="452" y="716" class="small" text-anchor="start">目标 · 预算 · 责任人与承接者</text>
+<text x="452" y="745" class="small" text-anchor="start">进度 · 交付物 · 验收依据</text>
+<rect x="782" y="644" width="332" height="122" rx="14" fill="#ffffff" stroke="#d2deea" stroke-width="1.5"/>
+<text x="800" y="680" class="heading" text-anchor="start">执行实例</text>
+<text x="800" y="716" class="small" text-anchor="start">按任务与负载调度</text>
+<text x="800" y="745" class="small" text-anchor="start">可替换 · 可恢复 · 可扩容</text>
+<path d="M 600 828 V 790" class="line" />
+<text x="618" y="815" class="label" text-anchor="start">支撑交付与对象管理</text>
+<rect x="64" y="832" width="1072" height="183" rx="14" fill="#edf6f5" stroke="#badbd5" stroke-width="1.5"/>
+<text x="86" y="872" class="heading" text-anchor="start">04  运行底座 · 持久状态、受控行动与整体容量</text>
+<text x="86" y="910" class="heading" text-anchor="start">连续执行</text>
+<text x="86" y="945" class="small" text-anchor="start">状态 / 接管 / 恢复</text>
+<text x="86" y="974" class="small" text-anchor="start">动作去重与外部结果核对</text>
+<text x="434" y="910" class="heading" text-anchor="start">行动控制</text>
+<text x="434" y="945" class="small" text-anchor="start">身份 / 最小权限 / 审批</text>
+<text x="434" y="974" class="small" text-anchor="start">授权复核与审计</text>
+<text x="782" y="910" class="heading" text-anchor="start">容量调度</text>
+<text x="782" y="945" class="small" text-anchor="start">队列 / 并发 / 预算</text>
+<text x="782" y="974" class="small" text-anchor="start">人工审批与接管容量</text>
+<rect x="64" y="1035" width="1072" height="74" rx="14" fill="#ffffff" stroke="#d2deea" stroke-width="1.5"/>
+<text x="86" y="1060" class="heading" text-anchor="start">执行资源</text>
+<text x="86" y="1096" class="body" text-anchor="start">知识与依据  /  版本化技能  /  模型服务  /  企业系统与工具</text>
+<rect x="64" y="1135" width="1072" height="91" rx="14" fill="#e9f5ef" stroke="#bcdccf" stroke-width="1.5"/>
+<text x="86" y="1171" class="heading" text-anchor="start">05  组织学习 · 任务证据 → 候选方法 → 评估 → 受控发布</text>
+<text x="86" y="1206" class="green" text-anchor="start">绑定适用范围与版本，保留停用和回退能力；验证后的改进进入后续工作。</text>
+<path d="M 64 1180 H 32 V 707 H 82" fill="none" stroke="#168077" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#feedback)"/>
+</svg>
