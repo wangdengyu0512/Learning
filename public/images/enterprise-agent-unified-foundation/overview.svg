@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1230" viewBox="0 0 1200 1230" role="img" aria-labelledby="title desc">
+<title id="title">企业级智能体统一底座：四类断裂面、六项能力与执行闭环</title>
+<desc id="desc">连接、行为、认知、运行四类问题共同推动六项统一能力建设。生态链接、数据基座、运行框架、调度管理组织任务，安全管理约束全程，持续进化将验证后的经验反哺平台。六项能力共同支撑接入、理解、规划、执行、验收与沉淀的业务闭环。</desc>
+<defs>
+<style>text {font-family: 'Microsoft YaHei','PingFang SC',sans-serif;} .title {font-size:34px;font-weight:700;fill:#142b40} .section {font-size:25px;font-weight:700;fill:#142b40} .heading {font-size:26px;font-weight:700;fill:#142b40} .body {font-size:22px;fill:#475d70} .small {font-size:20px;fill:#5a6d7d} .label {font-size:21px;font-weight:700;fill:#16756e}</style>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#618597"/></marker>
+<marker id="green-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#16756e"/></marker>
+</defs>
+<rect width="1200" height="1230" rx="24" fill="#f5f8fb"/>
+<text x="48" y="62" class="title">企业级智能体统一底座</text>
+<text x="48" y="100" class="body">从现场问题到平台能力，让每次执行可控、可恢复、可积累</text>
+<text x="48" y="156" class="section">01 / 四类断裂面</text>
+<rect x="48" y="178" width="264" height="126" rx="14" fill="#fff8f2" stroke="#ecd9c8"/>
+<text x="66" y="213" class="heading" text-anchor="start">连接面</text>
+<text x="66" y="250" class="body" text-anchor="start">进不了系统</text>
+<text x="66" y="281" class="small" text-anchor="start">身份 / 通道 / 工具缺口</text>
+<rect x="328" y="178" width="264" height="126" rx="14" fill="#fff8f2" stroke="#ecd9c8"/>
+<text x="346" y="213" class="heading" text-anchor="start">行为面</text>
+<text x="346" y="250" class="body" text-anchor="start">出手没边界</text>
+<text x="346" y="281" class="small" text-anchor="start">缺少强制执行约束</text>
+<rect x="608" y="178" width="264" height="126" rx="14" fill="#fff8f2" stroke="#ecd9c8"/>
+<text x="626" y="213" class="heading" text-anchor="start">认知面</text>
+<text x="626" y="250" class="body" text-anchor="start">经验留不下</text>
+<text x="626" y="281" class="small" text-anchor="start">缺少可复用认知资产</text>
+<rect x="888" y="178" width="264" height="126" rx="14" fill="#fff8f2" stroke="#ecd9c8"/>
+<text x="906" y="213" class="heading" text-anchor="start">运行面</text>
+<text x="906" y="250" class="body" text-anchor="start">出错没兜底</text>
+<text x="906" y="281" class="small" text-anchor="start">任务 / 供给缺少恢复</text>
+<path d="M600 306 V350" stroke="#618597" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<text x="48" y="347" class="small" text-anchor="start">问题与能力是多对多关系</text>
+<rect x="32" y="372" width="1136" height="540" rx="20" fill="#edf3f9" stroke="#cddce8"/>
+<text x="56" y="415" class="section" text-anchor="start">02 / 六项统一能力</text>
+<text x="56" y="450" class="body" text-anchor="start">共同契约：任务标识 · 身份授权 · 能力版本 · 状态语义 · 执行证据</text>
+<rect x="56" y="478" width="352" height="162" rx="14" fill="#fff" stroke="#dce5ec"/>
+<text x="76" y="515" class="heading" text-anchor="start">统一运行框架</text>
+<text x="76" y="550" class="label" text-anchor="start">跑得稳</text>
+<text x="76" y="586" class="body" text-anchor="start">质量门禁 · 任务拆分</text>
+<text x="76" y="617" class="body" text-anchor="start">幂等执行 · 全程追踪</text>
+<rect x="424" y="478" width="352" height="162" rx="14" fill="#fff" stroke="#dce5ec"/>
+<text x="444" y="515" class="heading" text-anchor="start">统一调度管理</text>
+<text x="444" y="550" class="label" text-anchor="start">调得动</text>
+<text x="444" y="586" class="body" text-anchor="start">弹性集群 · 沙箱调度</text>
+<text x="444" y="617" class="body" text-anchor="start">状态外化 · 模型路由</text>
+<rect x="792" y="478" width="352" height="162" rx="14" fill="#fff" stroke="#dce5ec"/>
+<text x="812" y="515" class="heading" text-anchor="start">统一数据基座</text>
+<text x="812" y="550" class="label" text-anchor="start">认得准</text>
+<text x="812" y="586" class="body" text-anchor="start">多源数据 · 语义本体</text>
+<text x="812" y="617" class="body" text-anchor="start">分层记忆 · 知识沉淀</text>
+<rect x="56" y="658" width="352" height="162" rx="14" fill="#fff" stroke="#dce5ec"/>
+<text x="76" y="695" class="heading" text-anchor="start">统一生态链接</text>
+<text x="76" y="730" class="label" text-anchor="start">接得上</text>
+<text x="76" y="766" class="body" text-anchor="start">多模态入口 · 系统工具</text>
+<text x="76" y="797" class="body" text-anchor="start">智能体注册 · 能力供给</text>
+<rect x="424" y="658" width="352" height="162" rx="14" fill="#fff" stroke="#dce5ec"/>
+<text x="444" y="695" class="heading" text-anchor="start">统一安全管理</text>
+<text x="444" y="730" class="label" text-anchor="start">敢放行</text>
+<text x="444" y="766" class="body" text-anchor="start">最小授权 · 强制拦截</text>
+<text x="444" y="797" class="body" text-anchor="start">审计追溯 · 环境适配</text>
+<rect x="792" y="658" width="352" height="162" rx="14" fill="#fff" stroke="#dce5ec"/>
+<text x="812" y="695" class="heading" text-anchor="start">统一持续进化</text>
+<text x="812" y="730" class="label" text-anchor="start">越用越好</text>
+<text x="812" y="766" class="body" text-anchor="start">自主修正 · 经验蒸馏</text>
+<text x="812" y="797" class="body" text-anchor="start">评测发布 · 能力复用</text>
+<text x="56" y="863" class="body" text-anchor="start">安全管理约束全程；持续进化将经过验证的经验反哺平台。</text>
+<text x="56" y="894" class="small" text-anchor="start">运行负责过程，调度供给资源，数据提供认知，生态连接能力。</text>
+<path d="M600 914 V957" stroke="#618597" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<text x="48" y="984" class="section" text-anchor="start">03 / 业务执行闭环</text>
+<rect x="48" y="1008" width="170" height="94" rx="14" fill="#fff" stroke="#ccdee1"/>
+<text x="133" y="1046" class="heading" text-anchor="middle">接入</text>
+<text x="133" y="1080" class="small" text-anchor="middle">身份与目标</text>
+<path d="M220 1055 H232" stroke="#618597" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="234" y="1008" width="170" height="94" rx="14" fill="#fff" stroke="#ccdee1"/>
+<text x="319" y="1046" class="heading" text-anchor="middle">理解</text>
+<text x="319" y="1080" class="small" text-anchor="middle">事实与规则</text>
+<path d="M406 1055 H418" stroke="#618597" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="420" y="1008" width="170" height="94" rx="14" fill="#fff" stroke="#ccdee1"/>
+<text x="505" y="1046" class="heading" text-anchor="middle">规划</text>
+<text x="505" y="1080" class="small" text-anchor="middle">拆分与门禁</text>
+<path d="M592 1055 H604" stroke="#618597" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="606" y="1008" width="170" height="94" rx="14" fill="#fff" stroke="#ccdee1"/>
+<text x="691" y="1046" class="heading" text-anchor="middle">执行</text>
+<text x="691" y="1080" class="small" text-anchor="middle">调度与授权</text>
+<path d="M778 1055 H790" stroke="#618597" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="792" y="1008" width="170" height="94" rx="14" fill="#fff" stroke="#ccdee1"/>
+<text x="877" y="1046" class="heading" text-anchor="middle">验收</text>
+<text x="877" y="1080" class="small" text-anchor="middle">结果与证据</text>
+<path d="M964 1055 H976" stroke="#618597" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<rect x="978" y="1008" width="170" height="94" rx="14" fill="#fff" stroke="#ccdee1"/>
+<text x="1063" y="1046" class="heading" text-anchor="middle">沉淀</text>
+<text x="1063" y="1080" class="small" text-anchor="middle">评测与复用</text>
+<path d="M1063 1104 V1141 H133 V1107" stroke="#16756e" stroke-width="2.5" fill="none" marker-end="url(#green-arrow)"/>
+<rect x="400" y="1125" width="400" height="32" rx="0" fill="#f5f8fb" stroke="#f5f8fb"/>
+<text x="600" y="1148" class="label" text-anchor="middle">验证后的经验进入后续任务</text>
+<text x="48" y="1200" class="small" text-anchor="start">设计示意 · 表示职责关系与业务闭环，不代表服务部署拓扑。</text>
+</svg>
