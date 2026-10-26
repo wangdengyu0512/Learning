@@ -40,7 +40,7 @@
 <text x="444" y="515" class="heading" text-anchor="start">统一调度管理</text>
 <text x="444" y="550" class="label" text-anchor="start">调得动</text>
 <text x="444" y="586" class="body" text-anchor="start">弹性集群 · 沙箱调度</text>
-<text x="444" y="617" class="body" text-anchor="start">状态外化 · 模型路由</text>
+<text x="444" y="617" class="body" text-anchor="start">实例接管 · 模型路由</text>
 <rect x="792" y="478" width="352" height="162" rx="14" fill="#fff" stroke="#dce5ec"/>
 <text x="812" y="515" class="heading" text-anchor="start">统一数据基座</text>
 <text x="812" y="550" class="label" text-anchor="start">认得准</text>
