@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">Prefill 与 Decode 阶段对比</title>
+  <desc id="desc">左侧 Prefill 并行处理完整输入，主要影响首 Token 延迟；右侧 Decode 逐 Token 生成，主要影响每 Token 延迟。</desc>
+  <defs>
+    <marker id="arrow-teal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0e7c7b"/>
+    </marker>
+    <marker id="arrow-coral" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d95d39"/>
+    </marker>
+    <style>
+      .title { font: 700 30px Inter, "Microsoft YaHei", sans-serif; fill: #182026; }
+      .subtitle { font: 400 15px Inter, "Microsoft YaHei", sans-serif; fill: #58636b; }
+      .panel-title { font: 700 24px Inter, "Microsoft YaHei", sans-serif; }
+      .label { font: 600 15px Inter, "Microsoft YaHei", sans-serif; fill: #182026; }
+      .body { font: 400 14px Inter, "Microsoft YaHei", sans-serif; fill: #58636b; }
+      .mono { font: 600 13px Consolas, monospace; fill: #182026; }
+      .metric { font: 700 18px Inter, "Microsoft YaHei", sans-serif; }
+    </style>
+  </defs>
+  <rect width="1200" height="680" fill="#f6f7f8"/>
+  <rect x="40" y="34" width="8" height="58" rx="4" fill="#e6a817"/>
+  <text x="68" y="62" class="title">一次请求，两种截然不同的计算阶段</text>
+  <text x="68" y="87" class="subtitle">阶段差异决定了资源配置、调度目标和扩缩容信号</text>
+
+  <rect x="40" y="124" width="540" height="426" rx="8" fill="#ffffff" stroke="#cbd4d8"/>
+  <rect x="620" y="124" width="540" height="426" rx="8" fill="#ffffff" stroke="#cbd4d8"/>
+  <rect x="40" y="124" width="540" height="8" rx="4" fill="#0e7c7b"/>
+  <rect x="620" y="124" width="540" height="8" rx="4" fill="#d95d39"/>
+  <text x="72" y="174" class="panel-title" fill="#0e7c7b">Prefill</text>
+  <text x="652" y="174" class="panel-title" fill="#d95d39">Decode</text>
+  <text x="72" y="200" class="body">并行处理完整 Prompt</text>
+  <text x="652" y="200" class="body">自回归逐 Token 生成</text>
+
+  <g transform="translate(72 234)">
+    <rect x="0" y="0" width="56" height="46" rx="4" fill="#d8efed" stroke="#0e7c7b"/>
+    <rect x="66" y="0" width="56" height="46" rx="4" fill="#d8efed" stroke="#0e7c7b"/>
+    <rect x="132" y="0" width="56" height="46" rx="4" fill="#d8efed" stroke="#0e7c7b"/>
+    <rect x="198" y="0" width="56" height="46" rx="4" fill="#d8efed" stroke="#0e7c7b"/>
+    <rect x="264" y="0" width="56" height="46" rx="4" fill="#d8efed" stroke="#0e7c7b"/>
+    <text x="28" y="29" text-anchor="middle" class="mono">T1</text>
+    <text x="94" y="29" text-anchor="middle" class="mono">T2</text>
+    <text x="160" y="29" text-anchor="middle" class="mono">T3</text>
+    <text x="226" y="29" text-anchor="middle" class="mono">...</text>
+    <text x="292" y="29" text-anchor="middle" class="mono">TS</text>
+    <path d="M 0 68 H 390" stroke="#0e7c7b" stroke-width="4" marker-end="url(#arrow-teal)"/>
+    <text x="0" y="94" class="body">大矩阵并行计算</text>
+  </g>
+
+  <g transform="translate(652 234)">
+    <rect x="0" y="0" width="74" height="46" rx="4" fill="#fae6df" stroke="#d95d39"/>
+    <rect x="106" y="0" width="74" height="46" rx="4" fill="#fae6df" stroke="#d95d39"/>
+    <rect x="212" y="0" width="74" height="46" rx="4" fill="#fae6df" stroke="#d95d39"/>
+    <rect x="318" y="0" width="74" height="46" rx="4" fill="#fae6df" stroke="#d95d39"/>
+    <text x="37" y="29" text-anchor="middle" class="mono">t+1</text>
+    <text x="143" y="29" text-anchor="middle" class="mono">t+2</text>
+    <text x="249" y="29" text-anchor="middle" class="mono">t+3</text>
+    <text x="355" y="29" text-anchor="middle" class="mono">...</text>
+    <path d="M 75 23 H 104 M 181 23 H 210 M 287 23 H 316" stroke="#d95d39" stroke-width="3" marker-end="url(#arrow-coral)"/>
+    <text x="0" y="94" class="body">每轮读取权重与历史 KV</text>
+  </g>
+
+  <line x1="72" y1="350" x2="548" y2="350" stroke="#e1e6e8"/>
+  <line x1="652" y1="350" x2="1128" y2="350" stroke="#e1e6e8"/>
+  <text x="72" y="386" class="label">主要资源特征</text>
+  <text x="230" y="386" class="body">算术强度高，倾向计算受限</text>
+  <text x="72" y="425" class="label">容量驱动因素</text>
+  <text x="230" y="425" class="body">输入 Token 到达率</text>
+  <text x="72" y="464" class="label">核心体验指标</text>
+  <text x="230" y="464" class="metric" fill="#0e7c7b">TTFT</text>
+  <text x="72" y="503" class="label">常见干扰</text>
+  <text x="230" y="503" class="body">长 Prompt 阻塞生成迭代</text>
+
+  <text x="652" y="386" class="label">主要资源特征</text>
+  <text x="810" y="386" class="body">反复读权重与 KV，倾向带宽受限</text>
+  <text x="652" y="425" class="label">容量驱动因素</text>
+  <text x="810" y="425" class="body">输出 Token 与活跃序列数</text>
+  <text x="652" y="464" class="label">核心体验指标</text>
+  <text x="810" y="464" class="metric" fill="#d95d39">TPOT / ITL</text>
+  <text x="652" y="503" class="label">常见干扰</text>
+  <text x="810" y="503" class="body">大量生成请求挤压新请求排队</text>
+
+  <rect x="40" y="580" width="1120" height="64" rx="8" fill="#182026"/>
+  <circle cx="78" cy="612" r="13" fill="#e6a817"/>
+  <text x="108" y="607" class="label" fill="#ffffff">PD 分离的出发点</text>
+  <text x="108" y="628" class="body" fill="#dce3e6">让两个阶段独立优化，但必须支付 KV Cache 传输、跨阶段调度与状态交接的成本。</text>
+</svg>

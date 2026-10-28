@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">PD 分离系统架构</title>
+  <desc id="desc">入口路由将请求交给 Prefill 池，Prefill 计算 KV 后通过独立数据面传给 Decode 池，Decode 流式返回 Token；调度器管理控制面。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#376996"/></marker>
+    <marker id="arrow-data" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#d95d39"/></marker>
+    <style>
+      .title { font: 700 30px Inter, "Microsoft YaHei", sans-serif; fill: #182026; }
+      .subtitle { font: 400 15px Inter, "Microsoft YaHei", sans-serif; fill: #58636b; }
+      .lane { font: 700 15px Inter, "Microsoft YaHei", sans-serif; fill: #ffffff; }
+      .node-title { font: 700 17px Inter, "Microsoft YaHei", sans-serif; fill: #182026; }
+      .body { font: 400 13px Inter, "Microsoft YaHei", sans-serif; fill: #58636b; }
+      .small { font: 600 12px Inter, "Microsoft YaHei", sans-serif; fill: #58636b; }
+      .step { font: 700 13px Inter, "Microsoft YaHei", sans-serif; fill: #ffffff; }
+    </style>
+  </defs>
+  <rect width="1200" height="720" fill="#f6f7f8"/>
+  <rect x="40" y="34" width="8" height="58" rx="4" fill="#0e7c7b"/>
+  <text x="68" y="62" class="title">PD 分离不是一次 RPC，而是状态所有权交接</text>
+  <text x="68" y="87" class="subtitle">控制面决定放置与生命周期，数据面直接搬运大体量 KV Cache</text>
+
+  <rect x="40" y="126" width="1120" height="78" rx="8" fill="#e9eff5" stroke="#bdcad5"/>
+  <rect x="40" y="126" width="118" height="78" rx="8" fill="#376996"/>
+  <text x="99" y="171" text-anchor="middle" class="lane">控制面</text>
+  <rect x="196" y="143" width="196" height="44" rx="5" fill="#ffffff" stroke="#376996"/>
+  <text x="294" y="170" text-anchor="middle" class="node-title">入口路由 / Gateway</text>
+  <rect x="502" y="143" width="230" height="44" rx="5" fill="#ffffff" stroke="#376996"/>
+  <text x="617" y="170" text-anchor="middle" class="node-title">全局调度器</text>
+  <rect x="842" y="143" width="268" height="44" rx="5" fill="#ffffff" stroke="#376996"/>
+  <text x="976" y="170" text-anchor="middle" class="node-title">负载 / SLO / 拓扑视图</text>
+  <path d="M392 165H500 M732 165H840" stroke="#376996" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="40" y="236" width="1120" height="324" rx="8" fill="#ffffff" stroke="#cbd4d8"/>
+  <rect x="40" y="236" width="118" height="324" rx="8" fill="#182026"/>
+  <text x="99" y="390" text-anchor="middle" class="lane">执行与</text>
+  <text x="99" y="413" text-anchor="middle" class="lane">KV 数据面</text>
+
+  <g transform="translate(190 272)">
+    <circle cx="18" cy="18" r="18" fill="#0e7c7b"/><text x="18" y="23" text-anchor="middle" class="step">1</text>
+    <text x="50" y="24" class="node-title">Prefill 池</text>
+    <rect x="0" y="54" width="250" height="154" rx="6" fill="#eef8f7" stroke="#0e7c7b"/>
+    <rect x="20" y="76" width="210" height="38" rx="4" fill="#ffffff" stroke="#8bc4c0"/>
+    <text x="125" y="100" text-anchor="middle" class="small">P Worker A · Prompt Batch</text>
+    <rect x="20" y="124" width="210" height="38" rx="4" fill="#ffffff" stroke="#8bc4c0"/>
+    <text x="125" y="148" text-anchor="middle" class="small">P Worker B · Prompt Batch</text>
+    <text x="125" y="188" text-anchor="middle" class="body">输出首 Token + KV Blocks</text>
+  </g>
+
+  <g transform="translate(494 272)">
+    <circle cx="18" cy="18" r="18" fill="#d95d39"/><text x="18" y="23" text-anchor="middle" class="step">2</text>
+    <text x="50" y="24" class="node-title">KV 交接通道</text>
+    <rect x="0" y="54" width="214" height="154" rx="6" fill="#fff4ef" stroke="#d95d39"/>
+    <text x="107" y="88" text-anchor="middle" class="small">容量预留 · Block 映射</text>
+    <text x="107" y="116" text-anchor="middle" class="small">RDMA / GPUDirect / NIXL</text>
+    <path d="M38 142H176" stroke="#d95d39" stroke-width="6" marker-end="url(#arrow-data)"/>
+    <text x="107" y="185" text-anchor="middle" class="body">可选共享 KV 缓存层</text>
+  </g>
+
+  <g transform="translate(762 272)">
+    <circle cx="18" cy="18" r="18" fill="#e6a817"/><text x="18" y="23" text-anchor="middle" class="step">3</text>
+    <text x="50" y="24" class="node-title">Decode 池</text>
+    <rect x="0" y="54" width="342" height="154" rx="6" fill="#fff9e8" stroke="#d39a06"/>
+    <rect x="20" y="76" width="302" height="38" rx="4" fill="#ffffff" stroke="#e2c35e"/>
+    <text x="171" y="100" text-anchor="middle" class="small">D Worker X · Active Sequences</text>
+    <rect x="20" y="124" width="302" height="38" rx="4" fill="#ffffff" stroke="#e2c35e"/>
+    <text x="171" y="148" text-anchor="middle" class="small">D Worker Y · Active Sequences</text>
+    <text x="171" y="188" text-anchor="middle" class="body">逐 Token 生成并流式返回</text>
+  </g>
+
+  <path d="M440 399H492 M708 399H760" stroke="#d95d39" stroke-width="3" marker-end="url(#arrow-data)"/>
+  <path d="M617 204V247H315V270 M617 247H869V270" fill="none" stroke="#376996" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrow)"/>
+
+  <rect x="40" y="590" width="1120" height="94" rx="8" fill="#182026"/>
+  <line x1="424" y1="608" x2="424" y2="666" stroke="#435059"/>
+  <line x1="795" y1="608" x2="795" y2="666" stroke="#435059"/>
+  <circle cx="72" cy="626" r="7" fill="#376996"/><text x="90" y="631" class="lane">控制消息</text>
+  <text x="72" y="655" class="body" fill="#cbd4d8">request_id、目标 Worker、版本、取消</text>
+  <circle cx="457" cy="626" r="7" fill="#d95d39"/><text x="475" y="631" class="lane">KV 数据</text>
+  <text x="457" y="655" class="body" fill="#cbd4d8">大体量张量，绕过 Gateway 与调度器</text>
+  <circle cx="828" cy="626" r="7" fill="#e6a817"/><text x="846" y="631" class="lane">所有权边界</text>
+  <text x="828" y="655" class="body" fill="#cbd4d8">D 确认接管后，P 才能释放缓存</text>
+</svg>

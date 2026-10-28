@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">PD 分离闭环调度</title>
+  <desc id="desc">调度器综合请求画像、阶段队列、KV 局部性和网络拓扑，输出准入、路由与扩缩容决策，并以 TTFT、TPOT 和 Goodput 反馈校正。</desc>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#376996"/></marker>
+    <marker id="arr-feedback" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0e7c7b"/></marker>
+    <style>
+      .title { font: 700 30px Inter, "Microsoft YaHei", sans-serif; fill: #182026; }
+      .subtitle { font: 400 15px Inter, "Microsoft YaHei", sans-serif; fill: #58636b; }
+      .box-title { font: 700 18px Inter, "Microsoft YaHei", sans-serif; fill: #182026; }
+      .body { font: 400 13px Inter, "Microsoft YaHei", sans-serif; fill: #58636b; }
+      .center-title { font: 700 25px Inter, "Microsoft YaHei", sans-serif; fill: #ffffff; }
+      .center-body { font: 400 14px Inter, "Microsoft YaHei", sans-serif; fill: #dbe6ed; }
+      .metric { font: 700 15px Inter, "Microsoft YaHei", sans-serif; fill: #182026; }
+    </style>
+  </defs>
+  <rect width="1200" height="720" fill="#f6f7f8"/>
+  <rect x="40" y="34" width="8" height="58" rx="4" fill="#d95d39"/>
+  <text x="68" y="62" class="title">调度器优化的是 SLO Goodput，不是单点利用率</text>
+  <text x="68" y="87" class="subtitle">请求、计算、缓存和网络四类信号共同决定路由与容量</text>
+
+  <g transform="translate(50 150)">
+    <rect width="250" height="126" rx="8" fill="#ffffff" stroke="#0e7c7b"/>
+    <rect width="8" height="126" rx="4" fill="#0e7c7b"/>
+    <text x="28" y="34" class="box-title">请求画像</text>
+    <text x="28" y="62" class="body">Prompt / 输出长度预测</text>
+    <text x="28" y="84" class="body">模型、Adapter、租户优先级</text>
+    <text x="28" y="106" class="body">TTFT 与 TPOT SLO</text>
+  </g>
+  <g transform="translate(50 348)">
+    <rect width="250" height="126" rx="8" fill="#ffffff" stroke="#e6a817"/>
+    <rect width="8" height="126" rx="4" fill="#e6a817"/>
+    <text x="28" y="34" class="box-title">阶段负载</text>
+    <text x="28" y="62" class="body">P / D 队列与预计等待时间</text>
+    <text x="28" y="84" class="body">活跃序列、输入/输出 Token/s</text>
+    <text x="28" y="106" class="body">可用 KV Block 与显存水位</text>
+  </g>
+  <g transform="translate(900 150)">
+    <rect width="250" height="126" rx="8" fill="#ffffff" stroke="#d95d39"/>
+    <rect x="242" width="8" height="126" rx="4" fill="#d95d39"/>
+    <text x="22" y="34" class="box-title">缓存局部性</text>
+    <text x="22" y="62" class="body">Prefix / Session KV 所在位置</text>
+    <text x="22" y="84" class="body">命中可节省的 Prefill Token</text>
+    <text x="22" y="106" class="body">缓存版本、租户与剩余寿命</text>
+  </g>
+  <g transform="translate(900 348)">
+    <rect width="250" height="126" rx="8" fill="#ffffff" stroke="#376996"/>
+    <rect x="242" width="8" height="126" rx="4" fill="#376996"/>
+    <text x="22" y="34" class="box-title">网络与拓扑</text>
+    <text x="22" y="62" class="body">同机 / 同机架 / 跨机架代价</text>
+    <text x="22" y="84" class="body">有效带宽、拥塞与传输窗口</text>
+    <text x="22" y="106" class="body">PCIe / NUMA / RDMA 路径</text>
+  </g>
+
+  <rect x="405" y="208" width="390" height="224" rx="10" fill="#182026"/>
+  <circle cx="600" cy="252" r="22" fill="#376996"/>
+  <path d="M590 252H610M600 242V262" stroke="#ffffff" stroke-width="3"/>
+  <text x="600" y="302" text-anchor="middle" class="center-title">全局 SLO 调度器</text>
+  <text x="600" y="335" text-anchor="middle" class="center-body">预测完成时间与违约风险</text>
+  <text x="600" y="360" text-anchor="middle" class="center-body">联合决定准入、P/D 配对与容量令牌</text>
+  <rect x="470" y="384" width="260" height="30" rx="4" fill="#2b3841"/>
+  <text x="600" y="404" text-anchor="middle" class="center-body">min(queue + transfer + miss + decode)</text>
+
+  <path d="M300 213H386Q405 213 405 232" fill="none" stroke="#376996" stroke-width="2" marker-end="url(#arr)"/>
+  <path d="M300 411H386Q405 411 405 392" fill="none" stroke="#376996" stroke-width="2" marker-end="url(#arr)"/>
+  <path d="M900 213H814Q795 213 795 232" fill="none" stroke="#376996" stroke-width="2" marker-end="url(#arr)"/>
+  <path d="M900 411H814Q795 411 795 392" fill="none" stroke="#376996" stroke-width="2" marker-end="url(#arr)"/>
+
+  <rect x="146" y="526" width="908" height="92" rx="8" fill="#ffffff" stroke="#bdcad5"/>
+  <text x="178" y="555" class="box-title">决策输出</text>
+  <rect x="178" y="571" width="154" height="28" rx="4" fill="#eef8f7"/><text x="255" y="590" text-anchor="middle" class="metric">准入 / 背压</text>
+  <rect x="352" y="571" width="154" height="28" rx="4" fill="#fff4ef"/><text x="429" y="590" text-anchor="middle" class="metric">P -> D 路由</text>
+  <rect x="526" y="571" width="154" height="28" rx="4" fill="#fff9e8"/><text x="603" y="590" text-anchor="middle" class="metric">KV 放置 / 复用</text>
+  <rect x="700" y="571" width="154" height="28" rx="4" fill="#e9eff5"/><text x="777" y="590" text-anchor="middle" class="metric">P:D 扩缩容</text>
+  <rect x="874" y="571" width="148" height="28" rx="4" fill="#f1edf5"/><text x="948" y="590" text-anchor="middle" class="metric">降级 / 拒绝</text>
+  <path d="M600 432V524" stroke="#376996" stroke-width="3" marker-end="url(#arr)"/>
+
+  <path d="M1040 618V660H160V620" fill="none" stroke="#0e7c7b" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#arr-feedback)"/>
+  <rect x="394" y="642" width="412" height="48" rx="6" fill="#dff2f0" stroke="#0e7c7b"/>
+  <text x="600" y="663" text-anchor="middle" class="metric" fill="#0e7c7b">反馈：TTFT · TPOT / ITL · Goodput · 单位成本</text>
+  <text x="600" y="681" text-anchor="middle" class="body">校正预测模型与容量策略</text>
+</svg>
