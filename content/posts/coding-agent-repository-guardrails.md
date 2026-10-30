@@ -1,3 +1,11 @@
+---
+title: "代码库强约束：为 Coding Agent 构建可执行、可验证的工程护栏"
+description: "从任务、指令、工具、执行、代码、集成和治理七层出发，为 Coding Agent 建立可执行、可验证的代码库工程护栏。"
+date: 2026-10-30
+tags: Coding Agent, 工程治理, 软件安全
+featured: false
+---
+
 # 代码库强约束：为 Coding Agent 构建可执行、可验证的工程护栏
 
 ## 摘要
