@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { PostCard } from "@/components/PostCard";
-import { getAllPosts } from "@/lib/posts";
+import { getListedPosts } from "@/lib/posts";
 import { siteConfig } from "@/lib/site";
 
 export default function HomePage() {
   const currentYear = new Date().getFullYear();
-  const posts = getAllPosts();
+  const posts = getListedPosts();
   const featured = posts.filter((post) => post.featured);
   const selectedPosts = (featured.length ? featured : posts).slice(0, 3);
 

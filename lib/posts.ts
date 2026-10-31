@@ -8,6 +8,7 @@ export type Post = {
   date: string;
   tags: string[];
   featured: boolean;
+  listed: boolean;
   readingTime: number;
   content: string;
 };
@@ -62,6 +63,7 @@ function loadPost(fileName: string): Post {
       .map((tag) => tag.trim())
       .filter(Boolean),
     featured: data.featured === "true",
+    listed: data.listed !== "false",
     readingTime: calculateReadingTime(content),
     content,
   };
@@ -75,6 +77,10 @@ export function getAllPosts() {
     .filter((fileName) => fileName.endsWith(".md") && !fileName.startsWith("_"))
     .map(loadPost)
     .sort((a, b) => b.date.localeCompare(a.date));
+}
+
+export function getListedPosts() {
+  return getAllPosts().filter((post) => post.listed);
 }
 
 export function getPostBySlug(slug: string) {

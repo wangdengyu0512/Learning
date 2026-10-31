@@ -4,6 +4,7 @@ description: "从信任、验证、权限、协作和持续改进出发，说明
 date: 2026-10-30
 tags: Grok Bot, 多智能体, 数字团队
 featured: false
+listed: false
 ---
 
 # 一个人如何管理 15 个 Grok Bot：从 AI 聊天助手到可验证的数字团队

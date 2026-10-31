@@ -5,7 +5,7 @@ import { ReadingProgress, TableOfContents } from "@/components/ArticleTools";
 import { Markdown } from "@/components/Markdown";
 import { formatPostDate } from "@/lib/date";
 import { extractHeadings } from "@/lib/markdown";
-import { getAllPosts, getPostBySlug } from "@/lib/posts";
+import { getAllPosts, getListedPosts, getPostBySlug } from "@/lib/posts";
 import { siteConfig } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -41,7 +41,7 @@ export default async function PostPage({ params }: Props) {
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
-  const posts = getAllPosts();
+  const posts = getListedPosts();
   const currentIndex = posts.findIndex((item) => item.slug === post.slug);
   const newerPost = currentIndex > 0 ? posts[currentIndex - 1] : undefined;
   const olderPost = currentIndex >= 0 ? posts[currentIndex + 1] : undefined;

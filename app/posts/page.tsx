@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PostArchive } from "@/components/PostArchive";
-import { getAllPosts } from "@/lib/posts";
+import { getListedPosts } from "@/lib/posts";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default function PostsPage() {
-  const posts = getAllPosts().map(({ content: _content, ...post }) => post);
+  const posts = getListedPosts().map(({ content: _content, ...post }) => post);
 
   return (
     <section className="shell page-section">
