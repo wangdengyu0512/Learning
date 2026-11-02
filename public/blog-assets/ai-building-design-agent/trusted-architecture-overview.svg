@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+  <title id="title">AI 建筑概念设计从 POC 到可信 Agent 的架构总览</title>
+  <desc id="desc">项目资料先形成带来源和版本的可信输入，Agent 只提出受控决策，确定性工程引擎验证方案，设计师批准关键取舍，本地执行器受限修改 BIM，系统回读真实结果并由质量门推进状态。不可变快照、证据链、人工责任和评测发布贯穿全流程。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 10 5 0 10Z" fill="#64748b"/>
+    </marker>
+    <marker id="return-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 10 5 0 10Z" fill="#0f766e"/>
+    </marker>
+    <style>
+      text { font-family: "Microsoft YaHei", "PingFang SC", sans-serif; }
+      .zone { font-size: 15px; font-weight: 700; letter-spacing: 0; }
+      .step { font-size: 17px; font-weight: 700; fill: #0f172a; }
+      .body { font-size: 15px; fill: #334155; }
+      .small { font-size: 14px; fill: #475569; }
+      .flow { fill: none; stroke: #64748b; stroke-width: 2; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1200" height="820" rx="20" fill="#f8fafc"/>
+  <text x="48" y="52" font-size="29" font-weight="700" fill="#0f172a">从 POC 到可信 Agent：把一次好结果变成可验证的工程闭环</text>
+  <text x="48" y="84" font-size="17" fill="#475569">模型提出下一步，运行时约束下一步，工程引擎验证下一步，人对关键取舍与正式发布负责</text>
+
+  <rect x="48" y="112" width="536" height="40" rx="8" fill="#e0f2fe" stroke="#7dd3fc"/>
+  <text x="316" y="138" text-anchor="middle" class="zone" fill="#075985">云端控制面与工程计算</text>
+  <rect x="600" y="112" width="536" height="40" rx="8" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="868" y="138" text-anchor="middle" class="zone" fill="#9a3412">设计师工作台与本地执行面</text>
+  <path d="M592 104V438" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 6"/>
+  <rect x="543" y="96" width="98" height="24" rx="6" fill="#f8fafc"/>
+  <text x="592" y="113" text-anchor="middle" font-size="13" fill="#64748b">信任边界</text>
+
+  <rect x="48" y="176" width="164" height="236" rx="8" fill="#eff6ff" stroke="#93c5fd"/>
+  <circle cx="76" cy="205" r="15" fill="#2563eb"/>
+  <text x="76" y="211" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">1</text>
+  <text x="130" y="210" text-anchor="middle" class="step">可信输入</text>
+  <path d="M64 230H196" stroke="#bfdbfe"/>
+  <text x="64" y="260" class="body">项目事实 / 规则事实</text>
+  <text x="64" y="288" class="body">来源、版本、确认状态</text>
+  <rect x="64" y="316" width="132" height="58" rx="6" fill="#fff" stroke="#bfdbfe"/>
+  <text x="130" y="340" text-anchor="middle" class="small">DesignBrief</text>
+  <text x="130" y="362" text-anchor="middle" class="small">Snapshot</text>
+  <text x="130" y="396" text-anchor="middle" font-size="13" fill="#1d4ed8">输入可追溯</text>
+
+  <rect x="232" y="176" width="164" height="236" rx="8" fill="#eef2ff" stroke="#a5b4fc"/>
+  <circle cx="260" cy="205" r="15" fill="#4f46e5"/>
+  <text x="260" y="211" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">2</text>
+  <text x="314" y="210" text-anchor="middle" class="step">受控决策</text>
+  <path d="M248 230H380" stroke="#c7d2fe"/>
+  <text x="248" y="260" class="body">状态机 / 风险 / 预算</text>
+  <text x="248" y="288" class="body">能力与自主权边界</text>
+  <rect x="248" y="316" width="132" height="58" rx="6" fill="#fff" stroke="#c7d2fe"/>
+  <text x="314" y="340" text-anchor="middle" class="small">Decision</text>
+  <text x="314" y="362" text-anchor="middle" class="small">Proposal</text>
+  <text x="314" y="396" text-anchor="middle" font-size="13" fill="#4338ca">模型只提案</text>
+
+  <rect x="416" y="176" width="164" height="236" rx="8" fill="#ecfdf5" stroke="#6ee7b7"/>
+  <circle cx="444" cy="205" r="15" fill="#059669"/>
+  <text x="444" y="211" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">3</text>
+  <text x="498" y="210" text-anchor="middle" class="step">确定性验证</text>
+  <path d="M432 230H564" stroke="#a7f3d0"/>
+  <text x="432" y="260" class="body">几何 / 规则 / 工程量</text>
+  <text x="432" y="288" class="body">约束求解与专业检查</text>
+  <rect x="432" y="316" width="132" height="58" rx="6" fill="#fff" stroke="#a7f3d0"/>
+  <text x="498" y="340" text-anchor="middle" class="small">Solver +</text>
+  <text x="498" y="362" text-anchor="middle" class="small">Rule Engine</text>
+  <text x="498" y="396" text-anchor="middle" font-size="13" fill="#047857">工程事实可复算</text>
+
+  <rect x="600" y="176" width="164" height="236" rx="8" fill="#fffbeb" stroke="#fcd34d"/>
+  <circle cx="628" cy="205" r="15" fill="#d97706"/>
+  <text x="628" y="211" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">4</text>
+  <text x="682" y="210" text-anchor="middle" class="step">人工取舍</text>
+  <path d="M616 230H748" stroke="#fde68a"/>
+  <text x="616" y="260" class="body">关键假设 / 规则例外</text>
+  <text x="616" y="288" class="body">方案取舍与影响范围</text>
+  <rect x="616" y="316" width="132" height="58" rx="6" fill="#fff" stroke="#fde68a"/>
+  <text x="682" y="340" text-anchor="middle" class="small">Review Packet</text>
+  <text x="682" y="362" text-anchor="middle" class="small">+ Approval</text>
+  <text x="682" y="396" text-anchor="middle" font-size="13" fill="#b45309">批准绑定动作</text>
+
+  <rect x="784" y="176" width="164" height="236" rx="8" fill="#fff1f2" stroke="#fda4af"/>
+  <circle cx="812" cy="205" r="15" fill="#e11d48"/>
+  <text x="812" y="211" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">5</text>
+  <text x="866" y="210" text-anchor="middle" class="step">受限执行</text>
+  <path d="M800 230H932" stroke="#fecdd3"/>
+  <text x="800" y="260" class="body">授权 / 前置条件 / 幂等</text>
+  <text x="800" y="288" class="body">Revit / CAD 本地写入</text>
+  <rect x="800" y="316" width="132" height="58" rx="6" fill="#fff" stroke="#fecdd3"/>
+  <text x="866" y="340" text-anchor="middle" class="small">Execution</text>
+  <text x="866" y="362" text-anchor="middle" class="small">Grant</text>
+  <text x="866" y="396" text-anchor="middle" font-size="13" fill="#be123c">权限不进模型</text>
+
+  <rect x="968" y="176" width="168" height="236" rx="8" fill="#f0fdfa" stroke="#5eead4"/>
+  <circle cx="996" cy="205" r="15" fill="#0f766e"/>
+  <text x="996" y="211" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">6</text>
+  <text x="1052" y="210" text-anchor="middle" class="step">回读与推进</text>
+  <path d="M984 230H1120" stroke="#99f6e4"/>
+  <text x="984" y="260" class="body">读取真实 BIM 状态</text>
+  <text x="984" y="288" class="body">后置验证与质量门</text>
+  <rect x="984" y="316" width="136" height="58" rx="6" fill="#fff" stroke="#99f6e4"/>
+  <text x="1052" y="340" text-anchor="middle" class="small">Receipt +</text>
+  <text x="1052" y="362" text-anchor="middle" class="small">Evidence</text>
+  <text x="1052" y="396" text-anchor="middle" font-size="13" fill="#0f766e">成功必须可核实</text>
+
+  <path d="M212 294H228" class="flow"/>
+  <path d="M396 294H412" class="flow"/>
+  <path d="M580 294H596" class="flow"/>
+  <path d="M764 294H780" class="flow"/>
+  <path d="M948 294H964" class="flow"/>
+
+  <rect x="48" y="452" width="1088" height="88" rx="8" fill="#0f172a"/>
+  <text x="76" y="483" font-size="18" font-weight="700" fill="#fff">人工责任贯穿闭环</text>
+  <text x="76" y="514" font-size="16" fill="#cbd5e1">确认重要条件</text>
+  <circle cx="252" cy="495" r="4" fill="#38bdf8"/>
+  <text x="268" y="501" font-size="16" fill="#e2e8f0">选择多目标方案</text>
+  <circle cx="472" cy="495" r="4" fill="#fbbf24"/>
+  <text x="488" y="501" font-size="16" fill="#e2e8f0">处理规则例外</text>
+  <circle cx="674" cy="495" r="4" fill="#fb7185"/>
+  <text x="690" y="501" font-size="16" fill="#e2e8f0">批准高风险修改</text>
+  <circle cx="902" cy="495" r="4" fill="#2dd4bf"/>
+  <text x="918" y="501" font-size="16" fill="#e2e8f0">签署正式发布</text>
+
+  <rect x="48" y="564" width="1088" height="108" rx="8" fill="#fff" stroke="#cbd5e1"/>
+  <text x="76" y="595" font-size="18" font-weight="700" fill="#0f172a">贯穿各阶段的可信基础</text>
+  <path d="M400 584V652M760 584V652" stroke="#e2e8f0"/>
+  <text x="76" y="626" font-size="16" font-weight="700" fill="#334155">不可变快照与稳定 ID</text>
+  <text x="76" y="651" class="small">条件、模型、规则、工具版本绑定到一次运行</text>
+  <text x="428" y="626" font-size="16" font-weight="700" fill="#334155">Trace 与 EvidenceGraph</text>
+  <text x="428" y="651" class="small">同时回答“怎样执行”与“为什么成立”</text>
+  <text x="788" y="626" font-size="16" font-weight="700" fill="#334155">幂等、回执与故障恢复</text>
+  <text x="788" y="651" class="small">超时先核实，断线可续跑，副作用不盲目重试</text>
+
+  <rect x="48" y="696" width="1088" height="76" rx="8" fill="#ecfdf5" stroke="#6ee7b7"/>
+  <text x="76" y="727" font-size="18" font-weight="700" fill="#065f46">评测与发布闭环</text>
+  <text x="252" y="727" class="body">离线回归</text>
+  <path d="M342 722H390" class="flow"/>
+  <text x="410" y="727" class="body">影子运行</text>
+  <path d="M500 722H548" class="flow"/>
+  <text x="568" y="727" class="body">项目灰度</text>
+  <path d="M658 722H706" class="flow"/>
+  <text x="726" y="727" class="body">正式发布</text>
+  <path d="M816 722H864" class="flow"/>
+  <text x="884" y="727" class="body">监控与回退</text>
+  <text x="252" y="754" class="small">Prompt、模型、规则、工具和策略共同版本化，不在运行中静默切换</text>
+
+  <path d="M1052 412V432H1154V620H1138" fill="none" stroke="#0f766e" stroke-width="2" marker-end="url(#return-arrow)"/>
+  <text x="1150" y="548" text-anchor="end" font-size="13" fill="#0f766e">回执与证据回流</text>
+  <text x="48" y="802" font-size="14" fill="#64748b">核心原则：可信不是要求模型永远正确，而是让每个决策和动作都发生在可识别、可限制、可验证、可恢复、可追责的边界内。</text>
+</svg>
