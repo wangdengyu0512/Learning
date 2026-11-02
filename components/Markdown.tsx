@@ -3,6 +3,7 @@ import { getHeadingText, getUniqueHeadingId } from "@/lib/markdown";
 import { EnterpriseAiOSDiagram } from "@/components/EnterpriseAiOSDiagram";
 import { OntologyGraph } from "@/components/OntologyGraph";
 import { CityGovernanceDiagram } from "@/components/CityGovernanceDiagram";
+import { MermaidDiagram } from "@/components/MermaidDiagram";
 
 function resolveImageSource(source: string) {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -119,6 +120,7 @@ export function Markdown({ content }: { content: string }) {
   const lines = content.replace(/\r\n/g, "\n").split("\n");
   const blocks: ReactNode[] = [];
   const headingCounts = new Map<string, number>();
+  let diagramCount = 0;
   let index = 0;
 
   while (index < lines.length) {
@@ -232,6 +234,17 @@ export function Markdown({ content }: { content: string }) {
         index += 1;
       }
       index += 1;
+      if (fence[1] === "mermaid") {
+        diagramCount += 1;
+        blocks.push(
+          <MermaidDiagram
+            chart={code.join("\n")}
+            key={`mermaid-${index}`}
+            label={`架构图 ${diagramCount}`}
+          />,
+        );
+        continue;
+      }
       blocks.push(
         <pre key={`code-${index}`} data-language={fence[1] || undefined}>
           <code>{code.join("\n")}</code>

@@ -993,6 +993,57 @@ button {
   font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
 }
 
+.mermaid-diagram {
+  margin: 42px 0;
+  padding: 24px 0 14px;
+  overflow: hidden;
+  border-block: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.mermaid-diagram__canvas {
+  min-height: 180px;
+  padding: 0 20px;
+  overflow-x: auto;
+  text-align: center;
+}
+
+.mermaid-diagram__canvas:empty {
+  min-height: 0;
+  padding: 0;
+}
+
+.mermaid-diagram__canvas svg {
+  display: block;
+  width: 100%;
+  min-width: 620px;
+  height: auto;
+  margin-inline: auto;
+}
+
+.mermaid-diagram__status,
+.mermaid-diagram__error > p {
+  margin: 0;
+  padding: 28px 20px;
+  color: var(--muted);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 14px;
+  text-align: center;
+}
+
+.mermaid-diagram__error .prose pre,
+.mermaid-diagram__error pre {
+  margin: 0 20px 20px;
+}
+
+.mermaid-diagram figcaption {
+  margin-top: 14px;
+  color: var(--muted);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 12px;
+  text-align: center;
+}
+
 .prose hr {
   width: 80px;
   margin: 70px auto;
