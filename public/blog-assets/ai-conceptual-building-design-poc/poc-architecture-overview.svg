@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">从需求到 BIM 的 AI 建筑概念设计 POC 架构总览</title>
+  <desc id="desc">经过确认的输入进入候选生成与确定性验证，设计师通过质量门完成关键取舍，再以两阶段方式发布 BIM。长事务工作流管理状态与恢复，版本化统一领域模型保持对象、版本和证据连续，所有交付物来自同一模型快照。</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0 0 10 5 0 10Z" fill="#64748b"/>
+    </marker>
+    <style>
+      text { font-family: "Microsoft YaHei", "PingFang SC", sans-serif; letter-spacing: 0; }
+      .step { font-size: 18px; font-weight: 700; fill: #0f172a; }
+      .body { font-size: 15px; fill: #334155; }
+      .small { font-size: 13px; fill: #475569; }
+      .flow { fill: none; stroke: #64748b; stroke-width: 2.5; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1200" height="760" rx="16" fill="#f8fafc"/>
+  <text x="48" y="52" font-size="29" font-weight="700" fill="#0f172a">从需求到 BIM：统一模型驱动的 POC 工程闭环</text>
+  <text x="48" y="84" font-size="17" fill="#475569">概率系统负责探索，确定性引擎负责计算，工作流负责状态，人负责关键取舍与正式发布</text>
+
+  <rect x="48" y="112" width="1104" height="58" rx="8" fill="#e0f2fe" stroke="#7dd3fc"/>
+  <circle cx="82" cy="141" r="16" fill="#0284c7"/>
+  <path d="M74 141l6 6 11-13" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="112" y="137" font-size="18" font-weight="700" fill="#075985">长事务工作流</text>
+  <text x="112" y="158" class="small">保存状态、检查点、人工任务、重试与恢复；只有质量门事件能够推进正式状态</text>
+  <text x="1116" y="146" text-anchor="end" font-size="14" font-weight="700" fill="#075985">跨分钟 / 小时运行</text>
+
+  <rect x="48" y="218" width="196" height="210" rx="8" fill="#eff6ff" stroke="#93c5fd"/>
+  <circle cx="78" cy="249" r="16" fill="#2563eb"/><text x="78" y="255" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">1</text>
+  <text x="106" y="255" class="step">确认输入</text><path d="M64 274H228" stroke="#bfdbfe"/>
+  <text x="68" y="305" class="body">任务书与空间计划</text><text x="68" y="333" class="body">场地边界与企业标准</text><text x="68" y="361" class="body">规则、假设与来源证据</text>
+  <rect x="68" y="382" width="156" height="30" rx="6" fill="#fff" stroke="#bfdbfe"/><text x="146" y="402" text-anchor="middle" class="small">DesignBriefRevision</text>
+
+  <rect x="280" y="218" width="196" height="210" rx="8" fill="#eef2ff" stroke="#a5b4fc"/>
+  <circle cx="310" cy="249" r="16" fill="#4f46e5"/><text x="310" y="255" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">2</text>
+  <text x="338" y="255" class="step">生成候选</text><path d="M296 274H460" stroke="#c7d2fe"/>
+  <text x="300" y="305" class="body">LLM 理解设计意图</text><text x="300" y="333" class="body">模板 / 生成模型探索</text><text x="300" y="361" class="body">约束求解器收敛方案</text>
+  <rect x="300" y="382" width="156" height="30" rx="6" fill="#fff" stroke="#c7d2fe"/><text x="378" y="402" text-anchor="middle" class="small">SpatialGraphProposal</text>
+
+  <rect x="512" y="218" width="196" height="210" rx="8" fill="#ecfdf5" stroke="#6ee7b7"/>
+  <circle cx="542" cy="249" r="16" fill="#059669"/><text x="542" y="255" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">3</text>
+  <text x="570" y="255" class="step">确定性验证</text><path d="M528 274H692" stroke="#a7f3d0"/>
+  <text x="532" y="305" class="body">几何有效性与面积</text><text x="532" y="333" class="body">邻接、疏散与采光初判</text><text x="532" y="361" class="body">工程量与成本计算</text>
+  <rect x="532" y="382" width="156" height="30" rx="6" fill="#fff" stroke="#a7f3d0"/><text x="610" y="402" text-anchor="middle" class="small">QualityGateResult</text>
+
+  <rect x="744" y="218" width="176" height="210" rx="8" fill="#fffbeb" stroke="#fcd34d"/>
+  <circle cx="774" cy="249" r="16" fill="#d97706"/><text x="774" y="255" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">4</text>
+  <text x="802" y="255" class="step">人工取舍</text><path d="M760 274H904" stroke="#fde68a"/>
+  <text x="764" y="305" class="body">确认关键假设</text><text x="764" y="333" class="body">比较候选与影响</text><text x="764" y="361" class="body">批准交付快照</text>
+  <rect x="764" y="382" width="136" height="30" rx="6" fill="#fff" stroke="#fde68a"/><text x="832" y="402" text-anchor="middle" class="small">Approval</text>
+
+  <rect x="956" y="218" width="196" height="210" rx="8" fill="#fff1f2" stroke="#fda4af"/>
+  <circle cx="986" cy="249" r="16" fill="#e11d48"/><text x="986" y="255" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">5</text>
+  <text x="1014" y="255" class="step">两阶段发布</text><path d="M972 274H1136" stroke="#fecdd3"/>
+  <text x="976" y="305" class="body">prepare：生成变更计划</text><text x="976" y="333" class="body">commit：受控写入 BIM</text><text x="976" y="361" class="body">read-back：回读结果</text>
+  <rect x="976" y="382" width="156" height="30" rx="6" fill="#fff" stroke="#fecdd3"/><text x="1054" y="402" text-anchor="middle" class="small">ExportPlan + Mapping</text>
+
+  <path d="M244 324H273M476 324H505M708 324H737M920 324H949" class="flow"/>
+
+  <rect x="48" y="468" width="1104" height="112" rx="8" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+  <text x="72" y="502" font-size="18" font-weight="700" fill="#0f172a">版本化统一领域模型</text><text x="1128" y="502" text-anchor="end" class="small">唯一工程事实中轴</text>
+  <rect x="72" y="522" width="178" height="36" rx="6" fill="#fff" stroke="#94a3b8"/><text x="161" y="545" text-anchor="middle" class="small">DesignBriefRevision</text>
+  <rect x="270" y="522" width="158" height="36" rx="6" fill="#fff" stroke="#94a3b8"/><text x="349" y="545" text-anchor="middle" class="small">SpatialGraph</text>
+  <rect x="448" y="522" width="158" height="36" rx="6" fill="#fff" stroke="#94a3b8"/><text x="527" y="545" text-anchor="middle" class="small">GeometryModel</text>
+  <rect x="626" y="522" width="208" height="36" rx="6" fill="#fff" stroke="#94a3b8"/><text x="730" y="545" text-anchor="middle" class="small">BuildingModelRevision</text>
+  <rect x="854" y="522" width="130" height="36" rx="6" fill="#fff" stroke="#94a3b8"/><text x="919" y="545" text-anchor="middle" class="small">Artifact</text>
+  <rect x="1004" y="522" width="124" height="36" rx="6" fill="#fff" stroke="#94a3b8"/><text x="1066" y="545" text-anchor="middle" class="small">EvidenceGraph</text>
+  <path d="M146 428V461M378 428V461M610 428V461M832 428V461M1054 428V461" class="flow"/>
+
+  <text x="48" y="622" font-size="16" font-weight="700" fill="#334155">同一模型快照派生交付物</text>
+  <rect x="48" y="642" width="252" height="70" rx="8" fill="#e0f2fe" stroke="#7dd3fc"/><text x="174" y="672" text-anchor="middle" font-size="17" font-weight="700" fill="#075985">CAD / IFC / BIM</text><text x="174" y="696" text-anchor="middle" class="small">可编辑对象与稳定 ID 映射</text>
+  <rect x="332" y="642" width="252" height="70" rx="8" fill="#ecfdf5" stroke="#6ee7b7"/><text x="458" y="672" text-anchor="middle" font-size="17" font-weight="700" fill="#047857">分析与指标</text><text x="458" y="696" text-anchor="middle" class="small">面积、交通、疏散、采光</text>
+  <rect x="616" y="642" width="252" height="70" rx="8" fill="#fff7ed" stroke="#fdba74"/><text x="742" y="672" text-anchor="middle" font-size="17" font-weight="700" fill="#9a3412">工程量与成本</text><text x="742" y="696" text-anchor="middle" class="small">版本化分类、数量与单价</text>
+  <rect x="900" y="642" width="252" height="70" rx="8" fill="#f5f3ff" stroke="#c4b5fd"/><text x="1026" y="672" text-anchor="middle" font-size="17" font-weight="700" fill="#6d28d9">带证据的报告</text><text x="1026" y="696" text-anchor="middle" class="small">结论可追溯到来源与计算</text>
+  <path d="M174 580V635M458 580V635M742 580V635M1026 580V635" class="flow"/>
+</svg>
