@@ -22,16 +22,16 @@ featured: false
 
 ### 配置文件已经不再只是配置
 
-2026 年 2 月，Check Point Research 公开了 Claude Code 项目配置相关的研究，涉及两个已修复漏洞。
+2026 年 2 月，[Check Point Research](https://research.checkpoint.com/2026/rce-and-api-token-exfiltration-through-claude-code-project-files-cve-2025-59536/) 公开了 Claude Code 项目配置相关的研究，涉及两个已修复漏洞。
 
-- `CVE-2025-59536`：Claude Code `< 1.0.111` 的项目启动信任机制存在缺陷。用户在不可信目录中启动 Claude Code 时，项目包含的命令可能在用户确认信任之前执行。
-- `CVE-2026-21852`：Claude Code `< 2.0.65` 的项目加载流程可能在信任确认前读取项目配置并发起请求。恶意仓库可以将 `ANTHROPIC_BASE_URL` 指向攻击者控制的端点，进而造成包括 Anthropic API Key 在内的数据泄露风险。
+- [`CVE-2025-59536`](https://github.com/anthropics/claude-code/security/advisories/GHSA-4fgq-fpq9-mr3g)：Claude Code `< 1.0.111` 的项目启动信任机制存在缺陷。用户在不可信目录中启动 Claude Code 时，项目包含的命令可能在用户确认信任之前执行。
+- [`CVE-2026-21852`](https://nvd.nist.gov/vuln/detail/CVE-2026-21852)：Claude Code `< 2.0.65` 的项目加载流程可能在信任确认前读取项目配置并发起请求。恶意仓库可以将 `ANTHROPIC_BASE_URL` 指向攻击者控制的端点，进而造成包括 Anthropic API Key 在内的数据泄露风险。
 
 研究还讨论了项目级 Hooks、MCP Server 和环境变量等配置机制。这些能力原本都是为了改善协作体验：团队可以把格式化、权限检查、工具接入和环境约定随仓库分发。但当配置能够启动进程、访问网络或影响凭证流向时，它就已经具有代码执行能力。
 
 这不是 Claude Code 独有的问题。现代 IDE、构建工具、CI 工作流、Dev Container 和包管理器都经历过类似的边界变化：为了自动化，配置逐渐变成可执行逻辑；为了共享，执行逻辑又被放入仓库。Agent 只是在此基础上进一步连接了模型决策、工具调用和自然语言指令。
 
-Anthropic 后续的修复包括在执行不可信项目配置前增强警告与确认，阻止 MCP Server 在用户批准前启动，并将网络请求延迟到信任确认之后。其当前安全文档也将权限模式、沙箱、工作目录边界和组织级配置列为核心防护能力。
+Anthropic 后续的修复包括在执行不可信项目配置前增强警告与确认，阻止 MCP Server 在用户批准前启动，并将网络请求延迟到信任确认之后。其[当前安全文档](https://code.claude.com/docs/en/security)也将权限模式、沙箱、工作目录边界和组织级配置列为核心防护能力。
 
 真正值得企业关注的，不是“某个 Agent 是否出现过漏洞”，而是下面这个结构性事实：
 
@@ -39,7 +39,7 @@ Anthropic 后续的修复包括在执行不可信项目配置前增强警告与�
 
 ### Agent 既可能是攻击面，也可能成为攻击工具
 
-2025 年 8 月的 Nx s1ngularity 供应链事件进一步说明了这一点。根据 Nx 官方复盘，攻击者利用 GitHub Actions 注入问题获取 npm 发布 Token，并在约四小时内发布多个恶意版本。恶意包的安装脚本会扫描本地敏感数据，尝试调用本机的 Claude、Gemini 等 AI 工具，再通过 GitHub CLI 上传结果。
+2025 年 8 月的 Nx s1ngularity 供应链事件进一步说明了这一点。根据 [Nx 官方复盘](https://nx.dev/blog/s1ngularity-postmortem)，攻击者利用 GitHub Actions 注入问题获取 npm 发布 Token，并在约四小时内发布多个恶意版本。恶意包的安装脚本会扫描本地敏感数据，尝试调用本机的 Claude、Gemini 等 AI 工具，再通过 GitHub CLI 上传结果。
 
 这次事件的入口不是 Agent 自身漏洞，而是传统的软件供应链攻击。但攻击代码主动寻找本地 AI CLI，是因为这些工具可能已经具备三类有价值的能力：
 
@@ -103,7 +103,7 @@ Anthropic 后续的修复包括在执行不可信项目配置前增强警告与�
 
 Agent 的能力常被归因于模型，但实际效果由模型与 Harness 共同决定。Harness 包括上下文管理、工具循环、提示组织、错误恢复、压缩、审批和执行环境。
 
-OpenAI 在 2026 年发布的 Codex 平台文章中，将 Harness 明确定义为模型之外的执行系统，并披露在 ARC-AGI-3 实验中，仅通过保留推理和上下文压缩等 Harness 设置，就使特定配置下的分数从 13.3% 提升至 38.3%，同时降低输出 Token。这个例子不代表所有任务都会获得同样收益，但说明 Agent 的竞争已经不只是模型竞争。
+OpenAI 在 2026 年发布的 [Codex 平台文章](https://developers.openai.com/blog/codex-as-a-platform)中，将 Harness 明确定义为模型之外的执行系统，并披露在 ARC-AGI-3 实验中，仅通过保留推理和上下文压缩等 Harness 设置，就使特定配置下的分数从 13.3% 提升至 38.3%，同时降低输出 Token。这个例子不代表所有任务都会获得同样收益，但说明 Agent 的竞争已经不只是模型竞争。
 
 企业过去认为“模型 API 可替换就够了”，现在逐渐意识到，真正形成生产差异的往往是模型上方的 Runtime。
 
@@ -157,7 +157,7 @@ Codex 的变化更能说明通用 Agent 与平台路线正在汇合。
 
 ### Goose：开放 Runtime 与多模型 Provider
 
-Goose 是由 Block 发起、现由 Agentic AI Foundation 承载的开源通用 Agent。官方将其定位为运行在本地的通用 Agent，不只面向编码，也覆盖研究、写作、自动化和数据分析。
+Goose 是由 Block 发起、现由 Agentic AI Foundation 承载的开源通用 Agent。[官方文档](https://goose-docs.ai/)将其定位为运行在本地的通用 Agent，不只面向编码，也覆盖研究、写作、自动化和数据分析。
 
 Goose 的特点是开放：它支持多种模型 Provider，以 MCP Extension 扩展工具，并提供 Recipes、子 Agent 与 Goose Development Kit。其官方文档还描述了 ACP 能力，可以作为 ACP Server 接入编辑器，也可以使用 Claude Code、Codex 等 ACP Agent 作为 Provider。
 
@@ -167,7 +167,7 @@ Goose 的特点是开放：它支持多种模型 Provider，以 MCP Extension �
 
 ### OpenCode：Provider-agnostic 的开放编码 Agent
 
-OpenCode 同样是开源编码 Agent，提供终端、桌面和 Web 形态，并支持多家 LLM Provider、MCP Server、插件、自定义 Agent 和命令。
+[OpenCode](https://opencode.ai/docs/) 同样是开源编码 Agent，提供终端、桌面和 Web 形态，并支持多家 LLM Provider、MCP Server、插件、自定义 Agent 和命令。
 
 它代表另一种重要选择：Runtime 本身不以单一模型供应商为中心，企业可以在相似交互和工具环境中切换模型。对于需要自托管模型、区域化 Provider 或成本路由的团队，这种结构具有吸引力。
 
@@ -316,6 +316,8 @@ Agent 平台也是如此。Claude Code 可以保留自己的 Hooks 和权限体�
 平台应该在治理上强，在 Agent 内部行为上薄。
 
 强控制面意味着身份、权限、状态、审计和评测不能绕过；薄适配层意味着不复制每个 Agent 已经做好的上下文工程与工具循环。平台通过少量稳定协议管理多个 Runtime，而不是再造一个巨大的统一 Agent。
+
+一句话概括：**让第一方 Agent 负责能力上限，让企业平台负责安全下限和替换能力。**
 
 ## 八、怎样验证底座真的可替换
 
