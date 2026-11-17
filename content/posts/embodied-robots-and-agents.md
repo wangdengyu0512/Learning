@@ -1,12 +1,12 @@
 ---
-title: "从会说到会做：具身机器人与具身 Agent 如何进入物理世界"
-description: "系统梳理具身机器人、具身智能与具身 Agent 的概念边界、VLA 技术路线、系统架构、训练闭环、落地场景与安全挑战。"
-date: 2026-10-16
+title: "具身 Agent：从语言智能到物理世界智能"
+description: "从具身认知、任务规划和 VLA 出发，系统梳理具身 Agent 的技术架构、代表论文、数据与评测、工程闭环、落地场景和安全挑战。"
+date: 2026-11-06
 tags: 具身智能, 机器人, AI Agent, VLA
 featured: false
 ---
 
-# 从会说到会做：具身机器人与具身 Agent 如何进入物理世界
+# 具身 Agent：从语言智能到物理世界智能
 
 > 大语言模型让机器学会了描述世界，具身智能要解决的，是机器如何在这个世界中行动，并为行动结果负责。
 
@@ -33,6 +33,8 @@ featured: false
    ↓
 重新感知、验证、纠错与学习
 ```
+
+这不是一篇机器人产品盘点，也不把演示视频当作能力证明。文章优先引用论文、公开基准和项目资料，并区分三类证据：经过同行评审的论文、尚待进一步验证的预印本，以及由厂商发布的技术报告或自报结果。后两类材料适合用来观察技术方向，不能单独证明系统已经具备可重复、可规模化的生产能力。
 
 ---
 
@@ -110,9 +112,21 @@ featured: false
 
 ---
 
-## 二、为什么是现在：四条技术曲线开始汇合
+## 二、为什么是现在：研究演进与四条技术曲线
 
 机器人研究并不是今天才出现。真正发生变化的是，多模态基础模型、机器人数据、仿真平台和硬件工程在同一时期加速成熟，使机器人第一次有机会从“每个任务单独编程”走向“使用统一模型理解多种任务”。
+
+从论文脉络看，这一轮变化不是单一模型带来的突破，而是高层规划、开放世界语义、跨本体数据和连续动作生成逐步汇合的结果：
+
+| 阶段 | 代表工作 | 解决的问题 | 尚未解决的问题 |
+|---|---|---|---|
+| 语言与技能对齐 | [SayCan](https://arxiv.org/abs/2204.01691)、[Code as Policies](https://arxiv.org/abs/2209.07753) | 用语言模型分解任务，并用技能可供性或代码策略约束执行 | 依赖预定义技能，难以直接处理连续控制 |
+| 闭环推理与多模态状态 | [Inner Monologue](https://arxiv.org/abs/2207.05608)、[PaLM-E](https://arxiv.org/abs/2303.03378) | 将环境反馈、视觉和机器人状态纳入推理过程 | 长任务的状态一致性、时延和错误累积仍突出 |
+| 大规模多任务策略 | [RT-1](https://arxiv.org/abs/2212.06817)、[RT-2](https://arxiv.org/abs/2307.15818) | 用统一策略处理多任务，并尝试把互联网语义迁移到动作 | 数据和本体仍受限，难以证明开放世界泛化 |
+| 跨本体与开放模型 | [Open X-Embodiment](https://arxiv.org/abs/2310.08864)、[Octo](https://arxiv.org/abs/2405.12213)、[OpenVLA](https://arxiv.org/abs/2406.09246) | 汇聚多机构机器人数据，探索可微调的通用策略 | 数据质量、动作空间对齐和真实部署稳定性不足 |
+| 连续动作与长任务 | [Diffusion Policy](https://arxiv.org/abs/2303.04137)、[ACT](https://arxiv.org/abs/2304.13705)、[π0](https://arxiv.org/abs/2410.24164) | 提高多峰连续动作、精细双臂操作和动作块生成能力 | 对失败恢复、安全约束和跨环境迁移仍依赖系统层补足 |
+
+这条演进路线揭示了一个重要事实：具身 Agent 不是某一种模型的名称，而是一个系统角色。它要把语义理解、世界状态、任务规划、机器人技能和反馈验证组织成闭环。
 
 ### 1. 多模态模型提供了开放世界语义
 
@@ -311,7 +325,7 @@ flowchart TD
 | 技能层 | 数十毫秒到秒 | 怎样抓取、放置、开门和行走 | VLA、模仿学习、强化学习、运动规划 |
 | 实时控制层 | 毫秒级 | 怎样稳定、精确、安全地驱动执行器 | MPC、PID、力控、阻抗控制、安全控制器 |
 
-2026 年发布的 [Gemini Robotics 2](https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/) 就体现了这种分层方向：具身推理模型负责空间理解、任务规划和进度跟踪，VLA 模型负责把计划转化为机器人动作。它不是让单个大模型取代整个机器人技术栈，而是在不同层次组织不同模型和控制能力。
+[Gemini Robotics](https://arxiv.org/abs/2503.20020) 技术报告也体现了这种分层方向：Gemini Robotics-ER 面向空间和时间等具身推理问题，Gemini Robotics VLA 则把视觉与语言输入映射为机器人动作。这个案例更适合被理解为一种系统设计选择，而不是“单个大模型已经取代整个机器人技术栈”的证据。
 
 ### 3. 判断架构的标准不是“是否端到端”，而是责任是否清楚
 
@@ -410,7 +424,21 @@ flowchart TD
 
 RT-2、Octo、OpenVLA、π0 系列、GR00T 和 Gemini Robotics 等工作，正在探索用统一模型覆盖更多任务、场景和机器人形态。
 
-例如，Physical Intelligence 的 [π0.5](https://www.physicalintelligence.company/download/pi05.pdf) 研究展示了模型在未参与训练的新家庭环境中执行持续 10 至 15 分钟的多阶段整理任务。NVIDIA 的 [GR00T N1.6](https://research.nvidia.com/labs/gear/gr00t-n1_6/) 则面向双臂和人形机器人，联合使用多种真实与仿真机器人数据，探索跨任务和跨形态策略。
+这些系统经常被统称为 VLA，但它们的输入、动作表示、数据来源和开放程度差异很大。将名称放在一起，不代表它们在同一条件下做过可直接比较的测试：
+
+| 系统 | 核心结构与动作表示 | 训练数据和本体 | 开放性 | 主要局限 |
+|---|---|---|---|---|
+| RT-1 | Transformer；将图像、语言映射为离散动作 Token | 真实机器人多任务数据，主要围绕 Everyday Robots 平台 | 论文公开，模型与完整数据未开放 | 本体和场景集中，开放世界语义有限 |
+| RT-2 | VLM/VLA；把动作表示成文本式 Token | 互联网视觉语言数据与机器人轨迹联合训练 | 论文公开，权重未开放 | 语义迁移明显，但实时控制和复现实验受限 |
+| Octo | Transformer 通用策略；支持按具体动作空间适配 | Open X-Embodiment 中的多机构、多本体轨迹 | 代码和检查点开放 | 迁移到新机器人仍需适配与示范数据 |
+| OpenVLA | 7B 参数 VLA；自回归离散动作 | 以 Open X-Embodiment 数据为主，覆盖多种机械臂 | 权重、代码和微调方案开放 | 推理成本较高，跨本体动作统一仍不充分 |
+| π0 | VLM 骨干与 flow matching 动作专家；连续动作块 | 多平台灵巧操作数据，包含双臂和移动操作 | 论文公开；后续发布部分开放资源 | 数据细节和完整复现条件有限，结果主要来自团队自评 |
+| Gemini Robotics | 具身推理与 VLA 分层，面向空间推理和动作生成 | 多机器人数据，覆盖机械臂与人形等形态 | 厂商技术报告，权重未开放 | 独立复现不足，公开结果不能代表生产可靠性 |
+| GR00T N1 | 双系统架构；视觉语言推理连接扩散式动作生成 | 真实、仿真与合成数据，面向人形和双臂机器人 | 厂商报告；开放部分数据、工具和模型资源 | 版本迭代快，跨版本指标和实际部署条件需单独核对 |
+
+表中的“开放”也不能简单等同于“可复现”。权重开放只是第一步，训练数据授权、机器人标定、控制频率、相机布置、评测物体和失败判定方式，都会显著影响最终结果。
+
+例如，[π0.5](https://proceedings.mlr.press/v305/black25a.html) 论文团队报告，模型能够在训练中未出现的新家庭环境里执行厨房或卧室整理任务，其中长程行为可持续 10 至 15 分钟。这个时长描述来自作者在特定机器人、任务和评测设置下的实验，不能直接外推为任意家庭环境中的稳定能力。[GR00T N1](https://arxiv.org/abs/2503.14734) 技术报告则介绍了由视觉语言模块和扩散 Transformer 动作模块组成的双系统架构，并使用真实机器人轨迹、人类视频和合成数据训练面向人形机器人的策略。
 
 这些进展说明，机器人模型正在从“执行一项技能”转向“根据语言目标组合多种技能”。但它们仍不等于已经解决开放世界中的通用机器人问题。研究演示通常有明确的设备条件、任务范围和评测分布，真实商业部署还要考虑长期故障率、维护成本、安全认证和人工接管比例。
 
@@ -491,7 +519,7 @@ RT-2、Octo、OpenVLA、π0 系列、GR00T 和 Gemini Robotics 等工作，正�
 
 机器人可能会抓训练过的杯子，却无法处理透明、反光、柔软或被遮挡的容器；可能在实验室光照下运行稳定，却在阳光直射或摄像头沾污后失效。
 
-NVIDIA 在 [GR00T N1.6](https://research.nvidia.com/labs/gear/gr00t-n1_6/) 的公开说明中仍把多任务语言遵循和分布外任务泛化列为 VLA 面临的持续挑战。这意味着“通用模型”更准确的理解是：它覆盖了更宽的训练分布，而不是已经能在任意环境中可靠工作。
+[GR00T N1](https://arxiv.org/abs/2503.14734) 技术报告展示了模型在多种机器人本体、标准仿真基准和特定真实机器人任务上的结果，但这些实验仍有明确的数据、任务和硬件边界。这意味着“通用模型”更准确的理解是：它试图用同一模型覆盖更宽的训练与评测分布，而不是已经能在任意环境中可靠工作。
 
 ### 3. 语言上合理，不等于物理上可行
 
@@ -501,7 +529,7 @@ LLM 很容易生成“抓住桌布边缘，把它拉平”这样的步骤，却�
 
 ### 4. 多人协作和任务跟踪比单项技能更难
 
-Habitat 的 [PARTNR](https://aihabitat.org/partnr/) 基准包含大量自然语言家庭任务，用于评测人和机器人之间的规划与协作。其公开结果显示，人类完成了 93% 的任务，而基于 LLM 的规划器完成率约为 30%。主要差距并不只来自物体识别，还包括协作、任务跟踪和错误恢复。
+[PARTNR](https://proceedings.iclr.cc/paper_files/paper/2025/hash/a3cf318fbeec1126da21e9185ae9908c-Abstract-Conference.html) 基准包含 10 万个自然语言家庭任务，用于评测人机协作中的规划与推理。在论文设定的仿真环境、任务定义和非特权观测条件下，人类参与者完成了 93% 的评测任务，表现最好的 LLM 规划器完成率为 30%。论文还观察到协作、伙伴动作跟踪和失败恢复等问题；这些数字反映的是该基准中的差距，不能直接等同于真实家庭机器人的总体成功率。
 
 这说明，当具身 Agent 进入真实社会空间时，它不仅要控制身体，还要理解人的意图、进度、职责和变化。
 
@@ -569,7 +597,22 @@ Habitat 的 [PARTNR](https://aihabitat.org/partnr/) 基准包含大量自然语�
 
 具身智能需要从“展示能力”转向“测量能力”。单一成功率无法描述完整系统，至少需要同时观察以下指标。
 
-### 1. 任务能力
+### 1. 先看基准究竟测什么
+
+具身 Agent 横跨导航、语言理解、操作、长时规划和人机协作，不存在一个分数可以代表全部能力。常见公开基准分别切取了问题的不同截面：
+
+| 基准 | 环境与任务 | 主要评测对象 | 阅读结果时要注意 |
+|---|---|---|---|
+| [Habitat](https://arxiv.org/abs/1904.01201) | 高性能三维室内仿真，导航和交互任务 | 视觉导航、探索和具身问答等能力 | 仿真导航成绩不等于真实机器人操作能力 |
+| [ALFRED](https://arxiv.org/abs/1912.01734) | 根据自然语言完成多步家庭任务 | 语言指令理解、导航与物体交互 | 使用离散仿真动作，物理接触被大幅简化 |
+| [CALVIN](https://arxiv.org/abs/2112.03227) | 桌面机械臂连续控制和语言条件长任务 | 已见与未见环境中的连续任务链成功率 | 任务空间和工作台范围仍较受控 |
+| [BEHAVIOR-1K](https://proceedings.mlr.press/v205/li23a.html) | 由人类需求驱动的 1,000 项日常活动 | 长时家庭活动、对象状态和复杂交互 | 任务覆盖广，完整解决对感知、规划和控制要求很高 |
+| [LIBERO](https://proceedings.neurips.cc/paper_files/paper/2023/hash/8c3c666820ea055a77726d66fc7d447f-Abstract-Datasets_and_Benchmarks.html) | 多套语言条件机器人操作任务 | 终身学习、知识迁移与灾难性遗忘 | 主要回答持续学习问题，不是通用机器人总榜 |
+| [PARTNR](https://proceedings.iclr.cc/paper_files/paper/2025/hash/a3cf318fbeec1126da21e9185ae9908c-Abstract-Conference.html) | 人与机器人协作的家庭长任务 | 多智能体规划、任务跟踪和协作推理 | 规划器结果依赖所用感知、技能和仿真假设 |
+
+比较论文结果时，至少要核对训练数据是否包含测试环境、是否允许人工重置、任务成功由脚本还是人工判定、测试使用仿真还是真机，以及基线是否使用相同观测和动作空间。脱离这些条件比较两个成功率，通常没有意义。
+
+### 2. 任务能力
 
 - 端到端任务成功率；
 - 子任务和关键动作成功率；
@@ -577,7 +620,7 @@ Habitat 的 [PARTNR](https://aihabitat.org/partnr/) 基准包含大量自然语�
 - 未见物体、场景和指令上的泛化能力；
 - 长任务持续时间和最大步骤数。
 
-### 2. 恢复能力
+### 3. 恢复能力
 
 - 失败检测率；
 - 无人工介入恢复率；
@@ -585,7 +628,7 @@ Habitat 的 [PARTNR](https://aihabitat.org/partnr/) 基准包含大量自然语�
 - 从异常到恢复的时间；
 - 重复失败和死循环比例。
 
-### 3. 安全能力
+### 4. 安全能力
 
 - 碰撞、跌倒和超限事件；
 - 危险任务识别率；
@@ -593,7 +636,7 @@ Habitat 的 [PARTNR](https://aihabitat.org/partnr/) 基准包含大量自然语�
 - 人工接管及时性；
 - 紧急停止后的安全状态保持能力。
 
-### 4. 运行能力
+### 5. 运行能力
 
 - 单次任务耗时；
 - 端到端决策延迟；
@@ -601,7 +644,7 @@ Habitat 的 [PARTNR](https://aihabitat.org/partnr/) 基准包含大量自然语�
 - 网络中断下的可用能力；
 - 能耗、维护周期和设备利用率。
 
-### 5. 经济能力
+### 6. 经济能力
 
 - 单位任务成本；
 - 每小时有效产出；
@@ -697,13 +740,39 @@ Habitat 的 [PARTNR](https://aihabitat.org/partnr/) 基准包含大量自然语�
 
 ## 参考资料
 
-1. Habitat, [Embodied AI Platform](https://aihabitat.org/)
-2. Anthony Brohan et al., [RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control](https://arxiv.org/abs/2307.15818), 2023
-3. Open X-Embodiment Collaboration, [Open X-Embodiment: Robotic Learning Datasets and RT-X Models](https://robotics-transformer-x.github.io/)
-4. Octo Model Team, [Octo: An Open-Source Generalist Robot Policy](https://octo-models.github.io/), 2024
-5. Moo Jin Kim et al., [OpenVLA: An Open-Source Vision-Language-Action Model](https://openvla.github.io/), 2024
-6. Physical Intelligence, [π0.5: A Vision-Language-Action Model with Open-World Generalization](https://www.physicalintelligence.company/download/pi05.pdf), 2025
-7. Google DeepMind, [Gemini Robotics 2 Brings Whole-Body Intelligence to Robots](https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/), 2026
-8. NVIDIA Research, [GR00T N1.6](https://research.nvidia.com/labs/gear/gr00t-n1_6/), 2025
-9. Habitat, [PARTNR: A Benchmark for Planning and Reasoning in Embodied Multi-agent Tasks](https://aihabitat.org/partnr/)
-10. Google DeepMind, [Responsibility and Safety Evals: ASIMOV-Agentic](https://deepmind.google/research/evals/)
+下面按证据类型列出文中主要资料。会议年份与论文集正式出版年份可能不同，例如 CoRL 2024 的论文集页面标注为 2025；本文以会议届次表达研究时间，以正式页面提供出版信息。
+
+### 同行评审论文
+
+1. Yang Liu et al., [Aligning Cyber Space with Physical World: A Comprehensive Survey on Embodied AI](https://arxiv.org/abs/2407.06886), *IEEE/ASME Transactions on Mechatronics*, 2025
+2. Michael Ahn et al., [Do As I Can, Not As I Say: Grounding Language in Robotic Affordances](https://proceedings.mlr.press/v205/ichter23a.html), CoRL 2022
+3. Wenlong Huang et al., [Inner Monologue: Embodied Reasoning through Planning with Language Models](https://arxiv.org/abs/2207.05608), CoRL 2022
+4. Jacky Liang et al., [Code as Policies: Language Model Programs for Embodied Control](https://arxiv.org/abs/2209.07753), ICRA 2023
+5. Danny Driess et al., [PaLM-E: An Embodied Multimodal Language Model](https://proceedings.mlr.press/v202/driess23a.html), ICML 2023
+6. Anthony Brohan et al., [RT-1: Robotics Transformer for Real-World Control at Scale](https://arxiv.org/abs/2212.06817), RSS 2023
+7. Brianna Zitkovich et al., [RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control](https://proceedings.mlr.press/v229/zitkovich23a.html), CoRL 2023
+8. Open X-Embodiment Collaboration, [Open X-Embodiment: Robotic Learning Datasets and RT-X Models](https://arxiv.org/abs/2310.08864), ICRA 2024
+9. Octo Model Team et al., [Octo: An Open-Source Generalist Robot Policy](https://www.roboticsproceedings.org/rss20/p090.html), RSS 2024
+10. Moo Jin Kim et al., [OpenVLA: An Open-Source Vision-Language-Action Model](https://proceedings.mlr.press/v270/kim25c.html), CoRL 2024
+11. Cheng Chi et al., [Diffusion Policy: Visuomotor Policy Learning via Action Diffusion](https://roboticsproceedings.org/rss19/p026.html), RSS 2023
+12. Tony Z. Zhao et al., [Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware](https://arxiv.org/abs/2304.13705), RSS 2023
+13. Kevin Black et al., [π0: A Vision-Language-Action Flow Model for General Robot Control](https://www.roboticsproceedings.org/rss21/p010.html), RSS 2025
+14. Kevin Black et al., [π0.5: A Vision-Language-Action Model with Open-World Generalization](https://proceedings.mlr.press/v305/black25a.html), CoRL 2025
+
+### 基准与评测论文
+
+15. Manolis Savva et al., [Habitat: A Platform for Embodied AI Research](https://arxiv.org/abs/1904.01201), ICCV 2019
+16. Mohit Shridhar et al., [ALFRED: A Benchmark for Interpreting Grounded Instructions for Everyday Tasks](https://arxiv.org/abs/1912.01734), CVPR 2020
+17. Oier Mees et al., [CALVIN: A Benchmark for Language-Conditioned Policy Learning for Long-Horizon Robot Manipulation Tasks](https://arxiv.org/abs/2112.03227), *IEEE Robotics and Automation Letters*, 2022
+18. Chengshu Li et al., [BEHAVIOR-1K: A Human-Centered, Embodied AI Benchmark with 1,000 Everyday Activities and Realistic Simulation](https://proceedings.mlr.press/v205/li23a.html), CoRL 2022
+19. Bo Liu et al., [LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning](https://proceedings.neurips.cc/paper_files/paper/2023/hash/8c3c666820ea055a77726d66fc7d447f-Abstract-Datasets_and_Benchmarks.html), NeurIPS 2023
+20. Matthew Chang et al., [PARTNR: A Benchmark for Planning and Reasoning in Embodied Multi-agent Tasks](https://proceedings.iclr.cc/paper_files/paper/2025/hash/a3cf318fbeec1126da21e9185ae9908c-Abstract-Conference.html), ICLR 2025
+21. Pierre Sermanet et al., [Generating Robot Constitutions & Benchmarks for Semantic Safety](https://proceedings.mlr.press/v305/sermanet25a.html), CoRL 2025
+
+### 技术报告与项目资料
+
+22. Google DeepMind, [Gemini Robotics: Bringing AI into the Physical World](https://arxiv.org/abs/2503.20020), technical report, 2025
+23. NVIDIA et al., [GR00T N1: An Open Foundation Model for Generalist Humanoid Robots](https://arxiv.org/abs/2503.14734), technical report, 2025
+24. Google DeepMind, [Responsibility and Safety Evals: ASIMOV-Agentic](https://deepmind.google/research/evals/), evaluation project page
+
+厂商报告中的实验通常由发布方自行设计和执行。除非存在相同硬件、数据、任务定义和重置规则下的第三方复现，否则本文只将其作为“该团队公开报告了什么”的证据，不将其外推为行业总体水平。
